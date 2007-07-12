@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0" >
+	<specVersion>
+		<major>1</major>
+		<minor>0</minor>
+	</specVersion>
+	<actionList>
+		<action>
+			<name>SetPower</name>
+			<argumentList>
+				<argument>
+					<name>Power</name>
+					<relatedStateVariable>Power</relatedStateVariable>
+					<direction>in</direction>
+				</argument>
+				<argument>
+					<name>Result</name>
+					<relatedStateVariable>Result</relatedStateVariable>
+					<direction>out</direction>
+				</argument>
+			</argumentList>
+		</action>
+		<action>
+			<name>GetPower</name>
+			<argumentList>
+				<argument>
+					<name>Power</name>
+					<relatedStateVariable>Power</relatedStateVariable>
+					<direction>out</direction>
+				</argument>
+			</argumentList>
+		</action>
+	</actionList>
+	<serviceStateTable>
+		<stateVariable sendEvents="yes">
+			<name>Power</name>
+			<dataType>boolean</dataType>
+			<allowedValueList>
+				<allowedValue>0</allowedValue>
+				<allowedValue>1</allowedValue>
+			</allowedValueList>
+			<allowedValueRange>
+				<maximum>123</maximum>
+				<minimum>19</minimum>
+				<step>1</step>
+			</allowedValueRange>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>Result</name>
+			<dataType>boolean</dataType>
+		</stateVariable>
+	</serviceStateTable>
+</scpd>
