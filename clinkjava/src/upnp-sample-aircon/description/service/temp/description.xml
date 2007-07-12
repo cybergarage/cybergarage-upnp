@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0" >
+	<specVersion>
+		<major>1</major>
+		<minor>0</minor>
+	</specVersion>
+	<actionList>
+		<action>
+			<name>SetTemp</name>
+			<argumentList>
+				<argument>
+					<name>Temp</name>
+					<relatedStateVariable>Temp</relatedStateVariable>
+					<direction>in</direction>
+				</argument>
+				<argument>
+					<name>Result</name>
+					<relatedStateVariable>Result</relatedStateVariable>
+					<direction>out</direction>
+				</argument>
+			</argumentList>
+		</action>
+		<action>
+			<name>GetTemp</name>
+			<argumentList>
+				<argument>
+					<name>Temp</name>
+					<relatedStateVariable>Temp</relatedStateVariable>
+					<direction>out</direction>
+				</argument>
+			</argumentList>
+		</action>
+	</actionList>
+	<serviceStateTable>
+		<stateVariable sendEvents="yes">
+			<name>Temp</name>
+			<dataType>string</dataType>
+		</stateVariable>
+		<stateVariable sendEvents="no">
+			<name>Result</name>
+			<dataType>boolean</dataType>
+		</stateVariable>
+	</serviceStateTable>
+</scpd>
