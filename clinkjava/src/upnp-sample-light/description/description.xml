@@ -1,0 +1,39 @@
+<?xml version="1.0" ?> 
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+	<specVersion>
+		<major>1</major> 
+		<minor>0</minor> 
+	</specVersion>
+	<device>
+		<deviceType>urn:schemas-upnp-org:device:light:1</deviceType> 
+		<friendlyName>CyberGarage Light Device</friendlyName> 
+		<manufacturer>CyberGarage</manufacturer> 
+		<manufacturerURL>http://www.cybergarage.org</manufacturerURL> 
+		<modelDescription>CyberUPnP Light Device</modelDescription> 
+		<modelName>Light</modelName> 
+		<modelNumber>1.0</modelNumber> 
+		<modelURL>http://www.cybergarage.org</modelURL> 
+		<serialNumber>1234567890</serialNumber> 
+		<UDN>uuid:cybergarageLightDevice</UDN> 
+		<UPC>123456789012</UPC> 
+		<iconList>
+			<icon>
+				<mimetype>image/gif</mimetype> 
+				<width>48</width> 
+				<height>32</height> 
+				<depth>8</depth> 
+				<url>icon.gif</url> 
+			</icon>
+		</iconList>
+		<serviceList>
+			<service>
+				<serviceType>urn:schemas-upnp-org:service:power:1</serviceType> 
+				<serviceId>urn:upnp-org:serviceId:power:1</serviceId> 
+				<SCPDURL>/service/power/description.xml</SCPDURL> 
+				<controlURL>/service/power/control</controlURL> 
+				<eventSubURL>/service/power/eventSub</eventSubURL> 
+			</service>
+		</serviceList>
+		<presentationURL>http://www.cybergarage.org</presentationURL> 
+	</device>
+</root>
