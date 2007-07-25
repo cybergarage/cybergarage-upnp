@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CyberLink UPnP Stack">
+   <body>
+      <links>
+         <item name="Sourceforge" href="http://sourceforge.net/projects/cgupnpjava/"/>
+         <item name="Maven" href="http://maven.apache.org/maven2"/>
+         <item name="UPnP" href="http://www.upnp.org/"/>         
+      </links>
+      <menu name="Overview">
+         <item name="Home" href="index.html"/>
+         <item name="Goals" href="plugin-info.html"/>
+         <item name="Usage" href="apidocs/index.html"/>
+      </menu>
+      ${reports}
+  </body>
+</project>

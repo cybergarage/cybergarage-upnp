@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry output="classes" kind="src" path="http"/>
-	<classpathentry output="classes" kind="src" path="net"/>
-	<classpathentry output="classes" kind="src" path="soap"/>
-	<classpathentry output="classes" kind="src" path="sql"/>
-	<classpathentry output="classes" kind="src" path="upnp"/>
-	<classpathentry output="classes" kind="src" path="util"/>
-	<classpathentry output="classes" kind="src" path="xml"/>
-	<classpathentry output="classes" kind="src" path="flash"/>
-	<classpathentry output="classes" kind="src" path="upnp-media"/>
-	<classpathentry output="classes" kind="src" path="upnp-rui"/>
-	<classpathentry output="classes" kind="src" path="upnp-proxy"/>
-	<classpathentry output="classes" kind="src" path="upnp-proxy-gui"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-clock"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-controlpoint"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-aircon"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-light"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-remotectrl"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-tv"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-washer"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-rui-player"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-rui-server"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-igd-tool"/>
-	<classpathentry output="classes" kind="src" path="upnp-sample-proxy"/>
-	<classpathentry output="classes" kind="src" path="upnp-media-gate"/>
-	<classpathentry sourcepath="JRE_SRC" kind="var" rootpath="JRE_SRCROOT" path="JRE_LIB"/>
+	<classpathentry kind="src" path="src/http"/>
+	<classpathentry kind="src" path="src/flash"/>
+	<classpathentry kind="src" path="src/net"/>
+	<classpathentry kind="src" path="src/soap"/>
+	<classpathentry kind="src" path="src/sql"/>
+	<classpathentry kind="var" path="JRE_LIB" sourcepath="JRE_SRC"/>
 	<classpathentry kind="lib" path="C:/eclipse/workspace/clinkjava/lib/jsse.jar"/>
 	<classpathentry kind="lib" path="C:/eclipse/workspace/clinkjava/lib/kxml2-2.2.2.jar"/>
 	<classpathentry kind="lib" path="C:/eclipse/workspace/clinkjava/lib/mysql-connector-java-3.1.12-bin.jar"/>
