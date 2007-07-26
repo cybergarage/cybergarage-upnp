@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <artifactId>samples</artifactId>
+    <groupId>org.cybergarage.cyberlink.samples</groupId>        
+    <version>1</version>    
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.cybergarage.cyberlink.samples</groupId>
+  <artifactId>clock</artifactId>
+  <packaging>jar</packaging>
+  <version>1.5.1-SNAPSHOT</version>
+  <name>CyberLink Clock Device Sample</name>
+  <description>A sample UPnP Clock Device implementation</description>
+  
+  <url>http://sourceforge.net/projects/cgupnpjava/</url>
+  
+  <licenses>
+  	<license>
+  		<name>BSD</name>
+  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/LICENSE.txt</url>
+  	</license>
+  </licenses>
+  
+  <scm>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/clock</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/clock</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/clock</url>
+  </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.cybergarage.cyberlink</groupId>
+      <artifactId>upnp-stack</artifactId>
+      <version>1.8.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
+
