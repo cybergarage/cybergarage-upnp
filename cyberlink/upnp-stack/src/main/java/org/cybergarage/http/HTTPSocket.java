@@ -251,6 +251,7 @@ public class HTTPSocket
 	
 	public boolean post(HTTPResponse httpRes, long contentOffset, long contentLength, boolean isOnlyHeader)
 	{
+		//TODO Close if Connection != keep-alive
 		if (httpRes.hasContentInputStream() == true)
 			return post(httpRes,httpRes.getContentInputStream(), contentOffset, contentLength, isOnlyHeader);
 		return post(httpRes,httpRes.getContent(), contentOffset, contentLength, isOnlyHeader);

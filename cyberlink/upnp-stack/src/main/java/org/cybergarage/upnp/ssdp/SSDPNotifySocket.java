@@ -115,7 +115,7 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 	
 	public void start()
 	{
-		deviceNotifyThread = new Thread(this);
+		deviceNotifyThread = new Thread(this,"Cyber.SSDPNotifySocket");
 		deviceNotifyThread.start();
 	}
 	

@@ -77,6 +77,7 @@
 package org.cybergarage.http;
 
 import java.io.*;
+import java.net.SocketException;
 import java.util.*;
 
 import org.cybergarage.net.*;

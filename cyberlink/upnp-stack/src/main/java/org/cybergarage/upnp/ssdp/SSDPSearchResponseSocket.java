@@ -76,7 +76,7 @@ public class SSDPSearchResponseSocket extends HTTPUSocket implements Runnable
 	
 	public void start()
 	{
-		deviceSearchResponseThread = new Thread(this);
+		deviceSearchResponseThread = new Thread(this,"Cyber.SSDPSearchResponseSocket");
 		deviceSearchResponseThread.start();
 	}
 	

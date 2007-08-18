@@ -111,10 +111,9 @@ public class ControlPoint implements HTTPRequestListener
 	//	Constructor
 	////////////////////////////////////////////////
 
-	public ControlPoint(int ssdpPort, int httpPort)
-	{
-		ssdpNotifySocketList = new SSDPNotifySocketList();
-		ssdpSearchResponseSocketList = new SSDPSearchResponseSocketList();
+	public ControlPoint(int ssdpPort, int httpPort,InetAddress[] binds){
+		ssdpNotifySocketList = new SSDPNotifySocketList(binds);
+		ssdpSearchResponseSocketList = new SSDPSearchResponseSocketList(binds);
 		
 		setSSDPPort(ssdpPort);
 		setHTTPPort(httpPort);
@@ -126,6 +125,10 @@ public class ControlPoint implements HTTPRequestListener
 				
 		setNMPRMode(false);
 		setRenewSubscriber(null);
+	}
+	
+	public ControlPoint(int ssdpPort, int httpPort){
+		this(ssdpPort,httpPort,null);
 	}
 
 	public ControlPoint()
@@ -309,14 +312,14 @@ public class ControlPoint implements HTTPRequestListener
 		devNodeList.remove(rootNode);
 	}
 
-	private void removeDevice(Device dev)
+	protected void removeDevice(Device dev)
 	{
 		if (dev == null)
 			return;
 		removeDevice(dev.getRootNode());
 	}
 	
-	private void removeDevice(String name)
+	protected void removeDevice(String name)
 	{
 		Device dev = getDevice(name);
 		removeDevice(dev);

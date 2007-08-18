@@ -28,6 +28,7 @@ public class HTTPServerThread extends Thread
 	
 	public HTTPServerThread(HTTPServer httpServer, Socket sock)
 	{
+        super("Cyber.HTTPServerThread");
 		this.httpServer = httpServer;
 		this.sock = sock;
 	}
