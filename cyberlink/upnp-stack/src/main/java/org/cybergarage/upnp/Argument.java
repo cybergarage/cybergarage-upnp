@@ -61,6 +61,10 @@ public class Argument
 		return new Service(getServiceNode());
 	}
 	
+	void setService(Service s){
+		s.getServiceNode();
+	}
+	
 	public Node getActionNode()
 	{
 		Node argumentLinstNode = getArgumentNode().getParentNode();
@@ -85,8 +89,13 @@ public class Argument
 
 	public Argument()
 	{
-		argumentNode = new Node();
+		argumentNode = new Node(ELEM_NAME);
 		serviceNode = null;
+	}
+	
+	public Argument(Node servNode){
+		argumentNode = new Node(ELEM_NAME);
+		serviceNode = servNode;		
 	}
 	
 	public Argument(Node servNode, Node argNode)

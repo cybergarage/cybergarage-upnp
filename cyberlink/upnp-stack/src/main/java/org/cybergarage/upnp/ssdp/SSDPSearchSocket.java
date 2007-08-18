@@ -23,6 +23,10 @@
 
 package org.cybergarage.upnp.ssdp;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+
 import org.cybergarage.net.*;
 import org.cybergarage.util.*;
 
@@ -36,18 +40,48 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 	//	Constructor
 	////////////////////////////////////////////////
 
-	public SSDPSearchSocket()
-	{
+
+	/**
+	 * 
+	 * @param bindAddr The address to bind the service
+	 * @param port The port used for accepting message
+	 * @param multicast The multicast address to use as destination
+	 */
+	public SSDPSearchSocket(String bindAddr,int port,String multicast){
+		open(bindAddr,multicast);
 	}
 	
-	public SSDPSearchSocket(String bindAddr)
-	{
-		open(bindAddr);
+	public SSDPSearchSocket(InetAddress bindAddr){
+		if(bindAddr.getAddress().length!=4){
+			this.open((Inet6Address)bindAddr);
+		}else{
+			this.open((Inet4Address)bindAddr);
+		}
 	}
 
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
+	public boolean open(Inet4Address bindAddr){
+		useIPv6Address = false;
+		return open(SSDP.ADDRESS, SSDP.PORT, bindAddr);
+	}
+	
+	public boolean open(Inet6Address bindAddr){
+		useIPv6Address = true;
+		return open(SSDP.getIPv6Address(), SSDP.PORT, bindAddr);
+	}
+	
+	public boolean open(String bind,String multicast){		
+		if ((HostInterface.isIPv6Address(bind) ) && (HostInterface.isIPv6Address(multicast))){
+			useIPv6Address = true;
+		}else if(HostInterface.isIPv4Address(bind) && (HostInterface.isIPv4Address(multicast))){
+			useIPv6Address = false;
+		}else{
+			throw new IllegalArgumentException("Cannot open a UDP Socket for IPv6 address on IPv4 interface or viceversa");
+		}
+		return open(multicast, SSDP.PORT, bind);
+	}
 
 	public boolean open(String bindAddr)
 	{
@@ -110,7 +144,7 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 	
 	public void start()
 	{
-		deviceSearchThread = new Thread(this);
+		deviceSearchThread = new Thread(this,"Cyber.SSDPSearchSocket");
 		deviceSearchThread.start();
 	}
 	

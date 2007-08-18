@@ -95,15 +95,14 @@ public class HTTPMUSocket
 	//	open/close
 	////////////////////////////////////////////////
 
-	public boolean open(String addr, int port, String bindAddr)
-	{
+	public boolean open(String addr,int port, InetAddress bindAddr){
 		try {
 			ssdpMultiSock = new MulticastSocket(null);
 			ssdpMultiSock.setReuseAddress(true);
 			InetSocketAddress bindSockAddr = new InetSocketAddress(port);
 			ssdpMultiSock.bind(bindSockAddr);
 			ssdpMultiGroup = new InetSocketAddress(InetAddress.getByName(addr), port);
-			ssdpMultiIf = NetworkInterface.getByInetAddress(InetAddress.getByName(bindAddr));
+			ssdpMultiIf = NetworkInterface.getByInetAddress(bindAddr);
 			ssdpMultiSock.joinGroup(ssdpMultiGroup, ssdpMultiIf);
 		}
 		catch (Exception e) {
@@ -111,7 +110,17 @@ public class HTTPMUSocket
 			return false;
 		}
 		
-		return true;
+		return true;		
+	}
+	
+	public boolean open(String addr, int port, String bindAddr)
+	{
+		try {
+			return open(addr,port,InetAddress.getByName(bindAddr));
+		}catch (Exception e) {
+			Debug.warning(e);
+			return false;
+		}
 	}
 
 	public boolean close()
@@ -121,6 +130,7 @@ public class HTTPMUSocket
 			
 		try {
 			ssdpMultiSock.leaveGroup(ssdpMultiGroup, ssdpMultiIf);
+            ssdpMultiSock.close();
 			ssdpMultiSock = null;
 		}
 		catch (Exception e) {

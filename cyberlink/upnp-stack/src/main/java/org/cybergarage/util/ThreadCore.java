@@ -43,7 +43,7 @@ public class ThreadCore implements Runnable
 	{
 		java.lang.Thread threadObject = getThreadObject();
 		if (threadObject == null) {
-			threadObject = new java.lang.Thread(this);
+			threadObject = new java.lang.Thread(this,"Cyber.ThreadCore");
 			setThreadObject(threadObject);
 			threadObject.start();
 		}

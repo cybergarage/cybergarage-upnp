@@ -30,10 +30,15 @@
 package org.cybergarage.xml;
 
 import java.io.*;
+import java.util.Iterator;
 
 public class Node 
 {
 
+	/**
+	 * Create a Node with empty UserData and no Parent Node
+	 *
+	 */
 	public Node() 
 	{
 		setUserData(null);
@@ -252,6 +257,17 @@ public class Node
 	public void insertNode(Node node, int index) {
 		node.setParentNode(this);
 		nodeList.insertElementAt(node, index);
+	}
+
+	public int getIndex(String name){
+		int index = -1;
+		for (Iterator i = nodeList.iterator(); i.hasNext();) {
+			index++;
+			Node n = (Node) i.next();
+			if(n.getName().equals(name))
+				return index;
+		}
+		return index;
 	}
 
 	public boolean removeNode(Node node) {

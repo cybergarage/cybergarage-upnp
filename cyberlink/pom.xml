@@ -59,17 +59,17 @@
     <repository>
       <id>sourceforge.net</id>
       <name>CyberLink Repository</name>
-      <url>ssh:/home/groups/c/cg/cgupnpjava/htdocs/repository/</url>
+      <url>scp://shells.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs/repository/</url>
     </repository>
     <snapshotRepository>
       <id>sourceforge.net</id>
       <name>CyberLink Development Repository</name>
-      <url>ssh:/home/groups/c/cg/cgupnpjava/htdocs/snapshots-repository/</url>
+      <url>scp://shells.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs/snapshots-repository/</url>
     </snapshotRepository>
     <site>
       <id>sourceforge.net</id>
       <name>CyberLink SourceForge Website</name>
-      <url>ssh:/home/groups/c/cg/cgupnpjava/htdocs/</url>
+      <url>scp://shells.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs</url>
     </site>
   </distributionManagement>
 

@@ -28,6 +28,7 @@
 ******************************************************************/
 
 package org.cybergarage.upnp;
+import java.util.Iterator;
 
 import org.cybergarage.xml.*;
 import org.cybergarage.util.*;
@@ -60,6 +61,16 @@ public class Action
 		return new Service(getServiceNode());
 	}
 	
+	void setService(Service s){
+		serviceNode=s.getServiceNode();
+		/*To ensure integrity of the XML structure*/
+		Iterator i = getArgumentList().iterator();
+		while (i.hasNext()) {
+			Argument arg = (Argument) i.next();
+			arg.setService(s);
+		}		
+	}
+	
 	public Node getActionNode()
 	{
 		return actionNode;
@@ -68,6 +79,11 @@ public class Action
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
+	public Action(Node serviceNode){
+		//TODO Test
+		this.serviceNode = serviceNode;
+		this.actionNode = new Node(Action.ELEM_NAME);		
+	}
 
 	public Action(Node serviceNode, Node actionNode)
 	{
@@ -143,6 +159,23 @@ public class Action
 		return argumentList;
 	}
 
+	public void setArgumentList(ArgumentList al){
+		Node argumentListNode = getActionNode().getNode(ArgumentList.ELEM_NAME);
+		if (argumentListNode == null){
+			argumentListNode = new Node(ArgumentList.ELEM_NAME);
+			getActionNode().addNode(argumentListNode);
+		}else{
+			argumentListNode.removeAllNodes();
+		}
+		Iterator i = al.iterator();
+		while (i.hasNext()) {
+			Argument a = (Argument) i.next();
+			a.setService(getService());
+			argumentListNode.addNode(a.getArgumentNode());
+		}
+		
+	}
+
 	public ArgumentList getInputArgumentList()
 	{
 		ArgumentList allArgList = getArgumentList();
@@ -186,9 +219,22 @@ public class Action
 		return null;
 	}
 
+	/**
+	 * @deprecated
+	 */
 	public void setArgumentValues(ArgumentList argList)
 	{
 		getArgumentList().set(argList);
+	}
+
+	public void setInArgumentValues(ArgumentList argList)
+	{
+		getArgumentList().setReqArgs(argList); 
+	}
+	
+	public void setOutArgumentValues(ArgumentList argList)
+	{
+		getArgumentList().setResArgs(argList);
 	}
 	
 	public void setArgumentValue(String name, String value)
@@ -325,7 +371,12 @@ public class Action
 		if (ctrlRes.isSuccessful() == false)
 			return false;
 		ArgumentList outArgList = ctrlRes.getResponse();
-		actionArgList.set(outArgList);
+        try {
+            actionArgList.setResArgs(outArgList);
+        } catch (IllegalArgumentException ex){
+            setStatus(UPnPStatus.INVALID_ARGS,"Action succesfully delivered but invalid arguments returned.");
+            return false;
+        }
 		return true;
 	}
 

@@ -71,6 +71,7 @@ package org.cybergarage.upnp;
 
 import java.io.*;
 import java.net.*;
+import java.util.Iterator;
 
 import org.cybergarage.http.*;
 import org.cybergarage.xml.*;
@@ -104,6 +105,34 @@ public class Service
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
+	public static final String SCPD_ROOTNODE="scpd";
+	public static final String SCPD_ROOTNODE_NS="urn:schemas-upnp-org:services-1-0";
+	
+	public static final String SPEC_VERSION="specVersion";
+	public static final String MAJOR="major";
+	public static final String MAJOR_VALUE="1";
+	public static final String MINOR="minor";
+	public static final String MINOR_VALUE="0";
+	
+	public Service(){
+		this(new Node(ELEM_NAME));
+		
+		Node sp = new Node(SPEC_VERSION);
+		
+		Node M =new Node(MAJOR);
+		M.setValue(MAJOR_VALUE);
+		sp.addNode(M);
+				
+		Node m =new Node(MINOR);
+		m.setValue(MINOR_VALUE);
+		sp.addNode(m);
+		
+		//Node scpd = new Node(SCPD_ROOTNODE,SCPD_ROOTNODE_NS); wrong!
+		Node scpd = new Node(SCPD_ROOTNODE); 					// better (twa)
+		scpd.addAttribute("xmlns",SCPD_ROOTNODE_NS); 			// better (twa)
+		scpd.addNode(sp);
+		getServiceData().setSCPDNode(scpd);
+	}
 
 	public Service(Node node)
 	{
@@ -311,6 +340,17 @@ public class Service
 		return true;
 	}
 	
+    public void setDescriptionURL(String value)
+    {
+            getServiceData().setDescriptionURL(value);
+    }
+
+    public String getDescriptionURL()
+    {
+            return getServiceData().getDescriptionURL();
+    }
+	
+	
 	private Node getSCPDNode(URL scpdUrl) throws ParserException
 	{
 		Parser parser = UPnP.getXMLParser();
@@ -325,7 +365,6 @@ public class Service
 
 	private Node getSCPDNode()
 	{
-		Node serviceNode = getServiceNode();
 		ServiceData data = getServiceData();
 		Node scpdNode = data.getSCPDNode();
 		if (scpdNode != null)
@@ -401,7 +440,6 @@ public class Service
 		Node actionListNode = scdpNode.getNode(ActionList.ELEM_NAME);
 		if (actionListNode == null)
 			return actionList;
-		Node serviceNode = getServiceNode();
 		int nNode = actionListNode.getNNodes();
 		for (int n=0; n<nNode; n++) {
 			Node node = actionListNode.getNode(n);
@@ -426,6 +464,22 @@ public class Service
 				return action;
 		}
 		return null;
+	}
+	
+	public void addAction(Action a){
+		Iterator i = a.getArgumentList().iterator();
+		while (i.hasNext()) {
+			Argument arg = (Argument) i.next();
+			arg.setService(this);
+		}
+
+		Node scdpNode = getSCPDNode();
+		Node actionListNode = scdpNode.getNode(ActionList.ELEM_NAME);
+		if (actionListNode == null){			
+			actionListNode = new Node(ActionList.ELEM_NAME);
+			scdpNode.addNode(actionListNode);
+		}
+		actionListNode.addNode(a.getActionNode());
 	}
 	
 	////////////////////////////////////////////////
@@ -636,7 +690,6 @@ public class Service
 		
 		String host = sub.getDeliveryHost();
 		int port = sub.getDeliveryPort();
-		String bindAddr = sub.getInterfaceAddress();
 		
 		NotifyRequest notifyReq = new NotifyRequest();
 		notifyReq.setRequest(sub, varName, value);
@@ -753,6 +806,33 @@ public class Service
 			Action action = actionList.getAction(n);
 			action.setActionListener(listener);
 		}
+	}
+
+	/**
+	 * Add the StateVariable to the service.<br>
+	 * <br>
+	 * Note: This method should be used to create a dynamic<br>
+	 * Device withtout writing any XML that describe the device<br>.
+	 * <br>
+	 * Note: that no control for duplicate StateVariable is done.
+	 * 
+	 * @param var StateVariable that will be added
+	 * 
+	 * @author Stefano "Kismet" Lenzi - kismet-sl@users.sourceforge.net  - 2005
+	 */
+	public void addStateVariable(StateVariable var) {
+		//TODO Some test are done not stable
+		Node stateTableNode = getSCPDNode().getNode(ServiceStateTable.ELEM_NAME);
+		if (stateTableNode == null){
+			stateTableNode = new Node(ServiceStateTable.ELEM_NAME);
+			/*
+			 * Force the node <serviceStateTable> to be the first node inside <scpd>
+			 */
+			//getSCPDNode().insertNode(stateTableNode,0);
+			getSCPDNode().addNode(stateTableNode);		
+		}
+		var.setServiceNode(getServiceNode());
+		stateTableNode.addNode(var.getStateVariableNode());
 	}
 
 	////////////////////////////////////////////////
