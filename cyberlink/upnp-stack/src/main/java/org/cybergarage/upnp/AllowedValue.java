@@ -45,6 +45,21 @@ public class AllowedValue
 		allowedValueNode = node;
 	}
 
+	/**
+	 * Create an AllowedValue by the value String,
+	 * and will create the Node structure by itself
+	 * 
+	 * @param value The value that will be associate to thi object
+	 * 
+	 * @author Stefano "Kismet" Lenzi - kismet-sl@users.sourceforge.net  - 2005
+	 */
+	public AllowedValue(String value) {
+
+		//TODO Some test are done not stable
+		allowedValueNode = new Node(ELEM_NAME); //better (twa)
+		setValue(value);						//better (twa)
+	}
+
 	////////////////////////////////////////////////
 	//	isAllowedValueNode
 	////////////////////////////////////////////////

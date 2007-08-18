@@ -51,6 +51,7 @@ public abstract class Parser
 		try {
 	 		HttpURLConnection urlCon = (HttpURLConnection)locationURL.openConnection();
 			urlCon.setRequestMethod("GET");
+			urlCon.setRequestProperty(HTTP.CONTENT_LENGTH,"0");
 			if (host != null)
 				urlCon.setRequestProperty(HTTP.HOST, host);
 

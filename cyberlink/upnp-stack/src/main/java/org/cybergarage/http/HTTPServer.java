@@ -80,6 +80,17 @@ public class HTTPServer implements Runnable
 	//	open/close
 	////////////////////////////////////////////////
 	
+	public boolean open(InetAddress addr,int port){
+		if (serverSock != null)
+			return true;
+		try {
+			serverSock = new ServerSocket(bindPort, 0, bindAddr);
+		}catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	
 	public boolean open(String addr, int port)
 	{
 		if (serverSock != null)

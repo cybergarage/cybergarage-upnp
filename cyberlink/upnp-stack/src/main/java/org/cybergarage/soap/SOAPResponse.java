@@ -21,6 +21,7 @@
 package org.cybergarage.soap;
 
 import org.cybergarage.http.*;
+import org.cybergarage.util.Debug;
 import org.cybergarage.xml.*;
 
 public class SOAPResponse extends HTTPResponse

@@ -35,6 +35,14 @@ public class AllowedValueList extends Vector
 	public AllowedValueList() 
 	{
 	}
+
+	public AllowedValueList(String[] values) {
+		for (int i = 0; i < values.length; i++) {
+			add(new AllowedValue(values[i]));
+		};
+		
+	}
+
 	
 	////////////////////////////////////////////////
 	//	Methods
@@ -45,4 +53,12 @@ public class AllowedValueList extends Vector
 		return (AllowedValue)get(n);
 	}
 
+	public boolean isAllowed(String v){
+		for (Iterator i = this.iterator(); i.hasNext();) {
+			AllowedValue av = (AllowedValue) i.next();
+			if(av.getValue().equals(v))
+				return true;
+		}
+		return false;
+	}
 }

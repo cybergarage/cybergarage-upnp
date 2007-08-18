@@ -68,8 +68,11 @@ public class SSDP
 	//	LeaseTime
 	////////////////////////////////////////////////
 
-	public final static int getLeaseTime(String cacheCont)
-	{
+	public final static int getLeaseTime(String cacheCont){
+		/*
+		 * Search for max-age keyword instead of equals sign Found value of
+		 * max-age ends at next comma or end of string
+		 */ 
 		int mx = 0;  
 		int maxAgeIdx = cacheCont.indexOf("max-age");  
 		if (maxAgeIdx >= 0) {  

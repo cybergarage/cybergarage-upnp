@@ -307,15 +307,71 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	
 	// Thanks for Stefano Lenzi (07/24/04)
 
-	public Device getParentDevice()
-	{ 
+	/**
+	 * 
+	 * @return A Device that contain this object.<br>
+	 * 	Return <code>null</code> if this is a root device.
+	 * @author Stefano "Kismet" Lenzi 
+	 */
+	public Device getParentDevice()	{ 
 		if(isRootDevice())
 			return null;
 		Node devNode = getDeviceNode();
+		Node aux = null;
 		//<device><deviceList><device>
-		devNode = devNode.getParentNode().getParentNode();
-		return new Device(devNode);
+		aux = devNode.getParentNode().getParentNode();
+		return new Device(aux);
 	}
+	/**
+	 * Add a Service to device without checking for duplicate or syntax error
+	 * 
+	 * @param s Add Service s to the Device
+	 */
+	public void addService(Service s) {
+		Node serviceListNode = getDeviceNode().getNode(ServiceList.ELEM_NAME);
+		if (serviceListNode == null) {
+			serviceListNode = new Node(ServiceList.ELEM_NAME);
+			getDeviceNode().addNode(serviceListNode);
+		}
+		serviceListNode.addNode(s.getServiceNode());
+	}
+
+	/**
+	 * Add a Device to device without checking for duplicate or syntax error.
+	 * This method set or reset the root node of the Device and itself<br>
+	 * <br>
+	 * Note: This method should be used to create a dynamic<br>
+	 * Device withtout writing any XML that describe the device<br>.
+	 * 
+	 * @param d Add Device d to the Device
+	 * 
+	 * @author Stefano "Kismet" Lenzi - kismet-sl@users.sourceforge.net  - 2005
+	 * 
+	 */
+	public void addDevice(Device d) {
+		Node deviceListNode = getDeviceNode().getNode(DeviceList.ELEM_NAME);
+		if (deviceListNode == null) {
+			//deviceListNode = new Node(ServiceList.ELEM_NAME); twa wrong ELEM_NAME;
+			deviceListNode = new Node(DeviceList.ELEM_NAME);
+			getDeviceNode().addNode(deviceListNode);
+		}
+		deviceListNode.addNode(d.getDeviceNode());
+		d.setRootNode(null);
+		if(getRootNode()==null){
+			Node root = new Node(RootDescription.ROOT_ELEMENT);
+			root.setNameSpace("",RootDescription.ROOT_ELEMENT_NAMESPACE);
+			Node spec = new Node(RootDescription.SPECVERSION_ELEMENT);
+			Node maj =new Node(RootDescription.MAJOR_ELEMENT);
+			maj.setValue("1");
+			Node min =new Node(RootDescription.MINOR_ELEMENT);
+			min.setValue("0");
+			spec.addNode(maj);
+			spec.addNode(min);
+			root.addNode(spec);		
+			setRootNode(root);
+		}			
+	}	
+	
 
 	////////////////////////////////////////////////
 	//	UserData
@@ -445,9 +501,8 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	//	Root Device
 	////////////////////////////////////////////////
 
-	public boolean isRootDevice()
-	{
-		return (getRootNode() != null) ? true : false;
+	public boolean isRootDevice(){
+		return getRootNode().getNode("device").getNodeValue(UDN).equals(getUDN());
 	}
 	
 	////////////////////////////////////////////////
@@ -610,7 +665,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	//	manufacture
 	////////////////////////////////////////////////
 
-	private final static String MANUFACTURE = "manufacture";
+	private final static String MANUFACTURE = "manufacturer";
 	
 	public void setManufacture(String value)
 	{
@@ -626,7 +681,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	//	manufactureURL
 	////////////////////////////////////////////////
 
-	private final static String MANUFACTURE_URL = "manufactureURL";
+	private final static String MANUFACTURE_URL = "manufacturerURL";
 	
 	public void setManufactureURL(String value)
 	{
@@ -1157,18 +1212,29 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		}
 	}
 
-	public void announce()
-	{
+	public void announce(){
 		notifyWait();
-		
-		int nHostAddrs = HostInterface.getNHostAddresses();
-		for (int n=0; n<nHostAddrs; n++) {
-			String bindAddr = HostInterface.getHostAddress(n);
-			if (bindAddr == null || bindAddr.length() <= 0)
+		InetAddress[] binds = getDeviceData().getHTTPBindAddress();
+		String[] bindAddresses;
+		if(binds!=null){			
+			bindAddresses = new String[binds.length];
+			for (int i = 0; i < binds.length; i++) {
+				bindAddresses[i] = binds[i].getHostAddress();
+			}
+		}else{
+			int nHostAddrs = HostInterface.getNHostAddresses();
+			bindAddresses = new String[nHostAddrs]; 
+			for (int n=0; n<nHostAddrs; n++) {
+				bindAddresses[n] = HostInterface.getHostAddress(n);
+			}
+		}		
+		for (int j = 0; j < bindAddresses.length; j++) {
+			if(bindAddresses[j] == null || bindAddresses[j].length() == 0)
 				continue;
 			int ssdpCount = getSSDPAnnounceCount();
 			for (int i=0; i<ssdpCount; i++)
-				announce(bindAddr);
+				announce(bindAddresses[j]);
+			
 		}
 	}
 	
@@ -1213,17 +1279,30 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		}
 	}
 
-	public void byebye()
-	{
-		int nHostAddrs = HostInterface.getNHostAddresses();
-		for (int n=0; n<nHostAddrs; n++) {
-			String bindAddr = HostInterface.getHostAddress(n);
-			if (bindAddr == null || bindAddr.length() <= 0)
+	public void byebye(){
+
+		InetAddress[] binds = getDeviceData().getHTTPBindAddress();
+		String[] bindAddresses;
+		if(binds!=null){			
+			bindAddresses = new String[binds.length];
+			for (int i = 0; i < binds.length; i++) {
+				bindAddresses[i] = binds[i].getHostAddress();
+			}
+		}else{
+			int nHostAddrs = HostInterface.getNHostAddresses();
+			bindAddresses = new String[nHostAddrs]; 
+			for (int n=0; n<nHostAddrs; n++) {
+				bindAddresses[n] = HostInterface.getHostAddress(n);
+			}
+		}		
+		
+		for (int j = 0; j < bindAddresses.length; j++) {			
+			if (bindAddresses[j] == null || bindAddresses[j].length() <= 0)
 				continue;
 			int ssdpCount = getSSDPAnnounceCount();
 			for (int i=0; i<ssdpCount; i++)
-				byebye(bindAddr);
-		}
+				byebye(bindAddresses[j]);
+		}		
 	}
 
 	////////////////////////////////////////////////
@@ -1331,6 +1410,16 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	{
 		return getDeviceData().getHTTPPort();
 	}
+
+	public void setHTTPBindAddress(InetAddress[] inets){
+		this.getDeviceData().setHTTPBindAddress(inets);
+	}
+	
+	public InetAddress[] getHTTPBindAddress(){
+		return this.getDeviceData().getHTTPBindAddress();
+	}	
+	
+	
 
 	public void httpRequestRecieved(HTTPRequest httpReq)
 	{
@@ -1460,6 +1549,13 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		ctlReq.post(actRes);
 	}
 
+   private void invalidArgumentsControlRecieved(ControlRequest ctlReq)
+    {
+        ControlResponse actRes = new ActionResponse();
+        actRes.setFaultResponse(UPnPStatus.INVALID_ARGS);
+        ctlReq.post(actRes);
+    }
+
 	private void deviceActionControlRecieved(ActionRequest ctlReq, Service service)
 	{
 		if (Debug.isOn() == true)
@@ -1473,7 +1569,12 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		}
 		ArgumentList actionArgList = action.getArgumentList();
 		ArgumentList reqArgList = ctlReq.getArgumentList();
-		actionArgList.set(reqArgList);
+        try {
+            actionArgList.setReqArgs(reqArgList);
+        } catch (IllegalArgumentException ex){
+            invalidArgumentsControlRecieved(ctlReq);
+            return;
+       }
 		if (action.performActionListener(ctlReq) == false)
 			invalidActionControlRecieved(ctlReq);
 	}
@@ -1623,6 +1724,75 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	{
 		return getDeviceData().getHTTPServerList();
 	}
+	/**
+	 * 
+	 * @param port The port to use for binding the SSDP service
+	 */
+	public void setSSDPPort(int port){
+		this.getDeviceData().setSSDPPort(port);
+	}
+
+	/**
+	 * 
+	 * @return The port to use for binding the SSDP service
+	 */
+	public int getSSDPPort(){
+		return this.getDeviceData().getSSDPPort();
+	}
+	
+	
+
+	/**
+	 * 
+	 * @param inets The IP that will be used for binding the SSDP service.
+	 * 		Use <code>null</code> to get the default beahvior 
+	 */
+	public void setSSDPBindAddress(InetAddress[] inets){
+		this.getDeviceData().setSSDPBindAddress(inets);
+	}
+		
+	
+	/**
+	 * 
+	 * @return inets The IP that will be used for binding the SSDP service.
+	 * 		null means the default setted by the class UPnP
+	 */
+	public InetAddress[] getSSDPBindAddress(){
+		return this.getDeviceData().getSSDPBindAddress();
+	}	
+	
+	/**
+	 * 
+	 * @param ip The IPv4 address used for Multicast comunication
+	 */
+	public void setMulticastIPv4Address(String ip){
+		this.getDeviceData().setMulticastIPv4Address(ip);
+	}
+
+	/**
+	 * 
+	 * @return The IPv4 address used for Multicast comunication
+	 */
+	public String getMulticastIPv4Address(){
+		return this.getDeviceData().getMulticastIPv4Address();
+	}
+	
+	/**
+	 * 
+	 * @param ip The IPv address used for Multicast comunication
+	 */
+	public void setMulticastIPv6Address(String ip){
+		this.getDeviceData().setMulticastIPv6Address(ip);
+	}
+
+	/**
+	 * 
+	 * @return The IPv address used for Multicast comunication
+	 */
+	public String getMulticastIPv6Address(){
+		return this.getDeviceData().getMulticastIPv6Address();
+	}
+	
 
 	private SSDPSearchSocketList getSSDPSearchSocketList() 
 	{

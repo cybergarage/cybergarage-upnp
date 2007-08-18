@@ -22,6 +22,7 @@ import java.io.InputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.cybergarage.util.Debug;
 import org.cybergarage.xml.Node;
 import org.cybergarage.xml.Parser;
 import org.cybergarage.xml.ParserException;
@@ -81,10 +82,14 @@ public class JaxpParser extends Parser
 		}
 		
 		org.w3c.dom.Node child = domNode.getFirstChild();
-		while (child != null) {
+		if(child==null){ 
+			node.setValue(""); 
+			return node; 
+		}
+		do{
 			parse(node, child, rank+1);
 			child = child.getNextSibling();
-		}
+		}while (child != null);		
 		
 		return node;
 	}
