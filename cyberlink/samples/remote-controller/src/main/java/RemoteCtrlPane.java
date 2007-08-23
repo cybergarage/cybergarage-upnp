@@ -59,9 +59,8 @@ public class RemoteCtrlPane extends JPanel implements MouseListener
 	
 	private void loadImage()
 	{
-		File f = new File(CLOCK_PANEL_IMAGE);
 		try {
-			panelmage = ImageIO.read(f);
+			panelmage = ImageIO.read(RemoteCtrlPane.class.getResourceAsStream(CLOCK_PANEL_IMAGE));
 		}
 		catch (Exception e) {
 			Debug.warning(e);

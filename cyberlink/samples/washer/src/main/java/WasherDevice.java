@@ -10,19 +10,36 @@
 
 import java.io.*;
 
+import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.control.*;
+import org.cybergarage.xml.ParserException;
 
 public class WasherDevice extends Device implements ActionListener, QueryListener, Runnable
 {
 	private final static String DESCRIPTION_FILE_NAME = "description/description.xml";
+	private final static String STATE_SERVICE_DESCRIPTION_FILE_NAME = "description/service/state/description.xml";
 
 	private StateVariable stateVar;
 	
 	public WasherDevice() throws InvalidDescriptionException
 	{
-		super(new File(DESCRIPTION_FILE_NAME));
+		super();
+		loadDescription(WasherDevice.class.getResourceAsStream(DESCRIPTION_FILE_NAME));
+		setSSDPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		setHTTPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		
+		Service stateService = getService("urn:upnp-org:serviceId:state:1");
+		try {
+			stateService.loadSCPD(WasherDevice.class.getResourceAsStream(STATE_SERVICE_DESCRIPTION_FILE_NAME));
+		} catch (ParserException e) {
+			throw new InvalidDescriptionException(e);
+		}
 
 		Action getStateAction = getAction("GetState");
 		getStateAction.setActionListener(this);

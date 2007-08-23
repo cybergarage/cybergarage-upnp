@@ -9,11 +9,15 @@
 ******************************************************************/
 
 import java.io.*;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.control.*;
 import org.cybergarage.http.*;
+import org.cybergarage.net.HostInterface;
 
 public class ClockDevice extends Device implements ActionListener, QueryListener
 {
@@ -110,11 +114,16 @@ public class ClockDevice extends Device implements ActionListener, QueryListener
 
 	private StateVariable timeVar;
 	
-	public ClockDevice() throws InvalidDescriptionException
+	public ClockDevice() throws InvalidDescriptionException, IOException
 	{
-		//super(new File(DESCRIPTION_FILE_NAME));
 		super();
 		loadDescription(DEVICE_DESCRIPTION);
+		setSSDPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		setHTTPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
 		Service timeService = getService("urn:schemas-upnp-org:service:timer:1");
 		timeService.loadSCPD(SERVICE_DESCRIPTION);
 

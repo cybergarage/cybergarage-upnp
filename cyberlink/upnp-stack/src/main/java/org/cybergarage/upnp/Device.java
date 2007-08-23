@@ -195,6 +195,16 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		loadDescription(descriptionFile);
 	}
 
+	/**
+	 * @since 1.8.0
+	 */
+	public Device(InputStream input) throws InvalidDescriptionException
+	{
+		this(null, null);
+		loadDescription(input);
+	}
+
+	
 	public Device(String descriptionFileName) throws InvalidDescriptionException
 	{
 		this(new File(descriptionFileName));
@@ -428,6 +438,32 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 			return "";
 		return descriptionFile.getAbsoluteFile().getParent();
 	}
+	
+	/**
+	 * @since 1.8.0
+	 */
+	public boolean loadDescription(InputStream input) throws InvalidDescriptionException
+	{
+		try {
+			Parser parser = UPnP.getXMLParser();
+			rootNode = parser.parse(input);
+			if (rootNode == null)
+				throw new InvalidDescriptionException(Description.NOROOT_EXCEPTION);
+			deviceNode = rootNode.getNode(Device.ELEM_NAME);
+			if (deviceNode == null)
+				throw new InvalidDescriptionException(Description.NOROOTDEVICE_EXCEPTION);
+		}
+		catch (ParserException e) {
+			throw new InvalidDescriptionException(e);
+		}
+		
+		if (initializeLoadedDescription() == false)
+			return false;
+
+		setDescriptionFile(null);
+				
+		return true;
+	}	
 
 	public boolean loadDescription(String descString) throws InvalidDescriptionException
 	{
