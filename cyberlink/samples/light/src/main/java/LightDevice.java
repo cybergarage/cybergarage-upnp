@@ -11,6 +11,7 @@
 import java.io.*;
 import java.awt.*;
 
+import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.control.*;
@@ -24,6 +25,12 @@ public class LightDevice extends Device implements ActionListener, QueryListener
 	public LightDevice() throws InvalidDescriptionException
 	{
 		super(new File(DESCRIPTION_FILE_NAME));
+		setSSDPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		setHTTPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
 
 		Action getPowerAction = getAction("GetPower");
 		getPowerAction.setActionListener(this);

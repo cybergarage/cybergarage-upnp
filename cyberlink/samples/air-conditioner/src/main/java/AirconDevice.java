@@ -9,8 +9,11 @@
 ******************************************************************/
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.awt.*;
 
+import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.control.*;
@@ -22,9 +25,15 @@ public class AirconDevice extends Device implements ActionListener, QueryListene
 	private StateVariable tempVar;
 	
 	public AirconDevice() throws InvalidDescriptionException
-	{
+	{		
 		super(new File(DESCRIPTION_FILE_NAME));
-
+		setSSDPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		setHTTPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		
 		Action getPowerAction = getAction("GetPower");
 		getPowerAction.setActionListener(this);
 		
