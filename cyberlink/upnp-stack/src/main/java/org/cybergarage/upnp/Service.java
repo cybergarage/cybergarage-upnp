@@ -339,6 +339,21 @@ public class Service
 		data.setSCPDNode(scpdNode);
 		return true;
 	}
+
+	/**
+	 * @since 1.8.0 
+	 */
+	public boolean loadSCPD(InputStream input) throws ParserException
+	{
+		Parser parser = UPnP.getXMLParser();
+		Node scpdNode = parser.parse(input);
+		if (scpdNode == null)
+			return false;
+		ServiceData data = getServiceData();
+		data.setSCPDNode(scpdNode);
+		return true;
+	}
+	
 	
     public void setDescriptionURL(String value)
     {

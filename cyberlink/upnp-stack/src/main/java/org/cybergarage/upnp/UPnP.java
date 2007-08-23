@@ -24,9 +24,9 @@
 package org.cybergarage.upnp;
 
 import org.cybergarage.upnp.ssdp.*;
+import org.cybergarage.util.Debug;
 //import org.cybergarage.util.*;
-import org.cybergarage.xml.*;
-import org.cybergarage.xml.parser.*;
+import org.cybergarage.xml.Parser;
 import org.cybergarage.soap.*;
 import org.cybergarage.net.*;
 
@@ -195,13 +195,41 @@ public class UPnP
 	
 	public final static Parser getXMLParser()
 	{
+		if(xmlParser == null)
+			xmlParser = loadDefaultXMLParser();
 		return xmlParser;
+	}
+	/**
+	 * 
+	 * @since 1.8.0
+	 */
+	private static Parser loadDefaultXMLParser() {
+		Parser parser = null;
+		try {
+			parser = (Parser) Class.forName("org.cybergarage.xml.parser.JaxpParser").newInstance();
+			return parser;
+		} catch (Throwable e) {
+			Debug.warning("Unable to load org.cybergarage.xml.parser.JaxpParser as XMLParser due to "+e);
+		}
+		try {
+			parser = (Parser) Class.forName("org.cybergarage.xml.parser.kXML2Parser").newInstance();
+			return parser;
+		} catch (Throwable e) {
+			Debug.warning("Unable to load org.cybergarage.xml.parser.kXML2Parser as XMLParser due to "+e);
+		}
+		try {
+			parser = (Parser) Class.forName("org.cybergarage.xml.parser.XercesParser").newInstance();
+			return parser;
+		} catch (Throwable e) {
+			Debug.warning("Unable to load org.cybergarage.xml.parser.XercesParser as XMLParser due to "+e);
+		}
+		return null;
 	}
 	
 	////////////////////////////////////////////////
 	//	TTL
-	////////////////////////////////////////////////
-	
+	////////////////////////////////////////////////	
+
 	public final static int DEFAULT_TTL = 4;
 
 	private static int timeToLive = DEFAULT_TTL;
@@ -226,17 +254,8 @@ public class UPnP
 		// Interface Option
 		////////////////////////////
 		
-		//setXMLParser(new XercesParser());
-		setXMLParser(new kXML2Parser());
-		//setXMLParser(new JaxpParser());
+		//setXMLParser(new kXML2Parser());
 		
-		////////////////////////////
-		// Interface Option
-		////////////////////////////
-		/*
-		if (HostInterface.hasIPv6Addresses() == true)
-			setEnable(USE_ONLY_IPV6_ADDR);
-		*/
 		
 		////////////////////////////
 		// TimeToLive

@@ -10,6 +10,7 @@
 
 import java.awt.*;
 
+import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.ssdp.*;
 import org.cybergarage.upnp.device.*;
@@ -55,7 +56,15 @@ public class TvDevice implements ActionListener, QueryListener, NotifyListener, 
 			tvDev = new Device(DESCRIPTION_FILE_NAME);
 		}
 		catch (InvalidDescriptionException e) {}
-				
+
+		tvDev.setSSDPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		tvDev.setHTTPBindAddress(
+				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
+		);
+		
+		
 		Action getPowerAction = tvDev.getAction("GetPower");
 		getPowerAction.setActionListener(this);
 		

@@ -104,7 +104,7 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 			InetAddress maddr = getMulticastInetAddress();
 			InetAddress pmaddr = packet.getHostInetAddress();
 			if (maddr.equals(pmaddr) == false) {
-				Debug.warning("Invalidate Multicast Recieved : " + maddr + "," + pmaddr);
+				Debug.warning("Invalidate Multicast Recieved from IP " + maddr + " on " + pmaddr);
 				continue;
 			}
 												

@@ -10,11 +10,13 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 import javax.swing.*;
 
 import org.cybergarage.util.*;
 
+import org.cybergarage.upnp.UPnP;
 import org.cybergarage.upnp.device.*;
 
 public class ClockFrame extends JFrame implements Runnable, WindowListener 
@@ -23,10 +25,9 @@ public class ClockFrame extends JFrame implements Runnable, WindowListener
 	private ClockDevice clockDev;
 	private ClockPane clockPane;
 	
-	public ClockFrame()
+	public ClockFrame() throws IOException
 	{
 		super(TITLE);
-
 		try {
 			clockDev = new ClockDevice();
 		}
@@ -127,7 +128,7 @@ public class ClockFrame extends JFrame implements Runnable, WindowListener
 	//	main
 	////////////////////////////////////////////////
 
-	public static void main(String args[]) 
+	public static void main(String args[]) throws Throwable 
 	{
 		//Debug.on();
 

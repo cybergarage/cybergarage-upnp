@@ -41,9 +41,9 @@ public class WasherPane extends JPanel  // MouseListener
 	private void loadImage()
 	{
 		try {
-			panelmage = ImageIO.read(new File(WASHER_PANEL_IMAGE));
-			anim1lmage = ImageIO.read(new File(WASHER_ANIM_IMAGE1));
-			anim2lmage = ImageIO.read(new File(WASHER_ANIM_IMAGE2));
+			panelmage = ImageIO.read(WasherPane.class.getResourceAsStream(WASHER_PANEL_IMAGE));
+			anim1lmage = ImageIO.read(WasherPane.class.getResourceAsStream(WASHER_ANIM_IMAGE1));
+			anim2lmage = ImageIO.read(WasherPane.class.getResourceAsStream(WASHER_ANIM_IMAGE2));
 		}
 		catch (Exception e) {
 			Debug.warning(e);
