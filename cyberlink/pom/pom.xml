@@ -127,10 +127,10 @@
   <contributors />
   
   <modules>
-    <module>upnp-stack</module>
-    <module>control-point</module>
-    <module>cyber-media-garage</module>
-    <module>samples</module>
+    <module>../upnp-stack</module>
+    <module>../control-point</module>
+    <module>../cyber-media-garage</module>
+    <module>../samples</module>
   </modules>
   
   <build>
