@@ -19,15 +19,10 @@
 package org.cybergarage.upnp.ssdp;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.*;
+import java.util.Vector;
 
-import org.cybergarage.http.HTTPServer;
-import org.cybergarage.net.*;
-
-import org.cybergarage.upnp.Device;
-import org.cybergarage.upnp.UPnP;
-import org.cybergarage.upnp.device.*;
+import org.cybergarage.net.HostInterface;
+import org.cybergarage.upnp.device.SearchListener;
 
 public class SSDPSearchSocketList extends Vector 
 {
@@ -105,7 +100,7 @@ public class SSDPSearchSocketList extends Vector
 				bindAddresses[n] = HostInterface.getHostAddress(n);
 			}
 		}		
-		int j=0;
+		
 		for (int i = 0; i < bindAddresses.length; i++) {
 			if(bindAddresses[i]!=null){
 				SSDPSearchSocket ssdpSearchSocket;

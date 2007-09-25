@@ -24,12 +24,18 @@
 
 package org.cybergarage.upnp.ssdp;
 
-import java.net.*;
-import java.util.*;
+import java.net.DatagramPacket;
+import java.net.Inet4Address;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.MulticastSocket;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 
-import org.cybergarage.upnp.*;
-import org.cybergarage.http.*;
-import org.cybergarage.util.*;
+import org.cybergarage.http.HTTPRequest;
+import org.cybergarage.upnp.UPnP;
+import org.cybergarage.util.Debug;
 
 public class HTTPMUSocket
 {

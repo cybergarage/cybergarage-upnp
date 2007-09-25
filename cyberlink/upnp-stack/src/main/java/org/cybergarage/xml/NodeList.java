@@ -15,7 +15,7 @@
 
 package org.cybergarage.xml;
 
-import java.util.*;
+import java.util.Vector;
 
 public class NodeList extends Vector 
 {

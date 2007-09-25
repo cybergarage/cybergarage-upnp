@@ -23,10 +23,12 @@
 
 package org.cybergarage.upnp.ssdp;
 
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 
-import org.cybergarage.upnp.UPnP;
-import org.cybergarage.util.*;
+import org.cybergarage.util.Debug;
 
 public class HTTPUSocket
 {
