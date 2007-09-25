@@ -69,19 +69,31 @@
 
 package org.cybergarage.upnp;
 
-import java.io.*;
-import java.net.*;
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Iterator;
 
-import org.cybergarage.http.*;
-import org.cybergarage.xml.*;
-import org.cybergarage.util.*;
-
-import org.cybergarage.upnp.ssdp.*;
-import org.cybergarage.upnp.xml.*;
-import org.cybergarage.upnp.device.*;
-import org.cybergarage.upnp.control.*;
-import org.cybergarage.upnp.event.*;
+import org.cybergarage.http.HTTP;
+import org.cybergarage.http.HTTPResponse;
+import org.cybergarage.upnp.control.ActionListener;
+import org.cybergarage.upnp.control.QueryListener;
+import org.cybergarage.upnp.device.InvalidDescriptionException;
+import org.cybergarage.upnp.device.NTS;
+import org.cybergarage.upnp.device.ST;
+import org.cybergarage.upnp.event.NotifyRequest;
+import org.cybergarage.upnp.event.Subscriber;
+import org.cybergarage.upnp.event.SubscriberList;
+import org.cybergarage.upnp.ssdp.SSDPNotifyRequest;
+import org.cybergarage.upnp.ssdp.SSDPNotifySocket;
+import org.cybergarage.upnp.ssdp.SSDPPacket;
+import org.cybergarage.upnp.xml.ServiceData;
+import org.cybergarage.util.Debug;
+import org.cybergarage.util.Mutex;
+import org.cybergarage.util.StringUtil;
+import org.cybergarage.xml.Node;
+import org.cybergarage.xml.Parser;
+import org.cybergarage.xml.ParserException;
 
 public class Service
 {
@@ -106,7 +118,7 @@ public class Service
 	//	Constructor
 	////////////////////////////////////////////////
 	public static final String SCPD_ROOTNODE="scpd";
-	public static final String SCPD_ROOTNODE_NS="urn:schemas-upnp-org:services-1-0";
+	public static final String SCPD_ROOTNODE_NS="urn:schemas-upnp-org:service-1-0"; 
 	
 	public static final String SPEC_VERSION="specVersion";
 	public static final String MAJOR="major";

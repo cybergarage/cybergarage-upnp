@@ -29,7 +29,9 @@
 
 package org.cybergarage.xml;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
 public class Node 
@@ -333,14 +335,32 @@ public class Node
 	//	toString 
 	////////////////////////////////////////////////
 
+	/**
+	 * Inovoke {@link #getIndentLevelString(int, String)} with <code>"   "</code> as String 
+	 * 
+	 * @see #getIndentLevelString(int, String)
+	 */
 	public String getIndentLevelString(int nIndentLevel) 
 	{
-		char indentString[] = new char[nIndentLevel];
-		for (int n=0; n<nIndentLevel; n++)
-			indentString[n] = '\t' ;
-		return new String(indentString);
+		return getIndentLevelString(nIndentLevel,"   ");
 	}
 
+	/**
+	 * 
+	 * @param nIndentLevel the level of indentation to produce 
+	 * @param space the String to use for the intendation 
+	 * @since 1.8.0
+	 * @return an indentation String
+	 */
+	public String getIndentLevelString(int nIndentLevel,String space) 
+	{
+		StringBuffer indentString = new StringBuffer(nIndentLevel*space.length()); 
+		for (int n=0; n<nIndentLevel; n++){
+			indentString.append(space);
+		}
+		return indentString.toString();
+	}	
+	
 	public void outputAttributes(PrintWriter ps)
 	{
 		int nAttributes = getNAttributes();

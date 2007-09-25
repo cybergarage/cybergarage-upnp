@@ -137,6 +137,7 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 			if (packet == null)
 				continue;
 				
+			//TODO perform delegation with Thread Pooling
 			if (packet.isDiscover() == true)
 				performSearchListener(packet);
 		}

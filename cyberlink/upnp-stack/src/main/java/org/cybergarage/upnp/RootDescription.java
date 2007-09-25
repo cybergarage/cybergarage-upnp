@@ -1,6 +1,5 @@
 package org.cybergarage.upnp;
 
-import org.cybergarage.xml.Node;
 
 /**
  * @author Stefano "Kismet" Lenzi - kismet-sl@users.sourceforge.net  <br> 
@@ -10,7 +9,7 @@ import org.cybergarage.xml.Node;
 public interface RootDescription {
 
 	public final String ROOT_ELEMENT = "root";
-	public final String ROOT_ELEMENT_NAMESPACE = "urn:schemas-upnp-device-org:device-1-0";
+	public final String ROOT_ELEMENT_NAMESPACE = "urn:schemas-upnp-org:device-1-0"; 
 		
 	
 	public final String SPECVERSION_ELEMENT = "specVersion";

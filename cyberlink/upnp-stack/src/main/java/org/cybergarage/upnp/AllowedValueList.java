@@ -17,7 +17,8 @@
 
 package org.cybergarage.upnp;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.Vector;
 
 public class AllowedValueList extends Vector
 {

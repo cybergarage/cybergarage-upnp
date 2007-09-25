@@ -15,7 +15,7 @@
 
 package org.cybergarage.util;
 
-import java.util.*;
+import java.util.Vector;
 
 public class ListenerList extends Vector
 {

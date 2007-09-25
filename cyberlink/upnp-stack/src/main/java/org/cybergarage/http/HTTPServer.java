@@ -19,10 +19,13 @@
 
 package org.cybergarage.http;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-import org.cybergarage.util.*;
+import org.cybergarage.util.Debug;
+import org.cybergarage.util.ListenerList;
 
 public class HTTPServer implements Runnable
 {

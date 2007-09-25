@@ -82,7 +82,7 @@ public class SSDPNotifySocketList extends Vector
 				bindAddresses[n] = HostInterface.getHostAddress(n);
 			}
 		}		
-		int j=0;
+		
 		for (int i = 0; i < bindAddresses.length; i++) {
 			if(bindAddresses[i]!=null){
 				SSDPNotifySocket ssdpNotifySocket = new SSDPNotifySocket(bindAddresses[i]);

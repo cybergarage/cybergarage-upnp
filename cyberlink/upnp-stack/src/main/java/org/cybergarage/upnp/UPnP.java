@@ -23,12 +23,11 @@
 
 package org.cybergarage.upnp;
 
-import org.cybergarage.upnp.ssdp.*;
+import org.cybergarage.net.HostInterface;
+import org.cybergarage.soap.SOAP;
+import org.cybergarage.upnp.ssdp.SSDP;
 import org.cybergarage.util.Debug;
-//import org.cybergarage.util.*;
 import org.cybergarage.xml.Parser;
-import org.cybergarage.soap.*;
-import org.cybergarage.net.*;
 
 public class UPnP
 {
@@ -53,7 +52,7 @@ public class UPnP
 	public final static String INMPR03_VERSION = "1.0";
 	public final static int INMPR03_DISCOVERY_OVER_WIRELESS_COUNT = 4;
 
-	public final static String XML_DECLARATION = "<?xml version=\"1.0\"?>";
+	public final static String XML_DECLARATION = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"; 
 	
 	////////////////////////////////////////////////
 	//	Enable / Disable

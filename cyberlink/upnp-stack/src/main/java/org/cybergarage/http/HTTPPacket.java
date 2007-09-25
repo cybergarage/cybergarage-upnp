@@ -76,13 +76,16 @@
 
 package org.cybergarage.http;
 
-import java.io.*;
-import java.net.SocketException;
-import java.util.*;
-
-import org.cybergarage.net.*;
-import org.cybergarage.util.*;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.Calendar;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import org.cybergarage.net.HostInterface;
+import org.cybergarage.util.Debug;
+import org.cybergarage.util.StringUtil;
 
 public class HTTPPacket 
 {

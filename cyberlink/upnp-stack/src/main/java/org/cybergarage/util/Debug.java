@@ -69,6 +69,6 @@ public final class Debug{
 	}
 	public static final void warning(Exception e) {
 		warning(e.getMessage());
-		e.printStackTrace();
+		e.printStackTrace(Debug.debug.getOut());
 	}
 }

@@ -15,7 +15,7 @@
 
 package org.cybergarage.http;
 
-import java.util.*;
+import java.util.Vector;
 
 public class ParameterList extends Vector 
 {

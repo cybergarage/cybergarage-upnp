@@ -30,11 +30,14 @@
 package org.cybergarage.upnp;
 import java.util.Iterator;
 
-import org.cybergarage.xml.*;
-import org.cybergarage.util.*;
-
-import org.cybergarage.upnp.xml.*;
-import org.cybergarage.upnp.control.*;
+import org.cybergarage.upnp.control.ActionListener;
+import org.cybergarage.upnp.control.ActionRequest;
+import org.cybergarage.upnp.control.ActionResponse;
+import org.cybergarage.upnp.control.ControlResponse;
+import org.cybergarage.upnp.xml.ActionData;
+import org.cybergarage.util.Debug;
+import org.cybergarage.util.Mutex;
+import org.cybergarage.xml.Node;
 
 public class Action
 {

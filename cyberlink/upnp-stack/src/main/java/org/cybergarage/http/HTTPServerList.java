@@ -18,11 +18,9 @@
 package org.cybergarage.http;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.*;
+import java.util.Vector;
 
-import org.cybergarage.util.Debug;
-import org.cybergarage.net.*;
+import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.Device;
 
 public class HTTPServerList extends Vector 

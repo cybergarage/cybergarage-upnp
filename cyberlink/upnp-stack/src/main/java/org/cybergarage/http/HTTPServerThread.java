@@ -15,7 +15,7 @@
 
 package org.cybergarage.http;
 
-import java.net.*;
+import java.net.Socket;
 
 public class HTTPServerThread extends Thread
 {

@@ -17,7 +17,7 @@
 
 package org.cybergarage.upnp;
 
-import org.cybergarage.xml.*;
+import org.cybergarage.xml.Node;
 
 public class Icon
 {
