@@ -17,10 +17,16 @@
 
 package org.cybergarage.xml;
 
-import java.net.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import org.cybergarage.http.*;
+import org.cybergarage.http.HTTP;
+import org.cybergarage.http.HTTPRequest;
+import org.cybergarage.http.HTTPResponse;
 
 public abstract class Parser 
 {
@@ -73,7 +79,8 @@ public abstract class Parser
 		httpReq.setURI(uri);
 		HTTPResponse httpRes = httpReq.post(host, port);
 		if (httpRes.isSuccessful() == false)
-			throw new ParserException(locationURL.toString());
+			throw new ParserException("HTTP comunication failed: no answer from peer." +
+					"Unable to retrive resoure -> "+locationURL.toString());
 		String content = new String(httpRes.getContent());
 		StringBufferInputStream strBuf = new StringBufferInputStream(content);
 		return parse(strBuf);

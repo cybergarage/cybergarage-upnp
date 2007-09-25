@@ -15,7 +15,7 @@
 
 package org.cybergarage.upnp;
 
-import java.util.*;
+import java.util.Vector;
 
 public class ServiceStateTable extends Vector 
 {

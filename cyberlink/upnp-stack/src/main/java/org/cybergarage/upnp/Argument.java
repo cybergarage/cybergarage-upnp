@@ -24,9 +24,8 @@
 
 package org.cybergarage.upnp;
 
-import org.cybergarage.xml.*;
-
-import org.cybergarage.upnp.xml.*;
+import org.cybergarage.upnp.xml.ArgumentData;
+import org.cybergarage.xml.Node;
 
 public class Argument
 {

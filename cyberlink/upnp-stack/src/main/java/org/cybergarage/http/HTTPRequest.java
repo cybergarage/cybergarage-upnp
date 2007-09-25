@@ -54,9 +54,11 @@
 
 package org.cybergarage.http;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.StringTokenizer;
 
 public class HTTPRequest extends HTTPPacket
 {

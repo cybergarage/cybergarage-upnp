@@ -18,9 +18,11 @@
 
 package org.cybergarage.http;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.StringReader;
 
-import org.cybergarage.util.*;
+import org.cybergarage.util.Debug;
 
 public class HTTPHeader 
 {

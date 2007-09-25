@@ -19,7 +19,7 @@
 
 package org.cybergarage.http;
 
-import java.io.*;
+import java.io.InputStream;
 
 public class HTTPResponse extends HTTPPacket
 {

@@ -30,7 +30,7 @@
 
 package org.cybergarage.http;
 
-import java.net.*;
+import java.net.URL;
 
 public class HTTP 
 {
