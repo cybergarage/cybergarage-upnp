@@ -382,8 +382,8 @@ public class Node
 			outputAttributes(ps);
 			// Thnaks for Tho Beisch (11/09/04)
 			if (value == null || value.length() == 0) {
-				// No value, so use short notation <node />
-				ps.println(" />");
+				// Not using the short notation <node /> because it cause compatibility trouble
+				ps.println("></" + name + ">");
 			} else {
 				ps.println(">" + XML.escapeXMLChars(value) + "</" + name + ">");
 			}
