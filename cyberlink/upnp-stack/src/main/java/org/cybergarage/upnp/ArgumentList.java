@@ -75,6 +75,12 @@ public class ArgumentList extends Vector
 		}
 	}
 
+	/**
+	 * Set all the Argument which are Input Argoument to the given value in 
+	 * the argument list
+	 * 
+	 * @param inArgList
+	 */
 	public void setReqArgs(ArgumentList inArgList)
 	{
         int nArgs = size();
@@ -89,18 +95,23 @@ public class ArgumentList extends Vector
             }
         }
 	}
-	
-	public void setResArgs(ArgumentList inArgList)
+	/**
+	 * Set all the Argument which are Output Argoument to the given value in 
+	 * the argument list
+	 * 
+	 * @param outArgList
+	 */
+	public void setResArgs(ArgumentList outArgList)
 	{
         int nArgs = size();
         for (int n=0; n<nArgs; n++) {
             Argument arg = getArgument(n);
             if (arg.isOutDirection()){
 	            String argName = arg.getName();
-	            Argument inArg = inArgList.getArgument(argName);
-	            if (inArg == null)
+	            Argument outArg = outArgList.getArgument(argName);
+	            if (outArg == null)
 	                throw new IllegalArgumentException("Argument \"" + argName + "\" missing.");
-	            arg.setValue(inArg.getValue());
+	            arg.setValue(outArg.getValue());
             }
         }
 	}
