@@ -91,7 +91,7 @@ public class ActionDialog extends JDialog implements ActionListener
 				Argument arg = inArgList.getArgument(n);
 				arg.setValue(value);
 			}
-			action.setArgumentValues(inArgList);
+			action.setInArgumentValues(inArgList);
 			dispose();
 		}
 		if (e.getSource() == cancelButton) {
