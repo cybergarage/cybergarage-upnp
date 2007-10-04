@@ -160,8 +160,8 @@ public class Action
 			argumentList.add(argument);
 		} 
 		return argumentList;
-	}
-
+	}	
+	
 	public void setArgumentList(ArgumentList al){
 		Node argumentListNode = getActionNode().getNode(ArgumentList.ELEM_NAME);
 		if (argumentListNode == null){
@@ -223,18 +223,30 @@ public class Action
 	}
 
 	/**
-	 * @deprecated
+	 * @deprecated You should use one of the following methods instead:<br />
+	 *  - {@link #setInArgumentValues(ArgumentList)} <br/>
+	 *  - {@link #setOutArgumentValues(ArgumentList)} 
 	 */
 	public void setArgumentValues(ArgumentList argList)
 	{
 		getArgumentList().set(argList);
 	}
 
+	/**
+	 * 
+	 * @param argList
+	 * @since 1.8.0
+	 */
 	public void setInArgumentValues(ArgumentList argList)
 	{
 		getArgumentList().setReqArgs(argList); 
 	}
 	
+	/**
+	 * 
+	 * @param argList
+	 * @since 1.8.0
+	 */
 	public void setOutArgumentValues(ArgumentList argList)
 	{
 		getArgumentList().setResArgs(argList);
