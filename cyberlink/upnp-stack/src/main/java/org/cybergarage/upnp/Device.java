@@ -1489,8 +1489,42 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		return this.getDeviceData().getHTTPBindAddress();
 	}	
 	
+	/**
+	 * 
+	 * @return
+	 * @since 1.8
+	 */
+	public String getSSDPIPv4MulticastAddress(){
+		return this.getDeviceData().getMulticastIPv4Address();
+	}	
 	
-
+	/**
+	 * 
+	 * @param ip
+	 * @since 1.8
+	 */
+	public void getSSDPIPv4MulticastAddress(String ip){
+		this.getDeviceData().setMulticastIPv4Address(ip);
+	}	
+	
+	/**
+	 * 
+	 * @return
+	 * @since 1.8
+	 */
+	public String getSSDPIPv6MulticastAddress(){
+		return this.getDeviceData().getMulticastIPv6Address();
+	}	
+	
+	/**
+	 * 
+	 * @param ip
+	 * @since 1.8
+	 */
+	public void getSSDPIPv6MulticastAddress(String ip){
+		this.getDeviceData().setMulticastIPv6Address(ip);
+	}	
+	
 	public void httpRequestRecieved(HTTPRequest httpReq)
 	{
 		if (Debug.isOn() == true)

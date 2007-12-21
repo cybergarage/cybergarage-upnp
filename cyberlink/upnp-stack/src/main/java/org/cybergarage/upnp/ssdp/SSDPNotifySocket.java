@@ -113,9 +113,13 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 		}
 	}
 	
-	public void start()
-	{
-		deviceNotifyThread = new Thread(this,"Cyber.SSDPNotifySocket");
+	public void start(){
+		StringBuffer name = new StringBuffer("Cyber.SSDPNotifySocket/");
+		name.append(this.getLocalAddress()).append(':');
+		name.append(this.getLocalPort()).append(" -> ");
+		name.append(this.getMulticastAddress()).append(':');
+		name.append(this.getMulticastPort());
+		deviceNotifyThread = new Thread(this,name.toString());
 		deviceNotifyThread.start();
 	}
 	

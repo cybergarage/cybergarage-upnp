@@ -83,6 +83,34 @@ public class HTTPMUSocket
 		return "";
 	}
 
+	/**
+	 * 
+	 * @return the destination port for multicast packet
+	 * @since 1.8
+	 */
+	public int getMulticastPort(){
+		return ssdpMultiGroup.getPort();
+	}
+	
+	/**
+	 * 
+	 * @return the source port for multicast packet
+	 * @since 1.8
+	 */
+	public int getLocalPort(){
+		return ssdpMultiSock.getLocalPort();
+	}
+	
+	/**
+	 * 
+	 * @return the opened {@link MulticastSocket}
+	 * @since 1.8 
+	 */
+	public MulticastSocket getSocket(){
+		return ssdpMultiSock;
+	}
+	
+	
 	////////////////////////////////////////////////
 	//	MulticastAddr
 	////////////////////////////////////////////////
@@ -97,10 +125,12 @@ public class HTTPMUSocket
 		return getMulticastInetAddress().getHostAddress();
 	}
 	
-	////////////////////////////////////////////////
-	//	open/close
-	////////////////////////////////////////////////
-
+	/**
+	 * @param addr {@link String} rappresenting the multicast hostname to join into.
+	 * @param port int rappresenting the port to be use poth as source and destination
+	 * @param bindAddr {@link InetAddress} which identify the hostname of the interface 
+	 * 		to use for sending and recieving multicast packet
+	 */
 	public boolean open(String addr,int port, InetAddress bindAddr){
 		try {
 			ssdpMultiSock = new MulticastSocket(null);
