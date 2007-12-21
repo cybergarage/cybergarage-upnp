@@ -194,8 +194,10 @@ public class UPnP
 	
 	public final static Parser getXMLParser()
 	{
-		if(xmlParser == null)
+		if(xmlParser == null){
 			xmlParser = loadDefaultXMLParser();
+			SOAP.setXMLParser(xmlParser);
+		}
 		return xmlParser;
 	}
 	/**

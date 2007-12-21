@@ -420,7 +420,11 @@ public class ControlPoint implements HTTPRequestListener
 		int listenerSize = deviceNotifyListenerList.size();
 		for (int n=0; n<listenerSize; n++) {
 			NotifyListener listener = (NotifyListener)deviceNotifyListenerList.get(n);
-			listener.deviceNotifyReceived(ssdpPacket);
+			try{
+				listener.deviceNotifyReceived(ssdpPacket);
+			}catch(Exception e){
+				Debug.warning("NotifyListener returned an error:", e);
+			}
 		}
 	}
 
@@ -445,7 +449,13 @@ public class ControlPoint implements HTTPRequestListener
 		int listenerSize = deviceSearchResponseListenerList.size();
 		for (int n=0; n<listenerSize; n++) {
 			SearchResponseListener listener = (SearchResponseListener)deviceSearchResponseListenerList.get(n);
-			listener.deviceSearchResponseReceived(ssdpPacket);
+			try{
+				listener.deviceSearchResponseReceived(ssdpPacket);
+			}catch(Exception e){
+				Debug.warning("SearchResponseListener returned an error:", e);
+			}
+
+
 		}
 	}
 
@@ -493,10 +503,11 @@ public class ControlPoint implements HTTPRequestListener
 	public void notifyReceived(SSDPPacket packet)
 	{
 		if (packet.isRootDevice() == true) {
-			if (packet.isAlive() == true)
+			if (packet.isAlive() == true){
 				addDevice(packet);
-			if (packet.isByeBye() == true) 
+			}else if (packet.isByeBye() == true){ 
 				removeDevice(packet);
+			}
 		}
 		performNotifyListener(packet);
 	}
