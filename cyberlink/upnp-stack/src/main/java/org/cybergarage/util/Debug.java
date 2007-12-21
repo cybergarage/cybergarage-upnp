@@ -65,7 +65,13 @@ public final class Debug{
 		Debug.debug.getOut().println("CyberGarage warning : " + s);
 	}
 	public static final void warning(String m, Exception e) {
-		Debug.debug.getOut().println("CyberGarage warning : " + m + " (" + e.getMessage() + ")");
+		if(e.getMessage()==null){
+			Debug.debug.getOut().println("CyberGarage warning : " + m + " START");
+			e.printStackTrace(Debug.debug.getOut());
+			Debug.debug.getOut().println("CyberGarage warning : " + m + " END");
+		}else{
+			Debug.debug.getOut().println("CyberGarage warning : " + m + " (" + e.getMessage() + ")");
+		}
 	}
 	public static final void warning(Exception e) {
 		warning(e.getMessage());
