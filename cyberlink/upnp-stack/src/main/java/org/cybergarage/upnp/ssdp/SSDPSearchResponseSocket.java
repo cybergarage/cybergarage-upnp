@@ -17,6 +17,8 @@
 
 package org.cybergarage.upnp.ssdp;
 
+import java.net.DatagramSocket;
+
 import org.cybergarage.upnp.*;
 
 public class SSDPSearchResponseSocket extends HTTPUSocket implements Runnable
@@ -74,10 +76,15 @@ public class SSDPSearchResponseSocket extends HTTPUSocket implements Runnable
 		}
 	}
 	
-	public void start()
-	{
-		deviceSearchResponseThread = new Thread(this,"Cyber.SSDPSearchResponseSocket");
-		deviceSearchResponseThread.start();
+	public void start()	{
+
+		StringBuffer name = new StringBuffer("Cyber.SSDPSearchResponseSocket/");
+		DatagramSocket s = getDatagramSocket();
+		name.append(s.getLocalAddress()).append(':');
+		name.append(s.getPort());
+		
+		deviceSearchResponseThread = new Thread(this,name.toString());
+		deviceSearchResponseThread.start();		
 	}
 	
 	public void stop()

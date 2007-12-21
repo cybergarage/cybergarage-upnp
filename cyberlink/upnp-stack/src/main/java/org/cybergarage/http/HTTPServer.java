@@ -202,9 +202,10 @@ public class HTTPServer implements Runnable
 		}
 	}
 	
-	public boolean start()
-	{
-		httpServerThread = new Thread(this);
+	public boolean start(){
+		StringBuffer name = new StringBuffer("Cyber.HTTPServer/");
+		name.append(serverSock.getLocalSocketAddress());
+		httpServerThread = new Thread(this,name.toString());
 		httpServerThread.start();
 		return true;
 	}

@@ -46,11 +46,17 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 	 * @param bindAddr The address to bind the service
 	 * @param port The port used for accepting message
 	 * @param multicast The multicast address to use as destination
+	 * @since 1.8
 	 */
 	public SSDPSearchSocket(String bindAddr,int port,String multicast){
 		open(bindAddr,multicast);
 	}
-	
+
+	/**
+	 * 
+	 * @param bindAddr the binding address for senging multicast packet
+	 * @since 1.8
+	 */
 	public SSDPSearchSocket(InetAddress bindAddr){
 		if(bindAddr.getAddress().length!=4){
 			this.open((Inet6Address)bindAddr);
@@ -83,6 +89,12 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 		return open(multicast, SSDP.PORT, bind);
 	}
 
+	/**
+	 * 
+	 * @param bindAddr the hostname of the interface to use for senfing multicast packet
+	 * @return true if and only if it open the socket
+	 * @see {@link SSDP} for default multicast and port destination of the packtes 
+	 */
 	public boolean open(String bindAddr)
 	{
 		String addr = SSDP.ADDRESS;
@@ -143,9 +155,13 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 		}
 	}
 	
-	public void start()
-	{
-		deviceSearchThread = new Thread(this,"Cyber.SSDPSearchSocket");
+	public void start() {
+		StringBuffer name = new StringBuffer("Cyber.SSDPSearchSocket/");
+		name.append(this.getLocalAddress()).append(':');
+		name.append(this.getLocalPort()).append(" -> ");
+		name.append(this.getMulticastAddress()).append(':');
+		name.append(this.getMulticastPort());
+		deviceSearchThread = new Thread(this,name.toString());
 		deviceSearchThread.start();
 	}
 	

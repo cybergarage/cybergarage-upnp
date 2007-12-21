@@ -52,6 +52,7 @@ public class SSDPSearchSocketList extends Vector
 	 * @param port	The port that we will used for bindind the service
 	 * @param multicastIPv4 The IPv4 address that we will used for multicast comunication
 	 * @param multicastIPv6 The IPv6 address that we will used for multicast comunication
+	 * @since 1.8
 	 */
 	public SSDPSearchSocketList(InetAddress[] binds,int port, String multicastIPv4, String multicastIPv6) {
 		this.binds = binds;
