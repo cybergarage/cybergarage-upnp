@@ -22,6 +22,7 @@ import java.net.InetAddress;
 
 import org.cybergarage.util.*;
 import org.cybergarage.http.*;
+import org.cybergarage.net.HostInterface;
 
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.ssdp.*;
@@ -155,9 +156,12 @@ public class DeviceData extends NodeData
 		}
 		return ssdpSearchSocketList;
 	}
+	
 	/**
 	 * 
-	 * @param port The port to use for binding the SSDP service
+	 * @param port The port to use for binding the SSDP service. 
+	 * 		The port will be used as source port for all SSDP messages 
+	 * @since 1.8
 	 */
 	public void setSSDPPort(int port){
 		this.ssdpPort=port;
@@ -165,7 +169,8 @@ public class DeviceData extends NodeData
 
 	/**
 	 * 
-	 * @return The port to use for binding the SSDP service
+	 * @return The port used for binding the SSDP service. 
+	 * 		The port will be used as source port for all SSDP messages 
 	 */
 	public int getSSDPPort(){
 		return this.ssdpPort;
@@ -174,8 +179,12 @@ public class DeviceData extends NodeData
 	
 	/**
 	 * 
-	 * @param inets The <tt>InetAddress</tt> that will be binded for this service. 
-	 * 		Use <code>null</code> for the default behaviur 
+	 * @param inets The <tt>InetAddress</tt> that will be binded for listing this service. 
+	 * 		Use <code>null</code> for the default behaviur. 
+	 * @see {@link UPnP}
+	 * @see {@link USSDP}
+	 * @see {@link HostInterface} 
+	 * @since 1.8 
 	 */
 	public void setSSDPBindAddress(InetAddress[] inets){
 		this.ssdpBinds=inets;
@@ -185,14 +194,16 @@ public class DeviceData extends NodeData
 	 * 
 	 * @return inets The <tt>InetAddress</tt> that will be binded for this service
 	 * 		<code>null</code> means that defulat behaviur will be used
-	 */
+	 * @since 1.8
+	 */	
 	public InetAddress[] getSSDPBindAddress(){
 		return this.ssdpBinds;
 	}
 	
 	/**
 	 * 
-	 * @param ip The IPv4 address used for Multicast comunication
+	 * @param ip The IPv4 address used as destination address for Multicast comunication
+	 * @since 1.8
 	 */
 	public void setMulticastIPv4Address(String ip){
 		this.ssdpMulticastIPv4=ip;
@@ -208,7 +219,8 @@ public class DeviceData extends NodeData
 	
 	/**
 	 * 
-	 * @param ip The IPv address used for Multicast comunication
+	 * @param ip The IPv6 address used as destination address for Multicast comunication
+	 * @since 1.8
 	 */
 	public void setMulticastIPv6Address(String ip){
 		this.ssdpMulticastIPv6=ip;
@@ -216,7 +228,8 @@ public class DeviceData extends NodeData
 
 	/**
 	 * 
-	 * @return The IPv address used for Multicast comunication
+	 * @return The IPv6 address used as destination address for Multicast comunication
+	 * @since 1.8
 	 */
 	public String getMulticastIPv6Address(){
 		return this.ssdpMulticastIPv6;

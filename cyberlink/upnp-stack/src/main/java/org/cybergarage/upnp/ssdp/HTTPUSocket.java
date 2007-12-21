@@ -78,6 +78,15 @@ public class HTTPUSocket
 	{
 		localAddr = addr;
 	}
+
+	/**
+	 * 
+	 * @return {@link DatagramSocket} open for receieving packets
+	 * @since 1.8
+	 */
+	public DatagramSocket getUDPSocket(){
+		return ssdpUniSock;
+	}	
 	
 	public String getLocalAddress()
 	{

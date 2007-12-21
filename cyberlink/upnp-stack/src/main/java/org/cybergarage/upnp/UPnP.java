@@ -35,6 +35,13 @@ public class UPnP
 	//	Constants
 	////////////////////////////////////////////////
 	
+	/**
+	 * Name of the system properties used to identifies the default XML Parser.<br>
+	 * The value of the properties MUST BE the fully qualified class name of<br>
+	 * XML Parser which CyberLink should use. 
+	 */
+	public final static String XML_CLASS_PROPERTTY="cyberlink.upnp.xml.parser";
+	
 	public final static String NAME = "CyberLinkJava";
 	public final static String VERSION = "1.8";
 
@@ -196,33 +203,43 @@ public class UPnP
 	{
 		if(xmlParser == null){
 			xmlParser = loadDefaultXMLParser();
+			if(xmlParser == null)
+				throw new RuntimeException("No XML parser defined. And unable to laod any. \n" +
+						"Try to invoke UPnP.setXMLParser before UPnP.getXMLParser");			
 			SOAP.setXMLParser(xmlParser);
 		}
 		return xmlParser;
 	}
+
 	/**
+	 * This method loads the default XML Parser using the following behavior:
+	 *  - First if present loads the parsers specified by the system property {@link UPnP#XML_CLASS_PROPERTTY}<br>
+	 *  - Second by a fall-back technique, it tries to load the XMLParser from one<br>
+	 *  of the following classes: {@link JaxpParser}, {@link kXML2Parser}, {@link XercesParser}
+	 * 
+	 * @return {@link Parser} which has been loaded successuflly or null otherwise
 	 * 
 	 * @since 1.8.0
 	 */
 	private static Parser loadDefaultXMLParser() {
 		Parser parser = null;
-		try {
-			parser = (Parser) Class.forName("org.cybergarage.xml.parser.JaxpParser").newInstance();
-			return parser;
-		} catch (Throwable e) {
-			Debug.warning("Unable to load org.cybergarage.xml.parser.JaxpParser as XMLParser due to "+e);
-		}
-		try {
-			parser = (Parser) Class.forName("org.cybergarage.xml.parser.kXML2Parser").newInstance();
-			return parser;
-		} catch (Throwable e) {
-			Debug.warning("Unable to load org.cybergarage.xml.parser.kXML2Parser as XMLParser due to "+e);
-		}
-		try {
-			parser = (Parser) Class.forName("org.cybergarage.xml.parser.XercesParser").newInstance();
-			return parser;
-		} catch (Throwable e) {
-			Debug.warning("Unable to load org.cybergarage.xml.parser.XercesParser as XMLParser due to "+e);
+		
+		String[] parserClass = new String[]{
+				System.getProperty(XML_CLASS_PROPERTTY),
+				"org.cybergarage.xml.parser.JaxpParser",
+				"org.cybergarage.xml.parser.kXML2Parser",
+				"org.cybergarage.xml.parser.XercesParser"
+		};
+		
+		for (int i = 0; i < parserClass.length; i++) {
+			if(parserClass[i]==null)
+				continue;
+			try {
+				parser = (Parser) Class.forName(parserClass[i]).newInstance();
+				return parser;
+			} catch (Throwable e) {
+				Debug.warning("Unable to load "+parserClass[i]+" as XMLParser due to "+e);
+			}
 		}
 		return null;
 	}
