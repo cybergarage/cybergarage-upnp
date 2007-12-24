@@ -8,7 +8,7 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-    <groupId>org.cybergarage.cyberlink</groupId>
+  <groupId>org.cybergarage.cyberlink</groupId>
   <artifactId>upnp-stack</artifactId>
   <packaging>jar</packaging>
   <version>1.8.0-SNAPSHOT</version>

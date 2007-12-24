@@ -78,7 +78,9 @@ package org.cybergarage.http;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -160,7 +162,11 @@ public class HTTPPacket
  	 			readLen = in.read(readBuf);
 			}
  		}
-		catch (Exception e) {
+ 		catch (InterruptedIOException e) {
+ 			//Ignoring warning because it's a way to break the HTTP connecttion
+ 			//TODO Create a new level of Logging and log the event
+		}
+		catch (IOException e) {
 			Debug.warning(e);
 		}
 

@@ -125,6 +125,7 @@ public class HTTPSocket
 			sockOut = sock.getOutputStream();
 		}
 		catch (Exception e) {
+			//TODO Add blacklistening of the UPnP Device
 			return false;
 		}
 		return true;
@@ -152,6 +153,7 @@ public class HTTPSocket
 
 	private boolean post(HTTPResponse httpRes, byte content[], long contentOffset, long contentLength, boolean isOnlyHeader)
 	{
+		//TODO Check for bad HTTP agents, this method may be list for IOInteruptedException and for blacklistening
 		httpRes.setDate(Calendar.getInstance());
 		
 		OutputStream out = getOutputStream();
@@ -195,6 +197,7 @@ public class HTTPSocket
 	
 	private boolean post(HTTPResponse httpRes, InputStream in, long contentOffset, long contentLength, boolean isOnlyHeader)
 	{
+		//TODO Check for bad HTTP agents, this method may be list for IOInteruptedException and for blacklistening
 		httpRes.setDate(Calendar.getInstance());
 		
 		OutputStream out = getOutputStream();
