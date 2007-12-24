@@ -31,6 +31,15 @@ import org.cybergarage.util.*;
 import org.cybergarage.http.*;
 import org.cybergarage.upnp.*;
 
+/**
+ * 
+ * This class identifies a SSDP socket only for <b>notifing packet</b>.<br>
+ * 
+ * @author Satoshi "skonno" Konno
+ * @author Stefano "Kismet" Lenzi
+ * @version 1.8
+ *
+ */
 public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 {
 	private boolean useIPv6Address;
@@ -67,10 +76,13 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 		return controlPoint;
 	}
 
-	////////////////////////////////////////////////
-	//	post (SSDPNotifySocket)
-	////////////////////////////////////////////////
-
+	/**
+	 * This method send a {@link SSDPNotifyRequest} over {@link SSDPNotifySocket}
+	 * 
+	 * @param req the {@link SSDPNotifyRequest} to send
+	 * @return true if and only if the trasmission succeced<br>
+	 * 	Because it rely on UDP doesn't mean that it's also recieved
+	 */
 	public boolean post(SSDPNotifyRequest req)
 	{
 		String ssdpAddr = SSDP.ADDRESS;

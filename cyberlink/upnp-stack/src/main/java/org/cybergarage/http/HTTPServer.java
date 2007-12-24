@@ -27,6 +27,18 @@ import java.net.Socket;
 import org.cybergarage.util.Debug;
 import org.cybergarage.util.ListenerList;
 
+/**
+ * 
+ * This class identifies an HTTP over TCP server<br>
+ * The server must be initialized iether by the {@link HTTPServer#open(InetAddress, int)} or the {@link HTTPServer#open(String, int)} method.<br>
+ * Optionally a set of {@link HTTPRequestListener} may be set<br>
+ * The server then can be started or stopped by the method {@link HTTPServer#start()} and {@link HTTPServer#stop()}
+ * 
+ * @author Satoshi "skonno" Konno
+ * @author Stefano "Kismet" Lenzi
+ * @version 1.8
+ *
+ */
 public class HTTPServer implements Runnable
 {
 	////////////////////////////////////////////////
@@ -37,7 +49,13 @@ public class HTTPServer implements Runnable
 	public final static String VERSION = "1.0";
 
 	public final static int DEFAULT_PORT = 80;
-
+	
+	/**
+	 * Default timeout connection for HTTP comunication
+	 * @since 1.8
+	 */
+	public final static int DEFAULT_TIMEOUT = DEFAULT_PORT * 1000;
+	
 	public static String getName()
 	{
 		String osName = System.getProperty("os.name");
@@ -52,6 +70,7 @@ public class HTTPServer implements Runnable
 	public HTTPServer()
 	{
 		serverSock = null;
+		
 	}
 
 	////////////////////////////////////////////////
@@ -61,6 +80,11 @@ public class HTTPServer implements Runnable
 	private ServerSocket serverSock = null;
 	private InetAddress bindAddr = null;
 	private int bindPort = 0;
+	/**
+	 * Store the current TCP timeout value
+	 * The variable should be accessed by getter and setter metho
+	 */
+	protected int timeout = DEFAULT_TIMEOUT;
 	
 	public ServerSocket getServerSock()
 	{
@@ -79,10 +103,29 @@ public class HTTPServer implements Runnable
 		return bindPort;
 	}
 	
+	
+	
 	////////////////////////////////////////////////
 	//	open/close
 	////////////////////////////////////////////////
 	
+	/**
+	 * Get the current socket timeout
+	 * @since 1.8
+	 */
+	public synchronized int getTimeout() {
+		return timeout;
+	}
+
+	/**
+	 * Set the current socket timeout
+	 * @param longout new timeout
+	 * @since 1.8
+	 */
+	public synchronized void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
 	public boolean open(InetAddress addr,int port){
 		if (serverSock != null)
 			return true;
@@ -132,7 +175,7 @@ public class HTTPServer implements Runnable
 			return null;
 		try {
 			Socket sock = serverSock.accept();
-			sock.setSoTimeout(HTTP.DEFAULT_PORT * 1000);
+			sock.setSoTimeout(getTimeout());
 			return sock;
 		}
 		catch (Exception e) {

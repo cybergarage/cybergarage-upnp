@@ -61,20 +61,20 @@ public class HTTP
 	
 	public static final String DATE = "Date";
 	public static final String CACHE_CONTROL = "Cache-Control";
-		public static final String NO_CACHE = "no-cache";
-		public static final String MAX_AGE = "max-age";
+	public static final String NO_CACHE = "no-cache";
+	public static final String MAX_AGE = "max-age";
 	public static final String CONNECTION = "Connection";
-		public static final String CLOSE = "close";
+	public static final String CLOSE = "close";
 	public static final String KEEP_ALIVE = "Keep-Alive";
 	public static final String CONTENT_TYPE = "Content-Type";
-		public static final String CHARSET = "charset";
+	public static final String CHARSET = "charset";
 	public static final String CONTENT_LENGTH = "Content-Length";
 	public static final String CONTENT_RANGE = "Content-Range";
-		public static final String CONTENT_RANGE_BYTES = "bytes"; 
+	public static final String CONTENT_RANGE_BYTES = "bytes"; 
 	// Thanks for Brent Hills (10/20/04)
 	public static final String RANGE = "Range";
 	public static final String TRANSFER_ENCODING = "Transfer-Encoding";
-		public static final String CHUNKED = "Chunked";
+	public static final String CHUNKED = "Chunked";
 	public static final String LOCATION = "Location";
 	public static final String SERVER = "Server";
 

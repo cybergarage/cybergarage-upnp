@@ -400,9 +400,9 @@ public class Service
 		String scpdURLStr = getSCPDURL();
 		try {
 			URL scpdUrl = new URL(scpdURLStr);
-			scpdNode = getSCPDNode(scpdUrl);
+			scpdNode = getSCPDNode(scpdUrl);		
 		}
-		catch (Exception e1) {
+		catch (Exception ex) {
 			Device rootDev = getRootDevice();
 			String urlBaseStr = rootDev.getURLBase();
 			// Thanks for Steven Yen (2003/09/03)

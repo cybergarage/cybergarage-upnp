@@ -23,14 +23,30 @@ package org.cybergarage.upnp.ssdp;
 
 import org.cybergarage.util.Debug;
 
+/**
+ * 
+ * This class defines constant value related to SSDP.<br>
+ * All the values defined here are complaint to the UPnP Standard 
+ * 
+ * @author Satoshi "skonno" Konno
+ * @author Stefano "Kismet" Lenzi
+ * @version 1.0
+ *
+ */
 public class SSDP
 {
 	////////////////////////////////////////////////
 	//	Constants
 	////////////////////////////////////////////////
 
+	/**
+	 * Default destination port for SSDP multicast messages
+	 */
 	public static final int PORT = 1900;
 	
+	/**
+	 * Default IPv4 multicast address for SSDP messages
+	 */
 	public static final String ADDRESS = "239.255.255.250";
 
 	public static final String IPV6_LINK_LOCAL_ADDRESS = "FF02::C";
