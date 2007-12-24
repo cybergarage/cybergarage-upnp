@@ -188,9 +188,9 @@ public class HTTPMUSocket
 			if ((bindAddr) != null && (0 < bindPort)) {
 				msock = new MulticastSocket(null);
 				msock.bind(new InetSocketAddress(bindAddr, bindPort));
-			}
-			else 
+			}else{ 
 				msock = new MulticastSocket();
+			}
 			DatagramPacket dgmPacket = new DatagramPacket(msg.getBytes(), msg.length(), ssdpMultiGroup);
 			// Thnaks for Theo Beisch (11/09/04)
 			msock.setTimeToLive(UPnP.getTimeToLive());

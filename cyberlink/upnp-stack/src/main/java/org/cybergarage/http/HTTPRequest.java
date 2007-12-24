@@ -54,12 +54,24 @@
 
 package org.cybergarage.http;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.StringTokenizer;
 
+import org.cybergarage.util.Debug;
+/**
+ * 
+ * This class rappresnet an HTTP <b>request</b>, and act as HTTP client when it sends the request<br>
+ * 
+ * @author Satoshi "skonno" Konno
+ * @author Stefano "Kismet" Lenzi
+ * @version 1.8
+ *
+ */
 public class HTTPRequest extends HTTPPacket
 {
 	////////////////////////////////////////////////
@@ -175,7 +187,6 @@ public class HTTPRequest extends HTTPPacket
 		String uri = getURI();
 		if (uri == null)
 			return paramList;
-		int uriLen = uri.length();
 		int paramIdx = uri.indexOf('?');
 		if (paramIdx < 0)
 			return paramList;
@@ -389,8 +400,10 @@ public class HTTPRequest extends HTTPPacket
 		InputStream in = null;
 		
  		try {
- 			if (postSocket == null)
+ 			if (postSocket == null){
 				postSocket = new Socket(host, port);
+				postSocket.setSoTimeout(HTTPServer.DEFAULT_TIMEOUT);
+ 			}
 
 			out = postSocket.getOutputStream();
 			PrintStream pout = new PrintStream(out);
@@ -425,9 +438,14 @@ public class HTTPRequest extends HTTPPacket
 
 			in = postSocket.getInputStream();
 			httpRes.set(in, isHeaderRequest);		
-		}
-		catch (Exception e) {
+		} catch (SocketException e) {
 			httpRes.setStatusCode(HTTPStatus.INTERNAL_SERVER_ERROR);
+			Debug.warning(e);
+		} catch (IOException e) {
+			//Socket create but without connection
+			//TODO Blacklistening the device
+			httpRes.setStatusCode(HTTPStatus.INTERNAL_SERVER_ERROR);
+			Debug.warning(e);
 		} finally {
 			if (isKeepAlive == false) {	
 				try {
