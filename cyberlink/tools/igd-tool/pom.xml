@@ -2,18 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>samples</artifactId>
-    <groupId>org.cybergarage.cyberlink.samples</groupId>        
-    <version>1</version>    
+    <artifactId>cyberlink</artifactId>
+    <groupId>org.cybergarage.cyberlink</groupId>
+    <version>2</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.cyberlink.samples</groupId>
-  <artifactId>light</artifactId>
+  <artifactId>igd-tool</artifactId>
   <packaging>jar</packaging>
   <version>1.5.1-SNAPSHOT</version>
-  <name>CyberLink Light Device Sample</name>
-  <description>A sample UPnP Light Device implementation</description>
+  <name>CyberLink Internet Gateway Profile Tool</name>
+  <description>A sample tool which interact with the UPnP device complaint with the Internet Gateway Profile</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
@@ -25,9 +25,9 @@
   </licenses>
   
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/light</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/light</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/light</url>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/igd-tool</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/igd-tool</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/tools/igd-tool</url>
   </scm>
 
   <dependencies>
