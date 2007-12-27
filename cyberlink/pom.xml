@@ -4,7 +4,7 @@
   <groupId>org.cybergarage.cyberlink</groupId>
   <packaging>pom</packaging>
   <artifactId>cyberlink</artifactId>  
-  <version>1</version>
+  <version>2</version>
   <name>CyberGarage CyberLink Suite</name>
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
@@ -39,9 +39,9 @@
   </mailingLists>
   
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/</url>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/</url>
   </scm>
 
   <dependencyManagement>
@@ -81,6 +81,18 @@
       <releases>
         <enabled>true</enabled>
       </releases>
+    </repository>
+    <repository>
+      <id>release.cgupnpjava.sourceforge.net</id>
+      <name>CyberLink for Java Repository</name>
+      <url>http://cgupnpjava.sourceforge.net/repository/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>snapshot.cgupnpjava.sourceforge.net</id>
+      <name>CyberLink for Java Development Repository</name>
+      <url>http://cgupnpjava.sourceforge.net/snapshots-repository/</url>
+      <releases><enabled>false</enabled></releases>
     </repository>
   </repositories>
 
@@ -128,9 +140,15 @@
   
   <modules>
     <module>upnp-stack</module>
-    <module>control-point</module>
     <module>cyber-media-garage</module>
-    <module>samples</module>
+    <!--module>tools/control-point</module>
+    <module>tools/igd-tool</module-->
+    <module>samples/tv</module>
+    <module>samples/light</module>
+    <module>samples/clock</module>
+    <module>samples/washer</module>
+    <module>samples/air-conditioner</module>
+    <module>samples/remote-controller</module>
   </modules>
   
   <build>
