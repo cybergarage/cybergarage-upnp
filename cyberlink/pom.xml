@@ -141,8 +141,8 @@
   <modules>
     <module>upnp-stack</module>
     <module>cyber-media-garage</module>
-    <!--module>tools/control-point</module>
-    <module>tools/igd-tool</module-->
+    <module>tools/control-point</module>
+    <!--module>tools/igd-tool</module-->
     <module>samples/tv</module>
     <module>samples/light</module>
     <module>samples/clock</module>
