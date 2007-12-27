@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+   <specVersion>
+      <major>1</major>
+      <minor>0</minor>
+   </specVersion>
+   <device>
+      <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>
+      <friendlyName>Cyber Garage Media Server</friendlyName>
+      <manufacturer>Cyber Garage</manufacturer>
+      <manufacturerURL>http://www.cybergarage.org</manufacturerURL>
+      <modelDescription>Provides content through UPnP ContentDirectory service</modelDescription>
+      <modelName>Cyber Garage Media Server</modelName>
+      <modelNumber>1.0</modelNumber>
+      <modelURL>http://www.cybergarage.org</modelURL>
+      <UDN>uuid:362d9414-31a0-48b6-b684-2b4bd38391d0</UDN>
+      <serviceList>
+         <service>
+            <serviceType>urn:schemas-upnp-org:service:ContentDirectory:1</serviceType>
+            <serviceId>urn:upnp-org:serviceId:urn:schemas-upnp-org:service:ContentDirectory</serviceId>
+            <SCPDURL>/service/ContentDirectory1.xml</SCPDURL>
+            <controlURL>/service/ContentDirectory_control</controlURL>
+            <eventSubURL>/service/ContentDirectory_event</eventSubURL>
+         </service>
+         <service>
+            <serviceType>urn:schemas-upnp-org:service:ConnectionManager:1</serviceType>
+            <serviceId>urn:upnp-org:serviceId:urn:schemas-upnp-org:service:ConnectionManager</serviceId>
+            <SCPDURL>/service/ConnectionManager1.xml</SCPDURL>
+            <controlURL>/service/ConnectionManager_control</controlURL>
+            <eventSubURL>/service/ConnectionManager_event</eventSubURL>
+         </service>
+      </serviceList>
+   </device>
+</root>
