@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <parent>
+    <artifactId>cyberlink</artifactId>
+    <groupId>org.cybergarage.cyberlink</groupId>    
+    <version>2</version>
+  </parent>
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.cybergarage.cyberlink.samples</groupId>
+  <packaging>pom</packaging>
+  <artifactId>tools</artifactId>
+  <version>1</version>
+  <name>CyberLink UPnP Stack Tools</name>
+  <description>A suite of tools using the CyberLink UPnP Stack for testing other software</description>
+
+  <scm>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/tools/</url>
+  </scm>
+  
+  <modules>
+    <module>control-point</module>
+    <module>igs-tool</module>
+  </modules>
+
+</project>
+

@@ -17,6 +17,12 @@
   <name>CyberLink UPnP Stack Usage Samples</name>
   <description>A suite of samples using the CyberLink UPnP Stack</description>
   
+  <scm>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/</url>	
+  </scm>
+  
   <modules>
     <module>tv</module>
     <module>air-conditioner</module>
