@@ -19,12 +19,16 @@
 *		- Mikael Hakman <mhakman@dkab.net>
 *		- Handle receive() returning null.
 *		- Added close() in stop().
+*	08/23/07
+*		- Thanks for Kazuyuki Shudo
+* 		- Changed run() to catch IOException of HTTPMUSocket::receive().
 *	
 ******************************************************************/
 
 package org.cybergarage.upnp.ssdp;
 
 import java.net.*;
+import java.io.IOException;
 
 import org.cybergarage.net.*;
 import org.cybergarage.util.*;
@@ -106,7 +110,15 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 		
 		while (deviceNotifyThread == thisThread) {
 			Thread.yield();
-			SSDPPacket packet = receive();
+
+			// Thanks for Kazuyuki Shudo (08/23/07)
+			SSDPPacket packet = null;
+			try {
+				packet = receive();
+			}
+			catch (IOException e) { 
+				break;
+			}
 			
 			// Thanks for Mikael Hakman (04/20/05)
 			if (packet == null)
