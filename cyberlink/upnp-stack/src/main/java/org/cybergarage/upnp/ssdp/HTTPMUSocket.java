@@ -19,6 +19,9 @@
 *	11/19/04
 *		- Theo Beisch <theo.beisch@gmx.de>
 *		- Changed send() to set the TTL as 4.
+*	08/23/07
+*		- Thanks for Kazuyuki Shudo
+*		- Changed receive() to throw IOException.
 *	
 ******************************************************************/
 
@@ -32,6 +35,7 @@ import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
+import java.io.IOException;
 
 import org.cybergarage.http.HTTPRequest;
 import org.cybergarage.upnp.UPnP;
@@ -227,19 +231,17 @@ public class HTTPMUSocket
 	//	reveive
 	////////////////////////////////////////////////
 
-	public SSDPPacket receive()
+	public SSDPPacket receive() throws IOException
 	{
 		byte ssdvRecvBuf[] = new byte[SSDP.RECV_MESSAGE_BUFSIZE];
  		SSDPPacket recvPacket = new SSDPPacket(ssdvRecvBuf, ssdvRecvBuf.length);
 		recvPacket.setLocalAddress(getLocalAddress());
- 		try {
-			ssdpMultiSock.receive(recvPacket.getDatagramPacket());
-			recvPacket.setTimeStamp(System.currentTimeMillis());
-		}
-		catch (Exception e) {
-			//Debug.warning(e);
-		}
- 		return recvPacket;
+
+		// Thanks for Kazuyuki Shudo (08/23/07)
+		ssdpMultiSock.receive(recvPacket.getDatagramPacket()); // throws IOException
+		recvPacket.setTimeStamp(System.currentTimeMillis());
+ 		
+		return recvPacket;
 	}
 }
 
