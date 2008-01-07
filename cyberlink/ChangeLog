@@ -1,8 +1,13 @@
+2007-08-23 Kazuyuki Shudo <2007@shudo.net>
+	* Changed ThreadCore::stop() to stop more safety using Thread::interrupt().
+	* Changed HTTPMUSocket::receive() to throw IOException.
+	* Changed SSDPNotifySocket::run() and SSDPSearchSocket::run() to catch IOException of HTTPMUSocket::receive().
+
 2006-04-13 Satoshi Konno <skonno@cybergarage.org>
-		* Added XML.unescapeXMLChars().
-		* Added setUserData() and getUserData() to set a user original data object to the following basic classes.
-		  Action, Argument, ContolPoint, Device, Icon, Service and StateVariable.
-		* Added SSDPRequest(InputStream) and SSDPResponse(InputStream).
+	* Added XML.unescapeXMLChars().
+	* Added setUserData() and getUserData() to set a user original data object to the following basic classes.
+	  Action, Argument, ContolPoint, Device, Icon, Service and StateVariable.
+	* Added SSDPRequest(InputStream) and SSDPResponse(InputStream).
 		
 2005-08-30 Satoshi Konno <skonno@cybergarage.org>
 
