@@ -16,7 +16,6 @@
 package org.cybergarage.upnp.media.server.object.format;
 
 import java.io.*;
-import javax.imageio.*;
 
 import org.cybergarage.upnp.media.server.object.*;
 
@@ -26,8 +25,6 @@ public class GIFFormat extends ImageIOFormat
 	// Member
 	////////////////////////////////////////////////
 
-	private ImageReader imgReader;
-		
 	////////////////////////////////////////////////
 	// Constroctor
 	////////////////////////////////////////////////
