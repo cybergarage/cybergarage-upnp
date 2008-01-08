@@ -1,3 +1,6 @@
+2008-01-08 Satoshi Konno <skonno@cybergarage.org>
+	* Fixed JaxpParser::parse() not to occur exception when the NamedNodeMap is null on Android.
+
 2007-08-23 Kazuyuki Shudo <2007@shudo.net>
 	* Changed ThreadCore::stop() to stop more safety using Thread::interrupt().
 	* Changed HTTPMUSocket::receive() to throw IOException.
