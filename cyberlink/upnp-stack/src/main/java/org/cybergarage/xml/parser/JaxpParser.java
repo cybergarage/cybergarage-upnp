@@ -12,6 +12,8 @@
 *
 *	06/15/04
 *		- first revision.
+*	01/08/08
+*		- Fixed parse() not to occur null exception when the NamedNodeMap is null on Android.
 *
 ******************************************************************/
 
@@ -71,13 +73,15 @@ public class JaxpParser extends Parser
 			parentNode.addNode(node);
 
 		NamedNodeMap attrMap = domNode.getAttributes(); 
-		int attrLen = attrMap.getLength();
-		//Debug.message("attrLen = " + attrLen);
-		for (int n = 0; n<attrLen; n++) {
-			org.w3c.dom.Node attr = attrMap.item(n);
-			String attrName = attr.getNodeName();
-			String attrValue = attr.getNodeValue();
-			node.setAttribute(attrName, attrValue);
+		if (attrMap != null) {
+			int attrLen = attrMap.getLength();
+			//Debug.message("attrLen = " + attrLen);
+			for (int n = 0; n<attrLen; n++) {
+				org.w3c.dom.Node attr = attrMap.item(n);
+				String attrName = attr.getNodeName();
+				String attrValue = attr.getNodeValue();
+				node.setAttribute(attrName, attrValue);
+			}
 		}
 		
 		org.w3c.dom.Node child = domNode.getFirstChild();
