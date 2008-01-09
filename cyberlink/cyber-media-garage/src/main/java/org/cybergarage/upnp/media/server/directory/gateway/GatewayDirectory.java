@@ -15,17 +15,6 @@
 
 package org.cybergarage.upnp.media.server.directory.gateway;
 
-import java.io.*;
-
-import org.cybergarage.util.*;
-import org.cybergarage.xml.*;
-import org.cybergarage.upnp.Device;
-import org.cybergarage.upnp.DeviceList;
-import org.cybergarage.upnp.media.player.MediaPlayer;
-import org.cybergarage.upnp.media.server.*;
-import org.cybergarage.upnp.media.server.object.*;
-import org.cybergarage.upnp.media.server.object.container.*;
-
 public class GatewayDirectory extends Directory
 {
 	////////////////////////////////////////////////

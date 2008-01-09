@@ -15,9 +15,6 @@ package org.cybergarage.upnp.media.player.action;
 
 import java.io.*;
 
-import org.cybergarage.xml.*;
-import org.cybergarage.upnp.*;
-import org.cybergarage.upnp.media.server.*;
 import org.cybergarage.upnp.media.server.object.item.*;
 
 public class BrowseResultNode extends ItemNode
