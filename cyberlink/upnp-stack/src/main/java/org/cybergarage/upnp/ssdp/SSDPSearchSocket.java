@@ -38,8 +38,6 @@ import org.cybergarage.upnp.device.*;
 
 public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 {
-	private boolean useIPv6Address;
-	
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
