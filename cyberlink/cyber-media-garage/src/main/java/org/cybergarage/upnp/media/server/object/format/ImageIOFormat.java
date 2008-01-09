@@ -16,14 +16,13 @@
 package org.cybergarage.upnp.media.server.object.format;
 
 import java.io.*;
-import java.util.*;
+/*
 import javax.imageio.*;
 import javax.imageio.stream.*;
+*/
 
 import org.cybergarage.xml.*;
-import org.cybergarage.util.*;
 import org.cybergarage.upnp.media.server.object.*;
-import org.cybergarage.upnp.media.server.object.item.*;
 
 public abstract class ImageIOFormat extends Header implements Format, FormatObject
 {
@@ -32,8 +31,9 @@ public abstract class ImageIOFormat extends Header implements Format, FormatObje
 	////////////////////////////////////////////////
 
 	private File imgFile;
+/*
 	private ImageReader imgReader;
-		
+*/		
 	////////////////////////////////////////////////
 	// Constroctor
 	////////////////////////////////////////////////
@@ -41,11 +41,14 @@ public abstract class ImageIOFormat extends Header implements Format, FormatObje
 	public ImageIOFormat()
 	{	
 		imgFile = null;
+/*
 		imgReader = null;
+*/
 	}
 	
 	public ImageIOFormat(File file)
 	{
+/*
 		imgFile = file;
 		Iterator readers = ImageIO.getImageReadersBySuffix(Header.getSuffix(file));
 		if (readers.hasNext() == false)
@@ -58,6 +61,7 @@ public abstract class ImageIOFormat extends Header implements Format, FormatObje
 		catch (Exception e) {
 			Debug.warning(e);
 		}
+*/
 	}
 
 	////////////////////////////////////////////////
@@ -76,7 +80,7 @@ public abstract class ImageIOFormat extends Header implements Format, FormatObje
 	public AttributeList getAttributeList()
 	{
 		AttributeList attrList = new AttributeList();
-		
+	/*	
 		try {
 			// Resolution (Width x Height)
 			int imgWidth = imgReader.getWidth(0);
@@ -93,7 +97,7 @@ public abstract class ImageIOFormat extends Header implements Format, FormatObje
 		catch (Exception e) {
 			Debug.warning(e);
 		}
-		
+		*/
 		return attrList;	
 	}
 	
