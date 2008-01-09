@@ -18,7 +18,6 @@ package org.cybergarage.upnp.media.server;
 
 import java.io.*;
 
-import org.cybergarage.xml.*;
 import org.cybergarage.net.*;
 import org.cybergarage.util.*;
 import org.cybergarage.http.*;

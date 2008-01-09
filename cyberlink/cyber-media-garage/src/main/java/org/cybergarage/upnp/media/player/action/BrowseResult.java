@@ -14,8 +14,6 @@
 package org.cybergarage.upnp.media.player.action;
 
 import org.cybergarage.xml.*;
-import org.cybergarage.upnp.*;
-import org.cybergarage.upnp.media.server.*;
 
 public class BrowseResult
 {
