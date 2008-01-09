@@ -22,6 +22,8 @@
 *	08/23/07
 *		- Thanks for Kazuyuki Shudo
 *		- Changed receive() to throw IOException.
+*	01/10/08
+*		- Changed getLocalAddress() to return a brank string when the ssdpMultiGroup is null on Android.
 *	
 ******************************************************************/
 
@@ -35,6 +37,7 @@ import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 import org.cybergarage.http.HTTPRequest;
 import org.cybergarage.upnp.UPnP;
@@ -50,7 +53,7 @@ public class HTTPMUSocket
 	private InetSocketAddress ssdpMultiGroup = null;
 	private MulticastSocket ssdpMultiSock = null;
 	private NetworkInterface ssdpMultiIf = null;
-		 	
+	
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
@@ -75,6 +78,8 @@ public class HTTPMUSocket
 
 	public String getLocalAddress()
 	{
+		if (ssdpMultiGroup == null)
+			return "";
 		InetAddress mcastAddr = ssdpMultiGroup.getAddress();
 		Enumeration addrs = ssdpMultiIf.getInetAddresses();
 		while (addrs.hasMoreElements()) {
