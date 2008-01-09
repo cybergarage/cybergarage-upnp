@@ -21,6 +21,8 @@
 *	08/23/07
 *		- Thanks for Kazuyuki Shudo
 * 		- Changed run() to catch IOException of HTTPMUSocket::receive().
+*	01/10/08
+*		- Changed start() not to abort when the interface infomation is null on Android.
 *	
 ******************************************************************/
 
@@ -38,6 +40,8 @@ import org.cybergarage.upnp.device.*;
 
 public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 {
+	private boolean useIPv6Address;
+	
 	////////////////////////////////////////////////
 	//	Constructor
 	////////////////////////////////////////////////
@@ -167,10 +171,13 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable
 	
 	public void start() {
 		StringBuffer name = new StringBuffer("Cyber.SSDPSearchSocket/");
-		name.append(this.getLocalAddress()).append(':');
-		name.append(this.getLocalPort()).append(" -> ");
-		name.append(this.getMulticastAddress()).append(':');
-		name.append(this.getMulticastPort());
+		String localAddr = this.getLocalAddress();
+		if (localAddr != null && 0 < localAddr.length()) {
+			name.append(this.getLocalAddress()).append(':');
+			name.append(this.getLocalPort()).append(" -> ");
+			name.append(this.getMulticastAddress()).append(':');
+			name.append(this.getMulticastPort());
+		}
 		deviceSearchThread = new Thread(this,name.toString());
 		deviceSearchThread.start();
 	}
