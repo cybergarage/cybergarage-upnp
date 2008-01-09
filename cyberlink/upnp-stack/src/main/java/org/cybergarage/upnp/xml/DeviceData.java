@@ -22,7 +22,6 @@ import java.net.InetAddress;
 
 import org.cybergarage.util.*;
 import org.cybergarage.http.*;
-import org.cybergarage.net.HostInterface;
 
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.ssdp.*;
