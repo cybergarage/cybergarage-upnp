@@ -84,15 +84,23 @@ public class MediaServer extends Device
 		initialize();
 	}
 
-	public MediaServer() throws InvalidDescriptionException
+	public MediaServer()
 	{
-		this(DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
+		super();
+		try {
+			initialize(DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
+		}
+		catch (InvalidDescriptionException ide) {}
 	}
 
 	public MediaServer(String description, String contentDirectorySCPD, String connectionManagerSCPD) throws InvalidDescriptionException
 	{
 		super();
-		
+		initialize(description, contentDirectorySCPD, connectionManagerSCPD);
+	}
+	
+	private void initialize(String description, String contentDirectorySCPD, String connectionManagerSCPD) throws InvalidDescriptionException
+	{
 		loadDescription(description);
 		
 		Service servConDir = getService(ContentDirectory.SERVICE_TYPE);
