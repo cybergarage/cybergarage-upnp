@@ -22,6 +22,8 @@
 *	08/23/07
 *		- Thanks for Kazuyuki Shudo
 * 		- Changed run() to catch IOException of HTTPMUSocket::receive().
+*	01/31/08
+*		- Changed start() not to abort when the interface infomation is null on Android m3-rc37a.
 *	
 ******************************************************************/
 
@@ -139,10 +141,14 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 	
 	public void start(){
 		StringBuffer name = new StringBuffer("Cyber.SSDPNotifySocket/");
-		name.append(this.getLocalAddress()).append(':');
-		name.append(this.getLocalPort()).append(" -> ");
-		name.append(this.getMulticastAddress()).append(':');
-		name.append(this.getMulticastPort());
+		String localAddr = this.getLocalAddress();
+		// localAddr is null on Android m3-rc37a (01/30/08)
+		if (localAddr != null && 0 < localAddr.length()) {
+			name.append(this.getLocalAddress()).append(':');
+			name.append(this.getLocalPort()).append(" -> ");
+			name.append(this.getMulticastAddress()).append(':');
+			name.append(this.getMulticastPort());
+		}
 		deviceNotifyThread = new Thread(this,name.toString());
 		deviceNotifyThread.start();
 	}

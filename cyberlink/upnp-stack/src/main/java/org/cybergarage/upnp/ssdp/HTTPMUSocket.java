@@ -23,7 +23,7 @@
 *		- Thanks for Kazuyuki Shudo
 *		- Changed receive() to throw IOException.
 *	01/10/08
-*		- Changed getLocalAddress() to return a brank string when the ssdpMultiGroup is null on Android.
+*		- Changed getLocalAddress() to return a brank string when the ssdpMultiGroup or ssdpMultiIf is null on Android m3-rc37a.
 *	
 ******************************************************************/
 
@@ -78,7 +78,7 @@ public class HTTPMUSocket
 
 	public String getLocalAddress()
 	{
-		if (ssdpMultiGroup == null)
+		if (ssdpMultiGroup == null || ssdpMultiIf == null)
 			return "";
 		InetAddress mcastAddr = ssdpMultiGroup.getAddress();
 		Enumeration addrs = ssdpMultiIf.getInetAddresses();
