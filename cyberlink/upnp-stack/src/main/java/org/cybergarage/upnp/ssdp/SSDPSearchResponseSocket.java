@@ -12,6 +12,8 @@
 *		- first revision.
 *	05/28/03
 *		- Added post() to send a SSDPSearchRequest.
+*	01/31/08
+*		- Changed start() not to abort when the interface infomation is null on Android m3-rc37a.
 *	
 ******************************************************************/
 
@@ -80,9 +82,11 @@ public class SSDPSearchResponseSocket extends HTTPUSocket implements Runnable
 
 		StringBuffer name = new StringBuffer("Cyber.SSDPSearchResponseSocket/");
 		DatagramSocket s = getDatagramSocket();
-		name.append(s.getLocalAddress()).append(':');
-		name.append(s.getPort());
-		
+		// localAddr is null on Android m3-rc37a (01/30/08)
+		if (s.getLocalAddress() != null) {
+			name.append(s.getLocalAddress()).append(':');
+			name.append(s.getPort());
+		}
 		deviceSearchResponseThread = new Thread(this,name.toString());
 		deviceSearchResponseThread.start();		
 	}
