@@ -44,6 +44,9 @@ import org.cybergarage.http.HTTPRequest;
 import org.cybergarage.upnp.UPnP;
 import org.cybergarage.util.Debug;
 
+// Dummy Class for Android m3-rc37a
+// import org.cybergarage.android.MulticastSocket;
+
 public class HTTPMUSocket
 {
 	////////////////////////////////////////////////
