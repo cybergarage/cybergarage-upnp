@@ -8,6 +8,9 @@
 *
 *	09/26/05
 *		- first revision.
+*	02/05/08
+*		- Added getContentDirectory(dev, objectId).
+*		- Added browse().
 *
 ******************************************************************/
 
@@ -142,24 +145,32 @@ public class MediaPlayer extends ControlPoint
 	////////////////////////////////////////////////
 	// Content
 	////////////////////////////////////////////////
-
-	public ContentNode getContentDirectory(Device dev)
+	
+	public ContentNode browse(Device dev)
 	{
-		Node rootNode = browseMetaData(dev, "0", "*", 0, 0, "");
+		return browse(dev, "0");
+	}
+	
+	public ContentNode browse(Device dev, String objectId)
+	{
+		return browse(dev, objectId, false);
+	}
+	
+	public ContentNode browse(Device dev, String objectId, boolean isBrowseChildNodes)
+	{
+		Node rootNode = browseMetaData(dev, objectId, "*", 0, 0, "");
 		if (rootNode == null)
 			return null;
 
 		ContentNode contentRootNode = new RootNode();
 		contentRootNode.set(rootNode);
 
-		getContentDirectory(contentRootNode, dev, "0");
-		if (Debug.isOn() == true)
-			contentRootNode.print();
+		browse(contentRootNode, dev, objectId, isBrowseChildNodes);
 
 		return contentRootNode;
 	}
 
-	public int getContentDirectory(ContentNode parentNode, Device dev, String objectID)
+	private int browse(ContentNode parentNode, Device dev, String objectID, boolean isBrowseChildNodes)
 	{
 		if (objectID == null)
 			return 0;
@@ -185,19 +196,35 @@ public class MediaPlayer extends ControlPoint
 			parentNode.addContentNode(contentNode);
 			nResultNode++;
 			// Add Child Nodes
-			if (contentNode.isContainerNode() == true) {
-				ContainerNode containerNode = (ContainerNode)contentNode;
-				int childCnt = containerNode.getChildCount();
-				if (0 < childCnt) {
-					String objid = containerNode.getID();
-					getContentDirectory(contentNode, dev, objid);
+			if (isBrowseChildNodes) {
+				if (contentNode.isContainerNode() == true) {
+					ContainerNode containerNode = (ContainerNode)contentNode;
+					int childCnt = containerNode.getChildCount();
+					if (0 < childCnt) {
+						String objid = containerNode.getID();
+						browse(contentNode, dev, objid, true);
+					}
 				}
 			}
 		}
 
 		return nResultNode;
 	}
+	
+	////////////////////////////////////////////////
+	// Content
+	////////////////////////////////////////////////
+	
+	public ContentNode getContentDirectory(Device dev)
+	{
+		return getContentDirectory(dev, "0");
+	}
 
+	public ContentNode getContentDirectory(Device dev, String objectId)
+	{
+		return browse(dev, objectId, true);
+	}
+	
 	////////////////////////////////////////////////
 	// main
 	////////////////////////////////////////////////
