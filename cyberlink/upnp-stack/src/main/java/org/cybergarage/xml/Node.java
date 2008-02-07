@@ -24,6 +24,8 @@
 *		- Fixed toXMLString() to convert from "'" to "&apos;" instead of "\".
 *	11/07/05
 *		- Changed toString() to return as utf-8 string.
+*	02/08/08
+*		- Added addValue().
 *
 ******************************************************************/
 
@@ -132,6 +134,16 @@ public class Node
 		setValue(Integer.toString(value));
 	}
 
+	public void addValue(String value) 
+	{
+		if (this.value == null) {
+			this.value = value;
+			return;
+		}
+		if (value != null)
+			this.value += value;
+	}
+	
 	public String getValue()
 	{
 		return value;
