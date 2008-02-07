@@ -60,7 +60,7 @@ public class JaxpParser extends Parser
 //		Debug.message("[" + rank + "] ELEM : " + domNodeName + ", " + domNodeValue + ", type = " + domNodeType + ", attrs = " + arrrsLen);
 
 		if (domNodeType == org.w3c.dom.Node.TEXT_NODE) {
-			// Change to use Node::addValue() instead of the setValue().
+			// Change to use Node::addValue() instead of the setValue(). (2008/02/07)
 			//parentNode.setValue(domNodeValue);
 			parentNode.addValue(domNodeValue);
 			return parentNode;
