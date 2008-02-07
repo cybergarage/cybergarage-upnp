@@ -1,3 +1,7 @@
+2008-02-08 Satoshi Konno <skonno@cybergarage.org>
+	* Added Node::addValue().
+	* Change JaxpParserparse() to use Node::addValue() instead of the setValue().
+
 2008-01-30 Satoshi Konno <skonno@cybergarage.org>
 	* Changed HTTPMUSocket::getLocalAddress() to return a brank string when the ssdpMultiGroup is null on Android m3-rc37a.
 	* Changed SSDPNotifySocket::start() not to abort when the interface infomation is null on Android m3-rc37a.
