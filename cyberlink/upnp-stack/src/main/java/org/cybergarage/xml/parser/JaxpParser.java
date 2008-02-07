@@ -14,6 +14,8 @@
 *		- first revision.
 *	01/08/08
 *		- Fixed parse() not to occur null exception when the NamedNodeMap is null on Android.
+*	02/08/08
+*		- Change parse() to use Node::addValue() instead of the setValue().
 *
 ******************************************************************/
 
@@ -58,7 +60,9 @@ public class JaxpParser extends Parser
 //		Debug.message("[" + rank + "] ELEM : " + domNodeName + ", " + domNodeValue + ", type = " + domNodeType + ", attrs = " + arrrsLen);
 
 		if (domNodeType == org.w3c.dom.Node.TEXT_NODE) {
-			parentNode.setValue(domNodeValue);
+			// Change to use Node::addValue() instead of the setValue().
+			//parentNode.setValue(domNodeValue);
+			parentNode.addValue(domNodeValue);
 			return parentNode;
 		}
 
