@@ -192,31 +192,26 @@ public class ConnectionManager implements ActionListener, QueryListener
 	// Constructor 
 	////////////////////////////////////////////////
 	
-	public ConnectionManager(MediaServer mserver)
+	public ConnectionManager(MediaRender render)
 	{
-		setMediaServer(mserver);
+		setMediaRender(render);
 		maxConnectionID = 0;
 	}
 	
 	////////////////////////////////////////////////
-	// Media Server
+	// MediaRender
 	////////////////////////////////////////////////
 
-	private MediaServer mediaServer;
+	private MediaRender mediaRender;
 	
-	private void setMediaServer(MediaServer mserver)
+	private void setMediaRender(MediaRender render)
 	{
-		mediaServer = mserver;	
+		mediaRender = render;	
 	}
 	
-	public MediaServer getMediaServer()
+	public MediaRender getMediaRender()
 	{
-		return mediaServer;	
-	}
-
-	public ContentDirectory getContentDirectory()
-	{
-		return getMediaServer().getContentDirectory();	
+		return mediaRender;	
 	}
 	
 	////////////////////////////////////////////////
@@ -309,7 +304,7 @@ public class ConnectionManager implements ActionListener, QueryListener
 		//action.print();
 		
 		String actionName = action.getName();
-		
+/*		
 		if (actionName.equals(GET_PROTOCOL_INFO) == true) {
 			// Source
 			String sourceValue = "";
@@ -343,7 +338,7 @@ public class ConnectionManager implements ActionListener, QueryListener
 		
 		if (actionName.equals(GET_CURRENT_CONNECTION_IDS) == true)
 			return getCurrentConnectionIDs(action);
-		
+*/		
 		return false;
 	}
 
