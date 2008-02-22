@@ -585,37 +585,33 @@ public class AVTransport implements ActionListener, QueryListener
 		"                </argument>"+
 		"            </argumentList>"+
 		"        </action>"+
-		"    </actionList>"		"</scpd>";	
+		"    </actionList>"+
+		"</scpd>";	
 
 	////////////////////////////////////////////////
 	// Constructor 
 	////////////////////////////////////////////////
 	
-	public ConnectionManager(MediaServer mserver)
+	public AVTransport(MediaRender render)
 	{
-		setMediaServer(mserver);
+		setMediaRender(render);
 		maxConnectionID = 0;
 	}
 	
 	////////////////////////////////////////////////
-	// Media Server
+	// MediaRender
 	////////////////////////////////////////////////
 
-	private MediaServer mediaServer;
+	private MediaRender mediaRender;
 	
-	private void setMediaServer(MediaServer mserver)
+	private void setMediaRender(MediaRender render)
 	{
-		mediaServer = mserver;	
+		mediaRender = render;	
 	}
 	
-	public MediaServer getMediaServer()
+	public MediaRender getMediaRender()
 	{
-		return mediaServer;	
-	}
-
-	public ContentDirectory getContentDirectory()
-	{
-		return getMediaServer().getContentDirectory();	
+		return mediaRender;	
 	}
 	
 	////////////////////////////////////////////////
@@ -649,57 +645,6 @@ public class AVTransport implements ActionListener, QueryListener
 	}
 	
 	////////////////////////////////////////////////
-	// ConnectionInfoList
-	////////////////////////////////////////////////
-	
-	// Thanks for Brian Owens (12/02/04)
-	private ConnectionInfoList conInfoList = new ConnectionInfoList();;
-	
-	public ConnectionInfoList getConnectionInfoList()
-	{
-		return conInfoList;
-	}
-	
-	public ConnectionInfo getConnectionInfo(int id)
-	{
-		int size = conInfoList.size();
-		for (int n=0; n<size; n++) {
-			ConnectionInfo info = conInfoList.getConnectionInfo(n);
-			if (info.getID() == id)
-				return info;
-		}
-		return null;
-	}
-	
-	public void addConnectionInfo(ConnectionInfo info)
-	{
-		lock();
-		conInfoList.add(info);
-		unlock();
-	}
-	
-	public void removeConnectionInfo(int id)
-	{
-		lock();
-		int size = conInfoList.size();
-		for (int n=0; n<size; n++) {
-			ConnectionInfo info = conInfoList.getConnectionInfo(n);
-			if (info.getID() == id) {
-				conInfoList.remove(info);
-				break;
-			}
-		}
-		unlock();
-	}
-	
-	public void removeConnectionInfo(ConnectionInfo info)
-	{
-		lock();
-		conInfoList.remove(info);
-		unlock();
-	}
-	
-	////////////////////////////////////////////////
 	// ActionListener
 	////////////////////////////////////////////////
 
@@ -708,7 +653,7 @@ public class AVTransport implements ActionListener, QueryListener
 		//action.print();
 		
 		String actionName = action.getName();
-		
+/*		
 		if (actionName.equals(GET_PROTOCOL_INFO) == true) {
 			// Source
 			String sourceValue = "";
@@ -742,59 +687,10 @@ public class AVTransport implements ActionListener, QueryListener
 		
 		if (actionName.equals(GET_CURRENT_CONNECTION_IDS) == true)
 			return getCurrentConnectionIDs(action);
-		
+*/		
 		return false;
 	}
 
-	////////////////////////////////////////////////
-	// GetCurrentConnectionIDs
-	////////////////////////////////////////////////
-	
-	private boolean getCurrentConnectionIDs(Action action)
-	{
-		String conIDs = "";
-		lock();
-		int size = conInfoList.size();
-		for (int n=0; n<size; n++) {
-			ConnectionInfo info = conInfoList.getConnectionInfo(n);
-			if (0 < n)
-				conIDs += ",";
-			conIDs += Integer.toString(info.getID());
-		}
-		action.getArgument(CONNECTION_IDS).setValue(conIDs);
-		unlock();
-		return true;
-	}
-	
-	////////////////////////////////////////////////
-	// GetCurrentConnectionInfo
-	////////////////////////////////////////////////
-	
-	private boolean getCurrentConnectionInfo(Action action)
-	{
-		int id = action.getArgument(RCS_ID).getIntegerValue();
-		lock();
-		ConnectionInfo info = getConnectionInfo(id);
-		if (info != null) {
-			action.getArgument(RCS_ID).setValue(info.getRcsID());
-			action.getArgument(AV_TRNSPORT_ID).setValue(info.getAVTransportID());
-			action.getArgument(PEER_CONNECTION_MANAGER).setValue(info.getPeerConnectionManager());
-			action.getArgument(PEER_CONNECTION_ID).setValue(info.getPeerConnectionID());
-			action.getArgument(DIRECTION).setValue(info.getDirection());
-			action.getArgument(STATUS).setValue(info.getStatus());
-		}
-		else {
-			action.getArgument(RCS_ID).setValue(-1);
-			action.getArgument(AV_TRNSPORT_ID).setValue(-1);
-			action.getArgument(PEER_CONNECTION_MANAGER).setValue("");
-			action.getArgument(PEER_CONNECTION_ID).setValue(-1);
-			action.getArgument(DIRECTION).setValue(ConnectionInfo.OUTPUT);
-			action.getArgument(STATUS).setValue(ConnectionInfo.UNKNOWN);
-		}
-		unlock();
-		return true;
-	}
-	
 	////////////////////////////////////////////////
 	// QueryListener
 	////////////////////////////////////////////////

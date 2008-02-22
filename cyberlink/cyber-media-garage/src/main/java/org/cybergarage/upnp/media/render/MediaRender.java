@@ -29,9 +29,9 @@ public class MediaRender extends Device
 	// Constants
 	////////////////////////////////////////////////
 	
-	public final static String DEVICE_TYPE = "urn:schemas-upnp-org:device:MediaServer:1";
+	public final static String DEVICE_TYPE = "urn:schemas-upnp-org:device:MediaRender:1";
 	
-	public final static int DEFAULT_HTTP_PORT = 38520;
+	public final static int DEFAULT_HTTP_PORT = 39520;
 	
 	public final static String DESCRIPTION = 
 		"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
@@ -41,7 +41,7 @@ public class MediaRender extends Device
 		"      <minor>0</minor>\n" +
 		"   </specVersion>\n" +
 		"   <device>\n" +
-		"      <deviceType>urn:schemas-upnp-org:device:MediaServer:1</deviceType>\n" +
+		"      <deviceType>urn:schemas-upnp-org:device:MediaRender:1</deviceType>\n" +
 		"      <friendlyName>Cyber Garage Media Render</friendlyName>\n" +
 		"      <manufacturer>Cyber Garage</manufacturer>\n" +
 		"      <manufacturerURL>http://www.cybergarage.org</manufacturerURL>\n" +
@@ -83,26 +83,29 @@ public class MediaRender extends Device
 	{
 		super();
 		try {
-			initialize(DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
+			initialize(DESCRIPTION, RenderingControl.SCPD, ConnectionManager.SCPD, AVTransport.SCPD);
 		}
 		catch (InvalidDescriptionException ide) {}
 	}
 
-	public MediaRender(String description, String contentDirectorySCPD, String connectionManagerSCPD) throws InvalidDescriptionException
+	public MediaRender(String description, String renderCtrlSCPD, String conMgrSCPD, String avTransSCPD) throws InvalidDescriptionException
 	{
 		super();
-		initialize(description, contentDirectorySCPD, connectionManagerSCPD);
+		initialize(description, renderCtrlSCPD, conMgrSCPD, avTransSCPD);
 	}
 	
-	private void initialize(String description, String contentDirectorySCPD, String connectionManagerSCPD) throws InvalidDescriptionException
+	private void initialize(String description, String renderCtrlSCPD, String conMgrSCPD, String avTransSCPD) throws InvalidDescriptionException
 	{
 		loadDescription(description);
 		
-		Service servConDir = getService(ContentDirectory.SERVICE_TYPE);
-		servConDir.loadSCPD(contentDirectorySCPD);
+		Service renCtrlService = getService(RenderingControl.SERVICE_TYPE);
+		renCtrlService.loadSCPD(renderCtrlSCPD);
 		
-		Service servConMan = getService(ConnectionManager.SERVICE_TYPE);
-		servConMan.loadSCPD(connectionManagerSCPD);
+		Service conManService = getService(ConnectionManager.SERVICE_TYPE);
+		conManService.loadSCPD(conMgrSCPD);
+		
+		Service avTransService = getService(AVTransport.SERVICE_TYPE);
+		avTransService.loadSCPD(avTransSCPD);
 		
 		initialize();
 	}
@@ -115,9 +118,11 @@ public class MediaRender extends Device
 		setInterfaceAddress(firstIf);
 		setHTTPPort(DEFAULT_HTTP_PORT);
 		
-		conDir = new ContentDirectory(this);
+		renCon = new RenderingControl(this);
 		conMan = new ConnectionManager(this);
-		
+		avTrans = new AVTransport(this);
+
+/*		
 		Service servConDir = getService(ContentDirectory.SERVICE_TYPE);
 		servConDir.setActionListener(getContentDirectory());
 		servConDir.setQueryListener(getContentDirectory());
@@ -125,6 +130,7 @@ public class MediaRender extends Device
 		Service servConMan = getService(ConnectionManager.SERVICE_TYPE);
 		servConMan.setActionListener(getConnectionManager());
 		servConMan.setQueryListener(getConnectionManager());
+*/
 	}
 	
 	protected void finalize()
@@ -137,50 +143,23 @@ public class MediaRender extends Device
 	////////////////////////////////////////////////
 	
 	private ConnectionManager conMan;
-	private ContentDirectory conDir;
+	private RenderingControl renCon;
+	private AVTransport avTrans;
 	
 	public ConnectionManager getConnectionManager()
 	{
 		return conMan;
 	}
 
-	public ContentDirectory getContentDirectory()
+	public RenderingControl getRenderingControl()
 	{
-		return conDir;
+		return renCon;
 	}	
 	
-	////////////////////////////////////////////////
-	//	ContentDirectory	
-	////////////////////////////////////////////////
-
-	public void addContentDirectory(Directory dir)
+	public AVTransport getAVTransport()
 	{
-		getContentDirectory().addDirectory(dir);
-	}
-	
-	public void removeContentDirectory(String name)
-	{
-		getContentDirectory().removeDirectory(name);
-	}
-
-	public int getNContentDirectories()
-	{
-		return getContentDirectory().getNDirectories();
-	}
-	
-	public Directory getContentDirectory(int n)
-	{
-		return getContentDirectory().getDirectory(n);
-	}
-
-	////////////////////////////////////////////////
-	// PulgIn
-	////////////////////////////////////////////////
-	
-	public boolean addPlugIn(Format format)
-	{
-		return getContentDirectory().addPlugIn(format);
-	}
+		return avTrans;
+	}	
 	
 	////////////////////////////////////////////////
 	// HostAddress
@@ -204,12 +183,14 @@ public class MediaRender extends Device
 	{
 		String uri = httpReq.getURI();
 		Debug.message("uri = " + uri);
-	
+
+		/*
 		if (uri.startsWith(ContentDirectory.CONTENT_EXPORT_URI) == true) {
 			getContentDirectory().contentExportRequestRecieved(httpReq);
 			return;
 		}
-			 
+		*/
+		
 		super.httpRequestRecieved(httpReq);
 	}
 	
@@ -219,14 +200,12 @@ public class MediaRender extends Device
 	
 	public boolean start()
 	{
-		getContentDirectory().start();
 		super.start();
 		return true;
 	}
 	
 	public boolean stop()
 	{
-		getContentDirectory().stop();
 		super.stop();
 		return true;
 	}
