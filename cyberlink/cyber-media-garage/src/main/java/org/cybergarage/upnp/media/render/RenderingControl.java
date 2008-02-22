@@ -61,131 +61,721 @@ public class RenderingControl implements ActionListener, QueryListener
 		"      <major>1</major>\n" +
 		"      <minor>0</minor>\n" +
 		"	</specVersion>\n" +
-		"	<actionList>\n" +
-		"		<action>\n" +
-		"         <name>GetCurrentConnectionInfo</name>\n" +
-		"         <argumentList>\n" +
-		"            <argument>\n" +
-		"               <name>ConnectionID</name>\n" +
-		"               <direction>in</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_ConnectionID</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>RcsID</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_RcsID</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>AVTransportID</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_AVTransportID</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>ProtocolInfo</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_ProtocolInfo</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>PeerConnectionManager</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_ConnectionManager</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>PeerConnectionID</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_ConnectionID</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>Direction</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_Direction</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>Status</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>A_ARG_TYPE_ConnectionStatus</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"         </argumentList>\n" +
-		"      </action>\n" +
-		"      <action>\n" +
-		"         <name>GetProtocolInfo</name>\n" +
-		"         <argumentList>\n" +
-		"            <argument>\n" +
-		"               <name>Source</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>SourceProtocolInfo</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"            <argument>\n" +
-		"               <name>Sink</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>SinkProtocolInfo</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"         </argumentList>\n" +
-		"      </action>\n" +
-		"      <action>\n" +
-		"         <name>GetCurrentConnectionIDs</name>\n" +
-		"         <argumentList>\n" +
-		"            <argument>\n" +
-		"               <name>ConnectionIDs</name>\n" +
-		"               <direction>out</direction>\n" +
-		"               <relatedStateVariable>CurrentConnectionIDs</relatedStateVariable>\n" +
-		"            </argument>\n" +
-		"         </argumentList>\n" +
-		"      </action>\n" +
-		"   </actionList>\n" +
-		"   <serviceStateTable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_ProtocolInfo</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_ConnectionStatus</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"         <allowedValueList>\n" +
-		"            <allowedValue>OK</allowedValue>\n" +
-		"            <allowedValue>ContentFormatMismatch</allowedValue>\n" +
-		"            <allowedValue>InsufficientBandwidth</allowedValue>\n" +
-		"            <allowedValue>UnreliableChannel</allowedValue>\n" +
-		"            <allowedValue>Unknown</allowedValue>\n" +
-		"         </allowedValueList>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_AVTransportID</name>\n" +
-		"         <dataType>i4</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_RcsID</name>\n" +
-		"         <dataType>i4</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_ConnectionID</name>\n" +
-		"         <dataType>i4</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_ConnectionManager</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"yes\">\n" +
-		"         <name>SourceProtocolInfo</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"yes\">\n" +
-		"         <name>SinkProtocolInfo</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"no\">\n" +
-		"         <name>A_ARG_TYPE_Direction</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"         <allowedValueList>\n" +
-		"            <allowedValue>Input</allowedValue>\n" +
-		"            <allowedValue>Output</allowedValue>\n" +
-		"         </allowedValueList>\n" +
-		"      </stateVariable>\n" +
-		"      <stateVariable sendEvents=\"yes\">\n" +
-		"         <name>CurrentConnectionIDs</name>\n" +
-		"         <dataType>string</dataType>\n" +
-		"      </stateVariable>\n" +
-		"   </serviceStateTable>\n" +
+		"  <serviceStateTable>"+
+		"    <stateVariable>"+
+		"      <name>PresetNameList</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>string</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable> "+
+		"      <name>LastChange</name> <sendEventsAttribute>yes</sendEventsAttribute>"+
+		"      <dataType>string</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Brightness</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Contrast</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Sharpness</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>RedVideoGain</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>GreenVideoGain</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>BlueVideoGain</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>RedVideoBlackLevel</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>GreenVideoBlackLevel</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>BlueVideoBlackLevel</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>ColorTemperature</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>HorizontalKeystone</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>i2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>VerticalKeystone</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>i2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Mute</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>boolean</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Volume</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui2</dataType>"+
+		"	<allowedValueRange>"+
+		"		<minimum>0</minimum>"+
+		"		<step>1</step>"+
+		"	</allowedValueRange>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>VolumeDB</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>i2</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>Loudness</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>boolean</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>A_ARG_TYPE_Channel</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>string</dataType>"+
+		"      <allowedValueList>"+
+		"        <allowedValue>Master</allowedValue>"+
+		"      </allowedValueList>"+
+		"    </stateVariable>"+
+		"    <stateVariable><Optional/>"+
+		"      <name>A_ARG_TYPE_InstanceID</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>ui4</dataType>"+
+		"    </stateVariable>"+
+		"    <stateVariable>"+
+		"      <name>A_ARG_TYPE_PresetName</name> <sendEventsAttribute>no</sendEventsAttribute>"+
+		"      <dataType>string</dataType>"+
+		"      <allowedValueList>"+
+		"        <allowedValue>FactoryDefaults</allowedValue>"+
+		"      </allowedValueList>"+
+		"    </stateVariable>"+
+		"  </serviceStateTable>"+
+		"  <actionList>"+
+		"    <action>"+
+		"    <name>ListPresets</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentPresetNameList</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>PresetNameList</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action>"+
+		"    <name>SelectPreset</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>PresetName</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_PresetName</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetBrightness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentBrightness</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Brightness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetBrightness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredBrightness</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Brightness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetContrast</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentContrast</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Contrast</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetContrast</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredContrast</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Contrast</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetSharpness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentSharpness</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Sharpness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetSharpness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredSharpness</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Sharpness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetRedVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentRedVideoGain</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>RedVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetRedVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredRedVideoGain</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>RedVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetGreenVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentGreenVideoGain</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>GreenVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetGreenVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredGreenVideoGain</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>GreenVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetBlueVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentBlueVideoGain</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>BlueVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetBlueVideoGain</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredBlueVideoGain</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>BlueVideoGain</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"   <action><Optional/>"+
+		"    <name>GetRedVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentRedVideoBlackLevel</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>RedVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetRedVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredRedVideoBlackLevel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>RedVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetGreenVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentGreenVideoBlackLevel</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>GreenVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetGreenVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredGreenVideoBlackLevel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>GreenVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetBlueVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentBlueVideoBlackLevel</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>BlueVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetBlueVideoBlackLevel</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredBlueVideoBlackLevel</name>"+
+		"    <direction>in</direction>"+
+		"  <relatedStateVariable>BlueVideoBlackLevel</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetColorTemperature </name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentColorTemperature</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>ColorTemperature</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetColorTemperature</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredColorTemperature</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>ColorTemperature</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetHorizontalKeystone</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentHorizontalKeystone</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>HorizontalKeystone</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetHorizontalKeystone</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredHorizontalKeystone</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>HorizontalKeystone</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetVerticalKeystone</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentVerticalKeystone</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>VerticalKeystone</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetVerticalKeystone</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredVerticalKeystone</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>VerticalKeystone</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetMute</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentMute</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Mute</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetMute</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredMute</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Mute</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetVolume</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentVolume</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Volume</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetVolume</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredVolume</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Volume</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetVolumeDB</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentVolume</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>VolumeDB</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetVolumeDB</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredVolume</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>VolumeDB</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetVolumeDBRange</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>MinValue</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>VolumeDB</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>MaxValue</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>VolumeDB</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>GetLoudness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>CurrentLoudness</name>"+
+		"          <direction>out</direction>"+
+		"          <relatedStateVariable>Loudness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"    <action><Optional/>"+
+		"    <name>SetLoudness</name>"+
+		"      <argumentList>"+
+		"        <argument>"+
+		"          <name>InstanceID</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_InstanceID</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>Channel</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>A_ARG_TYPE_Channel</relatedStateVariable>"+
+		"        </argument>"+
+		"        <argument>"+
+		"          <name>DesiredLoudness</name>"+
+		"          <direction>in</direction>"+
+		"          <relatedStateVariable>Loudness</relatedStateVariable>"+
+		"        </argument>"+
+		"      </argumentList>"+
+		"    </action>"+
+		"  </actionList>"+
 		"</scpd>";	
 
 	////////////////////////////////////////////////
