@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <artifactId>cyberlink</artifactId>
+    <groupId>org.cybergarage.cyberlink</groupId>
+    <version>2</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.cybergarage.cyberlink</groupId>
+  <artifactId>upnp-stack</artifactId>
+  <packaging>jar</packaging>
+  <version>2.1.0-SNAPSHOT</version>
+  <name>CyberLink UPnP Stack</name>
+  <description>A pure Java Open Source implementation of the UPnP stack</description>
+  <url>http://sourceforge.net/projects/cgupnpjava/</url>
+  
+  <licenses>
+  	<license>
+  		<name>BSD</name>
+  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/LICENSE.txt</url>
+  	</license>
+  </licenses>
+  
+  <scm>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/upnp-stack</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/upnp-stack</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/upnp-stack</url>
+  </scm>
+  
+  <developers />
+
+  <contributors />
+  
+  <dependencies>
+    <dependency>
+      <groupId>net.sf.kxml</groupId>
+      <artifactId>kxml2</artifactId>
+      <version>2.1.8</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.8.1</version>
+    </dependency>
+  </dependencies>
+</project>
+
