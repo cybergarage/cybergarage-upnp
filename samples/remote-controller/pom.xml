@@ -4,6 +4,7 @@
   <parent>
     <artifactId>cyberlink</artifactId>
     <groupId>org.cybergarage.cyberlink</groupId>        
+    <relativePath>../../</relativePath>
     <version>2</version>    
   </parent>
 
@@ -20,14 +21,14 @@
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/LICENSE.txt</url>
+  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/remote-controller</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/remote-controller</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/remote-controller</url>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/remote-controller</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/remote-controller</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/samples/remote-controller</url>
   </scm>
 
   <dependencies>
