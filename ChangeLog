@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 2011-02-08 Satoshi Konno <skonno@cybergarage.org>
 	* Changed the trunk directory into 'trunk' instead of 'trunk/cyberlink'
 	* Fixed some pom files to run normally.
 
+=======
+>>>>>>> a89f3426d42194b5e91322dd3a6dbb3ed4fa0d88
 2011-09-16 Satoshi Konno <skonno@cybergarage.org>
 	* v2.1 
 
