@@ -19,14 +19,14 @@
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/LICENSE.txt</url>
+  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/upnp-stack</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/upnp-stack</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/upnp-stack</url>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/upnp-stack</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/upnp-stack</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/upnp-stack</url>
   </scm>
   
   <developers />

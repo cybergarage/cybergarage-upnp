@@ -18,9 +18,9 @@
   <description>A suite of tools using the CyberLink UPnP Stack for testing other software</description>
 
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/tools/</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/tools/</url>
+  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/tools/</connection>
+  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/tools/</developerConnection>
+  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/tools/</url>
   </scm>
   
   <modules>
