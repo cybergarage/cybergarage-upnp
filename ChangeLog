@@ -1,3 +1,6 @@
+2012-03-14 Satoshi Konno <skonno@cybergarage.org>
+	* Improved Device::getAbsoluteURL() to return the specified URL more correctly.
+
 2011-02-08 Satoshi Konno <skonno@cybergarage.org>
 	* Changed the trunk directory into 'trunk' instead of 'trunk/cyberlink'
 	* Fixed some pom files to run normally.
