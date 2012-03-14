@@ -263,41 +263,95 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	//	getAbsoluteURL
 	////////////////////////////////////////////////
 	
-	public String getAbsoluteURL(String urlString)
-	{
+    public String getAbsoluteURL(String urlString, String baseURLStr, String locationURLStr)
+    {
+        if ((urlString == null) || (urlString.length() <= 0))
+            return "";
+            
 		try {
 			URL url = new URL(urlString);
 			return url.toString();
 		}
 		catch (Exception e) {}
-		
-		Device rootDev = getRootDevice();
-		String urlBaseStr = rootDev.getURLBase();
-		
-		// Thanks for Steven Yen (2003/09/03)
-		if (urlBaseStr == null || urlBaseStr.length() <= 0) {
-			String location = rootDev.getLocation();
-			String locationHost = HTTP.getHost(location);
-			int locationPort = HTTP.getPort(location);
-			urlBaseStr = HTTP.getRequestHostURL(locationHost, locationPort);
-		}
+        
+        if ((baseURLStr == null) || (baseURLStr.length() <= 0)) {
+            if ((locationURLStr != null) && (0 < locationURLStr.length())) {
+                if (!locationURLStr.endsWith("/") || !urlString.startsWith("/")) {
+                    String absUrl = locationURLStr + urlString;
+                    try {
+                        URL url = new URL(absUrl);
+                        return url.toString();
+                    }
+                    catch (Exception e) {}
+                }
+                else {
+                    String absUrl = locationURLStr + urlString.substring(1);
+                    try {
+                        URL url = new URL(absUrl);
+                        return url.toString();
+                    }
+                    catch (Exception e) {}
+                }
+                
+                String absUrl = HTTP.getAbsoluteURL(locationURLStr, urlString);
+                try {
+                    URL url = new URL(absUrl);
+                    return url.toString();
+                }
+                catch (Exception e) {}
 
-		urlString = HTTP.toRelativeURL(urlString);
-		String absUrl = urlBaseStr + urlString;
-		try {
-			URL url = new URL(absUrl);
-			return url.toString();
-		}
-		catch (Exception e) {}
-			
-		absUrl = HTTP.getAbsoluteURL(urlBaseStr, urlString);
-		try {
-			URL url = new URL(absUrl);
-			return url.toString();
-		}
-		catch (Exception e) {}
-		
-		return "";
+                // Thanks for Steven Yen (2003/09/03)
+                Device rootDev = getRootDevice();
+                if (rootDev != null) {
+                    String location = rootDev.getLocation();
+                    String locationHost = HTTP.getHost(location);
+                    int locationPort = HTTP.getPort(location);
+                    baseURLStr = HTTP.getRequestHostURL(locationHost, locationPort);
+                }
+            }
+        }
+        
+		if ((baseURLStr != null) && (0 < baseURLStr.length())) {
+            if (!baseURLStr.endsWith("/") || !urlString.startsWith("/")) {
+                String absUrl = baseURLStr + urlString;
+                try {
+                    URL url = new URL(absUrl);
+                    return url.toString();
+                }
+                catch (Exception e) {}
+			}
+            else {
+                String absUrl = baseURLStr + urlString.substring(1);
+                try {
+                    URL url = new URL(absUrl);
+                    return url.toString();
+                }
+                catch (Exception e) {}
+            }
+            
+            String absUrl = HTTP.getAbsoluteURL(baseURLStr, urlString);
+            try {
+                URL url = new URL(absUrl);
+                return url.toString();
+            }
+            catch (Exception e) {}
+        }
+        
+        return urlString;
+    }
+    
+	public String getAbsoluteURL(String urlString)
+	{
+		String baseURLStr = null;
+        String locationURLStr = null;
+        
+		Device rootDev = getRootDevice();
+        if (rootDev != null) {
+            baseURLStr = rootDev.getURLBase();
+            locationURLStr = rootDev.getLocation();
+        }
+
+        return getAbsoluteURL(urlString, baseURLStr, locationURLStr);		
 	}
 
 	////////////////////////////////////////////////
