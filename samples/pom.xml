@@ -18,15 +18,9 @@
   <description>A suite of samples using the CyberLink UPnP Stack</description>
   
   <scm>
-<<<<<<< HEAD
   	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/</connection>
   	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/</developerConnection>
   	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/samples/</url>	
-=======
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/</url>	
->>>>>>> a89f3426d42194b5e91322dd3a6dbb3ed4fa0d88
   </scm>
   
   <modules>
