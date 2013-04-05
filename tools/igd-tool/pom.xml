@@ -4,10 +4,7 @@
   <parent>
     <artifactId>cyberlink</artifactId>
     <groupId>org.cybergarage.cyberlink</groupId>
-<<<<<<< HEAD
     <relativePath>../../</relativePath>
-=======
->>>>>>> a89f3426d42194b5e91322dd3a6dbb3ed4fa0d88
     <version>2</version>
   </parent>
 
