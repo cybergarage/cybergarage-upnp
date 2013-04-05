@@ -20,24 +20,14 @@
   <licenses>
   	<license>
   		<name>BSD</name>
-<<<<<<< HEAD
   		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/LICENSE.txt</url>
-=======
-  		<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/LICENSE.txt</url>
->>>>>>> a89f3426d42194b5e91322dd3a6dbb3ed4fa0d88
   	</license>
   </licenses>
   
   <scm>
-<<<<<<< HEAD
   	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/light</connection>
   	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/samples/light</developerConnection>
   	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/samples/light</url>
-=======
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/light</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/cyberlink/samples/light</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/cyberlink/samples/light</url>
->>>>>>> a89f3426d42194b5e91322dd3a6dbb3ed4fa0d88
   </scm>
 
   <dependencies>
