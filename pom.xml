@@ -39,9 +39,9 @@
   </mailingLists>
   
   <scm>
-  	<connection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/</connection>
-  	<developerConnection>scm:svn:https://cgupnpjava.svn.sourceforge.net/svnroot/cgupnpjava/trunk/</developerConnection>
-  	<url>http://cgupnpjava.svn.sourceforge.net/viewvc/cgupnpjava/trunk/</url>
+  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
+  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/</url>
   </scm>
 
   <dependencyManagement>
