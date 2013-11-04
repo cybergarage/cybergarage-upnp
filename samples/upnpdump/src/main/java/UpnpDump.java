@@ -8,9 +8,6 @@
 *
 ******************************************************************/
 
-import java.io.*;
-
-import org.cybergarage.util.*;
 import org.cybergarage.upnp.*;
 import org.cybergarage.upnp.ssdp.*;
 import org.cybergarage.upnp.device.*;
@@ -82,7 +79,8 @@ public class UpnpDump extends ControlPoint implements NotifyListener, EventListe
 			
 	public static void main(String args[]) 
 	{
-		UpnpDump UpnpDump = new UpnpDump();
-		UpnpDump.start();
+		UpnpDump upnpDump = new UpnpDump();
+		upnpDump.start();
+		upnpDump.search();
 	}
 }
