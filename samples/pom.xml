@@ -30,6 +30,7 @@
     <module>clock</module>
     <module>light</module>
     <module>washer</module>
+    <module>upnpdump</module>
   </modules>
 
 </project>
