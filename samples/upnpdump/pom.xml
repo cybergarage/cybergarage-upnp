@@ -10,10 +10,10 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.cyberlink.samples</groupId>
-  <artifactId>washer</artifactId>
+  <artifactId>upnpdump</artifactId>
   <packaging>jar</packaging>
   <version>1.5.1-SNAPSHOT</version>
-  <name>CyberLink control point sample</name>
+  <name>CyberLink Control Point Sample</name>
   <description>A sample control point implementation</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
