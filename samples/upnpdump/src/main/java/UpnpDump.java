@@ -27,15 +27,6 @@ public class UpnpDump extends ControlPoint implements NotifyListener, EventListe
 	}
     
 	////////////////////////////////////////////////
-	//	Graphics
-	////////////////////////////////////////////////
-	
-	public void printConsole(String msg)
-	{
-        System.out.println(msg);
-	}
-	
-	////////////////////////////////////////////////
 	//	Listener
 	////////////////////////////////////////////////
 	
@@ -45,18 +36,18 @@ public class UpnpDump extends ControlPoint implements NotifyListener, EventListe
 		
 		if (packet.isDiscover() == true) {
 			String st = packet.getST();
-			printConsole("ssdp:discover : ST = " + st); 
+			System.out.println("ssdp:discover : ST = " + st); 
 		}
 		else if (packet.isAlive() == true) {
 			String usn = packet.getUSN();
 			String nt = packet.getNT();
 			String url = packet.getLocation();
-			printConsole("ssdp:alive : uuid = " + usn + ", NT = " + nt + ", location = " + url); 
+			System.out.println("ssdp:alive : uuid = " + usn + ", NT = " + nt + ", location = " + url); 
 		}
 		else if (packet.isByeBye() == true) {
 			String usn = packet.getUSN();
 			String nt = packet.getNT();
-			printConsole("ssdp:byebye : uuid = " + usn + ", NT = " + nt); 
+			System.out.println("ssdp:byebye : uuid = " + usn + ", NT = " + nt); 
 		}
 	}
 	
@@ -65,12 +56,12 @@ public class UpnpDump extends ControlPoint implements NotifyListener, EventListe
 		String uuid = packet.getUSN();
 		String st = packet.getST();
 		String url = packet.getLocation();
-		printConsole("device search res : uuid = " + uuid + ", ST = " + st + ", location = " + url); 
+		System.out.println("device search res : uuid = " + uuid + ", ST = " + st + ", location = " + url); 
 	}
 	
 	public void eventNotifyReceived(String uuid, long seq, String name, String value)
 	{
-		printConsole("event notify : uuid = " + uuid + ", seq = " + seq + ", name = " + name + ", value =" + value); 
+		System.out.println("event notify : uuid = " + uuid + ", seq = " + seq + ", name = " + name + ", value =" + value); 
 	}
 
 	////////////////////////////////////////////////
