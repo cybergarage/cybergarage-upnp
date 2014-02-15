@@ -34,8 +34,6 @@ public class CtrlPoint extends ControlPoint implements NotifyListener, EventList
 		addSearchResponseListener(this);
 		addEventListener(this);
 
-		Debug.on();
-		
 		initFrame();
 	}
 
@@ -136,12 +134,11 @@ public class CtrlPoint extends ControlPoint implements NotifyListener, EventList
 			
 	public static void main(String args[]) 
 	{
-		//Debug.on();
 		for (int n=0; n<args.length; n++) {
 			String opt = args[n];
 			if (opt.equals("-v") || opt.equals("--verbose")) {
-				Debug.on();
-				Debug.message("Debug.on");			}
+				Debug.message("Debug.on");
+			}
 		}
 		
 		CtrlPoint ctrlPoint = new CtrlPoint();

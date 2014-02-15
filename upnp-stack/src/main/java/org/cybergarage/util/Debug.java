@@ -15,77 +15,26 @@
 
 package org.cybergarage.util;
 
-import java.io.PrintStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class Debug {
 
-    public static final Debug debug = new Debug();
-
-    private PrintStream out = System.out;
-
-
-    private Debug() {
-
-    }
-
-    public synchronized PrintStream getOut() {
-        return out;
-    }
-
-    public synchronized void setOut(PrintStream out) {
-        this.out = out;
-    }
-
-
-    public static boolean enabled = false;
-
-    public static Debug getDebug() {
-        return Debug.debug;
-    }
-
-    public static void on() {
-        enabled = true;
-    }
-
-    public static void off() {
-        enabled = false;
-    }
-
-    public static boolean isOn() {
-        return enabled;
-    }
+    private static final Logger logger = LoggerFactory.getLogger(Debug.class);
 
     public static void message(String s) {
-        if (enabled) {
-            Debug.debug.getOut().println("CyberGarage message : " + s);
-        }
-    }
-
-    public static void message(String m1, String m2) {
-        if (enabled) {
-            Debug.debug.getOut().println("CyberGarage message : ");
-            Debug.debug.getOut().println(m1);
-            Debug.debug.getOut().println(m2);
-        }
+        logger.info(s);
     }
 
     public static void warning(String s) {
-        Debug.debug.getOut().println("CyberGarage warning : " + s);
+        logger.warn(s);
     }
 
     public static void warning(String m, Exception e) {
-        if (e.getMessage() == null) {
-            Debug.debug.getOut().println("CyberGarage warning : " + m + " START");
-            e.printStackTrace(Debug.debug.getOut());
-            Debug.debug.getOut().println("CyberGarage warning : " + m + " END");
-        } else {
-            Debug.debug.getOut().println("CyberGarage warning : " + m + " (" + e.getMessage() + ")");
-            e.printStackTrace(Debug.debug.getOut());
-        }
+        logger.warn(m, e);
     }
 
     public static void warning(Exception e) {
-        warning(e.getMessage());
-        e.printStackTrace(Debug.debug.getOut());
+        logger.warn("", e);
     }
 }

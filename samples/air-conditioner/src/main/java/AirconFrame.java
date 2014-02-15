@@ -101,8 +101,6 @@ public class AirconFrame extends JFrame implements WindowListener
 
 	public static void main(String args[]) 
 	{
-		//Debug.on();
-
 		AirconFrame sampClock = new AirconFrame();
 	}
 

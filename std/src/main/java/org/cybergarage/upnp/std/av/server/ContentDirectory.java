@@ -912,8 +912,7 @@ public class ContentDirectory extends ThreadCore implements ActionListener, Quer
 		action.setArgumentValue(BrowseAction.TOTAL_MACHES, 1);
 		action.setArgumentValue(BrowseAction.UPDATE_ID, getSystemUpdateID());
 		
-		if (Debug.isOn())
-			action.print();
+        action.print();
 		
 		return true;
 	}

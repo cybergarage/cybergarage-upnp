@@ -126,7 +126,6 @@ public class MythDirectory extends Directory
 	
 	public static void main(String args[]) 
 	{
-		Debug.on();
 		MythDirectory mythdir = new MythDirectory();
 		mythdir.update();
 	}

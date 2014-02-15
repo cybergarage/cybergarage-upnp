@@ -338,8 +338,7 @@ public class Action
 			UPnPStatus upnpStatus = getStatus();
 			actionRes.setFaultResponse(upnpStatus.getCode(), upnpStatus.getDescription());
 		}
-		if (Debug.isOn() == true)
-			actionRes.print();
+        actionRes.print();
 		actionReq.post(actionRes);
 		return true;
 	}
@@ -374,11 +373,9 @@ public class Action
 		ArgumentList actionInputArgList = getInputArgumentList();		
 		ActionRequest ctrlReq = new ActionRequest();
 		ctrlReq.setRequest(this, actionInputArgList);
-		if (Debug.isOn() == true)
-			ctrlReq.print();
+        ctrlReq.print();
 		ActionResponse ctrlRes = ctrlReq.post();
-		if (Debug.isOn() == true)
-			ctrlRes.print();
+        ctrlRes.print();
 		setControlResponse(ctrlRes);
 		// Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net> (07/09/04)
 		int statCode = ctrlRes.getStatusCode();
@@ -401,7 +398,7 @@ public class Action
 
 	public void print()
 	{
-		System.out.println("Action : " + getName());
+		Debug.message("Action : " + getName());
 		ArgumentList argList = getArgumentList();
 		int nArgs = argList.size();
 		for (int n=0; n<nArgs; n++) {
@@ -409,7 +406,7 @@ public class Action
 			String name = arg.getName();
 			String value = arg.getValue();
 			String dir = arg.getDirection();
-			System.out.println(" [" + n + "] = " + dir + ", " + name + ", " + value);
+			Debug.message(" [" + n + "] = " + dir + ", " + name + ", " + value);
 		}
 	}
 	

@@ -130,8 +130,6 @@ public class ClockFrame extends JFrame implements Runnable, WindowListener
 
 	public static void main(String args[]) throws Throwable 
 	{
-		//Debug.on();
-
 		ClockFrame sampClock = new ClockFrame();
 		sampClock.start();
 		

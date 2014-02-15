@@ -398,11 +398,9 @@ public class StateVariable extends NodeData
 	{
 		QueryRequest queryReq = new QueryRequest();
 		queryReq.setRequest(this);
-		if (Debug.isOn() == true)
-			queryReq.print();
+        queryReq.print();
 		QueryResponse queryRes = queryReq.post();
-		if (Debug.isOn() == true)
-			queryRes.print();
+        queryRes.print();
 		setQueryResponse(queryRes);
 		// Thanks for Dimas <cyberrate@users.sourceforge.net> and Stefano Lenzi <kismet-sl@users.sourceforge.net> (07/09/04)
 		if (queryRes.isSuccessful() == false) {

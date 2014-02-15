@@ -566,8 +566,7 @@ public class ControlPoint implements HTTPRequestListener
 		
 	public void httpRequestRecieved(HTTPRequest httpReq)
 	{
-		if (Debug.isOn() == true)
-			httpReq.print();
+        httpReq.print();
 		
 		// Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/08/03)
 		if (httpReq.isNotifyRequest() == true) {
@@ -668,11 +667,9 @@ public class ControlPoint implements HTTPRequestListener
 	{
 		SubscriptionRequest subReq = new SubscriptionRequest();
 		subReq.setRenewRequest(service, uuid, timeout);
-		if (Debug.isOn() == true)
-			subReq.print();	
+        subReq.print();
 		SubscriptionResponse subRes = subReq.post();
-		if (Debug.isOn() == true)
-			subRes.print();	
+        subRes.print();
 		if (subRes.isSuccessful() == true) {
 			service.setSID(subRes.getSID());
 			service.setTimeout(subRes.getTimeout());

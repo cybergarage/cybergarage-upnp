@@ -1517,8 +1517,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		String remoteAddr = ssdpPacket.getRemoteAddress();
 		int remotePort = ssdpPacket.getRemotePort();
 		SSDPSearchResponseSocket ssdpResSock = new SSDPSearchResponseSocket();
-		if (Debug.isOn() == true)
-			ssdpRes.print();
+        ssdpRes.print();
 		int ssdpCount = getSSDPAnnounceCount();
 		for (int i=0; i<ssdpCount; i++)
 			ssdpResSock.post(remoteAddr, remotePort, ssdpRes);
@@ -1643,8 +1642,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	
 	public void httpRequestRecieved(HTTPRequest httpReq)
 	{
-		if (Debug.isOn() == true)
-			httpReq.print();
+        httpReq.print();
 	
 		if (httpReq.isGetRequest() == true || httpReq.isHeadRequest() == true) {
 			httpGetRequestRecieved(httpReq);
@@ -1780,8 +1778,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
 	private void deviceActionControlRecieved(ActionRequest ctlReq, Service service)
 	{
-		if (Debug.isOn() == true)
-			ctlReq.print();
+        ctlReq.print();
 			
 		String actionName = ctlReq.getActionName();
 		Action action = service.getAction(actionName);
@@ -1803,8 +1800,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
 	private void deviceQueryControlRecieved(QueryRequest ctlReq, Service service)
 	{
-		if (Debug.isOn() == true)
-			ctlReq.print();
+        ctlReq.print();
 		String varName = ctlReq.getVarName();
 		if (service.hasStateVariable(varName) == false) {
 			invalidActionControlRecieved(ctlReq);
@@ -1884,12 +1880,10 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		subRes.setStatusCode(HTTPStatus.OK);
 		subRes.setSID(sid);
 		subRes.setTimeout(timeOut);
-		if (Debug.isOn() == true)
-			subRes.print();
+        subRes.print();
 		subReq.post(subRes);
 
-		if (Debug.isOn() == true)
-			subRes.print();
+        subRes.print();
 		
 		service.notifyAllStateVariables();
 	}
@@ -1914,8 +1908,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		subRes.setTimeout(timeOut);
 		subReq.post(subRes);
 		
-		if (Debug.isOn() == true)
-			subRes.print();
+        subRes.print();
 	}		
 
 	private void deviceEventUnsubscriptionRecieved(Service service, SubscriptionRequest subReq)
@@ -1934,8 +1927,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		subRes.setStatusCode(HTTPStatus.OK);
 		subReq.post(subRes);
 		
-		if (Debug.isOn() == true)
-			subRes.print();
+        subRes.print();
 	}		
 	
 	////////////////////////////////////////////////

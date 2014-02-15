@@ -34,8 +34,6 @@ public class UpnpIGDTool extends ControlPoint implements NotifyListener, EventLi
 		addSearchResponseListener(this);
 		addEventListener(this);
 
-		Debug.on();
-		
 		initFrame();
 	}
 
@@ -135,12 +133,11 @@ public class UpnpIGDTool extends ControlPoint implements NotifyListener, EventLi
 			
 	public static void main(String args[]) 
 	{
-		//Debug.on();
 		for (int n=0; n<args.length; n++) {
 			String opt = args[n];
 			if (opt.equals("-v") || opt.equals("--verbose")) {
-				Debug.on();
-				Debug.message("Debug.on");			}
+				Debug.message("Debug.on");
+			}
 		}
 		
 		UpnpIGDTool igdtool = new UpnpIGDTool();

@@ -77,7 +77,7 @@ public class MediaGate
 
             if ( need_gui ) {
                 mediaFrame = new SwingFrame(this, isFileSystemMode());
-            } else if ( Debug.isOn() ) {
+            } else {
                 Debug.message("Starting in console mode");
                 for (int n=0; n < mediaServ.getNContentDirectories(); n++) {
                     Directory dir = mediaServ.getContentDirectory(n);
@@ -87,7 +87,6 @@ public class MediaGate
                         Debug.message("\n" + dir.getNode(x));
                     }
                 }
-
             }
         }
         catch (Exception e) {
@@ -262,8 +261,6 @@ public class MediaGate
 
     public static void main(String args[])
     {
-        Debug.off();
-
         boolean need_gui = true;
         int mode = FILESYS_MODE;
         Debug.message("args = " + args.length);
@@ -273,8 +270,6 @@ public class MediaGate
                 mode = MYTHTV_MODE;
             if (MYTHTV_OPT_STRING_OLD.compareTo(args[n]) == 0)
                 mode = MYTHTV_MODE;
-            if (VERBOSE_OPT_STRING.compareTo(args[n]) == 0)
-                Debug.on();
             if (CONSOLE_OPT_STRING.compareTo(args[n]) == 0)
                 need_gui = false;
         }
