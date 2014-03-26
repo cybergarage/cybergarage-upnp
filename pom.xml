@@ -31,21 +31,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <repositories>
-    <repository>
-      <id>release.cgupnpjava.sourceforge.net</id>
-      <name>CyberLink for Java Repository</name>
-      <url>http://cgupnpjava.sourceforge.net/repository/</url>
-      <snapshots><enabled>false</enabled></snapshots>
-    </repository>
-    <repository>
-      <id>snapshot.cgupnpjava.sourceforge.net</id>
-      <name>CyberLink for Java Development Repository</name>
-      <url>http://cgupnpjava.sourceforge.net/snapshots-repository/</url>
-      <releases><enabled>false</enabled></releases>
-    </repository>
-  </repositories>
-
   <organization>
   	<name>CyberGarage</name>
   	<url>http://www.cybergarage.org/</url>
