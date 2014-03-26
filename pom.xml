@@ -63,6 +63,14 @@
   
   <contributors />
   
+  <distributionManagement>
+    <repository>
+      <id>org.cybergarage.cyberlink</id>
+      <name>CyberLink for Java</name>
+      <url>file:///var/www/maven/repos/</url>
+    </repository>
+  </distributionManagement>
+
   <modules>
     <module>core</module>
     <module>std</module>
