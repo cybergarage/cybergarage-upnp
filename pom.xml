@@ -79,7 +79,7 @@
   <contributors />
   
   <modules>
-    <module>upnp-stack</module>
+    <module>core</module>
     <module>std</module>
     <module>tools/control-point</module>
     <module>tools/igd-tool</module>

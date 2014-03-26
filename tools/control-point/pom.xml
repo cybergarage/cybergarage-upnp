@@ -37,7 +37,7 @@
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.cyberlink</groupId>
-      <artifactId>upnp-stack</artifactId>
+      <artifactId>upnp-core</artifactId>
       <version>${cyberlink.version}</version>
     </dependency>
   </dependencies>
