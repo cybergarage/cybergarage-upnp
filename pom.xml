@@ -26,24 +26,6 @@
     </dependencies>
   </dependencyManagement>
 
-  <distributionManagement>
-    <repository>
-      <id>sourceforge.net</id>
-      <name>CyberLink Repository</name>
-      <url>scpexe://shell.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs/repository/</url>
-    </repository>
-    <snapshotRepository>
-      <id>sourceforge.net</id>
-      <name>CyberLink Development Repository</name>
-      <url>scpexe://shell.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs/snapshots-repository/</url>
-    </snapshotRepository>
-    <site>
-      <id>sourceforge.net</id>
-      <name>CyberLink SourceForge Website</name>
-      <url>scpexe://shell.sourceforge.net/home/groups/c/cg/cgupnpjava/htdocs/</url>
-    </site>
-  </distributionManagement>
-
   <repositories>
     <repository>
       <id>codehaus.org</id>
