@@ -12,7 +12,7 @@
   <groupId>org.cybergarage.cyberlink.samples</groupId>
   <artifactId>air-conditioner</artifactId>
   <packaging>jar</packaging>
-  <version>1.5.1-SNAPSHOT</version>
+  <version>${cyberlink.version}</version>
   <name>CyberLink Air Conditioner Device Sample</name>
   <description>A sample UPnP Air Conditioner Device implementation</description>
   
@@ -35,7 +35,7 @@
     <dependency>
       <groupId>org.cybergarage.cyberlink</groupId>
       <artifactId>upnp-stack</artifactId>
-      <version>1.8.0-SNAPSHOT</version>
+      <version>${cyberlink.version}</version>
     </dependency>
   </dependencies>
 </project>

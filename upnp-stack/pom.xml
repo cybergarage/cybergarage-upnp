@@ -11,8 +11,8 @@
   <groupId>org.cybergarage.cyberlink</groupId>
   <artifactId>upnp-stack</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.0-SNAPSHOT</version>
-  <name>CyberLink UPnP Stack</name>
+  <version>${cyberlink.version}</version>
+  <name>CyberLink UPnP Core Stack</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   

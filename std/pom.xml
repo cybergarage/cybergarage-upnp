@@ -11,7 +11,7 @@
     <groupId>org.cybergarage.cyberlink</groupId>
   <artifactId>cyber-media-garage</artifactId>
   <packaging>jar</packaging>
-  <version>1.3.0-SNAPSHOT</version>
+  <version>${cyberlink.version}</version>
   <name>CyberLink UPnP/AV Media Server</name>
   <description>A pure Java Open Source implementation of the UPnP Media Server</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>org.cybergarage.cyberlink</groupId>
       <artifactId>upnp-stack</artifactId>
-      <version>1.8.0-SNAPSHOT</version>
+      <version>${cyberlink.version}</version>
     </dependency>
   </dependencies>
 </project>
