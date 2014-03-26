@@ -28,14 +28,6 @@
 
   <repositories>
     <repository>
-      <id>codehaus.org</id>
-      <name>Maven Central Development Repository</name>
-      <url>http://snapshots.repository.codehaus.org</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-    <repository>
       <id>release.cgupnpjava.sourceforge.net</id>
       <name>CyberLink for Java Repository</name>
       <url>http://cgupnpjava.sourceforge.net/repository/</url>
@@ -49,16 +41,6 @@
     </repository>
   </repositories>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>codehaus.org</id>
-      <name>Maven Central Development Plugin Repository</name>
-      <url>http://snapshots.repository.codehaus.org</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>  
   <organization>
   	<name>CyberGarage</name>
   	<url>http://www.cybergarage.org/</url>
