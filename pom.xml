@@ -9,35 +9,6 @@
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://www.cybergarage.org/</url>
   
-  <issueManagement>
-  	<system>SourceForge.net - Tracker</system>
-  	<url><![CDATA[http://sourceforge.net/tracker/?group_id=75638&atid=544606]]></url>
-  </issueManagement>
-  
-  <mailingLists>
-  	<mailingList>
-  		<name>Forum - Open Discussion</name>
-  		<post>http://sourceforge.net/forum/forum.php?forum_id=258158</post>
-  		<subscribe>http://sourceforge.net/forum/monitor.php?forum_id=258158</subscribe>
-  		<unsubscribe>http://sourceforge.net/forum/unmonitor.php?forum_id=258158</unsubscribe>
-  		<archive>http://sourceforge.net/forum/forum.php?forum_id=258158</archive>
-  	</mailingList>
-  	<mailingList>
-  		<name>Forum - Developer</name>
-  		<post>http://sourceforge.net/forum/forum.php?forum_id=258160</post>
-  		<subscribe>http://sourceforge.net/forum/monitor.php?forum_id=258160</subscribe>
-  		<unsubscribe>http://sourceforge.net/forum/unmonitor.php?forum_id=258160</unsubscribe>
-  		<archive>http://sourceforge.net/forum/forum.php?forum_id=258160</archive>
-  	</mailingList>
-  	<mailingList>
-  		<name>Forum - Help</name>
-  		<post>http://sourceforge.net/forum/forum.php?forum_id=258159</post>
-  		<subscribe>http://sourceforge.net/forum/monitor.php?forum_id=258159</subscribe>
-  		<unsubscribe>http://sourceforge.net/forum/unmonitor.php?forum_id=258159</unsubscribe>
-  		<archive>http://sourceforge.net/forum/forum.php?forum_id=258159</archive>
-  	</mailingList>
-  </mailingLists>
-  
   <scm>
   	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
   	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
