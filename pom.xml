@@ -4,14 +4,14 @@
   <groupId>org.cybergarage.cyberlink</groupId>
   <packaging>pom</packaging>
   <artifactId>cyberlink</artifactId>  
-  <version>2.1.0</version>
+  <version>${cyberlink.version}</version>
 
   <name>CyberGarage CyberLink Suite</name>
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cyberlink.version>${project.version}</cyberlink.version>
+    <cyberlink.version>2.1.0</cyberlink.version>
   </properties>
   
   <scm>
@@ -19,17 +19,6 @@
   	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
   	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/</url>
   </scm>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>3.8.1</version>
-        <scope>test</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <organization>
   	<name>CyberGarage</name>
@@ -85,6 +74,17 @@
     <module>samples/upnpdump</module>
   </modules>
   
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>3.8.1</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <build>
     <pluginManagement>
       <plugins>

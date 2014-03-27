@@ -4,7 +4,7 @@
   <parent>
     <artifactId>cyberlink</artifactId>
     <groupId>org.cybergarage.cyberlink</groupId>
-    <version>2</version>
+    <version>${cyberlink.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -36,7 +36,7 @@
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.cyberlink</groupId>
-      <artifactId>upnp-core</artifactId>
+      <artifactId>cyberlink-core</artifactId>
       <version>${cyberlink.version}</version>
     </dependency>
   </dependencies>
