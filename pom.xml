@@ -56,7 +56,7 @@
     <repository>
       <id>org.cybergarage</id>
       <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repos/</url>
+      <url>file:///var/www/maven/repo/</url>
     </repository>
   </distributionManagement>
 
