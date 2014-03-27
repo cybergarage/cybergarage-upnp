@@ -65,8 +65,8 @@
   
   <distributionManagement>
     <repository>
-      <id>org.cybergarage.cyberlink</id>
-      <name>CyberLink for Java</name>
+      <id>org.cybergarage</id>
+      <name>Cyber Garage Maven Repository</name>
       <url>file:///var/www/maven/repos/</url>
     </repository>
   </distributionManagement>
