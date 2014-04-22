@@ -209,6 +209,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		rootNode = root;
 		deviceNode = device;
 		setUUID(UPnP.createUUID());
+		setBootId(UPnP.createBootId());
 		setWirelessMode(false);
 	}
 
@@ -411,17 +412,33 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	
 	private void setUUID(String uuid)
 	{
-		devUUID = uuid;
+		this.devUUID = uuid;
 	}
 	
-	private String getUUID() 
+	public String getUUID() 
 	{
-		return devUUID;
+		return this.devUUID;
 	}
 	
 	private void updateUDN()
 	{
 		setUDN("uuid:" + getUUID());	
+	}
+
+	////////////////////////////////////////////////
+	//	Device UUID
+	////////////////////////////////////////////////
+
+	private int bootId;
+	
+	private void setBootId(int bootId)
+	{
+		this.bootId = bootId;
+	}
+	
+	public int getBootId() 
+	{
+		return this.bootId;
 	}
 	
 	////////////////////////////////////////////////
@@ -1347,6 +1364,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	{
 		TimerUtil.waitRandom(DEFAULT_DISCOVERY_WAIT_TIME);
 	}
+	
 	public void announce(String bindAddr)
 	{
 		String devLocation = getLocationURL(bindAddr);
@@ -1358,6 +1376,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		ssdpReq.setLeaseTime(getLeaseTime());
 		ssdpReq.setLocation(devLocation);
 		ssdpReq.setNTS(NTS.ALIVE);
+		ssdpReq.setBootId(getBootId());
 		
 		// uuid:device-UUID(::upnp:rootdevice)* 
 		if (isRootDevice() == true) {
@@ -1496,6 +1515,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	////////////////////////////////////////////////
 
     private static Calendar cal = Calendar.getInstance();
+    
     public boolean postSearchResponse(SSDPPacket ssdpPacket, String st, String usn)
 	{
 		String localAddr = ssdpPacket.getLocalAddress();
@@ -1508,6 +1528,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		ssdpRes.setST(st);
 		ssdpRes.setUSN(usn);
 		ssdpRes.setLocation(rootDevLocation);
+		ssdpRes.setBootId(getBootId());
 		// Thanks for Brent Hills (10/20/04)
 		ssdpRes.setMYNAME(getFriendlyName());
 

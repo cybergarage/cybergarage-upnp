@@ -133,4 +133,18 @@ public class DeviceTest extends TestCase
         devAbsUrl = dev.getAbsoluteURL("serviceURL", null, "http://192.168.0.3:80/device/");
         assertTrue(devAbsUrl, devAbsUrl.equals("http://192.168.0.3:80/device/serviceURL"));    
     }
+
+    /**
+     * Internal Id Generation Test :-)
+     */
+    public void testInternalStaticIds()
+    {
+        Device dev = new Device();
+        
+        String devUUID = dev.getUUID();
+        assertTrue(0 < devUUID.length());
+
+        int bootId = dev.getBootId();
+        assertTrue(0 < bootId);
+    }
 }
