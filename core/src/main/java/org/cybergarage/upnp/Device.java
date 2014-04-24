@@ -209,7 +209,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		rootNode = root;
 		deviceNode = device;
 		setUUID(UPnP.createUUID());
-		setBootId(UPnP.createBootId());
+		updateBootId();
 		setWirelessMode(false);
 	}
 
@@ -431,9 +431,9 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
 	private int bootId;
 	
-	private void setBootId(int bootId)
+	private void updateBootId()
 	{
-		this.bootId = bootId;
+		this.bootId = UPnP.createBootId();
 	}
 	
 	public int getBootId() 
@@ -2082,6 +2082,12 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 			return false;
 		ssdpSearchSockList.addSearchListener(this);
 		ssdpSearchSockList.start();
+
+		////////////////////////////////////////
+		// BOOTID.UPNP.ORG
+		////////////////////////////////////////
+		
+		updateBootId();
 
 		////////////////////////////////////////
 		// Announce
