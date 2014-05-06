@@ -209,7 +209,6 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		rootNode = root;
 		deviceNode = device;
 		setUUID(UPnP.createUUID());
-		updateBootId();
 		setWirelessMode(false);
 	}
 
@@ -426,7 +425,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	}
 
 	////////////////////////////////////////////////
-	//	Device UUID
+	//	BootId
 	////////////////////////////////////////////////
 
 	private int bootId;
@@ -439,6 +438,57 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	public int getBootId() 
 	{
 		return this.bootId;
+	}
+	
+	////////////////////////////////////////////////
+	//	configID
+	////////////////////////////////////////////////
+
+	private final static String CONFIG_ID = "configId";
+	
+	private void updateConfigId(Device dev)
+	{
+		int configId = 0;
+		
+		DeviceList cdevList = dev.getDeviceList();
+		int cdevCnt = cdevList.size();
+		for (int n=0; n<cdevCnt; n++) {
+			Device cdev = cdevList.getDevice(n);
+			updateConfigId(cdev);
+			configId += cdev.getConfigId();
+			configId &= UPnP.CONFIGID_UPNP_ORG_MAX;
+		}
+		
+		ServiceList serviceList = dev.getServiceList();
+		int serviceCnt = serviceList.size();
+		for (int n=0; n<serviceCnt; n++) {
+			Service service = serviceList.getService(n);
+			service.updateConfigId();
+			configId += service.getConfigId();
+			configId &= UPnP.CONFIGID_UPNP_ORG_MAX;
+		}
+		
+		Node devNode = getDeviceNode();
+		if (devNode == null)
+			return;
+		
+		String devDescXml = devNode.toString();
+		configId += UPnP.caluculateConfigId(devDescXml);
+		configId &= UPnP.CONFIGID_UPNP_ORG_MAX;
+		devNode.setAttribute(CONFIG_ID, configId);
+	}
+	
+	public void updateConfigId()
+	{
+		updateConfigId(this);
+	}
+
+	public int getConfigId()
+	{
+		Node devNode = getDeviceNode();
+		if (devNode == null)
+			return 0;
+		return devNode.getAttributeIntegerValue(CONFIG_ID);
 	}
 	
 	////////////////////////////////////////////////
@@ -2084,10 +2134,11 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		ssdpSearchSockList.start();
 
 		////////////////////////////////////////
-		// BOOTID.UPNP.ORG
+		// BOOTID/CONFIGID.UPNP.ORG
 		////////////////////////////////////////
 		
 		updateBootId();
+		updateConfigId();
 
 		////////////////////////////////////////
 		// Announce

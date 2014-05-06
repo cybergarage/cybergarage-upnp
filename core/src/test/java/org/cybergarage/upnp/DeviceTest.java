@@ -135,7 +135,7 @@ public class DeviceTest extends TestCase
     }
 
     /**
-     * Internal Id Generation Test :-)
+     * Internal Id Generation Test
      */
     public void testInternalStaticIds()
     {
