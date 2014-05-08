@@ -1782,8 +1782,11 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		}
 		
 		HTTPResponse httpRes = new HTTPResponse();
-		if (FileUtil.isXMLFileName(uri) == true)
-			httpRes.setContentType(XML.CONTENT_TYPE);
+		if (FileUtil.isXMLFileName(uri) == true) {
+			httpRes.setContentType(XML.DEFAULT_CONTENT_TYPE);
+			// FIXME Check ACCEPT-LANGUAGE header in client request, and set a suitable code.
+			httpRes.setContentLanguage(XML.DEFAULT_CONTENT_LANGUAGE);
+		}
 		httpRes.setStatusCode(HTTPStatus.OK);
 		httpRes.setContent(fileByte);
 

@@ -69,6 +69,7 @@ public class HTTP
 	public static final String CONTENT_TYPE = "Content-Type";
 	public static final String CHARSET = "charset";
 	public static final String CONTENT_LENGTH = "Content-Length";
+	public static final String CONTENT_LANGUAGE = "Content-Language";
 	public static final String CONTENT_RANGE = "Content-Range";
 	public static final String CONTENT_RANGE_BYTES = "bytes"; 
 	public static final String RANGE = "Range";
