@@ -212,8 +212,11 @@ public class UPnP
 		int configLen = configXml.length();
 		for (int n=0; n<configLen; n++) {
 			configId += configXml.codePointAt(n);
+			if (configId < CONFIGID_UPNP_ORG_MAX)
+				continue;
+			configId = configId % CONFIGID_UPNP_ORG_MAX;
 		}
-		return (configId & CONFIGID_UPNP_ORG_MAX);
+		return configId;
 	}
 	
 	////////////////////////////////////////////////
