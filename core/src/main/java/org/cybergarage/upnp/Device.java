@@ -123,6 +123,7 @@ import org.cybergarage.upnp.device.NTS;
 import org.cybergarage.upnp.device.ST;
 import org.cybergarage.upnp.device.SearchListener;
 import org.cybergarage.upnp.device.USN;
+import org.cybergarage.upnp.device.PresentationListener;
 import org.cybergarage.upnp.event.Subscriber;
 import org.cybergarage.upnp.event.Subscription;
 import org.cybergarage.upnp.event.SubscriptionRequest;
@@ -159,6 +160,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	public final static int HTTP_DEFAULT_PORT = 4004;
 
 	public final static String DEFAULT_DESCRIPTION_URI = "/description.xml";
+	public final static String DEFAULT_PRESENTATION_URI = "/presentation";
 	
 	////////////////////////////////////////////////
 	//	Member
@@ -1049,6 +1051,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	////////////////////////////////////////////////
 
 	private final static String presentationURL = "presentationURL";
+	private PresentationListener presentationListener;
 	
 	public void setPresentationURL(String value)
 	{
@@ -1060,6 +1063,45 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		return getDeviceNode().getNodeValue(presentationURL);
 	}
 
+	public boolean removePresentationURL()
+	{
+		return getDeviceNode().removeNode(presentationURL);
+	}
+
+	private boolean isPresentationRequest(HTTPRequest httpReq) {
+		if (!httpReq.isGetRequest())
+			return false;
+		String urlPath = httpReq.getURI();
+		if (urlPath == null)
+			return false;
+		String presentationURL = getPresentationURL();
+		if (presentationURL == null)
+			return false;
+		return urlPath.startsWith(presentationURL);
+	}
+	
+	public void setPresentationListener(PresentationListener listener)
+	{
+		this.presentationListener = listener;
+		
+		if (listener != null) {
+			setPresentationURL(DEFAULT_PRESENTATION_URI);
+		}
+		else {
+			removePresentationURL();
+		}
+	}
+	
+	public boolean hasPresentationListener()
+	{
+		return (this.presentationListener != null) ?true : false;
+	}
+	
+	public PresentationListener getPresentationListener()
+	{
+		return this.presentationListener;
+	}
+	
 	////////////////////////////////////////////////
 	//	deviceList
 	////////////////////////////////////////////////
@@ -1717,6 +1759,12 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		if (Debug.isOn() == true)
 			httpReq.print();
 	
+		if (hasPresentationListener() &&  isPresentationRequest(httpReq)) {
+			PresentationListener listener = getPresentationListener();
+			listener.httpRequestRecieved(httpReq);
+			return;
+		}
+		
 		if (httpReq.isGetRequest() == true || httpReq.isHeadRequest() == true) {
 			httpGetRequestRecieved(httpReq);
 			return;
