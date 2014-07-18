@@ -47,6 +47,10 @@ public class Icon
 		iconNode = node;
 	}
 
+	public Icon() {
+		this(new Node());
+	}
+	
 	////////////////////////////////////////////////
 	//	isIconNode
 	////////////////////////////////////////////////
@@ -139,9 +143,21 @@ public class Icon
 		getIconNode().setNode(DEPTH, value);
 	}
 
-	public String getDepth()
+	public void setDepth(int value)
 	{
-		return getIconNode().getNodeValue(DEPTH);
+		try {
+			setDepth(Integer.toString(value));
+		}
+		catch (Exception e) {};
+	}
+	
+	public int getDepth()
+	{
+		try {
+			return Integer.parseInt(getIconNode().getNodeValue(DEPTH));
+		}
+		catch (Exception e) {};
+		return 0;
 	}
 
 	////////////////////////////////////////////////
@@ -174,5 +190,21 @@ public class Icon
 	public Object getUserData() 
 	{
 		return userData;
+	}
+
+	////////////////////////////////////////////////
+	//	Bytes
+	////////////////////////////////////////////////
+
+	private byte bytes[] = null; 
+	
+	public void setBytes(byte data[]) 
+	{
+		bytes = data;
+	}
+
+	public byte[]getBytes() 
+	{
+		return bytes;
 	}
 }
