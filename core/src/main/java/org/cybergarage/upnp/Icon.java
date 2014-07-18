@@ -203,6 +203,11 @@ public class Icon
 		bytes = data;
 	}
 
+	public boolean hasBytes() 
+	{
+		return (bytes != null) ? true : false;
+	}
+	
 	public byte[]getBytes() 
 	{
 		return bytes;

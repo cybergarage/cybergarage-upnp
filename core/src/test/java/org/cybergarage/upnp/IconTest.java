@@ -71,6 +71,7 @@ public class IconTest extends TestCase
     	byte data[] = new byte[1];
     	assertEquals(null, icon.getBytes());
     	icon.setBytes(data);
+    	assertTrue(icon.hasBytes());
     	assertTrue(icon.getBytes() != null);
     }
 }
