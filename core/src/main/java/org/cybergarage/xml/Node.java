@@ -61,6 +61,12 @@ public class Node
 		setName(ns, name);
 	}
 
+	public Node(Node otherNode) 
+	{
+		this();
+		set(otherNode);
+	}
+	
 	////////////////////////////////////////////////
 	//	parent node
 	////////////////////////////////////////////////
@@ -189,6 +195,11 @@ public class Node
 		return removeAttribute(getAttribute(name));
 	}
 
+	public void removeAllAttributes()
+	{
+		attrList.clear();
+	}
+	
 	public boolean hasAttributes()
 	{
 		if (0 < getNAttributes())
@@ -250,6 +261,23 @@ public class Node
 		setName(otherNode.getName());		
 		setValue(otherNode.getValue());
 
+		removeAllAttributes();
+		int nOtherAttributes = otherNode.getNAttributes();
+		for (int n=0; n<nOtherAttributes; n++) {
+			Attribute otherAttr = otherNode.getAttribute(n);
+			Attribute thisAttr = new Attribute(otherAttr);
+			addAttribute(thisAttr);
+		}
+		
+		removeAllNodes();
+		int nOtherChildNodes = otherNode.getNNodes();
+		for (int n=0; n<nOtherChildNodes; n++) {
+			Node otherChildNode = otherNode.getNode(n);
+			Node thisChildNode = new Node();
+			thisChildNode.set(otherChildNode);
+			addNode(thisChildNode);
+		}
+		
 		return true;
 	}
 	

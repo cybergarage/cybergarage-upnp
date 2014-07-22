@@ -92,26 +92,78 @@ public class NodeTest extends TestCase
     	assertFalse(node1.equals(null));
     	assertFalse(node2.equals(null));
 
-    	String childNodeName;
-    	String childNodeValue;
+    	String nodeName = "node";
+    	String nodeValue = "value";
     	
-    	childNodeName = "cnode";
-    	childNodeValue = "cvalue";
-    	
-    	node1.setName(childNodeName);
+    	node1.setName(nodeName);
     	assertFalse(node1.equals(node2));
     	assertFalse(node2.equals(node1));
 
-    	node1.setValue(childNodeValue);
+    	node1.setValue(nodeValue);
     	assertFalse(node1.equals(node2));
     	assertFalse(node2.equals(node1));
 
-    	node2.setName(childNodeName);
+    	node2.setName(nodeName);
     	assertFalse(node1.equals(node2));
     	assertFalse(node2.equals(node1));
 
-    	node2.setValue(childNodeValue);
+    	node2.setValue(nodeValue);
     	assertTrue(node1.equals(node2));
     	assertTrue(node2.equals(node1));
+    }
+
+    public void testSet() {
+    	String nodeName = "node";
+    	String nodeValue = "value";
+    	String nodeAttrName = "attr";
+    	String nodeAttrValue = "attrvalue";
+    	
+    	Node orgNode = new Node();
+    	orgNode.setName(nodeName);
+    	orgNode.setValue(nodeValue);
+    	orgNode.setAttribute(nodeAttrName, nodeAttrValue);
+    	
+    	Node newNode = new Node();
+    	newNode.set(orgNode);
+    	assertTrue(orgNode.equals(newNode));
+    	assertTrue(newNode.equals(orgNode));
+
+    	String oldNodeName = "oldnode";
+    	String oldNodeAttrName = "oldcattr";
+    	String oldNodeAttrValue = "oldcattrvalue";
+    	Node settedNode = new Node(oldNodeName);
+    	settedNode.setAttribute(oldNodeAttrName, oldNodeAttrValue);
+    	settedNode.set(orgNode);    	
+    	assertTrue(orgNode.equals(settedNode));
+    	assertTrue(settedNode.equals(orgNode));
+    }
+
+    public void testSetWithChileNode() {
+    	String nodeName = "node";
+    	String childNodeName = "cnode";
+    	String childNodeValue = "cvalue";
+    	String nodeAttrName = "attr";
+    	String nodeAttrValue = "attrvalue";
+    	
+    	Node orgNode = new Node(nodeName);
+    	orgNode.setNode(childNodeName, childNodeValue);
+    	orgNode.setAttribute(nodeAttrName, nodeAttrValue);
+    	
+    	Node newNode = new Node();
+    	newNode.set(orgNode);    	
+    	assertTrue(orgNode.equals(newNode));
+    	assertTrue(newNode.equals(orgNode));
+    	
+    	String oldNodeName = "oldnode";
+    	String oldNodeAttrName = "oldcattr";
+    	String oldNodeAttrValue = "oldcattrvalue";
+    	String oldChildNodeName = "oldcnode";
+    	String oldChildNodeValue = "oldcvalue";
+    	Node settedNode = new Node(oldNodeName);
+    	settedNode.setAttribute(oldNodeAttrName, oldNodeAttrValue);
+    	settedNode.setNode(oldChildNodeName, oldChildNodeValue);
+    	settedNode.set(orgNode);    	
+    	assertTrue(orgNode.equals(settedNode));
+    	assertTrue(settedNode.equals(orgNode));
     }
 }

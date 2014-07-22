@@ -26,12 +26,14 @@ public class Attribute
 
 	public Attribute(String name, String value) 
 	{
+		this();
 		setName(name);
 		setValue(value);
 	}
 
 	public Attribute(Attribute otherAttr) 
 	{
+		this();
 		set(otherAttr);
 	}
 	
