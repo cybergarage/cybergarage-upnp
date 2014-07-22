@@ -309,15 +309,29 @@ public class Node
 	//	Element (Child Node)
 	////////////////////////////////////////////////
 
-	public void setNode(String name, String value) {
+	public boolean hasNode(String name) {
 		Node node = getNode(name);
 		if (node != null) {
-			node.setValue(value);
+			return true;
+		}
+		return false;
+	}
+	
+	public void setNode(String name) {
+		if (hasNode(name)) {
 			return;
 		}
-		node = new Node(name);
-		node.setValue(value);
+		Node node = new Node(name);
 		addNode(node);
+	}
+	
+	public void setNode(String name, String value) {
+		Node node = getNode(name);
+		if (node == null) {
+			node = new Node(name);
+			addNode(node);
+		}
+		node.setValue(value);
 	}
 
 	public String getNodeValue(String name) {
