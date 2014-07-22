@@ -36,9 +36,6 @@ public class NodeTest extends TestCase
         return new TestSuite( NodeTest.class );
     }
 
-    /**
-     * Non node icon
-     */
     public void testSetChildNode()
     {
     	Node parentNode = new Node();
@@ -84,5 +81,37 @@ public class NodeTest extends TestCase
     	assertNotNull(childNode);
     	assertEquals(childNodeName, childNode.getName());
     	assertEquals(childNodeValue, childNode.getValue());
+    }
+
+    public void testEquals() {
+    	Node node1 = new Node();
+    	Node node2 = new Node();
+
+    	assertTrue(node1.equals(node2));
+    	assertTrue(node2.equals(node1));
+    	assertFalse(node1.equals(null));
+    	assertFalse(node2.equals(null));
+
+    	String childNodeName;
+    	String childNodeValue;
+    	
+    	childNodeName = "cnode";
+    	childNodeValue = "cvalue";
+    	
+    	node1.setName(childNodeName);
+    	assertFalse(node1.equals(node2));
+    	assertFalse(node2.equals(node1));
+
+    	node1.setValue(childNodeValue);
+    	assertFalse(node1.equals(node2));
+    	assertFalse(node2.equals(node1));
+
+    	node2.setName(childNodeName);
+    	assertFalse(node1.equals(node2));
+    	assertFalse(node2.equals(node1));
+
+    	node2.setValue(childNodeValue);
+    	assertTrue(node1.equals(node2));
+    	assertTrue(node2.equals(node1));
     }
 }

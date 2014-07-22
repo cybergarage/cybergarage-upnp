@@ -240,6 +240,34 @@ public class Node
 	}
 		
 	////////////////////////////////////////////////
+	//	set
+	////////////////////////////////////////////////
+	
+	public boolean set(Node otherNode) {
+		if (otherNode == null)
+			return false;
+		
+		setName(otherNode.getName());		
+		setValue(otherNode.getValue());
+
+		return true;
+	}
+	
+	////////////////////////////////////////////////
+	//	equals
+	////////////////////////////////////////////////
+	
+	public boolean equals(Node otherNode) {
+		if (otherNode == null)
+			return false;
+
+		String thisNodeString = toString();
+		String otherNodeString = otherNode.toString();
+		
+		return thisNodeString.equals(otherNodeString);
+	}
+	
+	////////////////////////////////////////////////
 	//	Child node
 	////////////////////////////////////////////////
 
