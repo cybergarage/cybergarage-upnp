@@ -30,6 +30,11 @@ public class Attribute
 		setValue(value);
 	}
 
+	public Attribute(Attribute otherAttr) 
+	{
+		set(otherAttr);
+	}
+	
 	////////////////////////////////////////////////
 	//	name
 	////////////////////////////////////////////////
@@ -56,6 +61,16 @@ public class Attribute
 	public String getValue() 
 	{
 		return value;
+	}
+
+	////////////////////////////////////////////////
+	//	set
+	////////////////////////////////////////////////
+
+	public void set(Attribute otherAttr) 
+	{
+		setName(otherAttr.getName());
+		setValue(otherAttr.getValue());
 	}
 }
 
