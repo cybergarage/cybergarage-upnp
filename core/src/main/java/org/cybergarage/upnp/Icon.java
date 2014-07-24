@@ -175,6 +175,14 @@ public class Icon
 	{
 		return getIconNode().getNodeValue(URL);
 	}
+
+	public boolean hasURL()
+	{
+		String iconURL = getIconNode().getNodeValue(URL);
+		if (iconURL == null)
+			return false;
+		return (0 < iconURL.length()) ? true : false;
+	}
 	
 	////////////////////////////////////////////////
 	//	userData

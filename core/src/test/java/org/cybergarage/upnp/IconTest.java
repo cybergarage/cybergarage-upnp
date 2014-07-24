@@ -36,9 +36,6 @@ public class IconTest extends TestCase
         return new TestSuite( IconTest.class );
     }
 
-    /**
-     * Non node icon
-     */
     public void testConstructorWithoutNode()
     {
     	Icon icon = new Icon();
@@ -64,8 +61,10 @@ public class IconTest extends TestCase
     	assertEquals(depth, icon.getDepth());
 
     	String url = "/icon";
+    	assertFalse(icon.hasURL());
     	assertEquals("", icon.getURL());
     	icon.setURL(url);
+    	assertTrue(icon.hasURL());
     	assertEquals(url, icon.getURL());
 
     	byte data[] = new byte[1];
@@ -73,5 +72,21 @@ public class IconTest extends TestCase
     	icon.setBytes(data);
     	assertTrue(icon.hasBytes());
     	assertTrue(icon.getBytes() != null);
+    }
+
+    public void testIconHasURL()
+    {
+    	Icon icon = new Icon();
+    	
+    	assertFalse(icon.hasURL());
+    	
+    	icon.setURL(null);
+    	assertFalse(icon.hasURL());
+    	
+    	icon.setURL("");
+    	assertFalse(icon.hasURL());
+    	
+    	icon.setURL("/icon");
+    	assertTrue(icon.hasURL());
     }
 }
