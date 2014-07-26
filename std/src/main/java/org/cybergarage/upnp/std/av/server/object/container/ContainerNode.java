@@ -62,7 +62,7 @@ public class ContainerNode extends ContentNode
 	// set
 	////////////////////////////////////////////////
 
-	public void set(Node node)
+	public boolean set(Node node)
 	{
 		// Child Node -> Property;
 		int nNode = node.getNNodes();
@@ -81,6 +81,8 @@ public class ContainerNode extends ContentNode
 			Attribute attr = node.getAttribute(n);
 			setAttribute(attr.getName(), attr.getValue());
 		}
+		
+		return true;
 	}
 	
 	////////////////////////////////////////////////

@@ -208,7 +208,7 @@ public abstract class ContentNode extends Node
 	// set
 	////////////////////////////////////////////////
 
-	public abstract void set(Node node);
+	public abstract boolean set(Node node);
 	
 	////////////////////////////////////////////////
 	// ID
