@@ -1378,6 +1378,17 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	////////////////////////////////////////////////
 
 	private HashMap<String, byte[]> iconBytesMap = new HashMap<String, byte[]>();
+
+	public boolean hasIconURLBytes(String iconURL) {
+		byte iconBytes[] = getIconURLBytes(iconURL);
+		if (iconBytes == null)
+			return false;
+		return true;
+	}
+	
+	public byte []getIconURLBytes(String iconURL) {
+		return iconBytesMap.get(iconURL);
+	}
 	
 	public boolean addIcon(Icon icon) {
 		Node deviceNode = getDeviceNode();
