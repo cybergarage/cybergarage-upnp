@@ -101,6 +101,7 @@ import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import org.cybergarage.http.HTTP;
 import org.cybergarage.http.HTTPRequest;
@@ -1376,6 +1377,32 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	//	iconList
 	////////////////////////////////////////////////
 
+	private HashMap<String, byte[]> iconBytesMap = new HashMap<String, byte[]>();
+	
+	public boolean addIcon(Icon icon) {
+		Node deviceNode = getDeviceNode();
+		if (deviceNode == null)
+			return false;
+		
+		Node iconListNode = deviceNode.getNode(IconList.ELEM_NAME);
+		if (iconListNode == null) {
+			iconListNode = new Node(IconList.ELEM_NAME);
+			deviceNode.addNode(iconListNode);
+		}
+		
+		Node iconNode = new Node(Icon.ELEM_NAME);
+		if (icon.getIconNode() != null) {
+			iconNode.set(icon.getIconNode());
+		}
+		iconListNode.addNode(iconNode);
+		
+		if (icon.hasURL() && icon.hasBytes()) {
+			iconBytesMap.put(icon.getURL(), icon.getBytes());
+		}
+		
+		return true;
+	}
+	
 	public IconList getIconList()
 	{
 		IconList iconList = new IconList();
@@ -1388,6 +1415,13 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 			if (Icon.isIconNode(node) == false)
 				continue;
 			Icon icon = new Icon(node);
+			if (icon.hasURL()) {
+				String iconURL = icon.getURL();
+				byte iconBytes[] =  iconBytesMap.get(iconURL);
+				if (iconBytes != null) {
+					icon.setBytes(iconBytes);
+				}
+			}
 			iconList.add(icon);
 		} 
 		return iconList;

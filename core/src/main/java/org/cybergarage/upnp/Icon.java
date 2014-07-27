@@ -48,7 +48,7 @@ public class Icon
 	}
 
 	public Icon() {
-		this(new Node());
+		this(new Node(ELEM_NAME));
 	}
 	
 	////////////////////////////////////////////////

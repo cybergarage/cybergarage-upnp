@@ -14,6 +14,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.cybergarage.xml.Node;
+
 public class DeviceTest extends TestCase
 {
     /**
@@ -145,6 +147,50 @@ public class DeviceTest extends TestCase
         assertTrue(0 < devUUID.length());
 
         int bootId = dev.getBootId();
-        assertTrue(0 < bootId);
+        assertTrue(0 <= bootId);
+    }
+
+    /**
+     * Device Icon
+     */
+    public void testAddIconNode()
+    {
+        Icon icon = new Icon();
+        
+        int width = 64;
+        icon.setWidth(width);
+        assertEquals(icon.getWidth(), width);
+        
+        int height = 48;
+        icon.setHeight(height);
+        assertEquals(icon.getHeight(), height);
+
+        int depth = 24;
+        icon.setDepth(depth);
+        assertEquals(icon.getDepth(), depth);
+        
+        String url = "/icon?num=1";
+        icon.setURL(url);
+        assertEquals(icon.getURL(), url);
+        
+        String image = "PNG";
+        assertNull(icon.getBytes());
+        icon.setBytes(image.getBytes());
+        assertNotNull(icon.getBytes());
+        
+        Device dev = new Device(new Node());
+        IconList iconList = dev.getIconList();
+        assertEquals(iconList.size(), 0);
+        
+        assertTrue(dev.addIcon(icon));
+        iconList = dev.getIconList();
+        assertEquals(iconList.size(), 1);
+        
+        Icon devIcon = iconList.getIcon(0);
+        assertEquals(devIcon.getWidth(), width);
+        assertEquals(devIcon.getHeight(), height);
+        assertEquals(devIcon.getDepth(), depth);
+        assertEquals(devIcon.getURL(), url);
+        assertNotNull(devIcon.getBytes());
     }
 }
