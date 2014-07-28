@@ -1378,16 +1378,27 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 	////////////////////////////////////////////////
 
 	private HashMap<String, byte[]> iconBytesMap = new HashMap<String, byte[]>();
-
-	public boolean hasIconURLBytes(String iconURL) {
-		byte iconBytes[] = getIconURLBytes(iconURL);
+	
+	public boolean isIconURL(String iconURL) {
+		byte iconBytes[] = iconBytesMap.get(iconURL);
 		if (iconBytes == null)
 			return false;
 		return true;
 	}
 	
-	public byte []getIconURLBytes(String iconURL) {
-		return iconBytesMap.get(iconURL);
+	public Icon getIconByURL(String iconURL)
+	{
+		IconList iconList = getIconList();
+		if (iconList.size() <= 0)
+			return null;
+		
+		int nIcon = iconList.size();
+		for (int n=0; n<nIcon; n++) {
+			Icon icon = iconList.getIcon(n);
+			if (icon.isURL(iconURL))
+				return icon;
+		} 
+		return null;
 	}
 	
 	public boolean addIcon(Icon icon) {
@@ -1856,18 +1867,34 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		Service embService;
 		
 		byte fileByte[] = new byte[0];
+		String contentType = null;
+		String contentLanguage = null;
+		
 		if (isDescriptionURI(uri) == true) {
 			String localAddr = httpReq.getLocalAddress();
 			if ((localAddr == null) || (localAddr.length() <= 0))
 				localAddr = HostInterface.getInterface();
+			contentType = XML.DEFAULT_CONTENT_TYPE;
+			contentLanguage = XML.DEFAULT_CONTENT_LANGUAGE;
 			fileByte = getDescriptionData(localAddr);
 		}
 		else if ((embDev = getDeviceByDescriptionURI(uri)) != null) {
 			String localAddr = httpReq.getLocalAddress();
+			contentType = XML.DEFAULT_CONTENT_TYPE;
+			contentLanguage = XML.DEFAULT_CONTENT_LANGUAGE;
 			fileByte = embDev.getDescriptionData(localAddr);
 		}
 		else if ((embService = getServiceBySCPDURL(uri)) != null) {
+			contentType = XML.DEFAULT_CONTENT_TYPE;
+			contentLanguage = XML.DEFAULT_CONTENT_LANGUAGE;
 			fileByte = embService.getSCPDData();
+		}
+		else if (isIconURL(uri) == true) {
+			Icon devIcon = getIconByURL(uri);
+			if (devIcon != null) {
+				contentType = devIcon.getMimeType();
+				fileByte = devIcon.getBytes();
+			}
 		}
 		else {
 			httpReq.returnBadRequest();
@@ -1875,12 +1902,14 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 		}
 		
 		HTTPResponse httpRes = new HTTPResponse();
-		if (FileUtil.isXMLFileName(uri) == true) {
-			httpRes.setContentType(XML.DEFAULT_CONTENT_TYPE);
-			// FIXME Check ACCEPT-LANGUAGE header in client request, and set a suitable code.
-			httpRes.setContentLanguage(XML.DEFAULT_CONTENT_LANGUAGE);
-		}
 		httpRes.setStatusCode(HTTPStatus.OK);
+		if (contentType != null) {
+			httpRes.setContentType(contentType);
+		}
+		if (contentLanguage != null) {
+			// FIXME Check ACCEPT-LANGUAGE header in client request, and set a suitable code.
+			httpRes.setContentLanguage(contentLanguage);
+		}
 		httpRes.setContent(fileByte);
 
 		httpReq.post(httpRes);

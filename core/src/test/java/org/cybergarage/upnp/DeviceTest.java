@@ -169,6 +169,10 @@ public class DeviceTest extends TestCase
         icon.setDepth(depth);
         assertEquals(icon.getDepth(), depth);
         
+        String mimeType = "image/png";
+        icon.setMimeType(mimeType);
+        assertEquals(icon.getMimeType(), mimeType);
+        
         String url = "/icon?num=1";
         icon.setURL(url);
         assertEquals(icon.getURL(), url);
@@ -179,7 +183,8 @@ public class DeviceTest extends TestCase
         assertNotNull(icon.getBytes());
         
         Device dev = new Device(new Node());
-        assertFalse(dev.hasIconURLBytes(url));
+        assertFalse(dev.isIconURL(url));
+        assertNull(dev.getIconByURL(url));
         IconList iconList = dev.getIconList();
         assertEquals(iconList.size(), 0);
         
@@ -194,7 +199,13 @@ public class DeviceTest extends TestCase
         assertEquals(devIcon.getURL(), url);
         assertEquals(new String(devIcon.getBytes()), image);
 
-        assertTrue(dev.hasIconURLBytes(url));
-        assertEquals(new String(dev.getIconURLBytes(url)), image);
+        assertTrue(dev.isIconURL(url));
+        devIcon = dev.getIconByURL(url);
+        assertNotNull(devIcon);
+        assertEquals(devIcon.getWidth(), width);
+        assertEquals(devIcon.getHeight(), height);
+        assertEquals(devIcon.getDepth(), depth);
+        assertEquals(devIcon.getURL(), url);
+        assertEquals(new String(devIcon.getBytes()), image);
     }
 }
