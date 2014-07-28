@@ -183,8 +183,8 @@ public class DeviceTest extends TestCase
         assertNotNull(icon.getBytes());
         
         Device dev = new Device(new Node());
-        assertFalse(dev.isIconURL(url));
-        assertNull(dev.getIconByURL(url));
+        assertFalse(dev.isIconBytesURI(url));
+        assertNull(dev.getIconByURI(url));
         IconList iconList = dev.getIconList();
         assertEquals(iconList.size(), 0);
         
@@ -199,8 +199,8 @@ public class DeviceTest extends TestCase
         assertEquals(devIcon.getURL(), url);
         assertEquals(new String(devIcon.getBytes()), image);
 
-        assertTrue(dev.isIconURL(url));
-        devIcon = dev.getIconByURL(url);
+        assertTrue(dev.isIconBytesURI(url));
+        devIcon = dev.getIconByURI(url);
         assertNotNull(devIcon);
         assertEquals(devIcon.getWidth(), width);
         assertEquals(devIcon.getHeight(), height);
