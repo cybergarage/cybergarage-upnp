@@ -76,6 +76,14 @@ public class Icon
 		return getIconNode().getNodeValue(MIME_TYPE);
 	}
 
+	public boolean hasMimeType()
+	{
+		String iconMimeType = getMimeType();
+		if (iconMimeType == null)
+			return false;
+		return (0 < iconMimeType.length()) ? true : false;
+	}
+	
 	////////////////////////////////////////////////
 	//	width
 	////////////////////////////////////////////////
@@ -178,10 +186,20 @@ public class Icon
 
 	public boolean hasURL()
 	{
-		String iconURL = getIconNode().getNodeValue(URL);
+		String iconURL = getURL();
 		if (iconURL == null)
 			return false;
 		return (0 < iconURL.length()) ? true : false;
+	}
+	
+	public boolean isURL(String url)
+	{
+		if (url == null)
+			return false;
+		String iconURL = getURL();
+		if (iconURL == null)
+			return false;
+		return iconURL.equals(url);
 	}
 	
 	////////////////////////////////////////////////

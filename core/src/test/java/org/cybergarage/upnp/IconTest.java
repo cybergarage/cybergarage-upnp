@@ -41,9 +41,11 @@ public class IconTest extends TestCase
     	Icon icon = new Icon();
     	
     	String mimeType = "image/png";
+    	assertFalse(icon.hasMimeType());
     	assertEquals("", icon.getMimeType());
     	icon.setMimeType(mimeType);
     	assertEquals(mimeType, icon.getMimeType());
+    	assertTrue(icon.hasMimeType());
 
     	int width = 640;
     	assertEquals(0, icon.getWidth());
@@ -66,6 +68,7 @@ public class IconTest extends TestCase
     	icon.setURL(url);
     	assertTrue(icon.hasURL());
     	assertEquals(url, icon.getURL());
+    	assertTrue(icon.isURL(url));
 
     	byte data[] = new byte[1];
     	assertEquals(null, icon.getBytes());
