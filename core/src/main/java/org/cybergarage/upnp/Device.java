@@ -1296,14 +1296,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener,
 	public boolean isIconBytesURI(String uri) {
 		byte iconBytes[] = iconBytesMap.get(uri);
 		if (iconBytes == null)
-		{
-		    Icon icon = getIconByURI(uri);
-		    if(icon !=null)
-		    {
-		        return icon.hasBytes();
-		    }
-	        return false;
-		}
+			return false;
 		return true;
 	}
 
@@ -1357,13 +1350,13 @@ public class Device implements org.cybergarage.http.HTTPRequestListener,
 			if (Icon.isIconNode(node) == false)
 				continue;
 			Icon icon = new Icon(node);
-            if (icon.hasURL()) {
-                String iconURL = icon.getURL();
-                byte iconBytes[] = iconBytesMap.get(iconURL);
-                if (iconBytes != null) {
-                    icon.setBytes(iconBytes);
-                }
-            }
+			if (icon.hasURL()) {
+				String iconURL = icon.getURL();
+				byte iconBytes[] = iconBytesMap.get(iconURL);
+				if (iconBytes != null) {
+					icon.setBytes(iconBytes);
+				}
+			}
 			iconList.add(icon);
 		}
 		return iconList;
