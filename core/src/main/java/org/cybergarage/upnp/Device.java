@@ -1296,7 +1296,14 @@ public class Device implements org.cybergarage.http.HTTPRequestListener,
 	public boolean isIconBytesURI(String uri) {
 		byte iconBytes[] = iconBytesMap.get(uri);
 		if (iconBytes == null)
+		{
+		    Icon icon = getIconByURI(uri);
+		    if(icon !=null)
+		    {
+		        return icon.hasBytes();
+		    }
 			return false;
+		}
 		return true;
 	}
 
