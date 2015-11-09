@@ -130,7 +130,7 @@ public class SSDPNotifySocket extends HTTPMUSocket implements Runnable
 			InetAddress maddr = getMulticastInetAddress();
 			InetAddress pmaddr = packet.getHostInetAddress();
 			if (maddr.equals(pmaddr) == false) {
-				Debug.warning("Invalidate Multicast Recieved from IP " + maddr + " on " + pmaddr);
+				Debug.warning("Invalidate Multicast Received from IP " + maddr + " on " + pmaddr);
 				continue;
 			}
 			//TODO Must be performed on a different Thread in order to prevent UDP packet losses.
