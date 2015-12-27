@@ -3,13 +3,13 @@
 
   <parent>
     <artifactId>cybergarage-upnp</artifactId>
-    <groupId>org.cybergarage.cybergarage-upnp</groupId>
+    <groupId>org.cybergarage.upnp</groupId>
     <relativePath>../../</relativePath>
     <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cybergarage-upnp.samples</groupId>
+  <groupId>org.cybergarage.upnp.samples</groupId>
   <artifactId>air-conditioner</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
@@ -33,7 +33,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.cybergarage.cybergarage-upnp</groupId>
+      <groupId>org.cybergarage.upnp</groupId>
       <artifactId>cybergarage-upnp-core</artifactId>
       <version>${cybergarage-upnp.version}</version>
     </dependency>
