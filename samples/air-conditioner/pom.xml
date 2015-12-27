@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>cyberlink</artifactId>
-    <groupId>org.cybergarage.cyberlink</groupId>
+    <artifactId>cybergarage-upnp</artifactId>
+    <groupId>org.cybergarage.cybergarage-upnp</groupId>
     <relativePath>../../</relativePath>
-    <version>${cyberlink.version}</version>
+    <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cyberlink.samples</groupId>
+  <groupId>org.cybergarage.cybergarage-upnp.samples</groupId>
   <artifactId>air-conditioner</artifactId>
   <packaging>jar</packaging>
-  <version>${cyberlink.version}</version>
+  <version>${cybergarage-upnp.version}</version>
   <name>CyberLink Air Conditioner Device Sample</name>
   <description>A sample UPnP Air Conditioner Device implementation</description>
   
@@ -33,9 +33,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.cybergarage.cyberlink</groupId>
-      <artifactId>cyberlink-core</artifactId>
-      <version>${cyberlink.version}</version>
+      <groupId>org.cybergarage.cybergarage-upnp</groupId>
+      <artifactId>cybergarage-upnp-core</artifactId>
+      <version>${cybergarage-upnp.version}</version>
     </dependency>
   </dependencies>
 

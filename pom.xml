@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cyberlink</groupId>
+  <groupId>org.cybergarage.cybergarage-upnp</groupId>
   <packaging>pom</packaging>
-  <artifactId>cyberlink</artifactId>  
-  <version>${cyberlink.version}</version>
+  <artifactId>cybergarage-upnp</artifactId>  
+  <version>${cybergarage-upnp.version}</version>
 
   <name>CyberGarage CyberLink Suite</name>
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cyberlink.version>2.1.0</cyberlink.version>
+    <cybergarage-upnp.version>2.1.0</cybergarage-upnp.version>
   </properties>
   
   <scm>

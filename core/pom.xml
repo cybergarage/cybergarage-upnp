@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>cyberlink</artifactId>
-    <groupId>org.cybergarage.cyberlink</groupId>
-    <version>${cyberlink.version}</version>
+    <artifactId>cybergarage-upnp</artifactId>
+    <groupId>org.cybergarage.cybergarage-upnp</groupId>
+    <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cyberlink</groupId>
-  <artifactId>cyberlink-core</artifactId>
+  <groupId>org.cybergarage.cybergarage-upnp</groupId>
+  <artifactId>cybergarage-upnp-core</artifactId>
   <packaging>jar</packaging>
-  <version>${cyberlink.version}</version>
+  <version>${cybergarage-upnp.version}</version>
   <name>CyberLink UPnP Core</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://www.cybergarage.org/</url>
