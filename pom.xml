@@ -6,7 +6,7 @@
   <artifactId>cybergarage-upnp</artifactId>  
   <version>${cybergarage-upnp.version}</version>
 
-  <name>CyberGarage CyberLink Suite</name>
+  <name>cybergarage-upnp Suite</name>
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://www.cybergarage.org/</url>
 
@@ -17,9 +17,9 @@
   </properties>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/</url>
   </scm>
 
   <organization>

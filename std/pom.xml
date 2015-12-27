@@ -12,21 +12,21 @@
   <artifactId>cyber-media-garage</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>CyberLink UPnP/AV Media Server</name>
+  <name>cybergarage-upnp AV Media Server</name>
   <description>A pure Java Open Source implementation of the UPnP Media Server</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>https://github.com/cybergarage/CyberLink4Java/blob/master/LICENSE.txt</url>
+  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/std</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/std</url>
   </scm>
   
   <developers />

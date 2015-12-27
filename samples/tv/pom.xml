@@ -13,7 +13,7 @@
   <artifactId>tv</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>CyberLink TV Device Sample</name>
+  <name>cybergarage-upnp TV Device Sample</name>
   <description>A sample UPnP TV Device implementation</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
@@ -21,14 +21,14 @@
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>https://github.com/cybergarage/CyberLink4Java/blob/master/LICENSE.txt</url>
+  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/samples/tv</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/tv</url>
   </scm>
 
   <dependencies>
