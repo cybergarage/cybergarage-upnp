@@ -8,8 +8,6 @@ UPnP™ \* architecture is an open network to enable discovery and control of ne
 
 UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
-![upnp-app](http://www.cybergarage.org/wp-content/uploads/upnpapp.png)
-
 \* UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
 
 ## Repositories
