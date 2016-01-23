@@ -10,10 +10,10 @@
 
   <modelVersion>4.0.0</modelVersion>
     <groupId>org.cybergarage.upnp</groupId>
-  <artifactId>control-point</artifactId>
+  <artifactId>upnp-ctrl</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>cybergarage-upnp Control Point</name>
+  <name>cybergarage-upnp Control Point Utility</name>
   <description>A pure Java Open Source implementation of the UPnP Control Point</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
@@ -37,7 +37,7 @@
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
-      <artifactId>cybergarage-upnp-core</artifactId>
+      <artifactId>upnp-core</artifactId>
       <version>${cybergarage-upnp.version}</version>
     </dependency>
   </dependencies>
