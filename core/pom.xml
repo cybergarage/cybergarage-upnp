@@ -11,7 +11,7 @@
   <groupId>org.cybergarage.upnp</groupId>
   <artifactId>upnp-core</artifactId>
   <packaging>jar</packaging>
-  <version>${cybergarage-upnp.version}</version>
+  <version>2.1.0</version>
   <name>cybergarage-upnp Core</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://www.cybergarage.org/</url>
