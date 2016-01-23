@@ -3,7 +3,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp</groupId>
-  <artifactId>upnp-core</artifactId>
+  <artifactId>cybergarage-upnp-core</artifactId>
   <packaging>jar</packaging>
   <version>2.1.0</version>
   <name>cybergarage-upnp Core</name>

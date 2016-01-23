@@ -54,14 +54,6 @@
   
   <contributors />
   
-  <distributionManagement>
-    <repository>
-      <id>org.cybergarage</id>
-      <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repo/</url>
-    </repository>
-  </distributionManagement>
-
   <modules>
     <module>core</module>
     <module>std</module>
@@ -90,13 +82,6 @@
   <build>
     <pluginManagement>
       <plugins>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>

@@ -34,7 +34,7 @@
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
-      <artifactId>upnp-core</artifactId>
+      <artifactId>cybergarage-upnp-core</artifactId>
       <version>${cybergarage-upnp.version}</version>
     </dependency>
   </dependencies>
