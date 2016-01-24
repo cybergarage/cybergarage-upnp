@@ -19,6 +19,7 @@
 
 package org.cybergarage.upnp.ssdp;
 
+import java.net.BindException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
@@ -35,7 +36,7 @@ public class SSDPSearchResponseSocket extends HTTPUSocket implements Runnable
 		setControlPoint(null);
 	}
 	
-	public SSDPSearchResponseSocket(String bindAddr, int port)
+	public SSDPSearchResponseSocket(String bindAddr, int port) throws BindException
 	{
 		super(bindAddr, port);
 		setControlPoint(null);
