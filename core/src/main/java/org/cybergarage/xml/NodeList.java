@@ -28,7 +28,7 @@ public class NodeList extends Vector
 		return (Node)get(n);
 	}
 
-	public Node getNode(String name) 
+	public synchronized Node getNode(String name)
 	{
 		if (name == null)
 			return null;
@@ -43,7 +43,7 @@ public class NodeList extends Vector
 		return null;
 	}
 
-	public Node getEndsWith(String name) 
+	public synchronized Node getEndsWith(String name)
 	{
 		if (name == null)
 			return null;
