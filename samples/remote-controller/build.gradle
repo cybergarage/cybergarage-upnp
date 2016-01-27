@@ -1,0 +1,5 @@
+group = 'org.cybergarage.upnp.samples'
+description = 'cybergarage-upnp Remote Controller Device Sample'
+dependencies {
+  compile project(':cybergarage-upnp-core')
+}

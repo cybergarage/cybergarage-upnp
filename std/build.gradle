@@ -1,0 +1,5 @@
+
+description = 'cybergarage-upnp AV Media Server'
+dependencies {
+  compile project(':cybergarage-upnp-core')
+}

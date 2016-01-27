@@ -1,0 +1,19 @@
+allprojects  {
+  apply plugin: 'maven'
+
+  group = 'org.cybergarage.upnp'
+  version = '2.1.0'
+}
+
+subprojects {
+  apply plugin: 'java'
+  sourceCompatibility = 1.5
+  targetCompatibility = 1.5
+
+  
+  repositories {
+    mavenLocal()
+    
+    maven { url "http://repo.maven.apache.org/maven2" }
+  }
+}

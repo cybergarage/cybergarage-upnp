@@ -1,0 +1,24 @@
+rootProject.name = 'cybergarage-upnp'
+include ':cybergarage-upnp-core'
+include ':cyber-media-garage'
+include ':control-point'
+include ':igd-tool'
+include ':tv'
+include ':light'
+include ':clock'
+include ':washer'
+include ':air-conditioner'
+include ':remote-controller'
+include ':upnpdump'
+
+project(':cybergarage-upnp-core').projectDir = "$rootDir/core" as File
+project(':cyber-media-garage').projectDir = "$rootDir/std" as File
+project(':control-point').projectDir = "$rootDir/tools/control-point" as File
+project(':igd-tool').projectDir = "$rootDir/tools/igd-tool" as File
+project(':tv').projectDir = "$rootDir/samples/tv" as File
+project(':light').projectDir = "$rootDir/samples/light" as File
+project(':clock').projectDir = "$rootDir/samples/clock" as File
+project(':washer').projectDir = "$rootDir/samples/washer" as File
+project(':air-conditioner').projectDir = "$rootDir/samples/air-conditioner" as File
+project(':remote-controller').projectDir = "$rootDir/samples/remote-controller" as File
+project(':upnpdump').projectDir = "$rootDir/samples/upnpdump" as File

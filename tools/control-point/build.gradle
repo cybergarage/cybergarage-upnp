@@ -1,0 +1,5 @@
+
+description = 'cybergarage-upnp Control Point'
+dependencies {
+  compile project(':cybergarage-upnp-core')
+}
