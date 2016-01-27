@@ -1,8 +1,15 @@
 
+apply plugin: 'java'
 description = 'cybergarage-upnp Core'
-
+sourceSets {
+    main {
+        java {
+            exclude '**/XercesParser.java' // not compatible with Android
+        }
+    }
+}
 dependencies {
     compile group: 'net.sf.kxml', name: 'kxml2', version:'2.1.8'
-    compile group: 'xerces', name: 'xercesImpl', version:'2.8.1'
+//    compile group: 'xerces', name: 'xercesImpl', version:'2.8.1' // not compatible with Android
     testCompile group: 'junit', name: 'junit', version:'3.8.1'
 }
