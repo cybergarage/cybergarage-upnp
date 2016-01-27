@@ -1,5 +1,0 @@
-group = 'org.cybergarage.upnp.samples'
-description = 'cybergarage-upnp Clock Device Sample'
-dependencies {
-  compile project(':cybergarage-upnp-core')
-}
