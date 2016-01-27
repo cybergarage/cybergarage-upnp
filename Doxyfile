@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-PROJECT_NAME           = "CyberLink for Java"
+PROJECT_NAME           = "cybergarage-upnp"
 PROJECT_NUMBER         = 
 OUTPUT_DIRECTORY       = ./doxygen
 CREATE_SUBDIRS         = NO

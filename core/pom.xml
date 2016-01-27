@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <parent>
-    <artifactId>cybergarage-upnp</artifactId>
-    <groupId>org.cybergarage.upnp</groupId>
-    <version>${cybergarage-upnp.version}</version>
-  </parent>
-
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp</groupId>
   <artifactId>cybergarage-upnp-core</artifactId>
   <packaging>jar</packaging>
-  <version>${cybergarage-upnp.version}</version>
+  <version>2.1.1</version>
   <name>cybergarage-upnp Core</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://www.cybergarage.org/</url>
@@ -34,7 +28,8 @@
   <contributors />
   
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
   
   <dependencies>
@@ -55,6 +50,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>org.cybergarage</id>
+      <name>Cyber Garage Maven Repository</name>
+      <url>file:///var/www/maven/repo/</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <plugins>

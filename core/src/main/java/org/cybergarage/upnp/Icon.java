@@ -19,6 +19,9 @@ package org.cybergarage.upnp;
 
 import org.cybergarage.xml.Node;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
 public class Icon
 {
 	////////////////////////////////////////////////
@@ -64,7 +67,7 @@ public class Icon
 	//	mimeType
 	////////////////////////////////////////////////
 
-	private final static String MIME_TYPE = "mimeType";
+	private final static String MIME_TYPE = "mimetype";
 	
 	public void setMimeType(String value)
 	{
@@ -231,11 +234,34 @@ public class Icon
 
 	public boolean hasBytes() 
 	{
-		return (bytes != null) ? true : false;
+        if(bytes != null)
+            return true;
+        if(hasURL())
+            return Icon.class.getResourceAsStream(getURL()) != null;
+        else
+            return false;
 	}
 	
 	public byte[]getBytes() 
 	{
+        if (bytes == null && hasURL())
+        {
+            try
+            {
+                InputStream inStream = Icon.class.getResourceAsStream(getURL());
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                int data = -1;
+                while ((data = inStream.read()) != -1)
+                {
+                    baos.write(data);
+                }
+                inStream.close();
+                bytes = baos.toByteArray();
+            }
+            catch (Exception e)
+            {
+            }
+        }
 		return bytes;
 	}
 }
