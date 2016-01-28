@@ -64,6 +64,7 @@ package org.cybergarage.upnp;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.cybergarage.http.HTTPRequest;
 import org.cybergarage.http.HTTPRequestListener;
@@ -228,11 +229,18 @@ public class ControlPoint implements HTTPRequestListener
 	//	Device List
 	////////////////////////////////////////////////
 
-	private NodeList devNodeList = new NodeList();
+	private final NodeList devNodeList = new NodeList();
+	private final ReentrantReadWriteLock devNodeListLock = new ReentrantReadWriteLock();
 
 	private void addDevice(Node rootNode)
 	{
-		devNodeList.add(rootNode);
+		devNodeListLock.writeLock().lock();
+		try {
+			devNodeList.add(rootNode);
+		}
+		finally {
+			devNodeListLock.writeLock().unlock();
+		}
 	}
 
 	private synchronized void addDevice(SSDPPacket ssdpPacket)
@@ -288,33 +296,45 @@ public class ControlPoint implements HTTPRequestListener
 
 	public DeviceList getDeviceList()
 	{
-		DeviceList devList = new DeviceList();
-		int nRoots = devNodeList.size();
-		for (int n=0; n<nRoots; n++) {
-			Node rootNode = devNodeList.getNode(n);
-			Device dev = getDevice(rootNode);
-			if (dev == null)
-				continue;
-			devList.add(dev);
-		} 
-		return devList;
+		devNodeListLock.readLock().lock();
+		try {
+			DeviceList devList = new DeviceList();
+			int nRoots = devNodeList.size();
+			for (int n = 0; n < nRoots; n++) {
+				Node rootNode = devNodeList.getNode(n);
+				Device dev = getDevice(rootNode);
+				if (dev == null)
+					continue;
+				devList.add(dev);
+			}
+			return devList;
+		}
+		finally {
+			devNodeListLock.readLock().unlock();
+		}
 	}
 
 	public Device getDevice(String name)
 	{
-		int nRoots = devNodeList.size();
-		for (int n=0; n<nRoots; n++) {
-			Node rootNode = devNodeList.getNode(n);
-			Device dev = getDevice(rootNode);
-			if (dev == null)
-				continue;
-			if (dev.isDevice(name) == true)
-				return dev;
-			Device cdev = dev.getDevice(name);
-			if (cdev != null)
-				return cdev;
-		} 
-		return null;
+		devNodeListLock.readLock().lock();
+		try {
+			int nRoots = devNodeList.size();
+			for (int n = 0; n < nRoots; n++) {
+				Node rootNode = devNodeList.getNode(n);
+				Device dev = getDevice(rootNode);
+				if (dev == null)
+					continue;
+				if (dev.isDevice(name) == true)
+					return dev;
+				Device cdev = dev.getDevice(name);
+				if (cdev != null)
+					return cdev;
+			}
+			return null;
+		}
+		finally {
+			devNodeListLock.readLock().unlock();
+		}
 	}
 
 	public boolean hasDevice(String name)
@@ -331,8 +351,14 @@ public class ControlPoint implements HTTPRequestListener
 		Device dev = getDevice(rootNode);
 		if( dev != null && dev.isRootDevice() )
 			performRemoveDeviceListener( dev );
-	    
-		devNodeList.remove(rootNode);
+
+		devNodeListLock.writeLock().lock();
+		try {
+			devNodeList.remove(rootNode);
+		}
+		finally {
+			devNodeListLock.writeLock().unlock();
+		}
 	}
 
 	protected void removeDevice(Device dev)

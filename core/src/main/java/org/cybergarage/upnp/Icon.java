@@ -19,6 +19,9 @@ package org.cybergarage.upnp;
 
 import org.cybergarage.xml.Node;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
 public class Icon
 {
 	////////////////////////////////////////////////
