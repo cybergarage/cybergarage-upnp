@@ -1,4 +1,9 @@
+2018-08-14 d0t451
+	* v2.1.2
+	* Updated HTTPRequest::post() to send http packet at one time to fix TP-LINK TL-WAR450L bug
+
 2012-03-14 Satoshi Konno <skonno@cybergarage.org>
+	* v2.1.1
 	* Improved Device::getAbsoluteURL() to return the specified URL more correctly.
 
 2011-02-08 Satoshi Konno <skonno@cybergarage.org>
