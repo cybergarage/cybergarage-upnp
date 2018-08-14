@@ -409,8 +409,11 @@ public class HTTPRequest extends HTTPPacket
 
 			out = postSocket.getOutputStream();
 			PrintStream pout = new PrintStream(out);
-			pout.print(getHeader());
-			pout.print(HTTP.CRLF);
+			String httpPacket = ""; // send at one time to fix TP-LINK TL-WAR450L bug, cm++, 2018-8-1
+            httpPacket += getHeader(); // cm++, 2018-8-1
+            httpPacket += HTTP.CRLF; // cm++, 2018-8-1
+//			pout.print(getHeader());
+//			pout.print(HTTP.CRLF);
 			
 			boolean isChunkedRequest = isChunked();
 			
@@ -423,19 +426,26 @@ public class HTTPRequest extends HTTPPacket
 				if (isChunkedRequest == true) {
 					// Thanks for Lee Peik Feng <pflee@users.sourceforge.net> (07/07/05)
 					String chunSizeBuf = Long.toHexString(contentLength);
-					pout.print(chunSizeBuf);
-					pout.print(HTTP.CRLF);
+                    httpPacket += chunSizeBuf; // cm++, 2018-8-1
+                    httpPacket += HTTP.CRLF; // cm++, 2018-8-1
+//					pout.print(chunSizeBuf);
+//					pout.print(HTTP.CRLF);
 				}
-				pout.print(content);
+                httpPacket += content; // cm++, 2018-8-1
+				//pout.print(content);
 				if (isChunkedRequest == true)
-					pout.print(HTTP.CRLF);
+                    httpPacket += HTTP.CRLF; // cm++, 2018-8-1
+					//pout.print(HTTP.CRLF);
 			}
 
 			if (isChunkedRequest == true) {
-				pout.print("0");
-				pout.print(HTTP.CRLF);
+                httpPacket += "0"; // cm++, 2018-8-1
+                httpPacket += HTTP.CRLF; // cm++, 2018-8-1
+//				pout.print("0");
+//				pout.print(HTTP.CRLF);
 			}
-			
+
+			pout.print(httpPacket); // cm++, 2018-8-1
 			pout.flush();
 
 			in = postSocket.getInputStream();
