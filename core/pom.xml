@@ -5,7 +5,7 @@
   <groupId>org.cybergarage.upnp</groupId>
   <artifactId>cybergarage-upnp-core</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.2</version>
+  <version>2.1.1</version>
   <name>cybergarage-upnp Core</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://www.cybergarage.org/</url>
@@ -26,13 +26,6 @@
   <developers />
 
   <contributors />
-
-  <distributionManagement>
-    <repository>
-      <id>bintray-repo-unverbraucht</id>
-      <url>https://api.bintray.com/maven/unverbraucht/java9-fixed-jars/org.cybergarage.upnp;publish=1</url>
-    </repository>
-  </distributionManagement>
 
   <repositories>
     <repository>
@@ -60,6 +53,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>org.cybergarage</id>
+      <name>Cyber Garage Maven Repository</name>
+      <url>file:///var/www/maven/repo/</url>
+    </repository>
+  </distributionManagement>
 
   <build>
     <plugins>
