@@ -5,7 +5,7 @@
   <groupId>org.cybergarage.upnp</groupId>
   <artifactId>cybergarage-upnp-core</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.1</version>
+  <version>2.1.5</version>
   <name>cybergarage-upnp Core</name>
   <description>A pure Java Open Source implementation of the UPnP stack</description>
   <url>http://www.cybergarage.org/</url>
@@ -29,9 +29,8 @@
 
   <repositories>
     <repository>
-      <id>java9-fixed-jars</id>
-      <name>JMPS ports of older Java projects</name>
-      <url>https://dl.bintray.com/unverbraucht/java9-fixed-jars</url>
+        <id>gitlab-maven-om7sense</id>
+        <url>https://gitlab.com/api/v4/groups/12101445/-/packages/maven</url>
     </repository>
   </repositories>
   
@@ -42,9 +41,14 @@
   
   <dependencies>
     <dependency>
-      <groupId>com.kevin-read</groupId>
+      <groupId>com.github.stefanhaustein</groupId>
       <artifactId>kxml2</artifactId>
       <version>2.5.1</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>[2.12.0,)</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -52,14 +56,22 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.xmlpull</groupId>
+      <artifactId>xmlpull</artifactId>
+      <version>1.1.4.0</version>
+    </dependency>
   </dependencies>
 
   <distributionManagement>
     <repository>
-      <id>org.cybergarage</id>
-      <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repo/</url>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
     </repository>
+    <snapshotRepository>
+      <id>gitlab-maven</id>
+      <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <build>

@@ -11,7 +11,7 @@
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cybergarage-upnp.version>2.1.1</cybergarage-upnp.version>
+    <cybergarage-upnp.version>2.1.5</cybergarage-upnp.version>
       <maven.compiler.target>9</maven.compiler.target>
       <maven.compiler.source>9</maven.compiler.source>
   </properties>
@@ -23,11 +23,10 @@
   </scm>
 
   <repositories>
-      <repository>
-          <id>java9-fixed-jars</id>
-          <name>JMPS ports of older Java projects</name>
-          <url>https://dl.bintray.com/unverbraucht/java9-fixed-jars</url>
-      </repository>
+    <repository>
+        <id>gitlab-maven-om7sense</id>
+        <url>https://gitlab.com/api/v4/groups/12101445/-/packages/maven</url>
+    </repository>
   </repositories>
 
   <organization>
@@ -87,13 +86,18 @@
     </dependencies>
   </dependencyManagement>
 
-  <distributionManagement>
-    <repository>
-      <id>org.cybergarage</id>
-      <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repo/</url>
-    </repository>
-  </distributionManagement>
+    <distributionManagement>
+      <repository>
+        <id>gitlab-maven</id>
+        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
+      </repository>
+      <snapshotRepository>
+        <id>gitlab-maven</id>
+        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
+      </snapshotRepository>
+    </distributionManagement>
+
+
 
   <build>
     <pluginManagement>

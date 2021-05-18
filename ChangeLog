@@ -1,3 +1,7 @@
+2020-09-06 Satoshi Konno <skonno@cybergarage.org>
+	* v2.1.3
+	* Fix for CVE-2009-2625
+
 2018-08-14 d0t451
 	* v2.1.2
 	* Updated HTTPRequest::post() to send http packet at one time to fix TP-LINK TL-WAR450L bug
