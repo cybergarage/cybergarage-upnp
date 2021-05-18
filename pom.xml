@@ -11,9 +11,9 @@
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cybergarage-upnp.version>2.1.1</cybergarage-upnp.version>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <cybergarage-upnp.version>2.1.5</cybergarage-upnp.version>
+      <maven.compiler.target>9</maven.compiler.target>
+      <maven.compiler.source>9</maven.compiler.source>
   </properties>
   
   <scm>
@@ -21,6 +21,13 @@
   	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
   	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/</url>
   </scm>
+
+  <repositories>
+    <repository>
+        <id>gitlab-maven-om7sense</id>
+        <url>https://gitlab.com/api/v4/groups/12101445/-/packages/maven</url>
+    </repository>
+  </repositories>
 
   <organization>
   	<name>CyberGarage</name>
@@ -79,13 +86,18 @@
     </dependencies>
   </dependencyManagement>
 
-  <distributionManagement>
-    <repository>
-      <id>org.cybergarage</id>
-      <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repo/</url>
-    </repository>
-  </distributionManagement>
+    <distributionManagement>
+      <repository>
+        <id>gitlab-maven</id>
+        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
+      </repository>
+      <snapshotRepository>
+        <id>gitlab-maven</id>
+        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
+      </snapshotRepository>
+    </distributionManagement>
+
+
 
   <build>
     <pluginManagement>
@@ -114,7 +126,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.16</version>
+        <version>3.0.0-M4</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -124,7 +136,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.13.0</version>
       </plugin>      
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
