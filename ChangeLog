@@ -1,6 +1,7 @@
 2021-05-18 Kevin Read <me@kevin-read.com>
 	* v2.1.5
 	* Migrate to Java 9 / Java modules
+	* Disable XercesParser
 
 2020-09-06 Satoshi Konno <skonno@cybergarage.org>
 	* v2.1.3
