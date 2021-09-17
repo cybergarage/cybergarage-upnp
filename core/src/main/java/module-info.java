@@ -1,4 +1,4 @@
-module cybergarage.upnp.core {
+module org.cybergarage.upnp {
     exports org.cybergarage.upnp.control;
     exports org.cybergarage.upnp.device;
     exports org.cybergarage.upnp.event;
@@ -13,7 +13,5 @@ module cybergarage.upnp.core {
     exports org.cybergarage.upnp;
     exports org.cybergarage.xml;
 
-    requires org.kxml;
-    requires org.xmlpull;
     requires java.xml;
 }

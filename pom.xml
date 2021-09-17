@@ -22,13 +22,6 @@
   	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/</url>
   </scm>
 
-  <repositories>
-    <repository>
-        <id>gitlab-maven-om7sense</id>
-        <url>https://gitlab.com/api/v4/groups/12101445/-/packages/maven</url>
-    </repository>
-  </repositories>
-
   <organization>
   	<name>CyberGarage</name>
   	<url>http://www.cybergarage.org/</url>
@@ -96,8 +89,6 @@
         <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
       </snapshotRepository>
     </distributionManagement>
-
-
 
   <build>
     <pluginManagement>
