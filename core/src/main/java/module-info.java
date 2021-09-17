@@ -1,4 +1,4 @@
-module org.cybergarage.upnp {
+module org.cybergarage.upnp.core {
     exports org.cybergarage.upnp.control;
     exports org.cybergarage.upnp.device;
     exports org.cybergarage.upnp.event;
