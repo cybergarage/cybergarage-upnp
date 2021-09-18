@@ -49,7 +49,7 @@ public class MediaServer
     // Constructor
     ////////////////////////////////////////////////
 
-    public MediaGate(int option, boolean need_gui)
+    public MediaServer(int option, boolean need_gui)
     {
         try {
             mediaServ = new MediaServer(MediaServer.DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
