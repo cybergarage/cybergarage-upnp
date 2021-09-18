@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>upnpdump</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp upnpdump (example)</name>
   <description>A sample control point implementation</description>
   

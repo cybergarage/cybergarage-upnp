@@ -12,7 +12,6 @@
     <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>media-server</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp media sever (example)</name>
   <description>A pure Java open source implementation of the UPnP Media Server</description>
   <url>http://www.cybergarage.org</url>

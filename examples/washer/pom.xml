@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>washer</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp washer device (example)</name>
   <description>A sample UPnP Washer Device implementation</description>
   

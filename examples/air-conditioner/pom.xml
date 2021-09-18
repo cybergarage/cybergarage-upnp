@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>air-conditioner</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp air conditioner device (example)</name>
   <description>A sample UPnP Air Conditioner Device implementation</description>
   

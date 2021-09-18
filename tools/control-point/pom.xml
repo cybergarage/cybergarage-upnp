@@ -12,7 +12,6 @@
     <groupId>org.cybergarage.upnp.tool</groupId>
   <artifactId>upnp-control-point</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp control point utility (tool)</name>
   <description>A pure Java open source implementation of UPnP control point</description>
   <url>http://www.cybergarage.org</url>

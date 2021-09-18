@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>light</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp light device (example)</name>
   <description>A sample UPnP Light Device implementation</description>
   

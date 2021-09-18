@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>tv</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp television device (example)</name>
   <description>A sample UPnP TV Device implementation</description>
   

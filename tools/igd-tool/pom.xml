@@ -12,7 +12,6 @@
   <groupId>org.cybergarage.upnp.tool</groupId>
   <artifactId>upnp-internet-gateway</artifactId>
   <packaging>jar</packaging>
-  <version>2.1.4</version>
   <name>cybergarage-upnp Internet gateway utility (tool)</name>
   <description>A sample tool which interact with the UPnP device complaint with the Internet Gateway Profile</description>
   
