@@ -1,4 +1,4 @@
-module org.cybergarage.upnp.core {
+module org.cybergarage.upnp {
 
     exports org.cybergarage.http;
     exports org.cybergarage.net;
@@ -14,5 +14,5 @@ module org.cybergarage.upnp.core {
     exports org.cybergarage.upnp.ssdp;
     exports org.cybergarage.upnp.xml;
 
-    requires transitive java.xml;
+    requires java.xml;
 }
