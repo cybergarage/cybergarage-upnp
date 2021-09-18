@@ -11,9 +11,8 @@
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cybergarage-upnp.version>2.1.4</cybergarage-upnp.version>
-    <maven.compiler.target>9</maven.compiler.target>
-    <maven.compiler.source>9</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
