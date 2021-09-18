@@ -1231,12 +1231,12 @@ public class ContentDirectory extends ThreadCore implements ActionListener, Quer
 
 	public String getInterfaceAddress()
 	{
-		return getMediaServer().getInterfaceAddress();
+		return getInterfaceAddress();
 	}			
 
 	public int getHTTPPort()
 	{
-		return getMediaServer().getHTTPPort();
+		return getHTTPPort();
 	}			
 	
 	public String getContentExportURL(String id)

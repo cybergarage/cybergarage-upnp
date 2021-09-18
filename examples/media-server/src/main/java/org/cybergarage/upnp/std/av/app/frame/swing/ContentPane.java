@@ -13,7 +13,7 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.upnp.app.media.frame.swing;
+package org.cybergarage.upnp.std.av.app.frame.swing;
 
 import javax.swing.*;
 import java.awt.event.*;

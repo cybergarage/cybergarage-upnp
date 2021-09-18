@@ -228,7 +228,7 @@ public class ConnectionManager implements ActionListener, QueryListener
 
 	public ContentDirectory getContentDirectory()
 	{
-		return getMediaServer().getContentDirectory();	
+		return getContentDirectory();	
 	}
 	
 	////////////////////////////////////////////////

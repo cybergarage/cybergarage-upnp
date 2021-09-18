@@ -11,20 +11,20 @@
 *
 ******************************************************************/
 
-package org.cybergarage.mediagate;
+package org.cybergarage.upnp.std.av.app;
 
 import java.util.prefs.*;
 
 import org.cybergarage.util.*;
+import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.std.av.server.*;
-//import org.cybergarage.upnp.std.av.object.*;
 import org.cybergarage.upnp.std.av.server.directory.file.*;
 import org.cybergarage.upnp.std.av.server.directory.mythtv.*;
-import org.cybergarage.upnp.app.media.frame.*;
-import org.cybergarage.upnp.app.media.frame.swing.*;
+import org.cybergarage.upnp.std.av.app.frame.*;
+import org.cybergarage.upnp.std.av.app.frame.swing.*;
 import org.cybergarage.upnp.std.av.server.object.format.*;
 
-public class MediaServer
+public class MediaServer extends org.cybergarage.upnp.std.av.server.MediaServer
 {
     ////////////////////////////////////////////////
     // Constants
@@ -49,28 +49,28 @@ public class MediaServer
     // Constructor
     ////////////////////////////////////////////////
 
-    public MediaServer(int option, boolean need_gui)
+    public MediaServer(int option, boolean need_gui) throws InvalidDescriptionException 
     {
+        super(MediaServer.DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
         try {
-            mediaServ = new MediaServer(MediaServer.DESCRIPTION, ContentDirectory.SCPD, ConnectionManager.SCPD);
             setOption(option);
 
             switch (getModeOption()){
             case FILESYS_MODE:
                 {
-                    mediaServ.addPlugIn(new ID3Format());
-                    mediaServ.addPlugIn(new GIFFormat());
-                    mediaServ.addPlugIn(new JPEGFormat());
-                    mediaServ.addPlugIn(new PNGFormat());
-                    mediaServ.addPlugIn(new MPEGFormat());
+                    addPlugIn(new ID3Format());
+                    addPlugIn(new GIFFormat());
+                    addPlugIn(new JPEGFormat());
+                    addPlugIn(new PNGFormat());
+                    addPlugIn(new MPEGFormat());
                     loadUserDirectories();
                 }
                 break;
             case MYTHTV_MODE:
                 {
-                    mediaServ.addPlugIn(new DefaultFormat());
+                    addPlugIn(new DefaultFormat());
                     MythDirectory mythDir = new MythDirectory();
-                    mediaServ.addContentDirectory(mythDir);
+                    addContentDirectory(mythDir);
                 }
                 break;
             }
@@ -79,8 +79,8 @@ public class MediaServer
                 mediaFrame = new SwingFrame(this, isFileSystemMode());
             } else if ( Debug.isOn() ) {
                 Debug.message("Starting in console mode");
-                for (int n=0; n < mediaServ.getNContentDirectories(); n++) {
-                    Directory dir = mediaServ.getContentDirectory(n);
+                for (int n=0; n < getNContentDirectories(); n++) {
+                    Directory dir = getContentDirectory(n);
                     Debug.message("serving content dir: " + dir.getFriendlyName());
                     int nItems = dir.getNContentNodes();
                     for (int x = 0; x < nItems; x++) {
@@ -171,7 +171,7 @@ public class MediaServer
                 String name = dirName[n];
                 String path = dirPref.get(name, "");
                 FileDirectory fileDir = new FileDirectory(name, path);
-                getMediaServer().addContentDirectory(fileDir);
+                addContentDirectory(fileDir);
                 Debug.message("[" + n + "] = " + name + "," + path);
             }
         }
@@ -205,22 +205,6 @@ public class MediaServer
     // MediaServer
     ////////////////////////////////////////////////
 
-    private MediaServer mediaServ;
-
-    public MediaServer getMediaServer()
-    {
-        return mediaServ;
-    }
-
-    public ContentDirectory getContentDirectory()
-    {
-        return mediaServ.getContentDirectory();
-    }
-
-    ////////////////////////////////////////////////
-    // MediaServer
-    ////////////////////////////////////////////////
-
     private MediaFrame mediaFrame;
 
     public MediaFrame getMediaFrame()
@@ -232,28 +216,28 @@ public class MediaServer
     // start/stop
     ////////////////////////////////////////////////
 
-    public void start()
+    public boolean start()
     {
-        getMediaServer().start();
+        return super.start();
     }
 
-    public void stop()
+    public boolean stop()
     {
-        getMediaServer().stop();
         if (getOption() == FILESYS_MODE)
             saveUserDirectories();
+        return super.stop();
     }
 
     ////////////////////////////////////////////////
     // Debug
     ////////////////////////////////////////////////
 
-    public static void debug(MediaGate mgate)
+    public static void debug(MediaServer mgate)
     {
         /*
           String sortCriteria = "+dc:date,+dc:title,+upnp:class";
           mgate.getContentDirectory().sortContentNodeList(new ContentNodeList(), sortCriteria);
-          */
+        */
     }
 
     ////////////////////////////////////////////////
@@ -279,10 +263,14 @@ public class MediaServer
                 need_gui = false;
         }
 
-
-        MediaGate mediaGate = new MediaGate(mode, need_gui);
-        debug(mediaGate);
-        mediaGate.start();
+        try {
+            MediaServer server = new MediaServer(mode, need_gui);
+            debug(server);
+            server.start();
+        }
+        catch (Exception e) {
+            Debug.warning(e);
+        }
     }
 
 }

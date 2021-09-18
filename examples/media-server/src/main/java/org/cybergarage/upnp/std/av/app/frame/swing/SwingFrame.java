@@ -1,6 +1,6 @@
 /******************************************************************
 *
-*	MediaGate for CyberLink
+*	MediaServer for CyberLink
 *
 *	Copyright (C) Satoshi Konno 2004
 *
@@ -13,7 +13,7 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.upnp.app.media.frame.swing;
+package org.cybergarage.upnp.std.av.app.frame.swing;
 
 import java.io.*;
 import java.awt.*;
@@ -22,10 +22,10 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import org.cybergarage.util.*;
-import org.cybergarage.upnp.std.av.server.*;
+import org.cybergarage.upnp.std.av.server.Directory;
 import org.cybergarage.upnp.std.av.server.directory.file.*;
-import org.cybergarage.upnp.app.media.*;
-import org.cybergarage.upnp.app.media.frame.*;
+import org.cybergarage.upnp.std.av.app.*;
+import org.cybergarage.upnp.std.av.app.frame.*;
 
 public class SwingFrame extends MediaFrame implements ActionListener, ListSelectionListener, WindowListener
 {
@@ -66,9 +66,9 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	public SwingFrame(MediaGate mgate, boolean hasAddDelButtons)
+	public SwingFrame(MediaServer server, boolean hasAddDelButtons)
 	{
-		super(mgate);
+		super(server);
 		
 		frame = new JFrame(graphGC);
 		frame.setTitle(TITLE);
@@ -91,7 +91,7 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 		
 		// Directory List
 		//leftPane.add(new JLabel("Directory"));
-		dirPane = new DirectoryPane(mgate);
+		dirPane = new DirectoryPane(server);
 		dirPane.getList().addListSelectionListener(this);
 		dirPane.getScrollPane().setPreferredSize(new Dimension(FRAME_WIDTH/5,FRAME_HEIGHT/*-(FRAME_HEIGHT/10)*/));
 		leftPane.add(dirPane);
@@ -181,11 +181,9 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 				return;
 			}
 			
-			MediaGate mgate = getMediaGate();
-			MediaServer mserver = mgate.getMediaServer();
 			FileDirectory fileDir = new FileDirectory(name, dir);
-			mserver.getContentDirectory().addDirectory(fileDir);
-			dirPane.update(mgate);
+			getMediaServer().getContentDirectory().addDirectory(fileDir);
+			dirPane.update(getMediaServer());
 		}
 	}
 	
@@ -210,10 +208,8 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 			JOptionPane.YES_NO_OPTION);
 		
 		if (ret == JOptionPane.OK_OPTION) {
-			MediaGate mgate = getMediaGate();
-			MediaServer mserver = mgate.getMediaServer();
-			mserver.getContentDirectory().removeDirectory(dirStr);
-			dirPane.update(mgate);
+			getMediaServer().getContentDirectory().removeDirectory(dirStr);
+			dirPane.update(getMediaServer());
 		}
 	}
 	
@@ -227,8 +223,7 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 		int selIdx = dirPane.getList().getSelectedIndex();
 		if (selIdx < 0)
 			return;
-		MediaServer mserver = getMediaGate().getMediaServer();
-		Directory dir = mserver.getContentDirectory(selIdx);
+		Directory dir = getMediaServer().getContentDirectory(selIdx);
 		Debug.message("valueChanged = " + dir.getFriendlyName());
 		conPane.update(dir);
 	}
@@ -272,7 +267,7 @@ public class SwingFrame extends MediaFrame implements ActionListener, ListSelect
 
 	public void exit()
 	{
-		getMediaGate().stop();
+		getMediaServer().stop();
 		graphDevice.setFullScreenWindow(null);
 		System.exit(0);
 	}

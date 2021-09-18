@@ -13,9 +13,9 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.upnp.app.media.frame;
+package org.cybergarage.upnp.std.av.app.frame;
 
-import org.cybergarage.upnp.app.media.*;
+import org.cybergarage.upnp.std.av.app.*;
 
 public abstract class MediaFrame
 {
@@ -23,19 +23,19 @@ public abstract class MediaFrame
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	public MediaFrame(MediaGate mgate)
+	public MediaFrame(MediaServer server)
 	{
-		mediaGate = mgate;
+		this.server = server;
 	}
 
 	////////////////////////////////////////////////
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	private MediaGate mediaGate;
+	private MediaServer server;
 	
-	public MediaGate getMediaGate()
+	public MediaServer getMediaServer()
 	{
-		return mediaGate;
+		return server;
 	}
 }

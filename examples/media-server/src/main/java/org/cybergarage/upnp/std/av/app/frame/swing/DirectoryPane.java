@@ -13,12 +13,12 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.upnp.app.media.frame.swing;
+package org.cybergarage.upnp.std.av.app.frame.swing;
 
 import javax.swing.*;
 
-import org.cybergarage.upnp.std.av.server.*;
-import org.cybergarage.upnp.app.media.*;
+import org.cybergarage.upnp.std.av.server.Directory;
+import org.cybergarage.upnp.std.av.app.*;
 
 public class DirectoryPane extends JPanel
 {
@@ -34,7 +34,7 @@ public class DirectoryPane extends JPanel
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	public DirectoryPane(MediaGate mgate)
+	public DirectoryPane(MediaServer server)
 	{
 		dirListMode = new DefaultListModel();
 		dirList = new JList(dirListMode);
@@ -44,7 +44,7 @@ public class DirectoryPane extends JPanel
 		
 		add(scrPane);
 		
-		update(mgate);
+		update(server);
 	}
 	
 	////////////////////////////////////////////////
@@ -65,13 +65,12 @@ public class DirectoryPane extends JPanel
 	// exit
 	////////////////////////////////////////////////
 
-	public void update(MediaGate mgate)
+	public void update(MediaServer server)
 	{
-		MediaServer mserver = mgate.getMediaServer();
-		int nDirectories = mserver.getNContentDirectories();
+		int nDirectories = server.getNContentDirectories();
 		dirListMode.clear();
 		for (int n=0; n<nDirectories; n++) {		
-			Directory dir = mserver.getContentDirectory(n);
+			Directory dir = server.getContentDirectory(n);
 			dirListMode.addElement(dir.getFriendlyName());
 		}
 		dirList.revalidate();
