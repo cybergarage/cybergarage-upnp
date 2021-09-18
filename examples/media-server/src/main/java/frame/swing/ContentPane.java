@@ -4,7 +4,7 @@
 *
 *	Copyright (C) Satoshi Konno 2004
 *
-*	File: DirectoryPane.java
+*	File: ContentPane.java
 *
 *	Revision;
 *
@@ -13,67 +13,53 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.mediagate.frame.swing;
+package org.cybergarage.upnp.app.media.frame.swing;
 
 import javax.swing.*;
+import java.awt.event.*;
 
 import org.cybergarage.upnp.std.av.server.*;
-import org.cybergarage.mediagate.*;
 
-public class DirectoryPane extends JPanel
+public class ContentPane extends JPanel
 {
 	////////////////////////////////////////////////
 	// Member
 	////////////////////////////////////////////////
 	
 	private JScrollPane scrPane;
-	private JList dirList;
-	private DefaultListModel dirListMode;
+	private JTable conTable;
+	private ContentTable conTableModel;
 	
 	////////////////////////////////////////////////
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	public DirectoryPane(MediaGate mgate)
+	public ContentPane()
 	{
-		dirListMode = new DefaultListModel();
-		dirList = new JList(dirListMode);
+		conTableModel = new ContentTable();
+		conTable = new JTable(conTableModel);
 		
 		scrPane = new JScrollPane();
-		scrPane.getViewport().setView(dirList);
+		scrPane.getViewport().setView(conTable);
 		
 		add(scrPane);
-		
-		update(mgate);
 	}
 	
 	////////////////////////////////////////////////
 	// ActionListener
 	////////////////////////////////////////////////
-
-	public JList getList()
+	
+	public void actionPerformed(ActionEvent e)
 	{
-		return dirList;
-	}
-
-	public JScrollPane getScrollPane()
-	{
-		return scrPane;
 	}
 	
 	////////////////////////////////////////////////
 	// exit
 	////////////////////////////////////////////////
 
-	public void update(MediaGate mgate)
+	public void update(Directory dir)
 	{
-		MediaServer mserver = mgate.getMediaServer();
-		int nDirectories = mserver.getNContentDirectories();
-		dirListMode.clear();
-		for (int n=0; n<nDirectories; n++) {		
-			Directory dir = mserver.getContentDirectory(n);
-			dirListMode.addElement(dir.getFriendlyName());
-		}
-		dirList.revalidate();
+		conTableModel.update(dir);
+		conTable.revalidate();
 	}
 }

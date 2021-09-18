@@ -4,7 +4,7 @@
 *
 *	Copyright (C) Satoshi Konno 2004
 *
-*	File: ContentPane.java
+*	File: DirectoryPane.java
 *
 *	Revision;
 *
@@ -13,53 +13,67 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.mediagate.frame.swing;
+package org.cybergarage.upnp.app.media.frame.swing;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 import org.cybergarage.upnp.std.av.server.*;
+import org.cybergarage.upnp.app.media.*;
 
-public class ContentPane extends JPanel
+public class DirectoryPane extends JPanel
 {
 	////////////////////////////////////////////////
 	// Member
 	////////////////////////////////////////////////
 	
 	private JScrollPane scrPane;
-	private JTable conTable;
-	private ContentTable conTableModel;
+	private JList dirList;
+	private DefaultListModel dirListMode;
 	
 	////////////////////////////////////////////////
 	// Constuctor
 	////////////////////////////////////////////////
 	
-	public ContentPane()
+	public DirectoryPane(MediaGate mgate)
 	{
-		conTableModel = new ContentTable();
-		conTable = new JTable(conTableModel);
+		dirListMode = new DefaultListModel();
+		dirList = new JList(dirListMode);
 		
 		scrPane = new JScrollPane();
-		scrPane.getViewport().setView(conTable);
+		scrPane.getViewport().setView(dirList);
 		
 		add(scrPane);
+		
+		update(mgate);
 	}
 	
 	////////////////////////////////////////////////
 	// ActionListener
 	////////////////////////////////////////////////
-	
-	public void actionPerformed(ActionEvent e)
+
+	public JList getList()
 	{
+		return dirList;
+	}
+
+	public JScrollPane getScrollPane()
+	{
+		return scrPane;
 	}
 	
 	////////////////////////////////////////////////
 	// exit
 	////////////////////////////////////////////////
 
-	public void update(Directory dir)
+	public void update(MediaGate mgate)
 	{
-		conTableModel.update(dir);
-		conTable.revalidate();
+		MediaServer mserver = mgate.getMediaServer();
+		int nDirectories = mserver.getNContentDirectories();
+		dirListMode.clear();
+		for (int n=0; n<nDirectories; n++) {		
+			Directory dir = mserver.getContentDirectory(n);
+			dirListMode.addElement(dir.getFriendlyName());
+		}
+		dirList.revalidate();
 	}
 }

@@ -13,9 +13,9 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.mediagate.frame;
+package org.cybergarage.upnp.app.media.frame;
 
-import org.cybergarage.mediagate.*;
+import org.cybergarage.upnp.app.media.*;
 
 public abstract class MediaFrame
 {

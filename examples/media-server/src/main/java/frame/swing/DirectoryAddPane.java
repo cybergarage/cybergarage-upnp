@@ -13,7 +13,7 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.mediagate.frame.swing;
+package org.cybergarage.upnp.app.media.frame.swing;
 
 import java.io.*;
 import java.awt.*;

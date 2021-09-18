@@ -20,11 +20,11 @@ import org.cybergarage.upnp.std.av.server.*;
 //import org.cybergarage.upnp.std.av.object.*;
 import org.cybergarage.upnp.std.av.server.directory.file.*;
 import org.cybergarage.upnp.std.av.server.directory.mythtv.*;
-import org.cybergarage.mediagate.frame.*;
-import org.cybergarage.mediagate.frame.swing.*;
+import org.cybergarage.upnp.app.media.frame.*;
+import org.cybergarage.upnp.app.media.frame.swing.*;
 import org.cybergarage.upnp.std.av.server.object.format.*;
 
-public class MediaGate
+public class MediaServer
 {
     ////////////////////////////////////////////////
     // Constants

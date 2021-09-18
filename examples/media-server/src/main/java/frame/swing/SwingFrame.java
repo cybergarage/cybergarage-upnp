@@ -13,7 +13,7 @@
 *	
 ******************************************************************/
 
-package org.cybergarage.mediagate.frame.swing;
+package org.cybergarage.upnp.app.media.frame.swing;
 
 import java.io.*;
 import java.awt.*;
@@ -24,8 +24,8 @@ import javax.swing.event.*;
 import org.cybergarage.util.*;
 import org.cybergarage.upnp.std.av.server.*;
 import org.cybergarage.upnp.std.av.server.directory.file.*;
-import org.cybergarage.mediagate.*;
-import org.cybergarage.mediagate.frame.*;
+import org.cybergarage.upnp.app.media.*;
+import org.cybergarage.upnp.app.media.frame.*;
 
 public class SwingFrame extends MediaFrame implements ActionListener, ListSelectionListener, WindowListener
 {

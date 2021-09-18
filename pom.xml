@@ -67,6 +67,7 @@
     <module>examples/air-conditioner</module>
     <module>examples/remote-controller</module>
     <module>examples/upnpdump</module>
+    <module>examples/media-server</module>
   </modules>
   
   <dependencyManagement>
