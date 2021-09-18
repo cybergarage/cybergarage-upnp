@@ -11,25 +11,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp.tool</groupId>
   <artifactId>upnp-internet-gateway</artifactId>
-  <packaging>jar</packaging>
   <name>cybergarage-upnp Internet gateway utility (tool)</name>
-  <description>A sample tool which interact with the UPnP device complaint with the Internet Gateway Profile</description>
+  <description>UPnP Internet gateway tool</description>
+  <packaging>jar</packaging>
   
-  <url>http://www.cybergarage.org</url>
-  
-  <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
-  </licenses>
-  
-  <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/tools/igd-tool</url>
-  </scm>
-
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>

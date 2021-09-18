@@ -11,25 +11,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>upnpdump</artifactId>
-  <packaging>jar</packaging>
   <name>cybergarage-upnp upnpdump (example)</name>
-  <description>A sample control point implementation</description>
+  <description>UPnP control point tool</description>
+  <packaging>jar</packaging>
   
-  <url>http://www.cybergarage.org</url>
-  
-  <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
-  </licenses>
-  
-  <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/upnpdump</url>
-  </scm>
-
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>

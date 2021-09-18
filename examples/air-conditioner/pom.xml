@@ -11,24 +11,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>air-conditioner</artifactId>
-  <packaging>jar</packaging>
   <name>cybergarage-upnp air conditioner device (example)</name>
-  <description>A sample UPnP Air Conditioner Device implementation</description>
-  
-  <url>http://www.cybergarage.org</url>
-  
-  <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
-  </licenses>
-  
-  <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/air-conditioner</url>	
-  </scm>
+  <description>UPnP air conditioner device</description>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>

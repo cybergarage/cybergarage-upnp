@@ -10,24 +10,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp</groupId>
   <artifactId>std</artifactId>
-  <packaging>jar</packaging>
   <name>cybergarage-upnp standard</name>
   <description>A pure Java open source implementation of UPnP standard specifications</description>
-  <url>http://www.cybergarage.org</url>
+  <packaging>jar</packaging>
   
-  <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
-  </licenses>
-  
-  <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/std</url>
-  </scm>
-
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>

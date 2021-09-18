@@ -9,30 +9,12 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-    <groupId>org.cybergarage.upnp.tool</groupId>
+  <groupId>org.cybergarage.upnp.tool</groupId>
   <artifactId>upnp-control-point</artifactId>
-  <packaging>jar</packaging>
   <name>cybergarage-upnp control point utility (tool)</name>
-  <description>A pure Java open source implementation of UPnP control point</description>
-  <url>http://www.cybergarage.org</url>
-  
-  <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
-  </licenses>
-  
-  <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/tools/control-point</url>
-  </scm>
-  
-  <developers />
+  <description>UPnP control point</description>
+  <packaging>jar</packaging>
 
-  <contributors />
-  
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
