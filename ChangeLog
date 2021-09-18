@@ -1,3 +1,9 @@
+2021-09-18 Satoshi Konno <skonno@cybergarage.org>
+	* v2.1.4
+	* Disable org.xmlpull, org.kxml2 and xerces XML parsers
+	* Migrate to Java11
+	* Add deploy settings for Maven central repository
+
 2021-05-18 Kevin Read <me@kevin-read.com>
 	* Migrate to Java 9 / Java modules
 	* Disable XercesParser
