@@ -2,7 +2,7 @@
 <project name="CyberLink UPnP Stack">
    <body>
       <links>
-         <item name="Sourceforge" href="http://sourceforge.net/projects/cgupnpjava/"/>
+         <item name="Sourceforge" href="http://www.cybergarage.org"/>
          <item name="Maven" href="http://maven.apache.org/maven2"/>
          <item name="UPnP" href="http://www.upnp.org/"/>         
       </links>

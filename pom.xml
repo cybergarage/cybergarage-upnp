@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp</groupId>
   <packaging>pom</packaging>
-  <artifactId>cybergarage-upnp</artifactId>  
-  <version>${cybergarage-upnp.version}</version>
+  <artifactId>upnp</artifactId>
+  <version>2.1.4</version>
 
-  <name>cybergarage-upnp Suite</name>
-  <description>A set of UPnP tools, libraries and softwares</description>
+  <name>cybergarage-upnp</name>
+  <description>UPnP tools, libraries and applications for Java platforms</description>
   <url>http://www.cybergarage.org/</url>
 
   <properties>
@@ -155,4 +155,3 @@
   </reporting>
   
 </project>
-

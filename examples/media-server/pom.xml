@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>cybergarage-upnp</artifactId>
+    <artifactId>upnp</artifactId>
     <groupId>org.cybergarage.upnp</groupId>
     <relativePath>../../</relativePath>
-    <version>${cybergarage-upnp.version}</version>
+    <version>2.1.4</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
     <groupId>org.cybergarage.upnp.app</groupId>
   <artifactId>media-server</artifactId>
   <packaging>jar</packaging>
-  <version>${cybergarage-upnp.version}</version>
-  <name>cybergarage-upnp Media Sever Sample</name>
-  <description>A pure Java Open Source implementation of the UPnP Media Server</description>
-  <url>http://sourceforge.net/projects/cgupnpjava/</url>
+  <version>2.1.4</version>
+  <name>cybergarage-upnp media sever (example)</name>
+  <description>A pure Java open source implementation of the UPnP Media Server</description>
+  <url>http://www.cybergarage.org</url>
   
   <licenses>
   	<license>
@@ -37,8 +37,8 @@
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
-      <artifactId>cybergarage-upnp-core</artifactId>
-      <version>${cybergarage-upnp.version}</version>
+      <artifactId>core</artifactId>
+      <version>2.1.4</version>
     </dependency>
   </dependencies>
 
@@ -55,4 +55,3 @@
   </build>
 
 </project>
-
