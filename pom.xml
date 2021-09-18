@@ -81,16 +81,12 @@
     </dependencies>
   </dependencyManagement>
 
-    <distributionManagement>
-      <repository>
-        <id>gitlab-maven</id>
-        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
-      </repository>
-      <snapshotRepository>
-        <id>gitlab-maven</id>
-        <url>https://gitlab.com/api/v4/projects/26730227/packages/maven</url>
-      </snapshotRepository>
-    </distributionManagement>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <build>
     <pluginManagement>
