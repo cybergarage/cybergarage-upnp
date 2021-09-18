@@ -14,5 +14,5 @@ module org.cybergarage.upnp.core {
     exports org.cybergarage.upnp.ssdp;
     exports org.cybergarage.upnp.xml;
 
-    requires java.xml;
+    requires transitive java.xml;
 }
