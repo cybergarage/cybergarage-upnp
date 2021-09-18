@@ -60,13 +60,13 @@
     <module>std</module>
     <module>tools/control-point</module>
     <module>tools/igd-tool</module>
-    <module>samples/tv</module>
-    <module>samples/light</module>
-    <module>samples/clock</module>
-    <module>samples/washer</module>
-    <module>samples/air-conditioner</module>
-    <module>samples/remote-controller</module>
-    <module>samples/upnpdump</module>
+    <module>examples/tv</module>
+    <module>examples/light</module>
+    <module>examples/clock</module>
+    <module>examples/washer</module>
+    <module>examples/air-conditioner</module>
+    <module>examples/remote-controller</module>
+    <module>examples/upnpdump</module>
   </modules>
   
   <dependencyManagement>

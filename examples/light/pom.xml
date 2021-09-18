@@ -9,12 +9,12 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.upnp.samples</groupId>
-  <artifactId>remote-controller</artifactId>
+  <groupId>org.cybergarage.upnp.app</groupId>
+  <artifactId>light</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>cybergarage-upnp Remote Controller Device Sample</name>
-  <description>A sample UPnP Remote Controller Device implementation</description>
+  <name>cybergarage-upnp Light Device Sample</name>
+  <description>A sample UPnP Light Device implementation</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
@@ -28,7 +28,7 @@
   <scm>
   	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
   	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/remote-controller</url>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/light</url>
   </scm>
 
   <dependencies>
@@ -56,7 +56,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>RemoteCtrlFrame</mainClass>
+              <mainClass>LightFrame</mainClass>
             </manifest>
           </archive>
         </configuration>

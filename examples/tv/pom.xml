@@ -9,12 +9,12 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.upnp.samples</groupId>
-  <artifactId>washer</artifactId>
+  <groupId>org.cybergarage.upnp.app</groupId>
+  <artifactId>tv</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>cybergarage-upnp Washer Device Sample</name>
-  <description>A sample UPnP Washer Device implementation</description>
+  <name>cybergarage-upnp TV Device Sample</name>
+  <description>A sample UPnP TV Device implementation</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
@@ -28,7 +28,7 @@
   <scm>
   	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
   	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/washer</url>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/tv</url>
   </scm>
 
   <dependencies>

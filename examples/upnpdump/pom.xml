@@ -3,18 +3,18 @@
 
   <parent>
     <artifactId>cybergarage-upnp</artifactId>
-    <groupId>org.cybergarage.upnp</groupId>
+    <groupId>org.cybergarage.upnp</groupId>        
     <relativePath>../../</relativePath>
     <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.upnp.samples</groupId>
-  <artifactId>air-conditioner</artifactId>
+  <groupId>org.cybergarage.upnp.app</groupId>
+  <artifactId>upnpdump</artifactId>
   <packaging>jar</packaging>
   <version>${cybergarage-upnp.version}</version>
-  <name>cybergarage-upnp Air Conditioner Device Sample</name>
-  <description>A sample UPnP Air Conditioner Device implementation</description>
+  <name>cybergarage-upnp Control Point Sample</name>
+  <description>A sample control point implementation</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
@@ -28,7 +28,7 @@
   <scm>
   	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
   	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/air-conditioner</url>	
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/samples/upnpdump</url>
   </scm>
 
   <dependencies>
