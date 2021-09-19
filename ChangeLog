@@ -1,3 +1,7 @@
+2021-09-20 Satoshi Konno <skonno@cybergarage.org>
+	* v2.1.5
+	* Add std package for Maven central repository
+
 2021-09-18 Satoshi Konno <skonno@cybergarage.org>
 	* v2.1.4
 	* Disable org.xmlpull, org.kxml2 and xerces XML parsers
