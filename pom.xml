@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cybergarage.upnp</groupId>
   <packaging>pom</packaging>
@@ -16,52 +17,52 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
-  
+
   <organization>
-  	<name>CyberGarage</name>
-  	<url>http://www.cybergarage.org/</url>
+    <name>CyberGarage</name>
+    <url>http://www.cybergarage.org/</url>
   </organization>
-  
+
   <licenses>
-  	<license>
-  		<name>BSD</name>
-  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
-  	</license>
+    <license>
+      <name>BSD</name>
+      <url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
+    </license>
   </licenses>
-  
+
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
-  	<url>https://github.com/cybergarage/cybergarage-upnp/</url>
+    <connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+    <developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+    <url>https://github.com/cybergarage/cybergarage-upnp/</url>
   </scm>
 
   <developers>
-  	<developer>
-  		<id>skonno</id>
-  		<email>skonno@cybergarage.org</email>
-  		<name>Satoshi Konno</name>
-  		<url>http://www.cybergarage.org/</url>  		
-  		<roles>
-  			<role>admin</role>
-  		</roles>
-  		<organization>CyberGarage</organization>
-  		<organizationUrl>http://www.cybergarage.org/</organizationUrl>
-  		<timezone>UTC/GMT +9</timezone>
-  	</developer>
-  	<developer>
-  		<id>kismet-sl</id>
-  		<email>kismet-sl@users.sourceforge.net</email>
-  		<name>Stefano Lenzi</name>
-  		<roles>
-  			<role>mantainer</role>
-  			<role>developer</role>
-  		</roles>
-  		<timezone>CEST/CET</timezone>
-  	</developer>
+    <developer>
+      <id>skonno</id>
+      <email>skonno@cybergarage.org</email>
+      <name>Satoshi Konno</name>
+      <url>http://www.cybergarage.org/</url>
+      <roles>
+        <role>admin</role>
+      </roles>
+      <organization>CyberGarage</organization>
+      <organizationUrl>http://www.cybergarage.org/</organizationUrl>
+      <timezone>UTC/GMT +9</timezone>
+    </developer>
+    <developer>
+      <id>kismet-sl</id>
+      <email>kismet-sl@users.sourceforge.net</email>
+      <name>Stefano Lenzi</name>
+      <roles>
+        <role>mantainer</role>
+        <role>developer</role>
+      </roles>
+      <timezone>CEST/CET</timezone>
+    </developer>
   </developers>
-  
+
   <contributors />
-  
+
   <modules>
     <module>core</module>
     <module>std</module>
@@ -76,5 +77,5 @@
     <module>examples/remote-controller</module>
     <module>examples/media-server</module>
   </modules>
-  
+
 </project>

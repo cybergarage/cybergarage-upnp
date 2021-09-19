@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
     <artifactId>upnp</artifactId>
-    <groupId>org.cybergarage.upnp</groupId>        
+    <groupId>org.cybergarage.upnp</groupId>
     <relativePath>../../</relativePath>
     <version>2.1.4</version>
   </parent>
@@ -14,9 +15,9 @@
   <name>cybergarage-upnp light device (example)</name>
   <description>UPnP light device </description>
   <packaging>jar</packaging>
-  
+
   <url>http://www.cybergarage.org</url>
-  
+
   <dependencies>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
