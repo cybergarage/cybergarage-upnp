@@ -12,22 +12,33 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU
 
 ## References
 
-- [Maven Central Repository](https://search.maven.org/search?q=g:org.cybergarage.upnp)
 - [Programming Guide](doc/cybergarage-upnp-prgguide.pdf)
 - [API Reference (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
 
+## Repositories
+
+- [Maven Central Repository (org.cybergarage.upnp)](https://search.maven.org/search?q=g:org.cybergarage.upnp)
+  - [`org.cybergarage.upnp:core`](https://search.maven.org/artifact/org.cybergarage.upnp/core)
+    - UPnP standard protocol packages 
+  - [`org.cybergarage.upnp:std`](https://search.maven.org/artifact/org.cybergarage.upnp/std)
+    - UPnP standard devices packages such as UPnP AV based on `org.cybergarage.upnp:core`
+
 ## Examples
 
-- UPnP control point  examples
-  - [UPnP multicast dump utility](tools/upnpdump)
-  - [UPnP control point utility](tools/control-point)
-  - [UPnP Internet gateway utility ](tools/igd-tool)
+- UPnP control point examples
+  - UPnP basic controller for UPnP devices
+    - [UPnP multicast dump utility](tools/upnpdump)
+    - [UPnP control point utility](tools/control-point)
+  - UPnP controller for UPnP stardard devices
+    - [UPnP Internet gateway utility ](tools/igd-tool)
  
 - UPnP device examples
-  - [UPnP clock device](examples/clock)
-  - [UPnP light device](examples/light)
-  - [UPnP remote controller device](examples/)
-  - [UPnP television device](examples/tv)
-  - [UPnP air conditioner device](examples/air-conditioner)
-  - [UPnP washer device](examples/washer)
-  - [UPnP/AV media sever](examples/media-server)
+  - UPnP stardard devices
+    - [UPnP/AV media sever](examples/media-server)
+  - UPnP non-standard devices
+    - [UPnP clock device](examples/clock)
+    - [UPnP light device](examples/light)
+    - [UPnP remote controller device](examples/)
+    - [UPnP television device](examples/tv)
+    - [UPnP air conditioner device](examples/air-conditioner)
+    - [UPnP washer device](examples/washer)
