@@ -72,7 +72,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = core/src/main/java/org/
+INPUT                  = core/src/main/java/org/ std/src/main/java/org/
 FILE_PATTERNS          = *.java
 RECURSIVE              = YES
 EXCLUDE                = 
