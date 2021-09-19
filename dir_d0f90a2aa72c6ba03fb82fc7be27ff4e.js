@@ -56,7 +56,7 @@ var dir_d0f90a2aa72c6ba03fb82fc7be27ff4e =
     [ "StateVariable.java", "StateVariable_8java.html", [
       [ "org.cybergarage.upnp.StateVariable", "classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html", "classorg_1_1cybergarage_1_1upnp_1_1StateVariable" ]
     ] ],
-    [ "UPnP.java", "UPnP_8java.html", [
+    [ "UPnP.java", "core_2src_2main_2java_2org_2cybergarage_2upnp_2UPnP_8java.html", [
       [ "org.cybergarage.upnp.UPnP", "classorg_1_1cybergarage_1_1upnp_1_1UPnP.html", "classorg_1_1cybergarage_1_1upnp_1_1UPnP" ]
     ] ],
     [ "UPnPStatus.java", "UPnPStatus_8java.html", [

@@ -4,6 +4,14 @@ var namespaceorg_1_1cybergarage_1_1upnp =
     [ "device", "namespaceorg_1_1cybergarage_1_1upnp_1_1device.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1device" ],
     [ "event", "namespaceorg_1_1cybergarage_1_1upnp_1_1event.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1event" ],
     [ "ssdp", "namespaceorg_1_1cybergarage_1_1upnp_1_1ssdp.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1ssdp" ],
+    [ "std", null, [
+      [ "av", null, [
+        [ "controller", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller" ],
+        [ "player", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1player.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1player" ],
+        [ "renderer", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer" ],
+        [ "server", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server" ]
+      ] ]
+    ] ],
     [ "xml", "namespaceorg_1_1cybergarage_1_1upnp_1_1xml.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1xml" ],
     [ "Action", "classorg_1_1cybergarage_1_1upnp_1_1Action.html", "classorg_1_1cybergarage_1_1upnp_1_1Action" ],
     [ "ActionList", "classorg_1_1cybergarage_1_1upnp_1_1ActionList.html", "classorg_1_1cybergarage_1_1upnp_1_1ActionList" ],
