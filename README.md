@@ -21,7 +21,7 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU
   - [`org.cybergarage.upnp:core`](https://search.maven.org/artifact/org.cybergarage.upnp/core)
     - UPnP standard protocol packages 
   - [`org.cybergarage.upnp:std`](https://search.maven.org/artifact/org.cybergarage.upnp/std)
-    - UPnP standard devices packages such as UPnP AV based on `org.cybergarage.upnp:core`
+    - UPnP standard devices packages based on `org.cybergarage.upnp:core`
 
 ## Examples
 
