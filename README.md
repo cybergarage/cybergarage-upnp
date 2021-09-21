@@ -1,5 +1,7 @@
 # cybergarage-upnp
 
+[![Build Status](https://app.travis-ci.com/cybergarage/cybergarage-upnp.svg?branch=master)](https://app.travis-ci.com/cybergarage/cybergarage-upnp)
+
 ## Overview
 
 `cybergarage-upnp` is a UPnP™ development package for Java developers. controls these protocols automatically, and supports to create your devices and control points quickly.
