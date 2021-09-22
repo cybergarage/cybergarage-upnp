@@ -1,4 +1,10 @@
 language: java
 
+jdk:
+  - oraclejdk8
+  - oraclejdk11
+  - openjdk8
+  - openjdk11
+
 install: 
   - mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
