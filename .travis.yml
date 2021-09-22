@@ -8,3 +8,6 @@ jdk:
 
 install: 
   - mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
+
+notifications:
+  email: false
