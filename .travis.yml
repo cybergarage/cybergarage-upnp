@@ -1,2 +1,4 @@
 language: java
-install: mvn install -Dgpg.skip
+
+install: 
+  - mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
