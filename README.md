@@ -1,6 +1,6 @@
 # cybergarage-upnp
 
-[![Build Status](https://app.travis-ci.com/cybergarage/cybergarage-upnp.svg?branch=master)](https://app.travis-ci.com/cybergarage/cybergarage-upnp)
+[![](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml/badge.svg)](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml)
 
 ## Overview
 
