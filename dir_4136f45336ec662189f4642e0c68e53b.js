@@ -1,48 +1,18 @@
 var dir_4136f45336ec662189f4642e0c68e53b =
 [
-    [ "HTTPMUSocket.java", "HTTPMUSocket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.HTTPMUSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket" ]
-    ] ],
-    [ "HTTPUSocket.java", "HTTPUSocket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.HTTPUSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPUSocket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPUSocket" ]
-    ] ],
-    [ "SSDP.java", "SSDP_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDP", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDP.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDP" ]
-    ] ],
-    [ "SSDPNotifyRequest.java", "SSDPNotifyRequest_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPNotifyRequest", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifyRequest.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifyRequest" ]
-    ] ],
-    [ "SSDPNotifySocket.java", "SSDPNotifySocket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPNotifySocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifySocket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifySocket" ]
-    ] ],
-    [ "SSDPNotifySocketList.java", "SSDPNotifySocketList_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPNotifySocketList", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifySocketList.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifySocketList" ]
-    ] ],
-    [ "SSDPPacket.java", "SSDPPacket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPPacket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket" ]
-    ] ],
-    [ "SSDPRequest.java", "SSDPRequest_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPRequest", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPRequest.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPRequest" ]
-    ] ],
-    [ "SSDPResponse.java", "SSDPResponse_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPResponse", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPResponse.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPResponse" ]
-    ] ],
-    [ "SSDPSearchRequest.java", "SSDPSearchRequest_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchRequest", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchRequest.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchRequest" ]
-    ] ],
-    [ "SSDPSearchResponse.java", "SSDPSearchResponse_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchResponse", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponse.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponse" ]
-    ] ],
-    [ "SSDPSearchResponseSocket.java", "SSDPSearchResponseSocket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchResponseSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponseSocket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponseSocket" ]
-    ] ],
-    [ "SSDPSearchResponseSocketList.java", "SSDPSearchResponseSocketList_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchResponseSocketList", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponseSocketList.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchResponseSocketList" ]
-    ] ],
-    [ "SSDPSearchSocket.java", "SSDPSearchSocket_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchSocket.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchSocket" ]
-    ] ],
-    [ "SSDPSearchSocketList.java", "SSDPSearchSocketList_8java.html", [
-      [ "org.cybergarage.upnp.ssdp.SSDPSearchSocketList", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchSocketList.html", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchSocketList" ]
-    ] ]
+    [ "HTTPMUSocket.java", "HTTPMUSocket_8java.html", "HTTPMUSocket_8java" ],
+    [ "HTTPUSocket.java", "HTTPUSocket_8java.html", "HTTPUSocket_8java" ],
+    [ "SSDP.java", "SSDP_8java.html", "SSDP_8java" ],
+    [ "SSDPNotifyRequest.java", "SSDPNotifyRequest_8java.html", "SSDPNotifyRequest_8java" ],
+    [ "SSDPNotifySocket.java", "SSDPNotifySocket_8java.html", "SSDPNotifySocket_8java" ],
+    [ "SSDPNotifySocketList.java", "SSDPNotifySocketList_8java.html", "SSDPNotifySocketList_8java" ],
+    [ "SSDPPacket.java", "SSDPPacket_8java.html", "SSDPPacket_8java" ],
+    [ "SSDPRequest.java", "SSDPRequest_8java.html", "SSDPRequest_8java" ],
+    [ "SSDPResponse.java", "SSDPResponse_8java.html", "SSDPResponse_8java" ],
+    [ "SSDPSearchRequest.java", "SSDPSearchRequest_8java.html", "SSDPSearchRequest_8java" ],
+    [ "SSDPSearchResponse.java", "SSDPSearchResponse_8java.html", "SSDPSearchResponse_8java" ],
+    [ "SSDPSearchResponseSocket.java", "SSDPSearchResponseSocket_8java.html", "SSDPSearchResponseSocket_8java" ],
+    [ "SSDPSearchResponseSocketList.java", "SSDPSearchResponseSocketList_8java.html", "SSDPSearchResponseSocketList_8java" ],
+    [ "SSDPSearchSocket.java", "SSDPSearchSocket_8java.html", "SSDPSearchSocket_8java" ],
+    [ "SSDPSearchSocketList.java", "SSDPSearchSocketList_8java.html", "SSDPSearchSocketList_8java" ]
 ];

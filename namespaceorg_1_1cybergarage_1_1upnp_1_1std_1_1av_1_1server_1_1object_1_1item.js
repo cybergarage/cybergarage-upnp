@@ -1,9 +1,0 @@
-var namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item =
-[
-    [ "file", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1file.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1file" ],
-    [ "mythtv", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1mythtv.html", "namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1mythtv" ],
-    [ "ItemNode", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ItemNode.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ItemNode" ],
-    [ "ItemNodeList", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ItemNodeList.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ItemNodeList" ],
-    [ "ResourceNode", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNode.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNode" ],
-    [ "ResourceNodeList", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNodeList.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNodeList" ]
-];

@@ -1,6 +1,0 @@
-var namespaceorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort =
-[
-    [ "DCDateSortCap", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1DCDateSortCap.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1DCDateSortCap" ],
-    [ "DCTitleSortCap", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1DCTitleSortCap.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1DCTitleSortCap" ],
-    [ "UPnPClassSortCap", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1UPnPClassSortCap.html", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1sort_1_1UPnPClassSortCap" ]
-];
