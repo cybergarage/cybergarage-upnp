@@ -27,7 +27,7 @@ var NAVTREE =
   [ "cybergarage-upnp", "index.html", [
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", null ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -47,20 +47,33 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AVTransportInfoList_8java.html",
-"classorg_1_1cybergarage_1_1http_1_1HTTP.html#af9e6e8d4ee3a6800f4fa304e49d15bf4",
-"classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#adacdfc973e7a4e00f110519b9a9b1800",
-"classorg_1_1cybergarage_1_1upnp_1_1ArgumentList.html",
-"classorg_1_1cybergarage_1_1upnp_1_1Device.html#acd0881bf4d0d104d27c8271d97a3aa62",
-"classorg_1_1cybergarage_1_1upnp_1_1UPnP.html#a385fa976e1076f0f9e69b94db32f1375",
-"classorg_1_1cybergarage_1_1upnp_1_1event_1_1SubscriptionRequest.html#a9d037ae4159bebb24f44fb2ce3dc3e91",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1server_1_1BrowseAction.html#a44860ab5a1dffc3f95842ca36b37debb",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1ConnectionManager.html#a1b46a0067671554c1bd9af5f1e22840e",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html#ae24f7e58a249957688c0eed8e00a83c5",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1directory_1_1file_1_1FileDirectory.html#afea08333d73edc5de26ff345b59e74e2",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1container_1_1ContainerNode.html#a1977d43189c82140096933c38a51045f",
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1search_1_1IdSearchCap.html#aafd10ae3fe7bcaf2a98fb7d7ec798739",
-"classorg_1_1cybergarage_1_1xml_1_1Parser.html#ae8d05054d7a5a437d039f48fecbbc64c"
+"classorg_1_1cybergarage_1_1http_1_1HTTP.html#a5820703732207f338f95c364b5119458",
+"classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#aacf5fd139225cd844a6c64fc178fe75c",
+"classorg_1_1cybergarage_1_1http_1_1HTTPServerThread.html#a9adb86342835aa8bb3cf767ebfeaec62",
+"classorg_1_1cybergarage_1_1soap_1_1SOAPResponse.html#a2d25fab259f898377bdb04780e7c4897",
+"classorg_1_1cybergarage_1_1upnp_1_1AllowedValueRange.html#aae618644c20ef722f0c4d85ccde99a84",
+"classorg_1_1cybergarage_1_1upnp_1_1ControlPoint.html#ac6c4d6914cb1539955af8fd1f9ec39c0",
+"classorg_1_1cybergarage_1_1upnp_1_1Device.html#aa1ff16bb9cc280ae54ccdc4060b0f3f9",
+"classorg_1_1cybergarage_1_1upnp_1_1Icon.html#abe485a8def88e5f4db1305447e7f5a9a",
+"classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html#a7ef69f9f93c182eac992bb9f213badf4",
+"classorg_1_1cybergarage_1_1upnp_1_1control_1_1ControlResponse.html#abd26c9b0d8b14bf5ed7028a551267dc8",
+"classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#ad48cd873d33d9bf46380c21d97b0b669",
+"classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPNotifySocketList.html#a83208696079090bbeb82e87727ccb1eb",
+"classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchSocketList.html#a7475415fab1e5c2a72d3b56ce8fa1ead",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1player_1_1action_1_1BrowseAction.html#aeb8fd4c7fd814a88d8d91d92e9343f79",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1AVTransportInfoList.html",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a22f6100ecca54c07e7db667ebdde8cc0",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html#a0770653d95613686ce02a74d7bea4a73",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ContentDirectory.html#a7ca6ca146586bfd886683804667fc052",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1action_1_1BrowseAction.html#ad1dc27aaa7c00f8f5f68edb2c38c8f92",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1ContentNode.html#a689a0a72685bd0ff5a6d58a4b8c41c45",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1SearchCriteria.html#a61c5d6fa60fa905ed4edb1fd6cee9995",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1format_1_1ID3Frame.html#a3245f740176bbbec09e64752e4b5da74",
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNode.html#ab764f442df5a9d1e28c325a28a31f583",
+"classorg_1_1cybergarage_1_1upnp_1_1xml_1_1ServiceData.html#a37863ea1231e69e658f13ecaa620f099",
+"classorg_1_1cybergarage_1_1xml_1_1Node.html#a8b8555f226a7440fb73da157719bd805",
+"interfaceorg_1_1cybergarage_1_1upnp_1_1RootDescription.html#a438982f2885bdaddb9c25cdd44f73359"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
