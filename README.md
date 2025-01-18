@@ -2,7 +2,7 @@
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/cybergarage-upnp)
 [![](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml/badge.svg)](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml)
-![Maven Central Version](https://img.shields.io/maven-central/v/org.cybergarage.upnp/core)
+[![Maven Central Version](https://img.shields.io/maven-central/v/org.cybergarage.upnp/core)](https://central.sonatype.com/search?q=g:org.cybergarage.upnp&smo=true)
 
 
 ## Overview
