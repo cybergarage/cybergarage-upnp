@@ -70,68 +70,69 @@ $(function(){initNavTree('md_doc_2cybergarage-upnp-prgguide.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<p>This programming guide is for developers who want to create UPnP™ devices and control points using cybergarage-upnp. The guide explains how to create your UPnP™ devices and control points using the cybergarage-upnp package.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>UPnP™ architecture is based on open networking to enable discovery and control of networked devices and services, such as media servers and players at home.</p>
-<p>UPnP™ architecture is based on many standard protocols, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.</p>
-<p>cybergarage-upnp is a development package for UPnP™ developers. The cybergarage-upnp controls these protocols automatically, and supports to create your devices and control points quickly. Please visit official <a href="http://www.upnp.org/">UPnP™ Forum</a> site to know about UPnP™ in more detail.</p>
+<p>The UPnP™ architecture is based on open networking to enable the discovery and control of networked devices and services, such as media servers and players at home.</p>
+<p>The UPnP™ architecture relies on many standard protocols, such as GENA, SSDP, SOAP, HTTPU, and HTTP. Therefore, you need to understand and implement these protocols to create your UPnP™ devices.</p>
+<p>cybergarage-upnp is a development package for UPnP™ developers. It automatically handles these protocols and supports the quick creation of your devices and control points. Please visit the official <a href="http://www.upnp.org/">UPnP™ Forum</a> site for more detailed information about UPnP™.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Device</h1>
-<p>The following static structure diagram is related classes of cybergarage-upnp to create your device of UPnP™. The device has some embedded devices and services, and the services have some actions and state variables.</p>
+<p>The following static structure diagram shows the related classes of cybergarage-upnp used to create your UPnP™ device. The device can have some embedded devices and services, and the services can have some actions and state variables.</p>
 <div class="image">
 <img src="device-class-overview.png" alt=""/>
 </div>
-    <p>The above static structure diagram is modified simplify to explain.</p>
+    <p>The above static structure diagram is simplified to explain the concept.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Description</h2>
-<p>At first, you have to make some description files of your devices and the services when you want to create your UPnP™ device..</p>
+<p>First, you need to create some description files for your devices and services when you want to create your UPnP™ device.</p>
 <div class="image">
 <img src="device-description.png" alt=""/>
 </div>
-    <p>The description of the root device should not have URLBase element because the element is added automatically when the device is created using the description.</p>
-<p>The service descriptions are required to create a device, but the presentationURL and the iconList are recommended option. Please see UPnP™ specifications about the description format in more detail.</p>
+    <p>The description of the root device should not include the URLBase element because it is added automatically when the device is created using the description.</p>
+<p>The service descriptions are required to create a device, but the presentationURL and the iconList are recommended options. Please refer to the UPnP™ specifications for more detailed information about the description format.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Initiating</h2>
-<p>To create a UPnP™ device, create a instance of Device class with the root description file. The created device is a root device, and only root device can be active using Device::start(). The device is announced to the UPnP™ network when the device is started. The following shows an example of the initiating device.</p>
+<p>To create a UPnP™ device, create an instance of the Device class with the root description file. The created device is a root device, and only the root device can be activated using Device::start(). The device is announced to the UPnP™ network when it is started. The following example shows how to initiate a device.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.upnp.*;</div>
 <div class="line"><span class="keyword">import</span> org.cybergarage.upnp.device.*;</div>
 <div class="line"> </div>
 <div class="line">String descriptionFileName = <span class="stringliteral">&quot;description/description.xml&quot;</span>;</div>
 <div class="line"> </div>
-<div class="line">Try {</div>
+<div class="line"><span class="keywordflow">try</span> {</div>
 <div class="line">  Device upnpDev = <span class="keyword">new</span> Device(descriptionFileName);</div>
-<div class="line">  ......</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  upnpDev.start();</div>
-<div class="line">} <span class="keywordflow">catch</span> (InvalidDescriptionException e){</div>
+<div class="line">} <span class="keywordflow">catch</span> (InvalidDescriptionException e) {</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;InvalidDescriptionException = &quot;</span> + e.getMessage());</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The InvalidDescriptionException is occurred when the description is invalid. Use the getMessage() to know the exception reason in more detail.</p>
-<p>Alternatively, you can load the descriptions using Device::loadDescription() and Service::loadSCPD() instead of the description files as the following. The loading methods occur the exception when the loading is failed.</p>
+</div><!-- fragment --><p>The InvalidDescriptionException occurs when the description is invalid. Use the getMessage() method to know the reason for the exception in more detail.</p>
+<p>Alternatively, you can load the descriptions using Device::loadDescription() and Service::loadSCPD() instead of using description files, as shown below. The loading methods throw an exception when the loading fails.</p>
 <div class="fragment"><div class="line">String DEVICE_DESCRIPTION =</div>
-<div class="line">  <span class="stringliteral">&quot;&lt;?xml version=¥&quot;</span>1.0¥<span class="stringliteral">&quot; ?&gt;¥n&quot;</span> +</div>
-<div class="line">  <span class="stringliteral">&quot;&lt;root xmlns=¥&quot;</span>urn:schemas-upnp-org:device-1-0¥<span class="stringliteral">&quot;&gt;¥n&quot;</span> +</div>
-<div class="line">  ....</div>
+<div class="line">  <span class="stringliteral">&quot;&lt;?xml version=\&quot;1.0\&quot; ?&gt;\n&quot;</span> +</div>
+<div class="line">  <span class="stringliteral">&quot;&lt;root xmlns=\&quot;urn:schemas-upnp-org:device-1-0\&quot;&gt;\n&quot;</span> +</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  <span class="stringliteral">&quot;&lt;/root&gt;&quot;</span>;</div>
 <div class="line"> </div>
-<div class="line">String SERVICE_DESCRIPTION[] =</div>
-<div class="line">  <span class="stringliteral">&quot;&lt;?xml version=¥&quot;</span>1.0¥<span class="stringliteral">&quot;?&gt;¥n&quot;</span> +</div>
-<div class="line">  <span class="stringliteral">&quot;&lt;scpd xmlns=¥&quot;</span>urn:schemas-upnp-org:service-1-0¥<span class="stringliteral">&quot; &gt;¥n&quot;</span> + ....</div>
-<div class="line">  ....</div>
+<div class="line">String SERVICE_DESCRIPTION =</div>
+<div class="line">  <span class="stringliteral">&quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;\n&quot;</span> +</div>
+<div class="line">  <span class="stringliteral">&quot;&lt;scpd xmlns=\&quot;urn:schemas-upnp-org:service-1-0\&quot;&gt;\n&quot;</span> +</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  <span class="stringliteral">&quot;&lt;/scpd&gt;&quot;</span>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">try</span> {</div>
 <div class="line">  Device upnpDev = <span class="keyword">new</span> Device();</div>
 <div class="line">  <span class="keywordtype">boolean</span> descSuccess = upnpDev.loadDescription(DEVICE_DESCRIPTION);</div>
-<div class="line">  Service upnpService = getService(<span class="stringliteral">&quot;urn:schemas-upnp-org:service:****:1&quot;</span>);</div>
-<div class="line">  <span class="keywordtype">boolean</span> scpdSuccess = upnpService.loadSCPD(SERVICE_DESCRIPTION[); </div>
-<div class="line">} <span class="keywordflow">catch</span> (InvalidDescriptionException e){</div>
+<div class="line">  Service upnpService = upnpDev.getService(<span class="stringliteral">&quot;urn:schemas-upnp-org:service:****:1&quot;</span>);</div>
+<div class="line">  <span class="keywordtype">boolean</span> scpdSuccess = upnpService.loadSCPD(SERVICE_DESCRIPTION); </div>
+<div class="line">} <span class="keywordflow">catch</span> (InvalidDescriptionException e) {</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;InvalidDescriptionException = &quot;</span> + e.getMessage());</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The active root device has some server processes, and returns the responses automatically when a control points sends a request to the device. For example, the device has a HTTP server to return the description files when a control point gets the description file. The device searches an available port for the HTTP server automatically on the machine when the device is started.</p>
+</div><!-- fragment --><p>The active root device has some server processes and automatically returns responses when a control point sends a request to the device. For example, the device has an HTTP server to return the description files when a control point requests them. The device searches for an available port for the HTTP server automatically when it is started.</p>
 <div class="image">
 <img src="device-ports.png" alt=""/>
 </div>
-    <p>The root device is created with the following default parameters, you can change the parameters using the following methods before the root device is started.</p>
+    <p>The root device is created with the following default parameters. You can change these parameters using the following methods before starting the root device.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Parameter   </th><th class="markdownTableHeadNone">Default   </th><th class="markdownTableHeadNone">Setter Method    </th></tr>
@@ -144,73 +145,69 @@ Initiating</h2>
 </table>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Notify</h2>
-<p>Your device is announced using Device::start() to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started. When device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can announce the notify messages using Device::announce() and Device::byebye().</p>
+<p>Your device is announced to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started using Device::start(). When the device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can also announce the notify messages manually using Device::announce() and Device::byebye().</p>
 <div class="image">
 <img src="device-notify.png" alt=""/>
 </div>
-    <p>When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device send the search response to the control point automatically. The device repeats the announcement in the lease time automatically.</p>
+    <p>When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device sends the search response to the control point automatically. The device repeats the announcement within the lease time automatically.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 Embedded Devices</h2>
-<p>The devices may have some embedded devices. Use Device::getDeviceList() to get the embedded device list. The following example outputs friendly names of all embedded devices in the device.</p>
+<p>Devices may have some embedded devices. Use Device::getDeviceList() to get the list of embedded devices. The following example outputs the friendly names of all embedded devices in the device.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keywordtype">void</span> printDevice(Device dev) {</div>
 <div class="line">  String devName = dev.getFriendlyName();</div>
 <div class="line">  System.out.println(devName);</div>
 <div class="line">  DeviceList childDevList = dev.getDeviceList();</div>
 <div class="line">  <span class="keywordtype">int</span> nChildDevs = childDevList.size();</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n =0; n &lt;nChildDevs; n ++) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; nChildDevs; n++) {</div>
 <div class="line">    Device childDev = childDevList.getDevice(n);</div>
 <div class="line">    printDevice(childDev);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="line">......</div>
-<div class="line">Dev rootDev = ....;</div>
-<div class="line">......</div>
-<div class="line">Device childDev = childDevList.getDevice(n); printDevice(childDev);</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
+<div class="line">Device rootDev = ...;</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">DeviceList childDevList = rootDev.getDeviceList();</div>
-<div class="line"><span class="keywordtype">int</span> childDevs = childDevList.size();</div>
-<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n=0; n&lt; childDevs; n++) {</div>
-<div class="line">  Device childDev = rootDevList.getDevice(n);</div>
+<div class="line"><span class="keywordtype">int</span> nChildDevs = childDevList.size();</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; nChildDevs; n++) {</div>
+<div class="line">  Device childDev = childDevList.getDevice(n);</div>
 <div class="line">  printDevice(childDev);</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>You can find a embedded device by the friendly name or UDN using Device::getDevice(). The following example gets a embedded device by the friendly name.</p>
-<div class="fragment"><div class="line">Device homeServerDev ....</div>
+</div><!-- fragment --><p>You can find an embedded device by the friendly name or UDN using Device::getDevice(). The following example gets an embedded device by the friendly name.</p>
+<div class="fragment"><div class="line">Device homeServerDev = ...;</div>
 <div class="line">Device musicDev = homeServerDev.getDevice(<span class="stringliteral">&quot;music&quot;</span>);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Service</h2>
-<p>Use Device::getServiceList() to access embedded services of the device. The service may has some actions and state variables. Use Service::getActionList() to get the actions, and use Service::getServiceStateTable() to the state variables. The following example outputs the all actions and state variables in a device.</p>
-<div class="fragment"><div class="line">Device dev ....</div>
+<p>Use Device::getServiceList() to access the embedded services of the device. The service may have some actions and state variables. Use Service::getActionList() to get the actions, and use Service::getServiceStateTable() to get the state variables. The following example outputs all actions and state variables in a device.</p>
+<div class="fragment"><div class="line">Device dev = ...;</div>
 <div class="line">ServiceList serviceList = dev.getServiceList();</div>
 <div class="line"><span class="keywordtype">int</span> serviceCnt = serviceList.size();</div>
-<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n=0; n&lt;serviceCnt; n++) {</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; serviceCnt; n++) {</div>
 <div class="line">  Service service = serviceList.getService(n);</div>
 <div class="line">  ActionList actionList = service.getActionList();</div>
 <div class="line">  <span class="keywordtype">int</span> actionCnt = actionList.size();</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;actionCnt; i++) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; actionCnt; i++) {</div>
 <div class="line">    Action action = actionList.getAction(i);</div>
 <div class="line">    System.out.println(<span class="stringliteral">&quot;action [&quot;</span> + i + <span class="stringliteral">&quot;] = &quot;</span> + action.getName()); </div>
 <div class="line">  }</div>
-<div class="line">  ServiceStateTable stateTable = service. getServiceStateTable ();</div>
+<div class="line">  ServiceStateTable stateTable = service.getServiceStateTable();</div>
 <div class="line">  <span class="keywordtype">int</span> varCnt = stateTable.size();</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;actionCnt; i++) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; varCnt; i++) {</div>
 <div class="line">    StateVariable stateVar = stateTable.getServiceStateVariable(i);</div>
 <div class="line">    System.out.println(<span class="stringliteral">&quot;stateVar [&quot;</span> + i + <span class="stringliteral">&quot;] = &quot;</span> + stateVar.getName());</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>You can find a service in the device by the service ID using Device::getService(), and you can find an action or state variable in the service by name too. Use Device::getAction() or Service::getAction() to find the action, and use Device::getStateariable() or Service::getStateVariable() to find the state variable. The following example gets a service, a action and a state variable in a device by name.</p>
-<div class="fragment"><div class="line">Device clockDev ....</div>
-<div class="line">Service timerSev = clockDev.getService(<span class="stringliteral">&quot;timer&quot;</span>);</div>
+</div><!-- fragment --><p>You can find a service in the device by the service ID using Device::getService(), and you can find an action or state variable in the service by name too. Use Device::getAction() or Service::getAction() to find the action, and use Device::getStateVariable() or Service::getStateVariable() to find the state variable. The following example gets a service, an action, and a state variable in a device by name.</p>
+<div class="fragment"><div class="line">Device clockDev = ...;</div>
+<div class="line">Service timerService = clockDev.getService(<span class="stringliteral">&quot;timer&quot;</span>);</div>
 <div class="line">Action getTimeAct = clockDev.getAction(<span class="stringliteral">&quot;GetTime&quot;</span>);</div>
 <div class="line">StateVariable timeStat = clockDev.getStateVariable(<span class="stringliteral">&quot;time&quot;</span>);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Control</h2>
-<p>To receive action control events from control points, the device needs to implement the ActionListener interface. The listener have to implement a actionControlReceived() that has the action and argument list parameter. The input arguments has the passed values from the control point, set the response values in the output arguments and return a true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface. The UPnPError is INVALID_ACTION as default, but use Action::setSetStatus() to return other UPnP errors.</p>
-<p>To receive query control events from control points, the device needs to implement the QueryListener interface.</p>
-<p>The listener have to implement a queryControlReceived() that has the service variable parameter and return a true when the request is valid. Otherwise return a false when the request is invalid. UPnPError response is returned to the control point automatically when the returned value is false or the device has no the interface</p>
-<p>The UPnPError is INVALID_ACTION as default, but use ServiceVariable::setSetStatus() to return other UPnP errors. The following sample is a clock device. The device executes two action control requests and a query control request.</p>
+<p>To receive action control events from control points, the device needs to implement the ActionListener interface. The listener must implement the actionControlReceived() method, which has the action and argument list parameters. The input arguments contain the values passed from the control point. Set the response values in the output arguments and return true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use Action::setStatus() to return other UPnP errors.</p>
+<p>To receive query control events from control points, the device needs to implement the QueryListener interface. The listener must implement the queryControlReceived() method, which has the service variable parameter and returns true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use StateVariable::setStatus() to return other UPnP errors. The following sample is a clock device. The device executes two action control requests and a query control request.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
 <div class="line">  <span class="keyword">public</span> ClockDevice() {</div>
-<div class="line">    super (<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>);</div>
+<div class="line">    super(<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>);</div>
 <div class="line">    Action setTimeAction = getAction(<span class="stringliteral">&quot;SetTime&quot;</span>);</div>
 <div class="line">    setTimeAction.setActionListener(<span class="keyword">this</span>);</div>
 <div class="line">    Action getTimeAction = getAction(<span class="stringliteral">&quot;GetTime&quot;</span>);</div>
@@ -219,81 +216,81 @@ Control</h2>
 <div class="line">    stateVar.setQueryListener(<span class="keyword">this</span>); </div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">boolean</span> actionControlRecieved(Action action) {</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">boolean</span> actionControlReceived(Action action) {</div>
 <div class="line">    ArgumentList argList = action.getArgumentList();</div>
 <div class="line">    String actionName = action.getName();</div>
-<div class="line">    <span class="keywordflow">if</span> (actionName.equals(<span class="stringliteral">&quot;SetTime&quot;</span>) == <span class="keyword">true</span>) {</div>
+<div class="line">    <span class="keywordflow">if</span> (actionName.equals(<span class="stringliteral">&quot;SetTime&quot;</span>)) {</div>
 <div class="line">      Argument inTime = argList.getArgument(<span class="stringliteral">&quot;time&quot;</span>);</div>
 <div class="line">      String timeValue = inTime.getValue();</div>
-<div class="line">      If (timeValue == <span class="keyword">null</span> || timeValue.length() &lt;= 0)</div>
-<div class="line">        return false;</div>
-<div class="line">      ........</div>
-<div class="line">      Argument outResult = argList.getArgument(&quot;result&quot;);</div>
-<div class="line">      arg.setValue(&quot;TRUE&quot;);</div>
-<div class="line">      return true;</div>
-<div class="line">    }</div>
-<div class="line">    else if (actionName.equals(&quot;GetTime&quot;) == true) {</div>
-<div class="line">      String currTimeStr = ..... </div>
+<div class="line">      <span class="keywordflow">if</span> (timeValue == <span class="keyword">null</span> || timeValue.length() &lt;= 0)</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">      <span class="comment">// ...existing code...</span></div>
+<div class="line">      Argument outResult = argList.getArgument(<span class="stringliteral">&quot;result&quot;</span>);</div>
+<div class="line">      outResult.setValue(<span class="stringliteral">&quot;TRUE&quot;</span>);</div>
+<div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (actionName.equals(<span class="stringliteral">&quot;GetTime&quot;</span>)) {</div>
+<div class="line">      String currTimeStr = ...;</div>
 <div class="line">      Argument currTimeArg = argList.getArgument(<span class="stringliteral">&quot;currTime&quot;</span>);</div>
-<div class="line">      currTimeArg.setValue(currTimeStrs);</div>
+<div class="line">      currTimeArg.setValue(currTimeStr);</div>
 <div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
-<div class="line">    action.setStatus(UPnP::INVALID_ACTION, <span class="stringliteral">&quot;.....&quot;</span>);</div>
+<div class="line">    action.setStatus(UPnP.INVALID_ACTION, <span class="stringliteral">&quot;...&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">bool</span> queryControlReceived(StateVariable stateVar) {</div>
-<div class="line">    <span class="keywordflow">if</span> (varName.equals(<span class="stringliteral">&quot;Time&quot;</span>) == <span class="keyword">true</span>) {</div>
-<div class="line">      String currTimeStr = ....;</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">boolean</span> queryControlReceived(StateVariable stateVar) {</div>
+<div class="line">    String varName = stateVar.getName();</div>
+<div class="line">    <span class="keywordflow">if</span> (varName.equals(<span class="stringliteral">&quot;Time&quot;</span>)) {</div>
+<div class="line">      String currTimeStr = ...;</div>
 <div class="line">      stateVar.setValue(currTimeStr);</div>
 <div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
-<div class="line">    stateVar.setStatus(UPnP::INVALID_VAR, <span class="stringliteral">&quot;.....&quot;</span>);</div>
+<div class="line">    stateVar.setStatus(UPnP.INVALID_VAR, <span class="stringliteral">&quot;...&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Use Device::setActionListner() or Service::setActionListnerer() to add a listener into all control actions in a device or a service. Use Device::setQueryListner() or Service::setQueryListner() to add a listener into all query actions in a device or a service. The following sample sets a listener into all actions in a device.</p>
-<div class="fragment"><div class="line"><span class="keyword">class </span>ClockDevice : <span class="keyword">public</span> Device, <span class="keyword">public</span> ActionListener, <span class="keyword">public</span> QueryListener {</div>
-<div class="line">  <span class="keyword">public</span>:</div>
-<div class="line">    ClockDevice() : Device(<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>) {</div>
-<div class="line">      setActionListner(<span class="keyword">this</span>);</div>
-<div class="line">      setQueryListener (<span class="keyword">this</span>);</div>
-<div class="line">    }</div>
-<div class="line">    </div>
-<div class="line">    <span class="keywordtype">bool</span> actionControlRecieved(Action *action) {</div>
-<div class="line">       ....... </div>
-<div class="line">    }</div>
+</div><!-- fragment --><p>Use Device::setActionListener() or Service::setActionListener() to add a listener to all control actions in a device or a service. Use Device::setQueryListener() or Service::setQueryListener() to add a listener to all query actions in a device or a service. The following sample sets a listener to all actions in a device.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
+<div class="line">  <span class="keyword">public</span> ClockDevice() {</div>
+<div class="line">    super(<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>);</div>
+<div class="line">    setActionListener(<span class="keyword">this</span>);</div>
+<div class="line">    setQueryListener(<span class="keyword">this</span>);</div>
+<div class="line">  }</div>
+<div class="line">  </div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">boolean</span> actionControlReceived(Action action) {</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">bool</span> queryControlReceived(StateVariable *stateVar) {</div>
-<div class="line">      .......</div>
-<div class="line">    }</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">boolean</span> queryControlReceived(StateVariable stateVar) {</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
+<div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Event</h2>
-<p>The control point may subscribe some events of the device. You don't need manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point into the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends a unsubscription message.</p>
+<p>The control point may subscribe to some events of the device. You do not need to manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point to the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends an unsubscription message.</p>
 <p>Use ServiceStateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using ServiceStateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.</p>
-<div class="fragment"><div class="line">Device clockDevice = ....</div>
-<div class="line">StateVariable timeVar = clockDevice.getStateVariable(<span class="stringliteral">&quot;Time&quot;</span>); String</div>
-<div class="line">timeStr = .....</div>
+<div class="fragment"><div class="line">Device clockDevice = ...;</div>
+<div class="line">StateVariable timeVar = clockDevice.getStateVariable(<span class="stringliteral">&quot;Time&quot;</span>);</div>
+<div class="line">String timeStr = ...;</div>
 <div class="line">timeVar.setValue(timeStr);</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Control Point</h1>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Class Overview</h2>
-<p>The following static structure diagram is related classes of cybergarage-upnp to create your control point of UPnP™. The control point has some root devices in the UPnP™ network.</p>
+<p>The following static structure diagram shows the related classes of cybergarage-upnp used to create your UPnP™ control point. The control point can have some root devices in the UPnP™ network.</p>
 <div class="image">
 <img src="ctrlpoint-class-overview.png" alt=""/>
 </div>
     <h2><a class="anchor" id="autotoc_md12"></a>
 Initiating</h2>
-<p>To create a UPnP™ control point, create a instance of ControlPoint class. Use ControlPoint::start() to active the contol point. The control point multicasts a discovery message searching for all devices to the UPnP™ network automatically when the control point is active.</p>
+<p>To create a UPnP™ control point, create an instance of the ControlPoint class. Use ControlPoint::start() to activate the control point. The control point multicasts a discovery message searching for all devices to the UPnP™ network automatically when it is activated.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.upnp.*;</div>
 <div class="line"><span class="keyword">import</span> org.cybergarage.upnp.device.*;</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">ControlPoint ctrlPoint = <span class="keyword">new</span> ControlPoint();</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">ctrlPoint.start();</div>
-</div><!-- fragment --><p>The active control point has some server processes, and returns the responses automatically when other UPnP™ devices send the messages to the control point. For example, the control point has a SSDP server to get M-SEARCH responses, and the control point searches a available port for the SSDP server automatically on the machine when the control point is started. The control point is created with the following default parameters.</p>
+</div><!-- fragment --><p>The active control point has some server processes and automatically returns responses when other UPnP™ devices send messages to it. For example, the control point has an SSDP server to get M-SEARCH responses, and it searches for an available port for the SSDP server automatically when it is started. The control point is created with the following default parameters.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Parameter   </th><th class="markdownTableHeadNone">Default   </th><th class="markdownTableHeadNone">Setter Method    </th></tr>
@@ -304,15 +301,14 @@ Initiating</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Subscription URI   </td><td class="markdownTableBodyNone">/eventSub   </td><td class="markdownTableBodyNone">setEventSubURI()    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Search Response   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">setSerchMx()   </td></tr>
+<td class="markdownTableBodyNone">Search Response   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">setSearchMx()   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Notify</h2>
-<p>The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed form the control point automatically. The expired device is removed from the device list of the control point automatically too.You don't manage the notify events, but you can receive the event to implement the NotifyListener interface. The following sample receives the notify messages.</p>
-<div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements NotifyListener</div>
-<div class="line">{</div>
+<p>The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed from the control point automatically. The expired device is removed from the device list of the control point automatically too. You do not need to manage the notify events, but you can receive the event by implementing the NotifyListener interface. The following sample receives the notify messages.</p>
+<div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements NotifyListener {</div>
 <div class="line">  <span class="keyword">public</span> MyCtrlPoint() {</div>
-<div class="line">    ........</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">    addNotifyListener(<span class="keyword">this</span>);</div>
 <div class="line">    start();</div>
 <div class="line">  }</div>
@@ -322,32 +318,34 @@ Notify</h2>
 <div class="line">    String target = ssdpPacket.getNT();</div>
 <div class="line">    String subType = ssdpPacket.getNTS();</div>
 <div class="line">    String location = ssdpPacket.getLocation();</div>
-<div class="line">    .......</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>To know only the added and removed device, you may use the following interface, DeviceChangeListener.</p>
+</div><!-- fragment --><p>To know only the added and removed devices, you may use the DeviceChangeListener interface.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements DeviceChangeListener {</div>
 <div class="line">  <span class="keyword">public</span> MyCtrlPoint() {</div>
-<div class="line">    ........</div>
-<div class="line">    addDeviceChangeListener (<span class="keyword">this</span>); start();</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
+<div class="line">    addDeviceChangeListener(<span class="keyword">this</span>);</div>
+<div class="line">    start();</div>
 <div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> deviceAdded (Device dev) {</div>
-<div class="line">    ........</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> deviceAdded(Device dev) {</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line"> </div>
 <div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> deviceRemoved(Device dev) {</div>
-<div class="line">    ........</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Search</h2>
-<p>You can update the device lists using ControlPoint::search(). The discovered root devices are added to the control point automatically, and you can receive the response to implement the SearchResponseListener interface. The following sample receives the notify messages.</p>
+<p>You can update the device lists using ControlPoint::search(). The discovered root devices are added to the control point automatically, and you can receive the response by implementing the SearchResponseListener interface. The following sample receives the search response messages.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements SearchResponseListener {</div>
 <div class="line">  <span class="keyword">public</span> MyCtrlPoint() {</div>
-<div class="line">    ........</div>
-<div class="line">    addSearchResponseListener(<span class="keyword">this</span>); start();</div>
-<div class="line">    ........</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
+<div class="line">    addSearchResponseListener(<span class="keyword">this</span>);</div>
+<div class="line">    start();</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">    search(<span class="stringliteral">&quot;upnp:rootdevice&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -355,126 +353,124 @@ Search</h2>
 <div class="line">    String uuid = ssdpPacket.getUSN();</div>
 <div class="line">    String target = ssdpPacket.getST();</div>
 <div class="line">    String location = ssdpPacket.getLocation();</div>
-<div class="line">    ........</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Root Devices</h2>
-<p>Use ControlPoint:: getDeviceList() that returns only root devices to get the discovered device list. The following example outputs friendly names of the root devices.</p>
+<p>Use ControlPoint::getDeviceList() to get the list of discovered root devices. The following example outputs the friendly names of the root devices.</p>
 <div class="fragment"><div class="line">ControlPoint ctrlPoint = <span class="keyword">new</span> ControlPoint();</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">ctrlPoint.start();</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">DeviceList rootDevList = ctrlPoint.getDeviceList();</div>
-<div class="line"><span class="keywordtype">int</span> nRootDevs =rootDevList.size();</div>
-<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n=0; n&lt;nRootDevs; n++) {</div>
+<div class="line"><span class="keywordtype">int</span> nRootDevs = rootDevList.size();</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; nRootDevs; n++) {</div>
 <div class="line">  Device dev = rootDevList.getDevice(n);</div>
 <div class="line">  String devName = dev.getFriendlyName();</div>
-<div class="line">  System.out.println(<span class="stringliteral">&quot;\[&quot;</span> + n + <span class="stringliteral">&quot;\] = &quot;</span> + devName);</div>
+<div class="line">  System.out.println(<span class="stringliteral">&quot;[&quot;</span> + n + <span class="stringliteral">&quot;] = &quot;</span> + devName);</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>You can find a root device by the friendly name, the device type, or the UDN using ControlPoint::getDevice(). The following example gets a root device by the friendly name.</p>
 <div class="fragment"><div class="line">ControlPoint ctrlPoint = <span class="keyword">new</span> ControlPoint();</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">ctrlPoint.start();</div>
-<div class="line">......</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">Device homeServerDev = ctrlPoint.getDevice(<span class="stringliteral">&quot;xxxx-home-server&quot;</span>);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Control</h2>
-<p>The control point can send action or query control messages to the discovered devices. To send the action control message, use Action::setArgumentValue() and Action::postControlAction (). You should set the action values to the all input arguments, and the output argument values is ignored if you set. The following sample posts a action control request that sets a new time, and output the response result.</p>
-<div class="fragment"><div class="line">Device clockDev = ....</div>
+<p>The control point can send action or query control messages to the discovered devices. To send an action control message, use Action::setArgumentValue() and Action::postControlAction(). You should set the action values for all input arguments, and the output argument values are ignored if you set them. The following sample posts an action control request that sets a new time and outputs the response result.</p>
+<div class="fragment"><div class="line">Device clockDev = ...;</div>
 <div class="line"> </div>
 <div class="line">Action setTimeAct = clockDev.getAction(<span class="stringliteral">&quot;SetTime&quot;</span>);</div>
-<div class="line">String newTime = .... </div>
+<div class="line">String newTime = ...;</div>
 <div class="line">setTimeAct.setArgumentValue(<span class="stringliteral">&quot;time&quot;</span>, newTime);</div>
-<div class="line"><span class="keywordflow">if</span> (setTimeAct.postControlAction() == <span class="keyword">true</span>) {</div>
+<div class="line"><span class="keywordflow">if</span> (setTimeAct.postControlAction()) {</div>
 <div class="line">  ArgumentList outArgList = setTimeAct.getOutputArgumentList();</div>
 <div class="line">  <span class="keywordtype">int</span> nOutArgs = outArgList.size();</div>
-<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n=0; n&lt;nOutArgs; n++) {</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; nOutArgs; n++) {</div>
 <div class="line">    Argument outArg = outArgList.getArgument(n);</div>
 <div class="line">    String name = outArg.getName();</div>
 <div class="line">    String value = outArg.getValue();</div>
-<div class="line">    ......</div>
-<div class="line">    }</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
 <div class="line">  UPnPStatus err = setTimeAct.getUPnPStatus();</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Code = &quot;</span> + err.getCode());</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Desc = &quot;</span> + err.getDescription());</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>To send the query control message, use StateVariable::postQueryControl(). The following sample posts a query control request, and output the return value.</p>
-<div class="fragment"><div class="line">Device clockDev = ....</div>
+</div><!-- fragment --><p>To send a query control message, use StateVariable::postQueryControl(). The following sample posts a query control request and outputs the return value.</p>
+<div class="fragment"><div class="line">Device clockDev = ...;</div>
 <div class="line">StateVariable timeStateVar = clockDev.getStateVariable(<span class="stringliteral">&quot;time&quot;</span>);</div>
-<div class="line"><span class="keywordflow">if</span> (timeStateVar.postQueryControl() == <span class="keyword">true</span>) {</div>
-<div class="line">  String value =</div>
-<div class="line">  timeStateVar.getValue();</div>
-<div class="line">  ......</div>
+<div class="line"><span class="keywordflow">if</span> (timeStateVar.postQueryControl()) {</div>
+<div class="line">  String value = timeStateVar.getValue();</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
 <div class="line">  UPnPStatus err = timeStateVar.getUPnPStatus();</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Code = &quot;</span> + err.getCode());</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Desc = &quot;</span> + err.getDescription());</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Use Argument::getRelatedStateVariable() to get the related StatiVariable of the argument, and use StateVariable:: getAllowedValueRange() or getAllowedValueList() to get the the allowed value range or list.</p>
-<div class="fragment"><div class="line">Device clockDev = ....</div>
+</div><!-- fragment --><p>Use Argument::getRelatedStateVariable() to get the related StateVariable of the argument, and use StateVariable::getAllowedValueRange() or getAllowedValueList() to get the allowed value range or list.</p>
+<div class="fragment"><div class="line">Device clockDev = ...;</div>
 <div class="line">Action timeAct = clockDev.getAction(<span class="stringliteral">&quot;SetTime&quot;</span>);</div>
 <div class="line">Argument timeArg = timeAct.getArgument(<span class="stringliteral">&quot;time&quot;</span>);</div>
-<div class="line">StataVariable stateVar = timeArg.getRelatedStateVariable(); </div>
+<div class="line">StateVariable stateVar = timeArg.getRelatedStateVariable(); </div>
 <div class="line"><span class="keywordflow">if</span> (stateVar != <span class="keyword">null</span>) {</div>
-<div class="line">  <span class="keywordflow">if</span> (stateVar.hasAllowedValueRange() == <span class="keyword">true</span>) {</div>
+<div class="line">  <span class="keywordflow">if</span> (stateVar.hasAllowedValueRange()) {</div>
 <div class="line">    AllowedValueRange valRange = stateVar.getAllowedValueRange();</div>
-<div class="line">    ......</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
-<div class="line">  <span class="keywordflow">if</span> (stateVar.hasAllowedValueList() == <span class="keyword">true</span>) {</div>
-<div class="line">    AllowedValueList valList = stateVar.getAllowedValueList ();</div>
-<div class="line">    ......</div>
+<div class="line">  <span class="keywordflow">if</span> (stateVar.hasAllowedValueList()) {</div>
+<div class="line">    AllowedValueList valList = stateVar.getAllowedValueList();</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 Event</h2>
-<p>The control point can subscribe events of the discovered devices, get the state changes of the services Use ControlPoint::subscribe() and implement the EventListener interface. The listener have to implement a eventNotifyReceived().</p>
-<div class="fragment"><div class="line"><span class="keyword">public</span> MyControlPoint extends ControlPoint implements EventListener {</div>
+<p>The control point can subscribe to events of the discovered devices and get the state changes of the services. Use ControlPoint::subscribe() and implement the EventListener interface. The listener must implement the eventNotifyReceived() method.</p>
+<div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyControlPoint <span class="keyword">extends</span> ControlPoint implements EventListener {</div>
 <div class="line">  <span class="keyword">public</span> MyControlPoint() {</div>
-<div class="line">    .....</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">    addEventListener(<span class="keyword">this</span>);</div>
 <div class="line">  }</div>
-<div class="line">  .....</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> eventNotifyReceived(String uuid, <span class="keywordtype">long</span> seq, String name, String value) {</div>
-<div class="line">    ....</div>
+<div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The ControlPoint::subscribe() returns true when the subscription is accepted from the service, and you can get the subscription id and timeout.</p>
-<div class="fragment"><div class="line">ControlPoint ctrlPoint = .....</div>
+</div><!-- fragment --><p>The ControlPoint::subscribe() method returns true when the subscription is accepted by the service, and you can get the subscription id and timeout.</p>
+<div class="fragment"><div class="line">ControlPoint ctrlPoint = ...;</div>
 <div class="line">Device clockDev = ctrlPoint.getDevice(<span class="stringliteral">&quot;xxxx-clock&quot;</span>);</div>
 <div class="line">Service timeService = clockDev.getService(<span class="stringliteral">&quot;time:1&quot;</span>);</div>
 <div class="line"><span class="keywordtype">boolean</span> subRet = ctrlPoint.subscribe(timeService);</div>
-<div class="line"><span class="keywordflow">if</span> (subRet == <span class="keyword">true</span>) {</div>
+<div class="line"><span class="keywordflow">if</span> (subRet) {</div>
 <div class="line">  String sid = timeService.getSID();</div>
 <div class="line">  <span class="keywordtype">long</span> timeout = timeService.getTimeout();</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 IPv6</h2>
 <p>cybergarage-upnp binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.</p>
-<p>cybergarage-upnp supports IPv4 and IPv6 both as default. If you want to use only IPv6 interfaces, call the following method before the devices or control points are created.</p>
-<div class="fragment"><div class="line">UPnP.setEnable(UPnP. USE_ONLY_IPV6_ADDR);</div>
-</div><!-- fragment --><p>Link local is the default scope for multicasting of cybergarage-upnp.Use UPnP.setEnable() to change the scope. The following example changes the scope to the site local.</p>
-<div class="fragment"><div class="line">UPnP.setEnable(UPnP. USE_IPV6_SITE_LOCAL_SCOPE);</div>
+<p>cybergarage-upnp supports IPv4 and IPv6 both by default. If you want to use only IPv6 interfaces, call the following method before the devices or control points are created.</p>
+<div class="fragment"><div class="line">UPnP.setEnable(UPnP.USE_ONLY_IPV6_ADDR);</div>
+</div><!-- fragment --><p>Link local is the default scope for multicasting of cybergarage-upnp. Use UPnP.setEnable() to change the scope. The following example changes the scope to the site local.</p>
+<div class="fragment"><div class="line">UPnP.setEnable(UPnP.USE_IPV6_SITE_LOCAL_SCOPE);</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
 Inside cybergarage-upnp</h1>
 <h2><a class="anchor" id="autotoc_md20"></a>
 Overriding HTTP Service</h2>
-<p>The Device class of cybergarage-upnp implements a HTTPRequestListner interface of <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package to handle some HTTP requests from the control points. The HTTPRequestListener interface is bellow.</p>
+<p>The Device class of cybergarage-upnp implements the HTTPRequestListener interface of the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package to handle some HTTP requests from the control points. The HTTPRequestListener interface is shown below.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>HTTPRequestListener {</div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestRecieved(HTTPRequest httpReq);</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestReceived(HTTPRequest httpReq);</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>To overide the interface, import the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> and override the httpRequestRecieved method in your device that is a sub class of the Device class. The following example is a clock device using cybergarage-upnp, and adds the override method to return the presentation page.</p>
+</div><!-- fragment --><p>To override the interface, import the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package and override the httpRequestReceived method in your device that is a subclass of the Device class. The following example is a clock device using cybergarage-upnp, and it adds the override method to return the presentation page.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.http.*;</div>
-<div class="line">.........</div>
-<div class="line">public <span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
-<div class="line">  ..........</div>
+<div class="line"><span class="comment">// ...existing code...</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
+<div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String PRESENTATION_URI = <span class="stringliteral">&quot;/presentation&quot;</span>;</div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestRecieved(HTTPRequest httpReq) {</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestReceived(HTTPRequest httpReq) {</div>
 <div class="line">    String uri = httpReq.getURI();</div>
-<div class="line">    <span class="keywordflow">if</span> (uri.startsWith(PRESENTATION_URI) == <span class="keyword">false</span>) {</div>
-<div class="line">      super.httpRequestRecieved(httpReq);</div>
+<div class="line">    <span class="keywordflow">if</span> (!uri.startsWith(PRESENTATION_URI)) {</div>
+<div class="line">      super.httpRequestReceived(httpReq);</div>
 <div class="line">      <span class="keywordflow">return</span>;</div>
 <div class="line">    }</div>
 <div class="line">    Clock clock = Clock.getInstance();</div>
