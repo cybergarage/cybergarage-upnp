@@ -7,11 +7,9 @@
 
 ## Overview
 
+UPnP™ [^1] architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home. UPnP™ [^1] protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
+
 `cybergarage-upnp` is a UPnP™ development package for Java developers. controls these protocols automatically, and supports to create your devices and control points quickly.
-
-UPnP™ [^1] architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home.
-
-UPnP™ [^1] protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
 [^1]: UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
 
