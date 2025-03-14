@@ -1,5 +1,7 @@
 # Programming Guide
 
+This programming guide is for developers who want to create UPnP™ devices and control points using cybergarage-upnp. The guide explains how to create your UPnP™ devices and control points using the cybergarage-upnp package.
+
 ## Introduction
 
 The UPnP™ architecture is based on open networking to enable the discovery and control of networked devices and services, such as media servers and players at home.
