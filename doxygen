@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Download the latest PlantUML JAR file
+PLANTUML_URL="https://github.com/plantuml/plantuml/releases/download/v1.2025.2/plantuml-1.2025.2.jar"
+PLANTUML_JAR_PATH="./plantuml.jar"
+
+if [ ! -f "${PLANTUML_JAR_PATH}" ]; then
+    echo "PlantUML JAR file does not exist at ${PLANTUML_JAR_PATH}. Downloading..."
+    wget -O ${PLANTUML_JAR_PATH} ${PLANTUML_URL}
+
+    if [ $? -eq 0 ]; then
+        echo "PlantUML downloaded successfully to ${PLANTUML_JAR_PATH}"
+    else
+        echo "Failed to download PlantUML"
+        exit 1
+    fi
+else
+    echo "PlantUML JAR file already exists at ${PLANTUML_JAR_PATH}. Skipping download."
+fi
+
+# Convert all .pu files in the doc/img directory to .png using PlantUML
+PU_FILES_DIR="./doc/img"
+find ${PU_FILES_DIR} -type f -name "*.pu" | xargs -I {} java -jar ${PLANTUML_JAR_PATH} {} -tpng
+
+doxygen 
