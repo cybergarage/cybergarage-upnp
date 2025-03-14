@@ -25,6 +25,35 @@
 var NAVTREE =
 [
   [ "cybergarage-upnp", "index.html", [
+    [ "Overview", "index.html#autotoc_md22", null ],
+    [ "References", "index.html#autotoc_md23", null ],
+    [ "Repositories", "index.html#autotoc_md24", null ],
+    [ "Examples", "index.html#autotoc_md25", null ],
+    [ "Programming Guide", "md_doc_2cybergarage-upnp-prgguide.html", [
+      [ "Introduction", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md1", null ],
+      [ "Device", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md2", [
+        [ "Description", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md3", null ],
+        [ "Initiating", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md4", null ],
+        [ "Notify", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md5", null ],
+        [ "Embedded Devices", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md6", null ],
+        [ "Service", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md7", null ],
+        [ "Control", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md8", null ],
+        [ "Event", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md9", null ]
+      ] ],
+      [ "Control Point", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md10", [
+        [ "Class Overview", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md11", null ],
+        [ "Initiating", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md12", null ],
+        [ "Notify", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md13", null ],
+        [ "Search", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md14", null ],
+        [ "Root Devices", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md15", null ],
+        [ "Control", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md16", null ],
+        [ "Event", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md17", null ],
+        [ "IPv6", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md18", null ]
+      ] ],
+      [ "Inside cybergarage-upnp", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md19", [
+        [ "Overriding HTTP Service", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md20", null ]
+      ] ]
+    ] ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]
@@ -72,8 +101,8 @@ var NAVTREEINDEX =
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1item_1_1ResourceNode.html#ab764f442df5a9d1e28c325a28a31f583",
 "classorg_1_1cybergarage_1_1upnp_1_1xml_1_1ServiceData.html#a37863ea1231e69e658f13ecaa620f099",
 "classorg_1_1cybergarage_1_1xml_1_1Node.html#a8b8555f226a7440fb73da157719bd805",
-"interfaceorg_1_1cybergarage_1_1upnp_1_1RootDescription.html#a438982f2885bdaddb9c25cdd44f73359"
+"interfaceorg_1_1cybergarage_1_1http_1_1HTTPRequestListener.html#ab741d7e951a8f507df7d88df7c685dab"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
