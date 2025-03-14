@@ -9,11 +9,9 @@
 
 `cybergarage-upnp` is a UPnP™ development package for Java developers. controls these protocols automatically, and supports to create your devices and control points quickly.
 
-UPnP™ \* architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home.
+UPnP™ architecture is an open network to enable discovery and control of networked devices and services, such as media servers and players at home. UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
 
-UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
-
-\* UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
+UPnP™ protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU and HTTP. Therefore you have to understand and implement these protocols to create your devices of UPnP™.
 
 ## References
 
