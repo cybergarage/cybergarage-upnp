@@ -11,8 +11,6 @@ UPnP™ [^1] architecture is an open network to enable discovery and control of 
 
 `cybergarage-upnp` is a UPnP™ development package for Java developers. controls these protocols automatically, and supports to create your devices and control points quickly.
 
-[^1]: UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
-
 ## References
 
 - [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
@@ -45,3 +43,5 @@ UPnP™ [^1] architecture is an open network to enable discovery and control of 
     - [UPnP television device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/tv)
     - [UPnP air conditioner device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/air-conditioner)
     - [UPnP washer device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/washer)
+
+[^1]: UPnP ™ is a certification mark of the UPnP™ Implementers Corporation.
