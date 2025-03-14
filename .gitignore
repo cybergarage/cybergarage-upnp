@@ -1,6 +1,23 @@
-.DS_Store
+# Java
+
 target/
 .project
 .classpath
 .settings
+
+*.log
+*.tmp
+*.bak
+*.swp
+*.class
+*.war
+*.ear
+
+# macos
+
+.DS_Store
+
+# Doxygen
+
 html/
+*.jar
