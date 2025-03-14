@@ -32,18 +32,18 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU
 
 - UPnP control point examples
   - UPnP basic controller for UPnP devices
-    - [UPnP multicast dump utility](tools/upnpdump)
-    - [UPnP control point utility](tools/control-point)
+    - [UPnP multicast dump utility](https://github.com/cybergarage/cybergarage-upnp/tree/master/tools/upnpdump)
+    - [UPnP control point utility](https://github.com/cybergarage/cybergarage-upnp/tree/master/tools/control-point)
   - UPnP controller for UPnP stardard devices
-    - [UPnP Internet gateway utility ](tools/igd-tool)
+    - [UPnP Internet gateway utility ](https://github.com/cybergarage/cybergarage-upnp/tree/master/tools/igd-tool)
  
 - UPnP device examples
   - UPnP stardard devices
-    - [UPnP/AV media sever](examples/media-server)
+    - [UPnP/AV media sever](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/media-server)
   - UPnP non-standard devices
-    - [UPnP clock device](examples/clock)
-    - [UPnP light device](examples/light)
-    - [UPnP remote controller device](examples/)
-    - [UPnP television device](examples/tv)
-    - [UPnP air conditioner device](examples/air-conditioner)
-    - [UPnP washer device](examples/washer)
+    - [UPnP clock device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/clock)
+    - [UPnP light device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/light)
+    - [UPnP remote controller device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/)
+    - [UPnP television device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/tv)
+    - [UPnP air conditioner device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/air-conditioner)
+    - [UPnP washer device](https://github.com/cybergarage/cybergarage-upnp/tree/master/examples/washer)
