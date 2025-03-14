@@ -1,0 +1,98 @@
+@startuml
+ControlPoint *-- Device
+Device *-- Icon
+Device *-- Service
+Service *-- Action
+Action *-- Argument
+Service *-- StateVariable
+
+ControlPoint --> NotifyListener
+ControlPoint --> SearchResponseListener
+ControlPoint --> EventListener
+
+class ControlPoint {
++start()
++stop()
++getDeviceList()
++getDevice()
++search()
++subscribe()
++unsubscribe()    
+}
+
+class Device {
++getDeviceType()
++getFriendlyName()
++getModelName()
++getModelNumber()
++getUDN()
++getDeviceList()
++getDevice()
++getServiceList()
++getService()
++getIconList()
++getIcon()
++getAction()
++getStateVariable()
++isRootDevice()
++announce()
++byebye()    
++start()
++stop()
+}
+
+class Service {
++getServiceType()
++getServiceID()
++getActionList()
++getAction()
++getServiceStateTable()
++getStateVariable()
++announce()
++byebye()
+}
+
+class Action {
++getName()
++getArgumentList()
++getArgument()
++getArgumentValue()
++postActionControl()
+}
+
+class Icon {
++getMimeType()
++getWidth()
++getHeight()
++getDepth()
++getURL()
+}
+
+class StateVariable {
++getName()
++setValue()
++getValue()
++postQueryControl()
+}
+
+class Argument {
++getName()
++getDirection()
++getRelatedStateVariable()
++setValue()
++getValue()
+}
+
+interface NotifyListener {
++deviceNotifyReceived()
+}
+
+interface SearchResponseListener {
++deviceSearchResponseReceived()
+}
+
+interface EventListener {
++eventNotifyReceived()
+}
+
+@enduml
