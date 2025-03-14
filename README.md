@@ -17,7 +17,7 @@ UPnP™ [^1] protocols are based on many standard, such as GENA, SSDP, SOAP, HTT
 
 ## References
 
-- [Programming Guide (Doxygen)]([doc/cybergarage-upnp-prgguide.pdf](http://cybergarage.github.io/cybergarage-upnp/))
+- [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
 - [API Reference (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
 
 ## Repositories
