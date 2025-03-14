@@ -3,7 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/cybergarage-upnp)
 [![](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml/badge.svg)](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml)
 [![Maven Central Version](https://img.shields.io/maven-central/v/org.cybergarage.upnp/core)](https://central.sonatype.com/search?q=g:org.cybergarage.upnp&smo=true)
-
+[![doxygen](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/cybergarage-upnp/)
 
 ## Overview
 
@@ -17,7 +17,7 @@ UPnP™ \* protocols are based on many standard, such as GENA, SSDP, SOAP, HTTPU
 
 ## References
 
-- [Programming Guide](doc/cybergarage-upnp-prgguide.pdf)
+- [Programming Guide (Doxygen)]([doc/cybergarage-upnp-prgguide.pdf](http://cybergarage.github.io/cybergarage-upnp/))
 - [API Reference (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
 
 ## Repositories
