@@ -1,0 +1,91 @@
+@startuml
+Device *-- Icon
+Device *-- Service
+Service *-- Action
+Action *-- Argument
+Service *-- StateVariable
+StateVariable *-- AllowedValueList
+StateVariable *-- AllowedValueRange
+Device --> QueryListener
+Device --> ActionListener
+
+class Device {
++getFriendlyName()
++getModelName()
++getModelNumber()
++getUDN()
++getDeviceList()
++getDevice()
++getServiceList()
++getService()
++getIconList()
++getIcon()
++getAction()
++getStateVariable()
++isRootDevice()
++announce()
++byebye()
++start()
++stop()
+}
+
+class Service {
++getServiceType()
++getServiceID()
++getActionList()
++getAction()
++getServiceStateTable()
++getStateVariable()
++announce()
++byebye()
+}
+
+class Icon {
++getMimeType()
++getWidth()
++getHeight()
++getDepth()
++getURL()    
+}
+
+class Action {
++getName()
++getArgumentList()
++getArgument()
++getArgumentValue()
+}
+
+class StateVariable {
++getName()
++setValue()
++getValue()
+}
+
+class Argument {
++getName()
++getDirection()
++getRelatedStateVariable()
++setValue()
++getValue()
+}
+
+class AllowedValueList {
++size() 
++getAllowedValue()
+}
+
+class AllowedValueRange {
++getMinimum()
++getMaximum() 
++getStep()
+}
+
+interface QueryListener {
++queryControlReceived()
+}
+
+interface ActionListener {
++actionControlReceived()
+}
+
+@enduml
