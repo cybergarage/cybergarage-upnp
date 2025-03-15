@@ -1,6 +1,7 @@
 2025-XX-X Satoshi Konno <skonno@cybergarage.org>
 	* v2.1.6
 	* Add package-info.java for javadoc
+	* Format source codes using Google Java Style
 
 2021-09-20 Satoshi Konno <skonno@cybergarage.org>
 	* v2.1.5
