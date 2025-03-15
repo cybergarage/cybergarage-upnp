@@ -1,14 +1,16 @@
 #!/bin/bash
 
-# Convert README.md to HTML
+# Convert README.md to HTML (without badges)
 
-pandoc README.md -f markdown -t html -s -o overview.html
+more README.md | grep -v "\!\[" | pandoc -f markdown -t html --metadata title="Java API Documentation" -s -o overview.html
 
 # Define source paths
+
 CORE_SRC="core/src/main/java"
 STD_SRC="std/src/main/java"
 
 # Check if source directories exist
+
 if [ ! -d "$CORE_SRC" ]; then
   echo "Error: Directory $CORE_SRC does not exist."
   exit 1
@@ -20,5 +22,5 @@ if [ ! -d "$STD_SRC" ]; then
 fi
 
 # Generate Javadoc
-# javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server
-javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC org.cybergarage.upnp org.cybergarage.upnp.std.av.server
+
+javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server
