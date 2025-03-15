@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Define source paths
+CORE_SRC="core/src/main/java"
+STD_SRC="std/src/main/java"
+
+# Check if source directories exist
+if [ ! -d "$CORE_SRC" ]; then
+  echo "Error: Directory $CORE_SRC does not exist."
+  exit 1
+fi
+
+if [ ! -d "$STD_SRC" ]; then
+  echo "Error: Directory $STD_SRC does not exist."
+  exit 1
+fi
+
+# Generate Javadoc
+javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC org.cybergarage.upnp org.cybergarage.upnp.std.av.server
