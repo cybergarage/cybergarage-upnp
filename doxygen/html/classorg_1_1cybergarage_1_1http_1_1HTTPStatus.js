@@ -8,7 +8,7 @@ var classorg_1_1cybergarage_1_1http_1_1HTTPStatus =
     [ "getStatusCode", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a0882de1c1e821d3b60c7ee813542324a", null ],
     [ "getVersion", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a30dffc8b7a62e1c1c4d8c17ad79c0d73", null ],
     [ "isSuccessful", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a7a2e98360ef718fe25de46e683c5a957", null ],
-    [ "isSuccessful", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a731ed040939f98a67288ae737cc877aa", null ],
+    [ "isSuccessful", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a1170f17637c8db75dc08ba6cf08b261f", null ],
     [ "set", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#ae75c9d2f4789dc563fd495f85b5166cd", null ],
     [ "setReasonPhrase", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#a5e34ff6a036060ddcd3839aafa08bb7e", null ],
     [ "setStatusCode", "classorg_1_1cybergarage_1_1http_1_1HTTPStatus.html#aacebbe81fb6730bf04fa41e3a74e848e", null ],
