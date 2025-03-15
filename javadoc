@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Convert README.md to HTML (without badges)
+# Convert README.md to HTML (without badges and media tags)
 
-more README.md | grep -v "\!\[" | pandoc -f markdown -t html --metadata title="Java API Documentation" -s -o overview.html
+more README.md | grep -v "\!\[" | pandoc -f markdown -t html --metadata title="Java API Documentation" -s | sed '/@media[^{]*{/,/}/d' > overview.html
 
 # Define source paths
 
