@@ -11,5 +11,6 @@ var dir_dab5e8267446b9069510f45defd58670 =
     [ "Directory.java", "Directory_8java.html", "Directory_8java" ],
     [ "DirectoryList.java", "DirectoryList_8java.html", "DirectoryList_8java" ],
     [ "MediaServer.java", "MediaServer_8java.html", "MediaServer_8java" ],
+    [ "package-info.java", "std_2src_2main_2java_2org_2cybergarage_2upnp_2std_2av_2server_2package-info_8java.html", null ],
     [ "UPnP.java", "std_2src_2main_2java_2org_2cybergarage_2upnp_2std_2av_2server_2UPnP_8java.html", "std_2src_2main_2java_2org_2cybergarage_2upnp_2std_2av_2server_2UPnP_8java" ]
 ];

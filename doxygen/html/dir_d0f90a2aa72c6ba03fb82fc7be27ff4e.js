@@ -17,6 +17,7 @@ var dir_d0f90a2aa72c6ba03fb82fc7be27ff4e =
     [ "DeviceList.java", "DeviceList_8java.html", "DeviceList_8java" ],
     [ "Icon.java", "Icon_8java.html", "Icon_8java" ],
     [ "IconList.java", "IconList_8java.html", "IconList_8java" ],
+    [ "package-info.java", "core_2src_2main_2java_2org_2cybergarage_2upnp_2package-info_8java.html", null ],
     [ "RootDescription.java", "RootDescription_8java.html", "RootDescription_8java" ],
     [ "Service.java", "Service_8java.html", "Service_8java" ],
     [ "ServiceList.java", "ServiceList_8java.html", "ServiceList_8java" ],

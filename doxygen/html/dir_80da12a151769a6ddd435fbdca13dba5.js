@@ -13,6 +13,7 @@ var dir_80da12a151769a6ddd435fbdca13dba5 =
     [ "HTTPServerThread.java", "HTTPServerThread_8java.html", "HTTPServerThread_8java" ],
     [ "HTTPSocket.java", "HTTPSocket_8java.html", "HTTPSocket_8java" ],
     [ "HTTPStatus.java", "HTTPStatus_8java.html", "HTTPStatus_8java" ],
+    [ "package-info.java", "core_2src_2main_2java_2org_2cybergarage_2http_2package-info_8java.html", null ],
     [ "Parameter.java", "Parameter_8java.html", "Parameter_8java" ],
     [ "ParameterList.java", "ParameterList_8java.html", "ParameterList_8java" ]
 ];
