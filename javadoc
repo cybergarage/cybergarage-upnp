@@ -20,4 +20,5 @@ if [ ! -d "$STD_SRC" ]; then
 fi
 
 # Generate Javadoc
-javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server
+# javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server
+javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC org.cybergarage.upnp org.cybergarage.upnp.std.av.server
