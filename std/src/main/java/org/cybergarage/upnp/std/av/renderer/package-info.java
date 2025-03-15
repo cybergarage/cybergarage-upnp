@@ -9,6 +9,5 @@
  *   <li>{@link org.cybergarage.upnp.std.av.renderer.ConnectionInfo} - Represents the connection information for a media renderer.</li>
  *   <li>{@link org.cybergarage.upnp.std.av.renderer.RenderingControl} - Provides methods to control the rendering settings of a media renderer.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.upnp.std.av.renderer;

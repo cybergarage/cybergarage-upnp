@@ -9,6 +9,5 @@
  *   <li>{@link org.cybergarage.upnp.std.av.controller.server.BrowseAction} - Represents a browse action for a UPnP media server.</li>
  *   <li>{@link org.cybergarage.upnp.std.av.controller.server.BrowseResult} - Represents the result of a browse action for a UPnP media server.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.upnp.std.av.controller;

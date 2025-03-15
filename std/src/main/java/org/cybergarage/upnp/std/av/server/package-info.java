@@ -9,6 +9,5 @@
  *   <li>{@link org.cybergarage.upnp.std.av.server.ConnectionInfo} - Represents the connection information for a media server.</li>
  *   <li>{@link org.cybergarage.upnp.std.av.server.Directory} - Represents a directory in a media server.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.upnp.std.av.server;

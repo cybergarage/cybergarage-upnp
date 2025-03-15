@@ -10,6 +10,5 @@
  *   <li>{@link org.cybergarage.http.HTTPHeader} - Represents an HTTP header.</li>
  *   <li>{@link org.cybergarage.http.HTTPServer} - Represents an HTTP server.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.http;

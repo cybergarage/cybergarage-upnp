@@ -13,6 +13,5 @@
  *   <li>{@link org.cybergarage.util.ThreadCore} - Provides methods for thread management.</li>
  *   <li>{@link org.cybergarage.util.Debug} - Provides methods for debugging.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.util;

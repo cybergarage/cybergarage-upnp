@@ -7,6 +7,5 @@
  * <ul>
  *   <li>{@link org.cybergarage.net.HostInterface} - Provides methods to handle network interfaces.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.net;

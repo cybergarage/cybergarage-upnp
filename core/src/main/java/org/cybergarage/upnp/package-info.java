@@ -10,6 +10,5 @@
  *   <li>{@link org.cybergarage.upnp.Action} - Represents a UPnP action.</li>
  *   <li>{@link org.cybergarage.upnp.StateVariable} - Represents a UPnP state variable.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.upnp;

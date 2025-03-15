@@ -9,6 +9,5 @@
  *   <li>{@link org.cybergarage.xml.Attribute} - Represents an XML attribute.</li>
  *   <li>{@link org.cybergarage.xml.Parser} - Provides methods to parse XML documents.</li>
  * </ul>
- * </p>
  */
 package org.cybergarage.xml;
