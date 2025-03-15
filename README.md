@@ -3,7 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/cybergarage-upnp)
 [![](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml/badge.svg)](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/maven.yml)
 [![Maven Central Version](https://img.shields.io/maven-central/v/org.cybergarage.upnp/core)](https://central.sonatype.com/search?q=g:org.cybergarage.upnp&smo=true)
-[![doxygen](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/cybergarage-upnp/)
+[![doxygen](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
 
 ## Overview
 
@@ -13,8 +13,7 @@ The UPnP™ [^1] architecture is an open network protocol that enables the disco
 
 ## References
 
-- [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
-- [API Reference (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/)
+- [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
 
 ## Repositories
 
