@@ -1,3 +1,7 @@
+2025-XX-X Satoshi Konno <skonno@cybergarage.org>
+	* v2.1.6
+	* Add package-info.java for javadoc
+
 2021-09-20 Satoshi Konno <skonno@cybergarage.org>
 	* v2.1.5
 	* Add UPnP standard package for Maven central repository
