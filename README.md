@@ -14,6 +14,7 @@ The UPnP™ [^1] architecture is an open network protocol that enables the disco
 ## References
 
 - [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
+- [API Documentation (Javadoc)](http://cybergarage.github.io/cybergarage-upnp/javadoc/)
 
 ## Repositories
 
