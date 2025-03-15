@@ -21,4 +21,5 @@ target/
 
 doc/javadoc
 doc/doxygen
+*.html
 *.jar
