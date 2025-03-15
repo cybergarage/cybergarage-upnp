@@ -19,5 +19,6 @@ target/
 
 # Doxygen
 
-html/
+doc/javadoc
+doc/doxygen
 *.jar
