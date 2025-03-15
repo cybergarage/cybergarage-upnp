@@ -24,5 +24,7 @@ jobs:
         cache: maven
     - name: Format
       uses: axel-op/googlejavaformat-action@v4
+      with:
+        args: "--replace"
     - name: Build with Maven
       run: mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
