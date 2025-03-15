@@ -1,20 +1,20 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: QueryRequest.java
-*
-*	Revision;
-*
-*	01/29/03
-*		- first revision.
-*	09/02/03
-*		- Giordano Sassaroli <sassarol@cefriel.it>
-*		- Error : redundant code, the setRequest method in QueryRequest invokes setURI even if after a couple of rows setRequestHost is invoked
-*	
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: QueryRequest.java
+ *
+ *	Revision;
+ *
+ *	01/29/03
+ *		- first revision.
+ *	09/02/03
+ *		- Giordano Sassaroli <sassarol@cefriel.it>
+ *		- Error : redundant code, the setRequest method in QueryRequest invokes setURI even if after a couple of rows setRequestHost is invoked
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.control;
 
@@ -24,96 +24,81 @@ import org.cybergarage.soap.*;
 
 import org.cybergarage.upnp.*;
 
-public class QueryRequest extends ControlRequest
-{
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
-	
-	public QueryRequest()
-	{
-	}
+public class QueryRequest extends ControlRequest {
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	public QueryRequest(HTTPRequest httpReq)
-	{
-		set(httpReq);
-	}
+  public QueryRequest() {}
 
-	////////////////////////////////////////////////
-	//	Qyery
-	////////////////////////////////////////////////
+  public QueryRequest(HTTPRequest httpReq) {
+    set(httpReq);
+  }
 
-	private Node getVarNameNode()
-	{
-		Node bodyNode = getBodyNode();
-		if (bodyNode == null)
-			return null;
-		if (bodyNode.hasNodes() == false)
-			return null;
-		Node queryStateVarNode = bodyNode.getNode(0);
-		if (queryStateVarNode == null)
-			return null;
-		if (queryStateVarNode.hasNodes() == false)
-			return null;
-		return queryStateVarNode.getNode(0);
-	}
-	
-	public String getVarName()
-	{
-		Node node = getVarNameNode();
-		if (node == null)
-			return "";
-		return node.getValue();
-	}
+  ////////////////////////////////////////////////
+  //	Qyery
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	setRequest
-	////////////////////////////////////////////////
-	
-	public void setRequest(StateVariable stateVar)
-	{
-		Service service = stateVar.getService();		
-		
-		String ctrlURL = service.getControlURL();
+  private Node getVarNameNode() {
+    Node bodyNode = getBodyNode();
+    if (bodyNode == null) return null;
+    if (bodyNode.hasNodes() == false) return null;
+    Node queryStateVarNode = bodyNode.getNode(0);
+    if (queryStateVarNode == null) return null;
+    if (queryStateVarNode.hasNodes() == false) return null;
+    return queryStateVarNode.getNode(0);
+  }
 
-		setRequestHost(service);
+  public String getVarName() {
+    Node node = getVarNameNode();
+    if (node == null) return "";
+    return node.getValue();
+  }
 
-		setEnvelopeNode(SOAP.createEnvelopeBodyNode());
-		Node envNode = getEnvelopeNode();
-		Node bodyNode = getBodyNode();
-		Node qeuryNode = createContentNode(stateVar);
-		bodyNode.addNode(qeuryNode);
-		setContent(envNode);
+  ////////////////////////////////////////////////
+  //	setRequest
+  ////////////////////////////////////////////////
 
-		setSOAPAction(Control.QUERY_SOAPACTION);
-	}
+  public void setRequest(StateVariable stateVar) {
+    Service service = stateVar.getService();
 
-	////////////////////////////////////////////////
-	//	Contents
-	////////////////////////////////////////////////
+    String ctrlURL = service.getControlURL();
 
-	private Node createContentNode(StateVariable stateVar)
-	{
-		Node queryVarNode = new Node();
-		queryVarNode.setName(Control.NS, Control.QUERY_STATE_VARIABLE);
-		queryVarNode.setNameSpace(Control.NS, Control.XMLNS);
+    setRequestHost(service);
 
-		Node varNode = new Node();
-		varNode.setName(Control.NS, Control.VAR_NAME);
-		varNode.setValue(stateVar.getName());
-		queryVarNode.addNode(varNode);
-		
-		return queryVarNode;
-	}
-	
-	////////////////////////////////////////////////
-	//	post
-	////////////////////////////////////////////////
+    setEnvelopeNode(SOAP.createEnvelopeBodyNode());
+    Node envNode = getEnvelopeNode();
+    Node bodyNode = getBodyNode();
+    Node qeuryNode = createContentNode(stateVar);
+    bodyNode.addNode(qeuryNode);
+    setContent(envNode);
 
-	public QueryResponse post()
-	{
-		SOAPResponse soapRes = postMessage(getRequestHost(), getRequestPort());
-		return new QueryResponse(soapRes);
-	}
+    setSOAPAction(Control.QUERY_SOAPACTION);
+  }
+
+  ////////////////////////////////////////////////
+  //	Contents
+  ////////////////////////////////////////////////
+
+  private Node createContentNode(StateVariable stateVar) {
+    Node queryVarNode = new Node();
+    queryVarNode.setName(Control.NS, Control.QUERY_STATE_VARIABLE);
+    queryVarNode.setNameSpace(Control.NS, Control.XMLNS);
+
+    Node varNode = new Node();
+    varNode.setName(Control.NS, Control.VAR_NAME);
+    varNode.setValue(stateVar.getName());
+    queryVarNode.addNode(varNode);
+
+    return queryVarNode;
+  }
+
+  ////////////////////////////////////////////////
+  //	post
+  ////////////////////////////////////////////////
+
+  public QueryResponse post() {
+    SOAPResponse soapRes = postMessage(getRequestHost(), getRequestPort());
+    return new QueryResponse(soapRes);
+  }
 }
-

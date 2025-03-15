@@ -1,173 +1,154 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003-2004
-*
-*	File : ConnectionInfo.java
-*
-*	Revision:
-*
-*	02/22/08
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003-2004
+ *
+ *	File : ConnectionInfo.java
+ *
+ *	Revision:
+ *
+ *	02/22/08
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.std.av.renderer;
 
-public class ConnectionInfo
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-	public final static String INPUT = "Input";
-	public final static String OUTPUT = "Output";
-	public final static String OK = "OK";
-	public final static String UNKNOWN = "Unknown";
-	
-	////////////////////////////////////////////////
-	// Constructor
-	////////////////////////////////////////////////
-	
-	public ConnectionInfo(int id)
-	{
-		setID(id);
-		setRcsID(-1);
-		setAVTransportID(-1);
-		setProtocolInfo("");
-		setPeerConnectionManager("");
-		setPeerConnectionID(-1);
-		setDirection(OUTPUT);
-		setStatus(UNKNOWN);
-	}
-		
-	////////////////////////////////////////////////
-	// ID
-	////////////////////////////////////////////////
-	
-	private int id;
+public class ConnectionInfo {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	public void setID(int value)
-	{
-		id = value;
-	}
-	
-	public int getID()
-	{
-		return id;
-	}
+  public static final String INPUT = "Input";
+  public static final String OUTPUT = "Output";
+  public static final String OK = "OK";
+  public static final String UNKNOWN = "Unknown";
 
-	////////////////////////////////////////////////
-	// RcsID
-	////////////////////////////////////////////////
-	
-	private int rcsId;
+  ////////////////////////////////////////////////
+  // Constructor
+  ////////////////////////////////////////////////
 
-	public void setRcsID(int value)
-	{
-		rcsId = value;
-	}
-	
-	public int getRcsID()
-	{
-		return rcsId;
-	}
+  public ConnectionInfo(int id) {
+    setID(id);
+    setRcsID(-1);
+    setAVTransportID(-1);
+    setProtocolInfo("");
+    setPeerConnectionManager("");
+    setPeerConnectionID(-1);
+    setDirection(OUTPUT);
+    setStatus(UNKNOWN);
+  }
 
-	////////////////////////////////////////////////
-	// AVTransportID
-	////////////////////////////////////////////////
-	
-	private int transId;
+  ////////////////////////////////////////////////
+  // ID
+  ////////////////////////////////////////////////
 
-	public void setAVTransportID(int value)
-	{
-		transId = value;
-	}
-	
-	public int getAVTransportID()
-	{
-		return transId;
-	}
-	 
-	////////////////////////////////////////////////
-	// ProtocolInfo
-	////////////////////////////////////////////////
-	
-	private String protocolInfo;
+  private int id;
 
-	public void setProtocolInfo(String value)
-	{
-		protocolInfo = value;
-	}
-	
-	public String getProtocolInfo()
-	{
-		return protocolInfo;
-	}
-	
-	////////////////////////////////////////////////
-	// PeerConnectionManager
-	////////////////////////////////////////////////
-	
-	private String peerConnectionManager;
+  public void setID(int value) {
+    id = value;
+  }
 
-	public void setPeerConnectionManager(String value)
-	{
-		peerConnectionManager = value;
-	}
-	
-	public String getPeerConnectionManager()
-	{
-		return peerConnectionManager;
-	}
-	 
-	////////////////////////////////////////////////
-	// PeerConnectionID 
-	////////////////////////////////////////////////
-	
-	private int peerConnectionID;
+  public int getID() {
+    return id;
+  }
 
-	public void setPeerConnectionID(int value)
-	{
-		peerConnectionID = value;
-	}
-	
-	public int getPeerConnectionID()
-	{
-		return peerConnectionID;
-	}
+  ////////////////////////////////////////////////
+  // RcsID
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Direction
-	////////////////////////////////////////////////
-	
-	private String direction;
+  private int rcsId;
 
-	public void setDirection(String value)
-	{
-		direction = value;
-	}
-	
-	public String getDirection()
-	{
-		return direction;
-	}
+  public void setRcsID(int value) {
+    rcsId = value;
+  }
 
-	////////////////////////////////////////////////
-	// Status
-	////////////////////////////////////////////////
-	
-	private String status;
+  public int getRcsID() {
+    return rcsId;
+  }
 
-	public void setStatus(String value)
-	{
-		status = value;
-	}
-	
-	public String getStatus()
-	{
-		return status;
-	}
+  ////////////////////////////////////////////////
+  // AVTransportID
+  ////////////////////////////////////////////////
+
+  private int transId;
+
+  public void setAVTransportID(int value) {
+    transId = value;
+  }
+
+  public int getAVTransportID() {
+    return transId;
+  }
+
+  ////////////////////////////////////////////////
+  // ProtocolInfo
+  ////////////////////////////////////////////////
+
+  private String protocolInfo;
+
+  public void setProtocolInfo(String value) {
+    protocolInfo = value;
+  }
+
+  public String getProtocolInfo() {
+    return protocolInfo;
+  }
+
+  ////////////////////////////////////////////////
+  // PeerConnectionManager
+  ////////////////////////////////////////////////
+
+  private String peerConnectionManager;
+
+  public void setPeerConnectionManager(String value) {
+    peerConnectionManager = value;
+  }
+
+  public String getPeerConnectionManager() {
+    return peerConnectionManager;
+  }
+
+  ////////////////////////////////////////////////
+  // PeerConnectionID
+  ////////////////////////////////////////////////
+
+  private int peerConnectionID;
+
+  public void setPeerConnectionID(int value) {
+    peerConnectionID = value;
+  }
+
+  public int getPeerConnectionID() {
+    return peerConnectionID;
+  }
+
+  ////////////////////////////////////////////////
+  // Direction
+  ////////////////////////////////////////////////
+
+  private String direction;
+
+  public void setDirection(String value) {
+    direction = value;
+  }
+
+  public String getDirection() {
+    return direction;
+  }
+
+  ////////////////////////////////////////////////
+  // Status
+  ////////////////////////////////////////////////
+
+  private String status;
+
+  public void setStatus(String value) {
+    status = value;
+  }
+
+  public String getStatus() {
+    return status;
+  }
 }
-

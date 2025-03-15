@@ -1,119 +1,107 @@
 /******************************************************************
-*
-*	CyberLink for Java
-*
-*	Copyright (C) Satoshi Konno 2002-2004
-*
-*	File: AllowedValueRange.java
-*
-*	Revision:
-*
-*	03/27/04
-*		- first revision.
-*	
-******************************************************************/
+ *
+ *	CyberLink for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002-2004
+ *
+ *	File: AllowedValueRange.java
+ *
+ *	Revision:
+ *
+ *	03/27/04
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp;
 
 import org.cybergarage.xml.Node;
 
-public class AllowedValueRange
-{
-	////////////////////////////////////////////////
-	//	Constants
-	////////////////////////////////////////////////
-	
-	public final static String ELEM_NAME = "allowedValueRange";
+public class AllowedValueRange {
+  ////////////////////////////////////////////////
+  //	Constants
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	Member
-	////////////////////////////////////////////////
+  public static final String ELEM_NAME = "allowedValueRange";
 
-	private Node allowedValueRangeNode;
+  ////////////////////////////////////////////////
+  //	Member
+  ////////////////////////////////////////////////
 
-	public Node getAllowedValueRangeNode()
-	{
-		return allowedValueRangeNode;
-	}
-	
-	////////////////////////////////////////////////
-	//	Constructor
-	////////////////////////////////////////////////
+  private Node allowedValueRangeNode;
 
-	public AllowedValueRange(Node node)
-	{
-		allowedValueRangeNode = node;
-	}
+  public Node getAllowedValueRangeNode() {
+    return allowedValueRangeNode;
+  }
 
-	public AllowedValueRange(){
-		//TODO Test
-		allowedValueRangeNode = new Node(ELEM_NAME);
-	}
-	////////////////////////////////////////////////
-	//	isAllowedValueRangeNode
-	////////////////////////////////////////////////
-	
-	public AllowedValueRange(Number max, Number min, Number step) {
-		//TODO Test
-		allowedValueRangeNode = new Node(ELEM_NAME);
-		if(max!=null)
-			setMaximum(max.toString());
-		if(min!=null)
-			setMinimum(min.toString());
-		if(step!=null)
-			setStep(step.toString());
-	}
+  ////////////////////////////////////////////////
+  //	Constructor
+  ////////////////////////////////////////////////
 
-	public static boolean isAllowedValueRangeNode(Node node)
-	{
-		return ELEM_NAME.equals(node.getName());
-	}
+  public AllowedValueRange(Node node) {
+    allowedValueRangeNode = node;
+  }
 
-	////////////////////////////////////////////////
-	//	minimum
-	////////////////////////////////////////////////
+  public AllowedValueRange() {
+    // TODO Test
+    allowedValueRangeNode = new Node(ELEM_NAME);
+  }
 
-	private final static String MINIMUM = "minimum";
-	
-	public void setMinimum(String value)
-	{
-		getAllowedValueRangeNode().setNode(MINIMUM, value);
-	}
+  ////////////////////////////////////////////////
+  //	isAllowedValueRangeNode
+  ////////////////////////////////////////////////
 
-	public String getMinimum()
-	{
-		return getAllowedValueRangeNode().getNodeValue(MINIMUM);
-	}
+  public AllowedValueRange(Number max, Number min, Number step) {
+    // TODO Test
+    allowedValueRangeNode = new Node(ELEM_NAME);
+    if (max != null) setMaximum(max.toString());
+    if (min != null) setMinimum(min.toString());
+    if (step != null) setStep(step.toString());
+  }
 
-	////////////////////////////////////////////////
-	//	maximum
-	////////////////////////////////////////////////
+  public static boolean isAllowedValueRangeNode(Node node) {
+    return ELEM_NAME.equals(node.getName());
+  }
 
-	private final static String MAXIMUM = "maximum";
-	
-	public void setMaximum(String value)
-	{
-		getAllowedValueRangeNode().setNode(MAXIMUM, value);
-	}
+  ////////////////////////////////////////////////
+  //	minimum
+  ////////////////////////////////////////////////
 
-	public String getMaximum()
-	{
-		return getAllowedValueRangeNode().getNodeValue(MAXIMUM);
-	}
+  private static final String MINIMUM = "minimum";
 
-	////////////////////////////////////////////////
-	//	width
-	////////////////////////////////////////////////
+  public void setMinimum(String value) {
+    getAllowedValueRangeNode().setNode(MINIMUM, value);
+  }
 
-	private final static String STEP = "step";
-	
-	public void setStep(String value)
-	{
-		getAllowedValueRangeNode().setNode(STEP, value);
-	}
+  public String getMinimum() {
+    return getAllowedValueRangeNode().getNodeValue(MINIMUM);
+  }
 
-	public String getStep()
-	{
-		return getAllowedValueRangeNode().getNodeValue(STEP);
-	}
+  ////////////////////////////////////////////////
+  //	maximum
+  ////////////////////////////////////////////////
+
+  private static final String MAXIMUM = "maximum";
+
+  public void setMaximum(String value) {
+    getAllowedValueRangeNode().setNode(MAXIMUM, value);
+  }
+
+  public String getMaximum() {
+    return getAllowedValueRangeNode().getNodeValue(MAXIMUM);
+  }
+
+  ////////////////////////////////////////////////
+  //	width
+  ////////////////////////////////////////////////
+
+  private static final String STEP = "step";
+
+  public void setStep(String value) {
+    getAllowedValueRangeNode().setNode(STEP, value);
+  }
+
+  public String getStep() {
+    return getAllowedValueRangeNode().getNodeValue(STEP);
+  }
 }

@@ -1,21 +1,21 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: ServiceData.java
-*
-*	Revision;
-*
-*	03/28/03
-*		- first revision.
-*	01/06/04
-*		- Moved setQueryListener() and getQueryListener() to StateVariableData class.
-*	03/30/05
-*		- Removed setDescriptionURL() and getDescriptionURL().
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002-2003
+ *
+ *	File: ServiceData.java
+ *
+ *	Revision;
+ *
+ *	03/28/03
+ *		- first revision.
+ *	01/06/04
+ *		- Moved setQueryListener() and getQueryListener() to StateVariableData class.
+ *	03/30/05
+ *		- Removed setDescriptionURL() and getDescriptionURL().
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.xml;
 
@@ -24,89 +24,82 @@ import org.cybergarage.xml.*;
 
 import org.cybergarage.upnp.event.*;
 
-public class ServiceData extends NodeData
-{
-	public ServiceData() 
-	{
-	}
+public class ServiceData extends NodeData {
+  public ServiceData() {}
 
-	////////////////////////////////////////////////
-	// controlActionListenerList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // controlActionListenerList
+  ////////////////////////////////////////////////
 
-	private ListenerList controlActionListenerList = new ListenerList();
+  private ListenerList controlActionListenerList = new ListenerList();
 
-	public ListenerList getControlActionListenerList() {
-		return controlActionListenerList;
-	}
+  public ListenerList getControlActionListenerList() {
+    return controlActionListenerList;
+  }
 
-	////////////////////////////////////////////////
-	// scpdNode
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // scpdNode
+  ////////////////////////////////////////////////
 
-	private Node scpdNode = null;
+  private Node scpdNode = null;
 
-	public Node getSCPDNode() {
-		return scpdNode;
-	}
+  public Node getSCPDNode() {
+    return scpdNode;
+  }
 
-	public void setSCPDNode(Node node) {
-		scpdNode = node;
-	}
+  public void setSCPDNode(Node node) {
+    scpdNode = node;
+  }
 
-	////////////////////////////////////////////////
-	// SubscriberList
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // SubscriberList
+  ////////////////////////////////////////////////
 
-	private SubscriberList subscriberList = new SubscriberList();
-	
-	public SubscriberList getSubscriberList() {
-		return subscriberList;
-	}
+  private SubscriberList subscriberList = new SubscriberList();
 
-	////////////////////////////////////////////////
-	// SID
-	////////////////////////////////////////////////
+  public SubscriberList getSubscriberList() {
+    return subscriberList;
+  }
 
-    private String descriptionURL = "";
+  ////////////////////////////////////////////////
+  // SID
+  ////////////////////////////////////////////////
 
-    public String getDescriptionURL() {
-            return descriptionURL;
-    }
+  private String descriptionURL = "";
 
-    public void setDescriptionURL(String descriptionURL) {
-            this.descriptionURL = descriptionURL;
-    }
-	
-	////////////////////////////////////////////////
-	// SID
-	////////////////////////////////////////////////
+  public String getDescriptionURL() {
+    return descriptionURL;
+  }
 
-	private String sid = "";
-	
-	public String getSID() {
-		return sid;
-	}
+  public void setDescriptionURL(String descriptionURL) {
+    this.descriptionURL = descriptionURL;
+  }
 
-	public void setSID(String id) {
-		sid = id;
-	}
+  ////////////////////////////////////////////////
+  // SID
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Timeout
-	////////////////////////////////////////////////
+  private String sid = "";
 
-	private long timeout = 0;
+  public String getSID() {
+    return sid;
+  }
 
-	public long getTimeout() 
-	{
-		return timeout;
-	}
+  public void setSID(String id) {
+    sid = id;
+  }
 
-	public void setTimeout(long value) 
-	{
-		timeout = value;
-	}
+  ////////////////////////////////////////////////
+  // Timeout
+  ////////////////////////////////////////////////
 
+  private long timeout = 0;
+
+  public long getTimeout() {
+    return timeout;
+  }
+
+  public void setTimeout(long value) {
+    timeout = value;
+  }
 }
-

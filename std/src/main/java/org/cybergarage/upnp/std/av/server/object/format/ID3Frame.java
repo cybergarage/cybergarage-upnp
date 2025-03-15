@@ -1,107 +1,101 @@
 /******************************************************************
-*
-*	MediaServer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2003
-*
-*	File : ID3Frame
-*
-*	Revision:
-*
-*	12/03/03
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaServer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2003
+ *
+ *	File : ID3Frame
+ *
+ *	Revision:
+ *
+ *	12/03/03
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.std.av.server.object.format;
 
-public class ID3Frame
-{
-	////////////////////////////////////////////////
-	// Constants
-	////////////////////////////////////////////////
-	
-	public final static String TIT1 = "TIT1";
-	public final static String TIT2 = "TIT2";
-	public final static String TIT3 = "TIT3";
+public class ID3Frame {
+  ////////////////////////////////////////////////
+  // Constants
+  ////////////////////////////////////////////////
 
-	public final static String TPE1 = "TPE1";
-	public final static String TPE2 = "TPE2";
-	public final static String TPE3 = "TPE3";
-	public final static String TPE4 = "TPE4";
-	
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
-	
-	public ID3Frame()
-	{
-		setID("");
-		setFlag(0);
-		setSize(0);
-	}
-	
-	////////////////////////////////////////////////
-	// ID
-	////////////////////////////////////////////////
-	
-	private String id;
+  public static final String TIT1 = "TIT1";
+  public static final String TIT2 = "TIT2";
+  public static final String TIT3 = "TIT3";
 
-	public void setID(String val) {
-		id = val;
-	}
+  public static final String TPE1 = "TPE1";
+  public static final String TPE2 = "TPE2";
+  public static final String TPE3 = "TPE3";
+  public static final String TPE4 = "TPE4";
 
-	public String getID() {
-		return id;
-	}
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Size
-	////////////////////////////////////////////////
-	
-	private int flag;
-	
-	public void setFlag(int val) {
-		flag = val;
-	}
+  public ID3Frame() {
+    setID("");
+    setFlag(0);
+    setSize(0);
+  }
 
-	public int getFlag() {
-		return flag;
-	}
+  ////////////////////////////////////////////////
+  // ID
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	// Size
-	////////////////////////////////////////////////
-	
-	private int size;
-	
-	public void setSize(int val) {
-		size = val;
-	}
+  private String id;
 
-	public int getSize() {
-		return size;
-	}
+  public void setID(String val) {
+    id = val;
+  }
 
-	////////////////////////////////////////////////
-	// Data
-	////////////////////////////////////////////////
-	
-	private byte data[];
-	
-	public void setData(byte val[]) 
-	{
-		data = val;
-	}
+  public String getID() {
+    return id;
+  }
 
-	public byte[] getData() 
-	{
-		return data;
-	}
+  ////////////////////////////////////////////////
+  // Size
+  ////////////////////////////////////////////////
 
-	public String getStringData() 
-	{
-		return new String(data, 1, getSize()-1);
-	}
+  private int flag;
+
+  public void setFlag(int val) {
+    flag = val;
+  }
+
+  public int getFlag() {
+    return flag;
+  }
+
+  ////////////////////////////////////////////////
+  // Size
+  ////////////////////////////////////////////////
+
+  private int size;
+
+  public void setSize(int val) {
+    size = val;
+  }
+
+  public int getSize() {
+    return size;
+  }
+
+  ////////////////////////////////////////////////
+  // Data
+  ////////////////////////////////////////////////
+
+  private byte data[];
+
+  public void setData(byte val[]) {
+    data = val;
+  }
+
+  public byte[] getData() {
+    return data;
+  }
+
+  public String getStringData() {
+    return new String(data, 1, getSize() - 1);
+  }
 }
-

@@ -1,12 +1,12 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File : ClockDevice.java
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File : ClockDevice.java
+ *
+ ******************************************************************/
 
 import java.io.*;
 
@@ -16,188 +16,169 @@ import org.cybergarage.upnp.device.*;
 import org.cybergarage.upnp.control.*;
 import org.cybergarage.xml.ParserException;
 
-public class WasherDevice extends Device implements ActionListener, QueryListener, Runnable
-{
-	private final static String DESCRIPTION_FILE_NAME = "description/description.xml";
-	private final static String STATE_SERVICE_DESCRIPTION_FILE_NAME = "description/service/state/description.xml";
+public class WasherDevice extends Device implements ActionListener, QueryListener, Runnable {
+  private static final String DESCRIPTION_FILE_NAME = "description/description.xml";
+  private static final String STATE_SERVICE_DESCRIPTION_FILE_NAME =
+      "description/service/state/description.xml";
 
-	private StateVariable stateVar;
-	
-	public WasherDevice() throws InvalidDescriptionException
-	{
-		super();
-		loadDescription(WasherDevice.class.getResourceAsStream(DESCRIPTION_FILE_NAME));
-		setSSDPBindAddress(
-				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
-		);
-		setHTTPBindAddress(
-				HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null)
-		);
-		
-		Service stateService = getService("urn:upnp-org:serviceId:state:1");
-		try {
-			stateService.loadSCPD(WasherDevice.class.getResourceAsStream(STATE_SERVICE_DESCRIPTION_FILE_NAME));
-		} catch (ParserException e) {
-			throw new InvalidDescriptionException(e);
-		}
+  private StateVariable stateVar;
 
-		Action getStateAction = getAction("GetState");
-		getStateAction.setActionListener(this);
-		
-		Action setStateAction = getAction("SetState");
-		setStateAction.setActionListener(this);
-		
-		ServiceList serviceList = getServiceList();
-		Service service = serviceList.getService(0);
-		service.setQueryListener(this);
+  public WasherDevice() throws InvalidDescriptionException {
+    super();
+    loadDescription(WasherDevice.class.getResourceAsStream(DESCRIPTION_FILE_NAME));
+    setSSDPBindAddress(HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null));
+    setHTTPBindAddress(HostInterface.getInetAddress(HostInterface.IPV4_BITMASK, null));
 
-		stateVar = getStateVariable("State");
-	}
+    Service stateService = getService("urn:upnp-org:serviceId:state:1");
+    try {
+      stateService.loadSCPD(
+          WasherDevice.class.getResourceAsStream(STATE_SERVICE_DESCRIPTION_FILE_NAME));
+    } catch (ParserException e) {
+      throw new InvalidDescriptionException(e);
+    }
 
-	////////////////////////////////////////////////
-	//	Component
-	////////////////////////////////////////////////
+    Action getStateAction = getAction("GetState");
+    getStateAction.setActionListener(this);
 
-	private WasherPane panel;
-	
-	public void setPanel(WasherPane comp)
-	{
-		panel = comp;	
-	}
-	
-	public WasherPane getPanel()
-	{
-		return panel;
-	}
+    Action setStateAction = getAction("SetState");
+    setStateAction.setActionListener(this);
 
-	////////////////////////////////////////////////
-	//	on/off
-	////////////////////////////////////////////////
+    ServiceList serviceList = getServiceList();
+    Service service = serviceList.getService(0);
+    service.setQueryListener(this);
 
-	private boolean washFlag = false;
-	
-	public void startWash()
-	{
-		timerThread = new Thread(this);
-		timerThread.start();
-		washFlag = true;
-		stateVar.setValue("Start");
-		panel.flipAnimationImage();
-	}
+    stateVar = getStateVariable("State");
+  }
 
-	public void stopWash()
-	{
-		timerThread = null;
-		washFlag = false;
-		stateVar.setValue("Stop");
-	}
+  ////////////////////////////////////////////////
+  //	Component
+  ////////////////////////////////////////////////
 
-	public void finishWash()
-	{
-		timerThread = null;
-		washFlag = false;
-		stateVar.setValue("Finish");
-	}
+  private WasherPane panel;
 
-	public boolean isWashing()
-	{
-		return washFlag;
-	}
-	
-	public void setPowerState(String state)
-	{
-		if (state == null) {
-			stopWash();
-			return;
-		}
-		if (state.compareTo("1") == 0) {
-			startWash();
-			return;
-		}
-		if (state.compareTo("0") == 0) {
-			stopWash();
-			return;
-		}
-	}
-	
-	public String getWashState()
-	{
-		if (washFlag == true)
-			return "1";
-		return "0";
-	}
+  public void setPanel(WasherPane comp) {
+    panel = comp;
+  }
 
-	////////////////////////////////////////////////
-	// ActionListener
-	////////////////////////////////////////////////
+  public WasherPane getPanel() {
+    return panel;
+  }
 
-	public boolean actionControlReceived(Action action)
-	{
-		String actionName = action.getName();
+  ////////////////////////////////////////////////
+  //	on/off
+  ////////////////////////////////////////////////
 
-		boolean ret = false;
-		
-		if (actionName.equals("GetState") == true) {
-			String state = getWashState();
-			Argument stateArg = action.getArgument("State");
-			stateArg.setValue(state);
-			ret = true;
-		}
-		if (actionName.equals("SetState") == true) {
-			Argument powerArg = action.getArgument("State");
-			String state = powerArg.getValue();
-			setPowerState(state);
-			state = getWashState();
-			Argument resultArg = action.getArgument("State");
-			resultArg.setValue(state);
-			ret = true;
-		}
+  private boolean washFlag = false;
 
-		panel.repaint();
+  public void startWash() {
+    timerThread = new Thread(this);
+    timerThread.start();
+    washFlag = true;
+    stateVar.setValue("Start");
+    panel.flipAnimationImage();
+  }
 
-		return ret;
-	}
+  public void stopWash() {
+    timerThread = null;
+    washFlag = false;
+    stateVar.setValue("Stop");
+  }
 
-	////////////////////////////////////////////////
-	// QueryListener
-	////////////////////////////////////////////////
+  public void finishWash() {
+    timerThread = null;
+    washFlag = false;
+    stateVar.setValue("Finish");
+  }
 
-	public boolean queryControlReceived(StateVariable stateVar)
-	{
-		return false;
-	}
+  public boolean isWashing() {
+    return washFlag;
+  }
 
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+  public void setPowerState(String state) {
+    if (state == null) {
+      stopWash();
+      return;
+    }
+    if (state.compareTo("1") == 0) {
+      startWash();
+      return;
+    }
+    if (state.compareTo("0") == 0) {
+      stopWash();
+      return;
+    }
+  }
 
-	private Thread timerThread = null;
-		
-	public void run()
-	{
-		Thread thisThread = Thread.currentThread();
+  public String getWashState() {
+    if (washFlag == true) return "1";
+    return "0";
+  }
 
-		int cnt = 0;
-		while (timerThread == thisThread && cnt < 20) {
-			panel.flipAnimationImage();
-			panel.repaint();
-			try {
-				Thread.sleep(500);
-			}
-			catch(InterruptedException e) {}
-			cnt++;
-		}
+  ////////////////////////////////////////////////
+  // ActionListener
+  ////////////////////////////////////////////////
 
-		finishWash();
-		panel.repaint();
-	}
-	
-	////////////////////////////////////////////////
-	// update
-	////////////////////////////////////////////////
+  public boolean actionControlReceived(Action action) {
+    String actionName = action.getName();
 
-	public void update()
-	{
-	}			
+    boolean ret = false;
+
+    if (actionName.equals("GetState") == true) {
+      String state = getWashState();
+      Argument stateArg = action.getArgument("State");
+      stateArg.setValue(state);
+      ret = true;
+    }
+    if (actionName.equals("SetState") == true) {
+      Argument powerArg = action.getArgument("State");
+      String state = powerArg.getValue();
+      setPowerState(state);
+      state = getWashState();
+      Argument resultArg = action.getArgument("State");
+      resultArg.setValue(state);
+      ret = true;
+    }
+
+    panel.repaint();
+
+    return ret;
+  }
+
+  ////////////////////////////////////////////////
+  // QueryListener
+  ////////////////////////////////////////////////
+
+  public boolean queryControlReceived(StateVariable stateVar) {
+    return false;
+  }
+
+  ////////////////////////////////////////////////
+  //	run
+  ////////////////////////////////////////////////
+
+  private Thread timerThread = null;
+
+  public void run() {
+    Thread thisThread = Thread.currentThread();
+
+    int cnt = 0;
+    while (timerThread == thisThread && cnt < 20) {
+      panel.flipAnimationImage();
+      panel.repaint();
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+      }
+      cnt++;
+    }
+
+    finishWash();
+    panel.repaint();
+  }
+
+  ////////////////////////////////////////////////
+  // update
+  ////////////////////////////////////////////////
+
+  public void update() {}
 }
-

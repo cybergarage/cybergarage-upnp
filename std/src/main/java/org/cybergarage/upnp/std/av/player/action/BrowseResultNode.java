@@ -1,15 +1,15 @@
 /******************************************************************
-*
-*	MediaPlayer for CyberLink
-*
-*	Copyright (C) Satoshi Konno 2005
-*
-*	File : BrowseAction.java
-*
-*	09/26/05
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	MediaPlayer for CyberLink
+ *
+ *	Copyright (C) Satoshi Konno 2005
+ *
+ *	File : BrowseAction.java
+ *
+ *	09/26/05
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.std.av.player.action;
 
@@ -17,32 +17,26 @@ import java.io.*;
 
 import org.cybergarage.upnp.std.av.server.object.item.*;
 
-public class BrowseResultNode extends ItemNode
-{
-	////////////////////////////////////////////////
-	// Constroctor
-	////////////////////////////////////////////////
+public class BrowseResultNode extends ItemNode {
+  ////////////////////////////////////////////////
+  // Constroctor
+  ////////////////////////////////////////////////
 
-	public BrowseResultNode()
-	{
-	}
+  public BrowseResultNode() {}
 
-	////////////////////////////////////////////////
-	// Abstract methods
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // Abstract methods
+  ////////////////////////////////////////////////
 
-	public long getContentLength()
-	{
-		return 0;
-	}
+  public long getContentLength() {
+    return 0;
+  }
 
-	public InputStream getContentInputStream()
-	{
-		return null;
-	}
+  public InputStream getContentInputStream() {
+    return null;
+  }
 
-	public String getMimeType()
-	{
-		return "*/*";
-	}
+  public String getMimeType() {
+    return "*/*";
+  }
 }

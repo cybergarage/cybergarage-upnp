@@ -1,57 +1,50 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File: ActionData.java
-*
-*	Revision;
-*
-*	03/28/03
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002-2003
+ *
+ *	File: ActionData.java
+ *
+ *	Revision;
+ *
+ *	03/28/03
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.xml;
 
 import org.cybergarage.upnp.control.*;
 
-public class ActionData extends NodeData
-{
-	public ActionData()
-	{
-	}
+public class ActionData extends NodeData {
+  public ActionData() {}
 
-	////////////////////////////////////////////////
-	// ActionListener
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // ActionListener
+  ////////////////////////////////////////////////
 
-	private ActionListener actionListener = null;
+  private ActionListener actionListener = null;
 
-	public ActionListener getActionListener() {
-		return actionListener;
-	}
+  public ActionListener getActionListener() {
+    return actionListener;
+  }
 
-	public void setActionListener(ActionListener actionListener) {
-		this.actionListener = actionListener;
-	}
+  public void setActionListener(ActionListener actionListener) {
+    this.actionListener = actionListener;
+  }
 
-	////////////////////////////////////////////////
-	// ControlResponse
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  // ControlResponse
+  ////////////////////////////////////////////////
 
-	private ControlResponse ctrlRes = null;
+  private ControlResponse ctrlRes = null;
 
-	public ControlResponse getControlResponse() 
-	{
-		return ctrlRes;
-	}
+  public ControlResponse getControlResponse() {
+    return ctrlRes;
+  }
 
-	public void setControlResponse(ControlResponse res) 
-	{
-		ctrlRes = res;
-	}
-
+  public void setControlResponse(ControlResponse res) {
+    ctrlRes = res;
+  }
 }
-

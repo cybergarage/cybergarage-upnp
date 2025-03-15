@@ -1,29 +1,27 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File: Control.java
-*
-*	Revision;
-*
-*	01/20/03
-*		- first revision.
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File: Control.java
+ *
+ *	Revision;
+ *
+ *	01/20/03
+ *		- first revision.
+ *
+ ******************************************************************/
 
 package org.cybergarage.upnp.control;
 
-public class Control
-{
-	public final static String NS = "u";
-	public final static String QUERY_SOAPACTION = "urn:schemas-upnp-org:control-1-0#QueryStateVariable";
-	public final static String XMLNS = "urn:schemas-upnp-org:control-1-0";
-	public final static String QUERY_STATE_VARIABLE = "QueryStateVariable";
-	public final static String QUERY_STATE_VARIABLE_RESPONSE = "QueryStateVariableResponse";
-	public final static String VAR_NAME = "varName";
-	public final static String RETURN = "return";
+public class Control {
+  public static final String NS = "u";
+  public static final String QUERY_SOAPACTION =
+      "urn:schemas-upnp-org:control-1-0#QueryStateVariable";
+  public static final String XMLNS = "urn:schemas-upnp-org:control-1-0";
+  public static final String QUERY_STATE_VARIABLE = "QueryStateVariable";
+  public static final String QUERY_STATE_VARIABLE_RESPONSE = "QueryStateVariableResponse";
+  public static final String VAR_NAME = "varName";
+  public static final String RETURN = "return";
 }
-
-

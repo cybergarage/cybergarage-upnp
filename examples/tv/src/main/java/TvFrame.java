@@ -1,135 +1,111 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002-2003
-*
-*	File : SampleClock.java
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002-2003
+ *
+ *	File : SampleClock.java
+ *
+ ******************************************************************/
 
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
-public class TvFrame extends JFrame implements Runnable, WindowListener 
-{
-	private final static String TITLE = "CyberLink Sample TV";
-	
-	private TvDevice tvDev;
-	private TvPane tvPane;
-	
-	public TvFrame()
-	{
-		super(TITLE);
+public class TvFrame extends JFrame implements Runnable, WindowListener {
+  private static final String TITLE = "CyberLink Sample TV";
 
-		tvDev = new TvDevice();
+  private TvDevice tvDev;
+  private TvPane tvPane;
 
-		getContentPane().setLayout(new BorderLayout());
+  public TvFrame() {
+    super(TITLE);
 
-		tvPane = new TvPane();
-		tvDev.setComponent(tvPane);
-		tvPane.setDevice(tvDev);
-		getContentPane().add(tvPane, BorderLayout.CENTER);
+    tvDev = new TvDevice();
 
-		addWindowListener(this);
-		
-		pack();
-		setVisible(true);
-	}
+    getContentPane().setLayout(new BorderLayout());
 
-	public TvPane getTvPanel()
-	{
-		return tvPane;
-	}
+    tvPane = new TvPane();
+    tvDev.setComponent(tvPane);
+    tvPane.setDevice(tvDev);
+    getContentPane().add(tvPane, BorderLayout.CENTER);
 
-	public TvDevice getTvDevice()
-	{
-		return tvDev;
-	}
-		
-	////////////////////////////////////////////////
-	//	run	
-	////////////////////////////////////////////////
+    addWindowListener(this);
 
-	private Thread timerThread = null;
-		
-	public void run()
-	{
-		Thread thisThread = Thread.currentThread();
+    pack();
+    setVisible(true);
+  }
 
-		while (timerThread == thisThread) {
-			tvDev.setMessage("");
-			tvPane.repaint();
-			try {
-				Thread.sleep(1000*5);
-			}
-			catch(InterruptedException e) {}
-		}
-	}
-	
-	public void start()
-	{
-		tvDev.start();
-		
-		timerThread = new Thread(this);
-		timerThread.start();
-	}
-	
-	public void stop()
-	{
-		tvDev.stop();
-		timerThread = null;
-	}
+  public TvPane getTvPanel() {
+    return tvPane;
+  }
 
-	////////////////////////////////////////////////
-	//	main
-	////////////////////////////////////////////////
-	
-	public void windowActivated(WindowEvent e) 
-	{
-	}
-	
-	public void windowClosed(WindowEvent e) 
-	{
-	}
-	
-	public void windowClosing(WindowEvent e) 
-	{
-		tvDev.off();
-		stop();
-		System.exit(0);
-	}
-	
-	public void windowDeactivated(WindowEvent e) 
-	{
-	}
-	
-	public void windowDeiconified(WindowEvent e) 
-	{
-	}
-	
-	public void windowIconified(WindowEvent e) 
-	{
-	}
-	
-	public void windowOpened(WindowEvent e)
-	{
-	}
-	
+  public TvDevice getTvDevice() {
+    return tvDev;
+  }
 
-	////////////////////////////////////////////////
-	//	main
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	run
+  ////////////////////////////////////////////////
 
-	public static void main(String args[]) 
-	{
-		//Debug.on();
+  private Thread timerThread = null;
 
-		TvFrame sampTv = new TvFrame();
-		sampTv.start();
-	}
+  public void run() {
+    Thread thisThread = Thread.currentThread();
 
+    while (timerThread == thisThread) {
+      tvDev.setMessage("");
+      tvPane.repaint();
+      try {
+        Thread.sleep(1000 * 5);
+      } catch (InterruptedException e) {
+      }
+    }
+  }
+
+  public void start() {
+    tvDev.start();
+
+    timerThread = new Thread(this);
+    timerThread.start();
+  }
+
+  public void stop() {
+    tvDev.stop();
+    timerThread = null;
+  }
+
+  ////////////////////////////////////////////////
+  //	main
+  ////////////////////////////////////////////////
+
+  public void windowActivated(WindowEvent e) {}
+
+  public void windowClosed(WindowEvent e) {}
+
+  public void windowClosing(WindowEvent e) {
+    tvDev.off();
+    stop();
+    System.exit(0);
+  }
+
+  public void windowDeactivated(WindowEvent e) {}
+
+  public void windowDeiconified(WindowEvent e) {}
+
+  public void windowIconified(WindowEvent e) {}
+
+  public void windowOpened(WindowEvent e) {}
+
+  ////////////////////////////////////////////////
+  //	main
+  ////////////////////////////////////////////////
+
+  public static void main(String args[]) {
+    // Debug.on();
+
+    TvFrame sampTv = new TvFrame();
+    sampTv.start();
+  }
 }
-

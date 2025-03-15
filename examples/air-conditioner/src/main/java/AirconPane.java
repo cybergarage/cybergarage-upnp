@@ -1,12 +1,12 @@
 /******************************************************************
-*
-*	CyberUPnP for Java
-*
-*	Copyright (C) Satoshi Konno 2002
-*
-*	File : SampleClockPane.java
-*
-******************************************************************/
+ *
+ *	CyberUPnP for Java
+ *
+ *	Copyright (C) Satoshi Konno 2002
+ *
+ *	File : SampleClockPane.java
+ *
+ ******************************************************************/
 
 import java.io.*;
 import java.awt.*;
@@ -17,142 +17,120 @@ import javax.imageio.ImageIO;
 
 import org.cybergarage.util.*;
 
-public class AirconPane extends JPanel  // MouseListener
+public class AirconPane extends JPanel // MouseListener
 {
-	public AirconPane()
-	{
-		loadImage();
-		initPanel();
-	}
+  public AirconPane() {
+    loadImage();
+    initPanel();
+  }
 
-	////////////////////////////////////////////////
-	//	Background
-	////////////////////////////////////////////////
+  ////////////////////////////////////////////////
+  //	Background
+  ////////////////////////////////////////////////
 
-	private final static String AIRCON_PANEL_IMAGE = "images/aircon.jpg";
+  private static final String AIRCON_PANEL_IMAGE = "images/aircon.jpg";
 
-	private BufferedImage panelmage;
-	
-	private void loadImage()
-	{
-		File f = new File(AIRCON_PANEL_IMAGE);
-		try {
-			panelmage = ImageIO.read(f);
-		}
-		catch (Exception e) {
-			Debug.warning(e);
-		}
-	}
+  private BufferedImage panelmage;
 
-	private BufferedImage getPaneImage()
-	{
-		return panelmage;
-	}
+  private void loadImage() {
+    File f = new File(AIRCON_PANEL_IMAGE);
+    try {
+      panelmage = ImageIO.read(f);
+    } catch (Exception e) {
+      Debug.warning(e);
+    }
+  }
 
-	////////////////////////////////////////////////
-	//	Background
-	////////////////////////////////////////////////
+  private BufferedImage getPaneImage() {
+    return panelmage;
+  }
 
-	private void initPanel()
-	{
-		BufferedImage panelmage = getPaneImage();
-		setPreferredSize(new Dimension(panelmage.getWidth(), panelmage.getHeight()));
-	}
+  ////////////////////////////////////////////////
+  //	Background
+  ////////////////////////////////////////////////
 
-	////////////////////////////////////////////////
-	//	LightDevice
-	////////////////////////////////////////////////
+  private void initPanel() {
+    BufferedImage panelmage = getPaneImage();
+    setPreferredSize(new Dimension(panelmage.getWidth(), panelmage.getHeight()));
+  }
 
-	private AirconDevice airconDev = null;
-	
-	public void setDevice(AirconDevice dev)
-	{
-		airconDev = dev;
-	}
+  ////////////////////////////////////////////////
+  //	LightDevice
+  ////////////////////////////////////////////////
 
-	public AirconDevice getDevice()
-	{
-		return airconDev;
-	}
+  private AirconDevice airconDev = null;
 
-	////////////////////////////////////////////////
-	//	Font
-	////////////////////////////////////////////////
+  public void setDevice(AirconDevice dev) {
+    airconDev = dev;
+  }
 
-	private final static String DEFAULT_FONT_NAME = "Lucida Console";
-	private final static int DEFAULT_TIME_FONT_SIZE = 8;
+  public AirconDevice getDevice() {
+    return airconDev;
+  }
 
-	private Font timeFont = null;
+  ////////////////////////////////////////////////
+  //	Font
+  ////////////////////////////////////////////////
 
-	private Font getFont(Graphics g, int size)
-	{
-		Font font = new Font(DEFAULT_FONT_NAME, Font.BOLD, size);
-		if (font != null)
-			return font;
-		return g.getFont();
-	}
-		
-	private Font getFont(Graphics g)
-	{
-		if (timeFont == null)
-			timeFont = getFont(g, DEFAULT_TIME_FONT_SIZE);
-		return timeFont;
-	}
-	
-	////////////////////////////////////////////////
-	//	paint
-	////////////////////////////////////////////////
+  private static final String DEFAULT_FONT_NAME = "Lucida Console";
+  private static final int DEFAULT_TIME_FONT_SIZE = 8;
 
-	private void drawInfo(Graphics g)
-	{
-		AirconDevice dev = getDevice();
-		
-		g.setFont(getFont(g));
+  private Font timeFont = null;
 
-		//////////////////////////////////////
-		//	power
-		//////////////////////////////////////
-		
-		if (dev.isOn() == true)
-			g.setColor(Color.YELLOW);
-		else
-			g.setColor(Color.LIGHT_GRAY);
-	
-		g.fillRect(5, 50, 20, 5);
+  private Font getFont(Graphics g, int size) {
+    Font font = new Font(DEFAULT_FONT_NAME, Font.BOLD, size);
+    if (font != null) return font;
+    return g.getFont();
+  }
 
-		//////////////////////////////////////
-		//	tempture
-		//////////////////////////////////////
-		
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillRect(250, 50, 40, 10);
-		
-		if (dev.isOn() == true){
-			g.setColor(Color.BLACK);
-			g.drawString(
-				dev.getTempture(),
-				280,
-				59);
-		}
-	}
+  private Font getFont(Graphics g) {
+    if (timeFont == null) timeFont = getFont(g, DEFAULT_TIME_FONT_SIZE);
+    return timeFont;
+  }
 
-	private void clear(Graphics g)
-	{
-		g.setColor(Color.GRAY);
-		g.clearRect(0, 0, getWidth(), getHeight());
-	}
-	
+  ////////////////////////////////////////////////
+  //	paint
+  ////////////////////////////////////////////////
 
-	private void drawPanelImage(Graphics g)
-	{
-		g.drawImage(getPaneImage(), 0, 0, null);
-	}
-		
-	public void paint(Graphics g)
-	{
-		clear(g);
-		drawPanelImage(g);
-		drawInfo(g);
-	}
+  private void drawInfo(Graphics g) {
+    AirconDevice dev = getDevice();
+
+    g.setFont(getFont(g));
+
+    //////////////////////////////////////
+    //	power
+    //////////////////////////////////////
+
+    if (dev.isOn() == true) g.setColor(Color.YELLOW);
+    else g.setColor(Color.LIGHT_GRAY);
+
+    g.fillRect(5, 50, 20, 5);
+
+    //////////////////////////////////////
+    //	tempture
+    //////////////////////////////////////
+
+    g.setColor(Color.LIGHT_GRAY);
+    g.fillRect(250, 50, 40, 10);
+
+    if (dev.isOn() == true) {
+      g.setColor(Color.BLACK);
+      g.drawString(dev.getTempture(), 280, 59);
+    }
+  }
+
+  private void clear(Graphics g) {
+    g.setColor(Color.GRAY);
+    g.clearRect(0, 0, getWidth(), getHeight());
+  }
+
+  private void drawPanelImage(Graphics g) {
+    g.drawImage(getPaneImage(), 0, 0, null);
+  }
+
+  public void paint(Graphics g) {
+    clear(g);
+    drawPanelImage(g);
+    drawInfo(g);
+  }
 }
-
