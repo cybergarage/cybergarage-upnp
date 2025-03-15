@@ -25,6 +25,6 @@ jobs:
     - name: Format
       uses: axel-op/googlejavaformat-action@v4
       with:
-        args: "--replace"
+        args: "--skip-sorting-imports --replace"
     - name: Build with Maven
       run: mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
