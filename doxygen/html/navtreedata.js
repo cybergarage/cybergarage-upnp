@@ -25,10 +25,9 @@
 var NAVTREE =
 [
   [ "cybergarage-upnp", "index.html", [
-    [ "Overview", "index.html#autotoc_md26", null ],
-    [ "References", "index.html#autotoc_md27", null ],
-    [ "Repositories", "index.html#autotoc_md28", null ],
-    [ "Examples", "index.html#autotoc_md29", null ],
+    [ "References", "index.html#autotoc_md26", null ],
+    [ "Repositories", "index.html#autotoc_md27", null ],
+    [ "Examples", "index.html#autotoc_md28", null ],
     [ "Programming Guide", "md_doc_2cybergarage-upnp-prgguide.html", [
       [ "Introduction", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md1", null ],
       [ "Device", "md_doc_2cybergarage-upnp-prgguide.html#autotoc_md2", [
