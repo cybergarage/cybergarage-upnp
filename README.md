@@ -5,8 +5,6 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/org.cybergarage.upnp/core)](https://central.sonatype.com/search?q=g:org.cybergarage.upnp&smo=true)
 [![doxygen](https://github.com/cybergarage/cybergarage-upnp/actions/workflows/doxygen.yml/badge.svg)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
 
-## Overview
-
 The UPnP™ [^1] architecture is an open network protocol that enables the discovery and control of networked devices and services, such as media servers and players, within a home network. UPnP™ protocols are based on several standards, including GENA, SSDP, SOAP, HTTPU, and HTTP. Therefore, understanding and implementing these protocols is essential for creating UPnP™ devices.
 
 `cybergarage-upnp` is a UPnP™ development package designed for Java developers. It automates the control of these protocols and supports the rapid creation of UPnP™ devices and control points. This package simplifies the development process by handling the complex aspects of UPnP™ protocol implementation, allowing developers to focus on the functionality of their devices and services.
