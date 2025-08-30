@@ -28,3 +28,11 @@ jobs:
         args: "--skip-sorting-imports --replace"
     - name: Build with Maven
       run: mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
+    - name: Run tests and generate JaCoCo coverage
+      run: mvn verify -Dgpg.skip -Dmaven.javadoc.skip=true
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        files: ./core/target/site/jacoco/jacoco.xml,./std/target/site/jacoco/jacoco.xml
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
