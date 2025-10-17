@@ -17,6 +17,7 @@
 
   <properties>
     <maven.deploy.skip>false</maven.deploy.skip>
+    <sonar.organization>cybergarage</sonar.organization>
   </properties>
 
   <dependencies>
