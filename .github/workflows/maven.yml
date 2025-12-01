@@ -28,8 +28,10 @@ jobs:
         args: "--skip-sorting-imports --replace"
     - name: Build with Maven
       run: mvn install -Dgpg.skip -Dmaven.javadoc.skip=true
-    - name: Run tests and generate JaCoCo coverage
-      run: mvn verify -Dgpg.skip -Dmaven.javadoc.skip=true
+    - name: Run tests (with coverage) and verify
+      run: mvn -B verify -Dgpg.skip -Dmaven.javadoc.skip=true
+    - name: Generate JaCoCo coverage reports
+      run: mvn -q jacoco:report -Dgpg.skip -Dmaven.javadoc.skip=true
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:
