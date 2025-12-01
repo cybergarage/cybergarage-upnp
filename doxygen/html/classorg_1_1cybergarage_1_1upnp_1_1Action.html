@@ -198,7 +198,8 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action that can be invoked on a service.</p>
 <p>Actions are methods exposed by <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> services that can be called remotely by control points. Each action has a name, a list of input arguments, and a list of output arguments. Actions are defined in the service's SCPD (<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Service.html">Service</a> Control Protocol Definition) document.</p>
-<p>This class provides methods to: </p><ul>
+<p>This class provides methods to:</p>
+<ul>
 <li>
 Set and retrieve action arguments </li>
 <li>
@@ -209,7 +210,8 @@ Handle incoming action requests from control points via <code><a class="el" href
 Access action execution status and response data </li>
 </ul>
 <p>Thread-safety: This class uses internal synchronization via <code><a class="el" href="#a657b075998e745059c7da5459e285545">lock()</a></code> and <code><a class="el" href="#af5bfc519f1b4001479ecbb8c26271818">unlock()</a></code> methods. Multiple threads can safely interact with the same action instance when using these synchronization methods.</p>
-<p>Example usage for invoking an action on a device: </p><pre><code class="JavaDocCode"><br/>
+<p>Example usage for invoking an action on a device:</p>
+<pre><code class="JavaDocCode"><br/>
 Service service = device.getService("urn:schemas-upnp-org:service:AVTransport:1");<br/>
 Action playAction = service.getAction("Play");<br/>
 playAction.setArgumentValue("InstanceID", "0");<br/>
@@ -928,7 +930,8 @@ ActionListener </dd></dl>
 <p>Posts this action to the device and waits for the response.</p>
 <p>This method sends a SOAP action request to the device's control URL with the currently set input argument values. It blocks until a response is received or a timeout occurs. Upon successful execution, the output argument values are updated with the response data.</p>
 <p>The execution status can be retrieved via <code><a class="el" href="#aa892e4290df43c707b1eeebbb7ab480d">getStatus()</a></code> after this method returns.</p>
-<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the action was executed successfully and the response was valid, <code class="JavaDocCode">false</code> if an error occurred </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the action was executed successfully and the response was valid, <code class="JavaDocCode"><br/>
+    false</code> if an error occurred </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ac8393ebdfdc861fcedbad169bf594951">setArgumentValue(String, String)</a> </dd>
 <dd>
 <a class="el" href="#a3f120757b714e82f7402086d84e2d39f">getArgumentValue(String)</a> </dd>

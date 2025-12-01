@@ -93,7 +93,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Listener interface for handling incoming <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action requests.</p>
 <p>Implementations of this interface are registered with <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a></code> instances to handle action invocations from control points. When a control point invokes an action, the device calls this listener to execute the application-specific logic.</p>
-<p>Example implementation: </p><pre><code class="JavaDocCode"><br/>
+<p>Example implementation:</p>
+<pre><code class="JavaDocCode"><br/>
 action.setActionListener(new ActionListener() {<br/>
     public boolean actionControlReceived(Action action) {<br/>
         String volume = action.getArgumentValue("Volume");<br/>
@@ -121,7 +122,8 @@ action.setActionListener(new ActionListener() {<br/>
       </table>
 </div><div class="memdoc">
 <p>Called when an action control request is received from a control point.</p>
-<p>Implementations should: </p><ul>
+<p>Implementations should:</p>
+<ul>
 <li>
 Read input argument values from the action </li>
 <li>
