@@ -24,15 +24,46 @@ import org.cybergarage.http.*;
 import org.cybergarage.soap.*;
 import org.cybergarage.xml.*;
 
+/**
+ * Represents a UPnP action response returned from a device to a control point.
+ * 
+ * <p>This class encapsulates the SOAP-formatted response to an action invocation.
+ * It contains the output argument values returned by the device after executing
+ * the requested action.
+ * 
+ * <p>The response includes:
+ * <ul>
+ *   <li>HTTP status code (200 OK for success, 500 for errors)</li>
+ *   <li>Output argument values</li>
+ *   <li>Error information if the action failed</li>
+ *   <li>Required EXT header for UPnP compliance</li>
+ * </ul>
+ * 
+ * @see ActionRequest
+ * @see Action
+ * @see ControlResponse
+ */
 public class ActionResponse extends ControlResponse {
   ////////////////////////////////////////////////
   //	Constructor
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs an empty action response.
+   * 
+   * <p>Sets the mandatory EXT header required by the UPnP specification.
+   */
   public ActionResponse() {
     setHeader(HTTP.EXT, "");
   }
 
+  /**
+   * Constructs an action response from a SOAP response.
+   * 
+   * <p>Wraps an existing SOAP response and sets the mandatory EXT header.
+   * 
+   * @param soapRes the SOAP response to wrap
+   */
   public ActionResponse(SOAPResponse soapRes) {
     super(soapRes);
     setHeader(HTTP.EXT, "");
@@ -42,6 +73,14 @@ public class ActionResponse extends ControlResponse {
   //	Response
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs the response content from an executed action.
+   * 
+   * <p>Creates a SOAP response containing the action name and output
+   * argument values. Sets the HTTP status to 200 OK.
+   * 
+   * @param action the action containing output argument values to return
+   */
   public void setResponse(Action action) {
     setStatusCode(HTTPStatus.OK);
 
@@ -80,12 +119,25 @@ public class ActionResponse extends ControlResponse {
   //	getResponse
   ////////////////////////////////////////////////
 
+  /**
+   * Returns the XML node containing the action response data.
+   * 
+   * @return the action response node, or {@code null} if not present
+   */
   private Node getActionResponseNode() {
     Node bodyNode = getBodyNode();
     if (bodyNode == null || bodyNode.hasNodes() == false) return null;
     return bodyNode.getNode(0);
   }
 
+  /**
+   * Returns the list of output arguments from the action response.
+   * 
+   * <p>Parses the SOAP response body to extract argument names and values
+   * returned by the device.
+   * 
+   * @return the list of output arguments, or an empty list if none are present
+   */
   public ArgumentList getResponse() {
     ArgumentList argList = new ArgumentList();
 
