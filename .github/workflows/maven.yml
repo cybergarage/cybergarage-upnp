@@ -35,7 +35,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
       with:
-        files: ./core/target/site/jacoco/jacoco.xml,./std/target/site/jacoco/jacoco.xml
+        files: ./jacoco-aggregate-pom.xml
         fail_ci_if_error: true
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: cybergarage/cybergarage-upnp
