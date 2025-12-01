@@ -23,24 +23,20 @@ import org.cybergarage.upnp.*;
 
 /**
  * Base class for UPnP control responses.
- * 
- * <p>This class extends {@link SOAPResponse} to provide common functionality
- * for both action responses and state variable query responses. It handles
- * SOAP fault generation for UPnP errors and error code extraction.
- * 
+ *
+ * <p>This class extends {@link SOAPResponse} to provide common functionality for both action
+ * responses and state variable query responses. It handles SOAP fault generation for UPnP errors
+ * and error code extraction.
+ *
  * @see ActionResponse
  * @see QueryResponse
  * @see SOAPResponse
  */
 public class ControlResponse extends SOAPResponse {
-  /**
-   * SOAP fault code for client errors.
-   */
+  /** SOAP fault code for client errors. */
   public static final String FAULT_CODE = "Client";
-  
-  /**
-   * SOAP fault string for UPnP errors.
-   */
+
+  /** SOAP fault string for UPnP errors. */
   public static final String FAULT_STRING = "UPnPError";
 
   ////////////////////////////////////////////////
@@ -49,7 +45,7 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Constructs an empty control response.
-   * 
+   *
    * <p>Sets the server header to the UPnP stack identifier.
    */
   public ControlResponse() {
@@ -58,7 +54,7 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Constructs a control response from a SOAP response.
-   * 
+   *
    * @param soapRes the SOAP response to wrap
    */
   public ControlResponse(SOAPResponse soapRes) {
@@ -71,11 +67,11 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Sets this response as a SOAP fault with the specified UPnP error code and description.
-   * 
-   * <p>Creates a properly formatted SOAP fault response conforming to the UPnP
-   * specification, including the error code and description in the detail element.
-   * Sets the HTTP status to 500 Internal Server Error.
-   * 
+   *
+   * <p>Creates a properly formatted SOAP fault response conforming to the UPnP specification,
+   * including the error code and description in the detail element. Sets the HTTP status to 500
+   * Internal Server Error.
+   *
    * @param errCode the UPnP error code
    * @param errDescr the human-readable error description
    * @see UPnPStatus
@@ -93,9 +89,9 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Sets this response as a SOAP fault with the specified UPnP error code.
-   * 
+   *
    * <p>The error description is automatically derived from the error code.
-   * 
+   *
    * @param errCode the UPnP error code
    * @see #setFaultResponse(int, String)
    */
@@ -173,7 +169,7 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Returns the UPnP error code from the SOAP fault detail.
-   * 
+   *
    * @return the error code, or -1 if not present or invalid
    */
   public int getUPnPErrorCode() {
@@ -189,7 +185,7 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Returns the UPnP error description from the SOAP fault detail.
-   * 
+   *
    * @return the error description, or an empty string if not present
    */
   public String getUPnPErrorDescription() {
@@ -200,10 +196,10 @@ public class ControlResponse extends SOAPResponse {
 
   /**
    * Returns the UPnP error status from the SOAP fault.
-   * 
-   * <p>Extracts both the error code and description from the fault detail
-   * and returns them in a {@link UPnPStatus} object.
-   * 
+   *
+   * <p>Extracts both the error code and description from the fault detail and returns them in a
+   * {@link UPnPStatus} object.
+   *
    * @return the UPnP error status
    */
   public UPnPStatus getUPnPError() {

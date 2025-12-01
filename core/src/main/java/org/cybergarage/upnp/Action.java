@@ -42,24 +42,26 @@ import org.cybergarage.xml.Node;
 
 /**
  * Represents a UPnP action that can be invoked on a service.
- * 
+ *
  * <p>Actions are methods exposed by UPnP services that can be called remotely by control points.
- * Each action has a name, a list of input arguments, and a list of output arguments. Actions
- * are defined in the service's SCPD (Service Control Protocol Definition) document.
- * 
+ * Each action has a name, a list of input arguments, and a list of output arguments. Actions are
+ * defined in the service's SCPD (Service Control Protocol Definition) document.
+ *
  * <p>This class provides methods to:
+ *
  * <ul>
- *   <li>Set and retrieve action arguments</li>
- *   <li>Invoke the action on a remote device via {@link #postControlAction()}</li>
- *   <li>Handle incoming action requests from control points via {@link ActionListener}</li>
- *   <li>Access action execution status and response data</li>
+ *   <li>Set and retrieve action arguments
+ *   <li>Invoke the action on a remote device via {@link #postControlAction()}
+ *   <li>Handle incoming action requests from control points via {@link ActionListener}
+ *   <li>Access action execution status and response data
  * </ul>
- * 
- * <p>Thread-safety: This class uses internal synchronization via {@link #lock()} and
- * {@link #unlock()} methods. Multiple threads can safely interact with the same action
- * instance when using these synchronization methods.
- * 
+ *
+ * <p>Thread-safety: This class uses internal synchronization via {@link #lock()} and {@link
+ * #unlock()} methods. Multiple threads can safely interact with the same action instance when using
+ * these synchronization methods.
+ *
  * <p>Example usage for invoking an action on a device:
+ *
  * <pre>{@code
  * Service service = device.getService("urn:schemas-upnp-org:service:AVTransport:1");
  * Action playAction = service.getAction("Play");
@@ -70,7 +72,7 @@ import org.cybergarage.xml.Node;
  *     System.out.println("Play action executed successfully");
  * }
  * }</pre>
- * 
+ *
  * @see Service
  * @see Argument
  * @see ActionListener
@@ -80,9 +82,7 @@ public class Action {
   //	Constants
   ////////////////////////////////////////////////
 
-  /**
-   * The XML element name for action nodes in SCPD documents.
-   */
+  /** The XML element name for action nodes in SCPD documents. */
   public static final String ELEM_NAME = "action";
 
   ////////////////////////////////////////////////
@@ -98,7 +98,7 @@ public class Action {
 
   /**
    * Returns the service that contains this action.
-   * 
+   *
    * @return the parent service of this action
    */
   public Service getService() {
@@ -117,7 +117,7 @@ public class Action {
 
   /**
    * Returns the underlying XML node representing this action.
-   * 
+   *
    * @return the action XML node
    */
   public Node getActionNode() {
@@ -127,12 +127,12 @@ public class Action {
   ////////////////////////////////////////////////
   //	Constructor
   ////////////////////////////////////////////////
-  
+
   /**
    * Constructs a new action with the specified service node.
-   * 
+   *
    * <p>Creates an empty action node that can be populated with action details.
-   * 
+   *
    * @param serviceNode the XML node representing the service that contains this action
    */
   public Action(Node serviceNode) {
@@ -143,10 +143,10 @@ public class Action {
 
   /**
    * Constructs an action from existing service and action XML nodes.
-   * 
-   * <p>This constructor is typically used when parsing service descriptions
-   * to create action objects from the SCPD document.
-   * 
+   *
+   * <p>This constructor is typically used when parsing service descriptions to create action
+   * objects from the SCPD document.
+   *
    * @param serviceNode the XML node representing the parent service
    * @param actionNode the XML node containing action definition and arguments
    */
@@ -157,10 +157,10 @@ public class Action {
 
   /**
    * Creates a copy of an existing action.
-   * 
-   * <p>Note: This creates a shallow copy that references the same underlying
-   * XML nodes as the original action.
-   * 
+   *
+   * <p>Note: This creates a shallow copy that references the same underlying XML nodes as the
+   * original action.
+   *
    * @param action the action to copy
    */
   public Action(Action action) {
@@ -176,11 +176,10 @@ public class Action {
 
   /**
    * Acquires the lock for this action.
-   * 
-   * <p>Use this method to synchronize access to the action from multiple threads.
-   * Always pair with {@link #unlock()} to release the lock, preferably in a
-   * try-finally block.
-   * 
+   *
+   * <p>Use this method to synchronize access to the action from multiple threads. Always pair with
+   * {@link #unlock()} to release the lock, preferably in a try-finally block.
+   *
    * @see #unlock()
    */
   public void lock() {
@@ -189,10 +188,9 @@ public class Action {
 
   /**
    * Releases the lock for this action.
-   * 
-   * <p>Should be called after {@link #lock()} once the synchronized operation
-   * is complete.
-   * 
+   *
+   * <p>Should be called after {@link #lock()} once the synchronized operation is complete.
+   *
    * @see #lock()
    */
   public void unlock() {
@@ -205,10 +203,10 @@ public class Action {
 
   /**
    * Checks if the given XML node represents an action element.
-   * 
+   *
    * @param node the XML node to check
-   * @return {@code true} if the node's name matches the action element name,
-   *         {@code false} otherwise
+   * @return {@code true} if the node's name matches the action element name, {@code false}
+   *     otherwise
    */
   public static boolean isActionNode(Node node) {
     return Action.ELEM_NAME.equals(node.getName());
@@ -222,7 +220,7 @@ public class Action {
 
   /**
    * Sets the name of this action.
-   * 
+   *
    * @param value the action name (e.g., "Play", "SetVolume")
    */
   public void setName(String value) {
@@ -231,7 +229,7 @@ public class Action {
 
   /**
    * Returns the name of this action.
-   * 
+   *
    * @return the action name as defined in the SCPD document
    */
   public String getName() {
@@ -244,10 +242,9 @@ public class Action {
 
   /**
    * Returns the complete list of arguments for this action.
-   * 
-   * <p>This includes both input and output arguments as defined in the
-   * service's SCPD document.
-   * 
+   *
+   * <p>This includes both input and output arguments as defined in the service's SCPD document.
+   *
    * @return the list of all arguments for this action
    * @see #getInputArgumentList()
    * @see #getOutputArgumentList()
@@ -268,11 +265,10 @@ public class Action {
 
   /**
    * Sets the argument list for this action.
-   * 
-   * <p>Replaces the existing argument list with the provided list.
-   * This method ensures that all arguments are properly associated with
-   * the action's service.
-   * 
+   *
+   * <p>Replaces the existing argument list with the provided list. This method ensures that all
+   * arguments are properly associated with the action's service.
+   *
    * @param al the argument list to set
    */
   public void setArgumentList(ArgumentList al) {
@@ -293,10 +289,10 @@ public class Action {
 
   /**
    * Returns only the input arguments for this action.
-   * 
-   * <p>Input arguments are those with direction "in" and must be provided
-   * when invoking the action on a device.
-   * 
+   *
+   * <p>Input arguments are those with direction "in" and must be provided when invoking the action
+   * on a device.
+   *
    * @return the list of input arguments
    * @see #getOutputArgumentList()
    */
@@ -314,10 +310,10 @@ public class Action {
 
   /**
    * Returns only the output arguments for this action.
-   * 
-   * <p>Output arguments are those with direction "out" and are populated
-   * with values returned by the device after action execution.
-   * 
+   *
+   * <p>Output arguments are those with direction "out" and are populated with values returned by
+   * the device after action execution.
+   *
    * @return the list of output arguments
    * @see #getInputArgumentList()
    */
@@ -335,7 +331,7 @@ public class Action {
 
   /**
    * Returns the argument with the specified name.
-   * 
+   *
    * @param name the name of the argument to retrieve
    * @return the argument with the specified name, or {@code null} if not found
    */
@@ -353,7 +349,7 @@ public class Action {
 
   /**
    * Sets argument values from the provided list.
-   * 
+   *
    * @param argList the argument list containing values to set
    * @deprecated You should use one of the following methods instead:<br>
    *     - {@link #setInArgumentValues(ArgumentList)} <br>
@@ -365,9 +361,9 @@ public class Action {
 
   /**
    * Sets the values of input arguments from the provided argument list.
-   * 
+   *
    * <p>Only the values of arguments with direction "in" are updated.
-   * 
+   *
    * @param argList the argument list containing values to set
    * @since 1.8.0
    */
@@ -377,9 +373,9 @@ public class Action {
 
   /**
    * Sets the values of output arguments from the provided argument list.
-   * 
+   *
    * <p>Only the values of arguments with direction "out" are updated.
-   * 
+   *
    * @param argList the argument list containing values to set
    * @since 1.8.0
    */
@@ -389,10 +385,9 @@ public class Action {
 
   /**
    * Sets the value of a named argument.
-   * 
-   * <p>If the argument with the specified name does not exist, this method
-   * does nothing.
-   * 
+   *
+   * <p>If the argument with the specified name does not exist, this method does nothing.
+   *
    * @param name the name of the argument to set
    * @param value the string value to assign to the argument
    */
@@ -404,11 +399,10 @@ public class Action {
 
   /**
    * Sets the value of a named argument from an integer.
-   * 
-   * <p>The integer value is converted to a string before being assigned.
-   * If the argument with the specified name does not exist, this method
-   * does nothing.
-   * 
+   *
+   * <p>The integer value is converted to a string before being assigned. If the argument with the
+   * specified name does not exist, this method does nothing.
+   *
    * @param name the name of the argument to set
    * @param value the integer value to assign to the argument
    */
@@ -428,7 +422,7 @@ public class Action {
 
   /**
    * Returns the string value of the specified argument.
-   * 
+   *
    * @param name the name of the argument
    * @return the argument value as a string, or an empty string if the argument is not found
    */
@@ -440,7 +434,7 @@ public class Action {
 
   /**
    * Returns the integer value of the specified argument.
-   * 
+   *
    * @param name the name of the argument
    * @return the argument value as an integer, or 0 if the argument is not found
    */
@@ -471,7 +465,7 @@ public class Action {
 
   /**
    * Returns the action listener registered for this action.
-   * 
+   *
    * @return the action listener, or {@code null} if none is registered
    */
   public ActionListener getActionListener() {
@@ -480,10 +474,10 @@ public class Action {
 
   /**
    * Sets the listener that will be notified when this action is invoked.
-   * 
-   * <p>The listener's {@link ActionListener#actionControlReceived(Action)}
-   * method will be called when a control point invokes this action.
-   * 
+   *
+   * <p>The listener's {@link ActionListener#actionControlReceived(Action)} method will be called
+   * when a control point invokes this action.
+   *
    * @param listener the action listener to set, or {@code null} to remove the listener
    * @see ActionListener
    */
@@ -493,14 +487,14 @@ public class Action {
 
   /**
    * Executes the action listener for an incoming action request.
-   * 
-   * <p>This method is called by the UPnP device when a control point invokes
-   * this action. It calls the registered {@link ActionListener}, collects
-   * the response, and posts it back to the control point.
-   * 
+   *
+   * <p>This method is called by the UPnP device when a control point invokes this action. It calls
+   * the registered {@link ActionListener}, collects the response, and posts it back to the control
+   * point.
+   *
    * @param actionReq the incoming action request from the control point
-   * @return {@code true} if a listener was registered and executed,
-   *         {@code false} if no listener is available
+   * @return {@code true} if a listener was registered and executed, {@code false} if no listener is
+   *     available
    */
   public boolean performActionListener(ActionRequest actionReq) {
     ActionListener listener = (ActionListener) getActionListener();
@@ -533,7 +527,7 @@ public class Action {
 
   /**
    * Returns the UPnP error status from the most recent control response.
-   * 
+   *
    * @return the UPnP status from the control response
    */
   public UPnPStatus getControlStatus() {
@@ -546,17 +540,15 @@ public class Action {
 
   /**
    * Posts this action to the device and waits for the response.
-   * 
-   * <p>This method sends a SOAP action request to the device's control URL
-   * with the currently set input argument values. It blocks until a response
-   * is received or a timeout occurs. Upon successful execution, the output
-   * argument values are updated with the response data.
-   * 
-   * <p>The execution status can be retrieved via {@link #getStatus()} after
-   * this method returns.
-   * 
-   * @return {@code true} if the action was executed successfully and the
-   *         response was valid, {@code false} if an error occurred
+   *
+   * <p>This method sends a SOAP action request to the device's control URL with the currently set
+   * input argument values. It blocks until a response is received or a timeout occurs. Upon
+   * successful execution, the output argument values are updated with the response data.
+   *
+   * <p>The execution status can be retrieved via {@link #getStatus()} after this method returns.
+   *
+   * @return {@code true} if the action was executed successfully and the response was valid, {@code
+   *     false} if an error occurred
    * @see #setArgumentValue(String, String)
    * @see #getArgumentValue(String)
    * @see #getStatus()
@@ -593,9 +585,9 @@ public class Action {
 
   /**
    * Prints action information to standard output for debugging.
-   * 
-   * <p>Outputs the action name and all argument details including direction,
-   * name, and current value.
+   *
+   * <p>Outputs the action name and all argument details including direction, name, and current
+   * value.
    */
   public void print() {
     System.out.println("Action : " + getName());
@@ -618,7 +610,7 @@ public class Action {
 
   /**
    * Sets the execution status of this action with a specific error code and description.
-   * 
+   *
    * @param code the UPnP error code
    * @param descr the human-readable description of the error
    * @see UPnPStatus
@@ -630,9 +622,9 @@ public class Action {
 
   /**
    * Sets the execution status of this action with a specific error code.
-   * 
+   *
    * <p>The description is automatically derived from the error code.
-   * 
+   *
    * @param code the UPnP error code
    * @see UPnPStatus
    */
@@ -642,10 +634,9 @@ public class Action {
 
   /**
    * Returns the current execution status of this action.
-   * 
-   * <p>The status includes error codes and descriptions from the most recent
-   * action execution.
-   * 
+   *
+   * <p>The status includes error codes and descriptions from the most recent action execution.
+   *
    * @return the UPnP status object containing execution results
    * @see UPnPStatus
    */
@@ -661,10 +652,10 @@ public class Action {
 
   /**
    * Sets custom user data associated with this action.
-   * 
-   * <p>This allows applications to attach arbitrary data to an action
-   * instance for application-specific purposes.
-   * 
+   *
+   * <p>This allows applications to attach arbitrary data to an action instance for
+   * application-specific purposes.
+   *
    * @param data the user data object to associate with this action
    */
   public void setUserData(Object data) {
@@ -673,7 +664,7 @@ public class Action {
 
   /**
    * Returns the custom user data associated with this action.
-   * 
+   *
    * @return the user data object, or {@code null} if none has been set
    */
   public Object getUserData() {

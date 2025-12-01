@@ -29,30 +29,31 @@ import org.cybergarage.xml.Node;
 
 /**
  * Represents an argument of a UPnP action.
- * 
- * <p>Arguments are the parameters passed to and returned from UPnP actions.
- * Each argument has:
+ *
+ * <p>Arguments are the parameters passed to and returned from UPnP actions. Each argument has:
+ *
  * <ul>
- *   <li>A name identifying the argument</li>
- *   <li>A direction (in or out) indicating if it's an input or output parameter</li>
- *   <li>A related state variable defining its data type and constraints</li>
- *   <li>A value holding the actual data</li>
+ *   <li>A name identifying the argument
+ *   <li>A direction (in or out) indicating if it's an input or output parameter
+ *   <li>A related state variable defining its data type and constraints
+ *   <li>A value holding the actual data
  * </ul>
- * 
+ *
  * <p>Example usage:
+ *
  * <pre>{@code
  * // Creating an input argument
  * Argument volumeArg = new Argument("DesiredVolume", "50");
- * 
+ *
  * // Checking direction
  * if (argument.isInDirection()) {
  *     String value = argument.getValue();
  * }
- * 
+ *
  * // Getting related state variable
  * StateVariable stateVar = argument.getRelatedStateVariable();
  * }</pre>
- * 
+ *
  * @see Action
  * @see StateVariable
  * @see ArgumentList
@@ -62,19 +63,13 @@ public class Argument {
   //	Constants
   ////////////////////////////////////////////////
 
-  /**
-   * The XML element name for argument nodes in SCPD documents.
-   */
+  /** The XML element name for argument nodes in SCPD documents. */
   public static final String ELEM_NAME = "argument";
 
-  /**
-   * Direction constant for input arguments.
-   */
+  /** Direction constant for input arguments. */
   public static final String IN = "in";
-  
-  /**
-   * Direction constant for output arguments.
-   */
+
+  /** Direction constant for output arguments. */
   public static final String OUT = "out";
 
   ////////////////////////////////////////////////
@@ -86,7 +81,7 @@ public class Argument {
 
   /**
    * Returns the underlying XML node representing this argument.
-   * 
+   *
    * @return the argument XML node
    */
   public Node getArgumentNode() {
@@ -99,7 +94,7 @@ public class Argument {
 
   /**
    * Returns the service that contains this argument.
-   * 
+   *
    * @return the parent service of this argument
    */
   public Service getService() {
@@ -112,7 +107,7 @@ public class Argument {
 
   /**
    * Returns the XML node representing the action that contains this argument.
-   * 
+   *
    * @return the action XML node, or {@code null} if not found
    */
   public Node getActionNode() {
@@ -126,7 +121,7 @@ public class Argument {
 
   /**
    * Returns the action that contains this argument.
-   * 
+   *
    * @return the parent action of this argument
    */
   public Action getAction() {
@@ -137,9 +132,7 @@ public class Argument {
   //	Constructor
   ////////////////////////////////////////////////
 
-  /**
-   * Constructs an empty argument.
-   */
+  /** Constructs an empty argument. */
   public Argument() {
     argumentNode = new Node(ELEM_NAME);
     serviceNode = null;
@@ -147,7 +140,7 @@ public class Argument {
 
   /**
    * Constructs an argument associated with a service node.
-   * 
+   *
    * @param servNode the XML node representing the parent service
    */
   public Argument(Node servNode) {
@@ -157,7 +150,7 @@ public class Argument {
 
   /**
    * Constructs an argument from existing service and argument XML nodes.
-   * 
+   *
    * @param servNode the XML node representing the parent service
    * @param argNode the XML node representing the argument definition
    */
@@ -168,7 +161,7 @@ public class Argument {
 
   /**
    * Constructs an argument with the specified name and value.
-   * 
+   *
    * @param name the argument name
    * @param value the argument value
    */
@@ -184,10 +177,10 @@ public class Argument {
 
   /**
    * Checks if the given XML node represents an argument element.
-   * 
+   *
    * @param node the XML node to check
-   * @return {@code true} if the node's name matches the argument element name,
-   *         {@code false} otherwise
+   * @return {@code true} if the node's name matches the argument element name, {@code false}
+   *     otherwise
    */
   public static boolean isArgumentNode(Node node) {
     return Argument.ELEM_NAME.equals(node.getName());
@@ -201,7 +194,7 @@ public class Argument {
 
   /**
    * Sets the name of this argument.
-   * 
+   *
    * @param value the argument name
    */
   public void setName(String value) {
@@ -210,7 +203,7 @@ public class Argument {
 
   /**
    * Returns the name of this argument.
-   * 
+   *
    * @return the argument name
    */
   public String getName() {
@@ -225,7 +218,7 @@ public class Argument {
 
   /**
    * Sets the direction of this argument.
-   * 
+   *
    * @param value the direction, either {@link #IN} or {@link #OUT}
    */
   public void setDirection(String value) {
@@ -234,7 +227,7 @@ public class Argument {
 
   /**
    * Returns the direction of this argument.
-   * 
+   *
    * @return the direction string, or {@code null} if not set
    */
   public String getDirection() {
@@ -243,7 +236,7 @@ public class Argument {
 
   /**
    * Checks if this argument is an input parameter.
-   * 
+   *
    * @return {@code true} if the direction is "in", {@code false} otherwise
    */
   public boolean isInDirection() {
@@ -254,7 +247,7 @@ public class Argument {
 
   /**
    * Checks if this argument is an output parameter.
-   * 
+   *
    * @return {@code true} if the direction is not "in", {@code false} otherwise
    */
   public boolean isOutDirection() {
@@ -269,10 +262,10 @@ public class Argument {
 
   /**
    * Sets the name of the related state variable.
-   * 
-   * <p>The related state variable defines the data type, range, and
-   * constraints for this argument's value.
-   * 
+   *
+   * <p>The related state variable defines the data type, range, and constraints for this argument's
+   * value.
+   *
    * @param value the name of the related state variable
    */
   public void setRelatedStateVariableName(String value) {
@@ -281,7 +274,7 @@ public class Argument {
 
   /**
    * Returns the name of the related state variable.
-   * 
+   *
    * @return the name of the related state variable
    */
   public String getRelatedStateVariableName() {
@@ -290,12 +283,11 @@ public class Argument {
 
   /**
    * Returns the related state variable object.
-   * 
-   * <p>Looks up the state variable by name in the parent service's
-   * state table.
-   * 
-   * @return the related state variable, or {@code null} if not found
-   *         or if the service is not available
+   *
+   * <p>Looks up the state variable by name in the parent service's state table.
+   *
+   * @return the related state variable, or {@code null} if not found or if the service is not
+   *     available
    * @see StateVariable
    */
   public StateVariable getRelatedStateVariable() {
@@ -326,7 +318,7 @@ public class Argument {
 
   /**
    * Sets the value of this argument.
-   * 
+   *
    * @param value the argument value as a string
    */
   public void setValue(String value) {
@@ -335,9 +327,9 @@ public class Argument {
 
   /**
    * Sets the value of this argument from an integer.
-   * 
+   *
    * <p>The integer is converted to a string representation.
-   * 
+   *
    * @param value the argument value as an integer
    */
   public void setValue(int value) {
@@ -346,7 +338,7 @@ public class Argument {
 
   /**
    * Returns the value of this argument.
-   * 
+   *
    * @return the argument value as a string
    */
   public String getValue() {
@@ -355,9 +347,9 @@ public class Argument {
 
   /**
    * Returns the value of this argument as an integer.
-   * 
+   *
    * <p>If the value cannot be parsed as an integer, returns 0.
-   * 
+   *
    * @return the argument value as an integer, or 0 if parsing fails
    */
   public int getIntegerValue() {
@@ -377,10 +369,10 @@ public class Argument {
 
   /**
    * Sets custom user data associated with this argument.
-   * 
-   * <p>Allows applications to attach arbitrary data to an argument
-   * instance for application-specific purposes.
-   * 
+   *
+   * <p>Allows applications to attach arbitrary data to an argument instance for
+   * application-specific purposes.
+   *
    * @param data the user data object to associate with this argument
    */
   public void setUserData(Object data) {
@@ -389,7 +381,7 @@ public class Argument {
 
   /**
    * Returns the custom user data associated with this argument.
-   * 
+   *
    * @return the user data object, or {@code null} if none has been set
    */
   public Object getUserData() {

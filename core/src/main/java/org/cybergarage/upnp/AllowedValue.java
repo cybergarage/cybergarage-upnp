@@ -19,11 +19,11 @@ import org.cybergarage.xml.Node;
 
 /**
  * Represents a single allowed value for a UPnP state variable.
- * 
- * <p>State variables can define a list of allowed values that constrain
- * the possible values the variable can take. This class represents one
- * such allowed value as defined in the service's SCPD document.
- * 
+ *
+ * <p>State variables can define a list of allowed values that constrain the possible values the
+ * variable can take. This class represents one such allowed value as defined in the service's SCPD
+ * document.
+ *
  * @see AllowedValueList
  * @see StateVariable
  */
@@ -32,9 +32,7 @@ public class AllowedValue {
   //	Constants
   ////////////////////////////////////////////////
 
-  /**
-   * The XML element name for allowed value nodes in SCPD documents.
-   */
+  /** The XML element name for allowed value nodes in SCPD documents. */
   public static final String ELEM_NAME = "allowedValue";
 
   ////////////////////////////////////////////////
@@ -45,7 +43,7 @@ public class AllowedValue {
 
   /**
    * Returns the underlying XML node representing this allowed value.
-   * 
+   *
    * @return the allowed value XML node
    */
   public Node getAllowedValueNode() {
@@ -58,7 +56,7 @@ public class AllowedValue {
 
   /**
    * Constructs an allowed value from an existing XML node.
-   * 
+   *
    * @param node the XML node representing the allowed value
    */
   public AllowedValue(Node node) {
@@ -67,9 +65,9 @@ public class AllowedValue {
 
   /**
    * Constructs an allowed value with the specified value string.
-   * 
+   *
    * <p>Creates a new XML node structure for the allowed value.
-   * 
+   *
    * @param value the value string to associate with this object
    * @author Stefano "Kismet" Lenzi - kismet-sl@users.sourceforge.net - 2005
    */
@@ -86,10 +84,10 @@ public class AllowedValue {
 
   /**
    * Checks if the given XML node represents an allowed value element.
-   * 
+   *
    * @param node the XML node to check
-   * @return {@code true} if the node's name matches the allowed value element name,
-   *         {@code false} otherwise
+   * @return {@code true} if the node's name matches the allowed value element name, {@code false}
+   *     otherwise
    */
   public static boolean isAllowedValueNode(Node node) {
     return ELEM_NAME.equals(node.getName());
@@ -101,7 +99,7 @@ public class AllowedValue {
 
   /**
    * Sets the value string for this allowed value.
-   * 
+   *
    * @param value the value to set
    */
   public void setValue(String value) {
@@ -110,7 +108,7 @@ public class AllowedValue {
 
   /**
    * Returns the value string of this allowed value.
-   * 
+   *
    * @return the value string
    */
   public String getValue() {

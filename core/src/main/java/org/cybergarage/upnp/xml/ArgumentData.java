@@ -17,16 +17,14 @@ package org.cybergarage.upnp.xml;
 
 /**
  * Stores user data associated with an argument XML node.
- * 
- * <p>This class holds the runtime value of an argument, separate from
- * the argument's definition in the SCPD document.
- * 
+ *
+ * <p>This class holds the runtime value of an argument, separate from the argument's definition in
+ * the SCPD document.
+ *
  * @see org.cybergarage.upnp.Argument
  */
 public class ArgumentData extends NodeData {
-  /**
-   * Constructs an empty argument data object.
-   */
+  /** Constructs an empty argument data object. */
   public ArgumentData() {}
 
   ////////////////////////////////////////////////
@@ -37,7 +35,7 @@ public class ArgumentData extends NodeData {
 
   /**
    * Returns the value of this argument.
-   * 
+   *
    * @return the argument value as a string
    */
   public String getValue() {
@@ -46,7 +44,7 @@ public class ArgumentData extends NodeData {
 
   /**
    * Sets the value of this argument.
-   * 
+   *
    * @param value the argument value to set
    */
   public void setValue(String value) {
