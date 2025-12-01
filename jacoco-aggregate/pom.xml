@@ -19,62 +19,62 @@
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
       <artifactId>core</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp</groupId>
       <artifactId>std</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.tool</groupId>
       <artifactId>upnp-control-point</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.tool</groupId>
       <artifactId>upnp-internet-gateway</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>upnpdump</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>tv</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>light</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>clock</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>washer</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>air-conditioner</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>remote-controller</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cybergarage.upnp.app</groupId>
       <artifactId>media-server</artifactId>
-      <version>2.1.5</version>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 
