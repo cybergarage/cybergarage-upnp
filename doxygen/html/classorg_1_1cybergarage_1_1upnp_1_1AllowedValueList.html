@@ -95,7 +95,13 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:afb9dcbe3fbc62be4055b41eef31883f1" id="r_afb9dcbe3fbc62be4055b41eef31883f1"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb9dcbe3fbc62be4055b41eef31883f1">ELEM_NAME</a> = &quot;allowedValueList&quot;</td></tr>
 <tr class="separator:afb9dcbe3fbc62be4055b41eef31883f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A list of <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1AllowedValue.html">AllowedValue</a></code> objects for a state variable.</p>
+<p>This class represents the set of allowed values that constrain a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> state variable. It extends <code><a class="el" href="">Vector</a></code> to provide type-safe access to allowed values and includes validation methods.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1AllowedValue.html">AllowedValue</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html">StateVariable</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a443ca3e6cac829cdffa48701c873113d" name="a443ca3e6cac829cdffa48701c873113d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a443ca3e6cac829cdffa48701c873113d">&#9670;&#160;</a></span>AllowedValueList() <span class="overload">[1/2]</span></h2>
 
@@ -118,6 +124,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty allowed value list. </p>
 
 </div>
 </div>
@@ -143,6 +150,13 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an allowed value list from an array of strings.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>the array of allowed value strings </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -169,6 +183,20 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the allowed value at the specified index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the index of the allowed value to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the allowed value at the specified index </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArrayIndexOutOfBoundsException</td><td>if the index is out of range </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -194,6 +222,14 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if the specified value is in the allowed value list.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>the value string to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the value is allowed, <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -217,6 +253,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for allowed value list nodes in SCPD documents. </p>
 
 </div>
 </div>

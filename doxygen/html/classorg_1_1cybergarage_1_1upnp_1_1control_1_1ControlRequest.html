@@ -364,7 +364,15 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket" id="r_a97cf52afbcfe3af49bd7e0cb240190e5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a97cf52afbcfe3af49bd7e0cb240190e5">getFirstLineToken</a> (int num)</td></tr>
 <tr class="separator:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> control requests.</p>
+<p>This class extends <code><a class="el" href="classorg_1_1cybergarage_1_1soap_1_1SOAPRequest.html#acb84c8c442cf65d1f3495945837f00ab">SOAPRequest</a></code> to provide common functionality for both action requests and state variable query requests. It handles URL resolution, including absolute and relative URLs, URL base paths, and port extraction.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionRequest.html">ActionRequest</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1QueryRequest.html">QueryRequest</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1soap_1_1SOAPRequest.html#acb84c8c442cf65d1f3495945837f00ab">SOAPRequest</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac8646c60ba4da2fdd3e63e68cbe97f99" name="ac8646c60ba4da2fdd3e63e68cbe97f99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8646c60ba4da2fdd3e63e68cbe97f99">&#9670;&#160;</a></span>ControlRequest() <span class="overload">[1/2]</span></h2>
 
@@ -387,6 +395,7 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty control request. </p>
 
 </div>
 </div>
@@ -412,6 +421,13 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs a control request from an HTTP request.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">httpReq</td><td>the HTTP request to wrap </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -438,6 +454,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if this is an action control request.</p>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if this is an action invocation request, <code class="JavaDocCode">false</code> if it's a query request </dd></dl>
 
 </div>
 </div>
@@ -463,6 +481,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if this is a state variable query request.</p>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if this is a QueryStateVariable request, <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -488,6 +508,23 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the request host and port from the service's control URL.</p>
+<p>This method resolves the control URL, considering: </p><ul>
+<li>
+Absolute vs relative URLs </li>
+<li>
+URL base paths from the device description </li>
+<li>
+Port numbers in control URLs </li>
+<li>
+Fallback to device location if URLBase is not set </li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">service</td><td>the service whose control URL to use </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

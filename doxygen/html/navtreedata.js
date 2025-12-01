@@ -54,7 +54,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "jQuery v3.7.1", "md_doc_2javadoc_2legal_2jquery.html", null ],
-    [ "jQuery UI v1.13.2", "md_doc_2javadoc_2legal_2jqueryUI.html", null ],
+    [ "jQuery UI v1.14.1", "md_doc_2javadoc_2legal_2jqueryUI.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ]

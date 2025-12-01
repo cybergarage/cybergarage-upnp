@@ -165,7 +165,35 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:af4b2c940466afb291c1f9157e3146049" id="r_af4b2c940466afb291c1f9157e3146049"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4b2c940466afb291c1f9157e3146049">RELATED_STATE_VARIABLE</a> = &quot;relatedStateVariable&quot;</td></tr>
 <tr class="separator:af4b2c940466afb291c1f9157e3146049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents an argument of a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action.</p>
+<p>Arguments are the parameters passed to and returned from <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> actions. Each argument has: </p><ul>
+<li>
+A name identifying the argument </li>
+<li>
+A direction (in or out) indicating if it's an input or output parameter </li>
+<li>
+A related state variable defining its data type and constraints </li>
+<li>
+A value holding the actual data </li>
+</ul>
+<p>Example usage: </p><pre><code class="JavaDocCode"><br/>
+// Creating an input argument<br/>
+Argument volumeArg = new Argument("DesiredVolume", "50");<br/>
+<br/>
+// Checking direction<br/>
+if (argument.isInDirection()) {<br/>
+    String value = argument.getValue();<br/>
+}<br/>
+<br/>
+// Getting related state variable<br/>
+StateVariable stateVar = argument.getRelatedStateVariable();<br/>
+</code></pre><dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html">StateVariable</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ArgumentList.html">ArgumentList</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0a78ef3e693b262c849f3a4db28be328" name="a0a78ef3e693b262c849f3a4db28be328"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a78ef3e693b262c849f3a4db28be328">&#9670;&#160;</a></span>Argument() <span class="overload">[1/4]</span></h2>
 
@@ -188,6 +216,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty argument. </p>
 
 </div>
 </div>
@@ -213,6 +242,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an argument associated with a service node.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">servNode</td><td>the XML node representing the parent service </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -242,6 +278,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an argument from existing service and argument XML nodes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">servNode</td><td>the XML node representing the parent service </td></tr>
+    <tr><td class="paramname">argNode</td><td>the XML node representing the argument definition </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -271,6 +315,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an argument with the specified name and value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the argument name </td></tr>
+    <tr><td class="paramname">value</td><td>the argument value </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -297,6 +349,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the action that contains this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the parent action of this argument </dd></dl>
 
 </div>
 </div>
@@ -322,6 +376,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the XML node representing the action that contains this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action XML node, or <code class="JavaDocCode">null</code> if not found </dd></dl>
 
 </div>
 </div>
@@ -372,6 +428,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the underlying XML node representing this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the argument XML node </dd></dl>
 
 </div>
 </div>
@@ -397,6 +455,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the direction of this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the direction string, or <code class="JavaDocCode">null</code> if not set </dd></dl>
 
 </div>
 </div>
@@ -422,6 +482,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the value of this argument as an integer.</p>
+<p>If the value cannot be parsed as an integer, returns 0.</p>
+<dl class="section return"><dt>Returns</dt><dd>the argument value as an integer, or 0 if parsing fails </dd></dl>
 
 </div>
 </div>
@@ -447,6 +510,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the name of this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the argument name </dd></dl>
 
 </div>
 </div>
@@ -472,6 +537,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the related state variable object.</p>
+<p>Looks up the state variable by name in the parent service's state table.</p>
+<dl class="section return"><dt>Returns</dt><dd>the related state variable, or <code class="JavaDocCode">null</code> if not found or if the service is not available </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html">StateVariable</a> </dd></dl>
 
 </div>
 </div>
@@ -497,6 +566,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the name of the related state variable.</p>
+<dl class="section return"><dt>Returns</dt><dd>the name of the related state variable </dd></dl>
 
 </div>
 </div>
@@ -522,6 +593,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the service that contains this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the parent service of this argument </dd></dl>
 
 </div>
 </div>
@@ -572,6 +645,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the custom user data associated with this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the user data object, or <code class="JavaDocCode">null</code> if none has been set </dd></dl>
 
 </div>
 </div>
@@ -597,6 +672,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the value of this argument.</p>
+<dl class="section return"><dt>Returns</dt><dd>the argument value as a string </dd></dl>
 
 </div>
 </div>
@@ -622,6 +699,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if the given XML node represents an argument element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the XML node to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the node's name matches the argument element name, <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -647,6 +732,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if this argument is an input parameter.</p>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the direction is "in", <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -672,6 +759,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if this argument is an output parameter.</p>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the direction is not "in", <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -697,6 +786,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the direction of this argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the direction, either <code><a class="el" href="#ae9b7571dbeb1f20c47c6a657d5a9ce6a">IN</a></code> or <code><a class="el" href="#ae5491cebcbcaad94bd3bcb1fbdc04c38">OUT</a></code> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -722,6 +818,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the name of this argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the argument name </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -747,6 +850,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the name of the related state variable.</p>
+<p>The related state variable defines the data type, range, and constraints for this argument's value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the name of the related state variable </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -772,6 +883,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets custom user data associated with this argument.</p>
+<p>Allows applications to attach arbitrary data to an argument instance for application-specific purposes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>the user data object to associate with this argument </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -797,6 +916,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the value of this argument from an integer.</p>
+<p>The integer is converted to a string representation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the argument value as an integer </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -822,6 +949,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the value of this argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the argument value as a string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -889,6 +1023,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for argument nodes in SCPD documents. </p>
 
 </div>
 </div>
@@ -911,6 +1046,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Direction constant for input arguments. </p>
 
 </div>
 </div>
@@ -955,6 +1091,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Direction constant for output arguments. </p>
 
 </div>
 </div>

@@ -195,7 +195,35 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:ab85f49dfe761c918cf3cf271e001b23a" id="r_ab85f49dfe761c918cf3cf271e001b23a"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab85f49dfe761c918cf3cf271e001b23a">NAME</a> = &quot;name&quot;</td></tr>
 <tr class="separator:ab85f49dfe761c918cf3cf271e001b23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action that can be invoked on a service.</p>
+<p>Actions are methods exposed by <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> services that can be called remotely by control points. Each action has a name, a list of input arguments, and a list of output arguments. Actions are defined in the service's SCPD (<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Service.html">Service</a> Control Protocol Definition) document.</p>
+<p>This class provides methods to: </p><ul>
+<li>
+Set and retrieve action arguments </li>
+<li>
+Invoke the action on a remote device via <code><a class="el" href="#a2c818fac294ad994bc79e1f83227534a">postControlAction()</a></code> </li>
+<li>
+Handle incoming action requests from control points via <code><a class="el" href="">ActionListener</a></code> </li>
+<li>
+Access action execution status and response data </li>
+</ul>
+<p>Thread-safety: This class uses internal synchronization via <code><a class="el" href="#a657b075998e745059c7da5459e285545">lock()</a></code> and <code><a class="el" href="#af5bfc519f1b4001479ecbb8c26271818">unlock()</a></code> methods. Multiple threads can safely interact with the same action instance when using these synchronization methods.</p>
+<p>Example usage for invoking an action on a device: </p><pre><code class="JavaDocCode"><br/>
+Service service = device.getService("urn:schemas-upnp-org:service:AVTransport:1");<br/>
+Action playAction = service.getAction("Play");<br/>
+playAction.setArgumentValue("InstanceID", "0");<br/>
+playAction.setArgumentValue("Speed", "1");<br/>
+boolean success = playAction.postControlAction();<br/>
+if (success) {<br/>
+    System.out.println("Play action executed successfully");<br/>
+}<br/>
+</code></pre><dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Service.html">Service</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Argument.html">Argument</a> </dd>
+<dd>
+ActionListener </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4e8bb19947d922507eb87a0507ac9bde" name="a4e8bb19947d922507eb87a0507ac9bde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e8bb19947d922507eb87a0507ac9bde">&#9670;&#160;</a></span>Action() <span class="overload">[1/3]</span></h2>
 
@@ -218,6 +246,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs a new action with the specified service node.</p>
+<p>Creates an empty action node that can be populated with action details.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceNode</td><td>the XML node representing the service that contains this action </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -247,6 +283,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an action from existing service and action XML nodes.</p>
+<p>This constructor is typically used when parsing service descriptions to create action objects from the SCPD document.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serviceNode</td><td>the XML node representing the parent service </td></tr>
+    <tr><td class="paramname">actionNode</td><td>the XML node containing action definition and arguments </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -272,6 +317,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Creates a copy of an existing action.</p>
+<p>Note: This creates a shallow copy that references the same underlying XML nodes as the original action.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action to copy </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -348,6 +401,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the action listener registered for this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action listener, or <code class="JavaDocCode">null</code> if none is registered </dd></dl>
 
 </div>
 </div>
@@ -373,6 +428,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the underlying XML node representing this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action XML node </dd></dl>
 
 </div>
 </div>
@@ -398,6 +455,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the argument with the specified name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the argument with the specified name, or <code class="JavaDocCode">null</code> if not found </dd></dl>
 
 </div>
 </div>
@@ -423,6 +488,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the integer value of the specified argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the argument value as an integer, or 0 if the argument is not found </dd></dl>
 
 </div>
 </div>
@@ -448,6 +521,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the complete list of arguments for this action.</p>
+<p>This includes both input and output arguments as defined in the service's SCPD document.</p>
+<dl class="section return"><dt>Returns</dt><dd>the list of all arguments for this action </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a203b6bc5460eaa3a09c46f3e3199b0f7">getInputArgumentList()</a> </dd>
+<dd>
+<a class="el" href="#ae201a3c386b6989a21c941b2ae32163b">getOutputArgumentList()</a> </dd></dl>
 
 </div>
 </div>
@@ -473,6 +552,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the string value of the specified argument.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the argument value as a string, or an empty string if the argument is not found </dd></dl>
 
 </div>
 </div>
@@ -523,6 +610,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error status from the most recent control response.</p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> status from the control response </dd></dl>
 
 </div>
 </div>
@@ -548,6 +637,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns only the input arguments for this action.</p>
+<p>Input arguments are those with direction "in" and must be provided when invoking the action on a device.</p>
+<dl class="section return"><dt>Returns</dt><dd>the list of input arguments </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ae201a3c386b6989a21c941b2ae32163b">getOutputArgumentList()</a> </dd></dl>
 
 </div>
 </div>
@@ -573,6 +666,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the name of this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action name as defined in the SCPD document </dd></dl>
 
 </div>
 </div>
@@ -598,6 +693,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns only the output arguments for this action.</p>
+<p>Output arguments are those with direction "out" and are populated with values returned by the device after action execution.</p>
+<dl class="section return"><dt>Returns</dt><dd>the list of output arguments </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a203b6bc5460eaa3a09c46f3e3199b0f7">getInputArgumentList()</a> </dd></dl>
 
 </div>
 </div>
@@ -623,6 +722,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the service that contains this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the parent service of this action </dd></dl>
 
 </div>
 </div>
@@ -673,6 +774,10 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the current execution status of this action.</p>
+<p>The status includes error codes and descriptions from the most recent action execution.</p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> status object containing execution results </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html">UPnPStatus</a> </dd></dl>
 
 </div>
 </div>
@@ -698,6 +803,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the custom user data associated with this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the user data object, or <code class="JavaDocCode">null</code> if none has been set </dd></dl>
 
 </div>
 </div>
@@ -723,6 +830,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if the given XML node represents an action element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the XML node to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the node's name matches the action element name, <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -748,6 +863,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Acquires the lock for this action.</p>
+<p>Use this method to synchronize access to the action from multiple threads. Always pair with <code><a class="el" href="#af5bfc519f1b4001479ecbb8c26271818">unlock()</a></code> to release the lock, preferably in a try-finally block.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af5bfc519f1b4001479ecbb8c26271818">unlock()</a> </dd></dl>
 
 </div>
 </div>
@@ -773,6 +891,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Executes the action listener for an incoming action request.</p>
+<p>This method is called by the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> device when a control point invokes this action. It calls the registered <code><a class="el" href="">ActionListener</a></code>, collects the response, and posts it back to the control point.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionReq</td><td>the incoming action request from the control point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if a listener was registered and executed, <code class="JavaDocCode">false</code> if no listener is available </dd></dl>
 
 </div>
 </div>
@@ -798,6 +925,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Posts this action to the device and waits for the response.</p>
+<p>This method sends a SOAP action request to the device's control URL with the currently set input argument values. It blocks until a response is received or a timeout occurs. Upon successful execution, the output argument values are updated with the response data.</p>
+<p>The execution status can be retrieved via <code><a class="el" href="#aa892e4290df43c707b1eeebbb7ab480d">getStatus()</a></code> after this method returns.</p>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the action was executed successfully and the response was valid, <code class="JavaDocCode">false</code> if an error occurred </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ac8393ebdfdc861fcedbad169bf594951">setArgumentValue(String, String)</a> </dd>
+<dd>
+<a class="el" href="#a3f120757b714e82f7402086d84e2d39f">getArgumentValue(String)</a> </dd>
+<dd>
+<a class="el" href="#aa892e4290df43c707b1eeebbb7ab480d">getStatus()</a> </dd></dl>
 
 </div>
 </div>
@@ -823,6 +959,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Prints action information to standard output for debugging.</p>
+<p>Outputs the action name and all argument details including direction, name, and current value. </p>
 
 </div>
 </div>
@@ -848,6 +986,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the listener that will be notified when this action is invoked.</p>
+<p>The listener's <code><a class="el" href="interfaceorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionListener.html#ab97ba1c5d8bf4f1aa31316be41341697">ActionListener#actionControlReceived(Action)</a></code> method will be called when a control point invokes this action.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the action listener to set, or <code class="JavaDocCode">null</code> to remove the listener </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd>ActionListener </dd></dl>
 
 </div>
 </div>
@@ -873,6 +1020,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the argument list for this action.</p>
+<p>Replaces the existing argument list with the provided list. This method ensures that all arguments are properly associated with the action's service.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">al</td><td>the argument list to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -902,6 +1057,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the value of a named argument from an integer.</p>
+<p>The integer value is converted to a string before being assigned. If the argument with the specified name does not exist, this method does nothing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument to set </td></tr>
+    <tr><td class="paramname">value</td><td>the integer value to assign to the argument </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -931,6 +1095,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the value of a named argument.</p>
+<p>If the argument with the specified name does not exist, this method does nothing.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument to set </td></tr>
+    <tr><td class="paramname">value</td><td>the string value to assign to the argument </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -956,6 +1129,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets argument values from the provided list.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argList</td><td>the argument list containing values to set </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated</a></b></dt><dd>You should use one of the following methods instead:<br  />
 <ul>
 <li><code><a class="el" href="#ac1f30e110048f2f4561480cf423aed72">setInArgumentValues(ArgumentList)</a></code> <br  />
@@ -1013,9 +1193,11 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the values of input arguments from the provided argument list.</p>
+<p>Only the values of arguments with direction "in" are updated.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argList</td><td></td></tr>
+    <tr><td class="paramname">argList</td><td>the argument list containing values to set </td></tr>
   </table>
   </dd>
 </dl>
@@ -1045,6 +1227,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the name of this action.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the action name (e.g., "Play", "SetVolume") </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1070,9 +1259,11 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the values of output arguments from the provided argument list.</p>
+<p>Only the values of arguments with direction "out" are updated.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argList</td><td></td></tr>
+    <tr><td class="paramname">argList</td><td>the argument list containing values to set </td></tr>
   </table>
   </dd>
 </dl>
@@ -1102,6 +1293,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the execution status of this action with a specific error code.</p>
+<p>The description is automatically derived from the error code.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html">UPnPStatus</a> </dd></dl>
 
 </div>
 </div>
@@ -1131,6 +1331,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the execution status of this action with a specific error code and description.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code </td></tr>
+    <tr><td class="paramname">descr</td><td>the human-readable description of the error </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html">UPnPStatus</a> </dd></dl>
 
 </div>
 </div>
@@ -1156,6 +1365,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets custom user data associated with this action.</p>
+<p>This allows applications to attach arbitrary data to an action instance for application-specific purposes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>the user data object to associate with this action </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1181,6 +1398,9 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Releases the lock for this action.</p>
+<p>Should be called after <code><a class="el" href="#a657b075998e745059c7da5459e285545">lock()</a></code> once the synchronized operation is complete.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a657b075998e745059c7da5459e285545">lock()</a> </dd></dl>
 
 </div>
 </div>
@@ -1226,6 +1446,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for action nodes in SCPD documents. </p>
 
 </div>
 </div>

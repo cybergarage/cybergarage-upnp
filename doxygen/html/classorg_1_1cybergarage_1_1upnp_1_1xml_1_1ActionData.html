@@ -109,7 +109,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aae2781f9f82a565f50d40c8b7d1d6594" id="r_aae2781f9f82a565f50d40c8b7d1d6594"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ControlResponse.html">ControlResponse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae2781f9f82a565f50d40c8b7d1d6594">ctrlRes</a> = null</td></tr>
 <tr class="separator:aae2781f9f82a565f50d40c8b7d1d6594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Stores user data associated with an action XML node.</p>
+<p>This class holds runtime information attached to action nodes, including the action listener and control response objects.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">org.cybergarage.upnp.Action</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae0b4fc61e852ff8144eaca355bb42e1b" name="ae0b4fc61e852ff8144eaca355bb42e1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae0b4fc61e852ff8144eaca355bb42e1b">&#9670;&#160;</a></span>ActionData()</h2>
 
@@ -132,6 +136,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty action data object. </p>
 
 </div>
 </div>
@@ -158,6 +163,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the action listener associated with this action.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action listener, or <code class="JavaDocCode">null</code> if none is set </dd></dl>
 
 </div>
 </div>
@@ -183,6 +190,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the control response from the most recent action execution.</p>
+<dl class="section return"><dt>Returns</dt><dd>the control response, or <code class="JavaDocCode">null</code> if the action has not been executed </dd></dl>
 
 </div>
 </div>
@@ -208,6 +217,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the action listener for this action.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">actionListener</td><td>the action listener to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -233,6 +249,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the control response for this action.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">res</td><td>the control response to store </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

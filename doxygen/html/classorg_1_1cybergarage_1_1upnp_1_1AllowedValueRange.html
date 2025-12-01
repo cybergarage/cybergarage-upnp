@@ -123,7 +123,13 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:af93334bd794b93c1e0ff76441434329f" id="r_af93334bd794b93c1e0ff76441434329f"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af93334bd794b93c1e0ff76441434329f">STEP</a> = &quot;step&quot;</td></tr>
 <tr class="separator:af93334bd794b93c1e0ff76441434329f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents an allowed value range for a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> state variable.</p>
+<p>This class defines a numeric range constraint for state variables, including minimum, maximum, and optional step values. It is used when a state variable can take any numeric value within a specified range.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1StateVariable.html">StateVariable</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1AllowedValue.html">AllowedValue</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab740edf96f98a7e807b739b6e16b21f8" name="ab740edf96f98a7e807b739b6e16b21f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab740edf96f98a7e807b739b6e16b21f8">&#9670;&#160;</a></span>AllowedValueRange() <span class="overload">[1/3]</span></h2>
 
@@ -146,6 +152,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an allowed value range from an existing XML node.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the XML node representing the allowed value range </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -171,6 +184,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty allowed value range. </p>
 
 </div>
 </div>
@@ -205,6 +219,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an allowed value range with specified bounds and step.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>the maximum allowed value, or <code class="JavaDocCode">null</code> to omit </td></tr>
+    <tr><td class="paramname">min</td><td>the minimum allowed value, or <code class="JavaDocCode">null</code> to omit </td></tr>
+    <tr><td class="paramname">step</td><td>the step increment, or <code class="JavaDocCode">null</code> to omit </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -231,6 +254,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the underlying XML node representing this allowed value range.</p>
+<dl class="section return"><dt>Returns</dt><dd>the allowed value range XML node </dd></dl>
 
 </div>
 </div>
@@ -256,6 +281,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the maximum allowed value.</p>
+<dl class="section return"><dt>Returns</dt><dd>the maximum value as a string </dd></dl>
 
 </div>
 </div>
@@ -281,6 +308,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the minimum allowed value.</p>
+<dl class="section return"><dt>Returns</dt><dd>the minimum value as a string </dd></dl>
 
 </div>
 </div>
@@ -306,6 +335,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the step increment for the range.</p>
+<dl class="section return"><dt>Returns</dt><dd>the step increment as a string </dd></dl>
 
 </div>
 </div>
@@ -331,6 +362,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Checks if the given XML node represents an allowed value range element.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the XML node to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the node's name matches the allowed value range element name, <code class="JavaDocCode">false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -356,6 +395,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the maximum allowed value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the maximum value as a string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -381,6 +427,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the minimum allowed value.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the minimum value as a string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -406,6 +459,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the step increment for the range.</p>
+<p>The step defines the granularity of allowed values within the range.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the step increment as a string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -451,6 +512,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for allowed value range nodes in SCPD documents. </p>
 
 </div>
 </div>

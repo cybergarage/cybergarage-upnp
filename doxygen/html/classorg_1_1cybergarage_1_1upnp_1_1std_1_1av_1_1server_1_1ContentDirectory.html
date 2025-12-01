@@ -422,6 +422,25 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Called when an action control request is received from a control point.</p>
+<p>Implementations should: </p><ul>
+<li>
+Read input argument values from the action </li>
+<li>
+Perform the requested operation </li>
+<li>
+Set output argument values in the action </li>
+<li>
+Return <code class="JavaDocCode">true</code> if successful, <code class="JavaDocCode">false</code> on error </li>
+</ul>
+<p>If this method returns <code class="JavaDocCode">false</code>, the action's status should be set using <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html#a8b581c151f59a6b276b33c7e29bbe9aa">Action#setStatus(int, String)</a></code> to provide error details to the control point.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action being invoked, containing input arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the action was executed successfully, <code class="JavaDocCode">false</code> if an error occurred </dd></dl>
 
 <p>Implements <a class="el" href="interfaceorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionListener.html#ab97ba1c5d8bf4f1aa31316be41341697">org.cybergarage.upnp.control.ActionListener</a>.</p>
 

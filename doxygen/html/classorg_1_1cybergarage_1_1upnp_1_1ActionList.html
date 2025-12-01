@@ -91,7 +91,13 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:aa898ce88db5ec4dbb22771ed95f47280" id="r_aa898ce88db5ec4dbb22771ed95f47280"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa898ce88db5ec4dbb22771ed95f47280">ELEM_NAME</a> = &quot;actionList&quot;</td></tr>
 <tr class="separator:aa898ce88db5ec4dbb22771ed95f47280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A list of <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a></code> objects.</p>
+<p>This class extends <code><a class="el" href="">Vector</a></code> to provide type-safe access to <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> actions within a service.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Service.html">Service</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a037a0b6b0f2e292c5f04ae47c386d935" name="a037a0b6b0f2e292c5f04ae47c386d935"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a037a0b6b0f2e292c5f04ae47c386d935">&#9670;&#160;</a></span>ActionList()</h2>
 
@@ -114,6 +120,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty action list. </p>
 
 </div>
 </div>
@@ -140,6 +147,20 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the action at the specified index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the index of the action to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the action at the specified index </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArrayIndexOutOfBoundsException</td><td>if the index is out of range </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -163,6 +184,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for action list nodes in service descriptions. </p>
 
 </div>
 </div>

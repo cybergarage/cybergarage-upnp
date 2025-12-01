@@ -340,7 +340,25 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket" id="r_a97cf52afbcfe3af49bd7e0cb240190e5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a97cf52afbcfe3af49bd7e0cb240190e5">getFirstLineToken</a> (int num)</td></tr>
 <tr class="separator:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action response returned from a device to a control point.</p>
+<p>This class encapsulates the SOAP-formatted response to an action invocation. It contains the output argument values returned by the device after executing the requested action.</p>
+<p>The response includes: </p><ul>
+<li>
+HTTP status code (200 OK for success, 500 for errors) </li>
+<li>
+Output argument values </li>
+<li>
+Error information if the action failed </li>
+<li>
+Required EXT header for <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> compliance </li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionRequest.html">ActionRequest</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ControlResponse.html">ControlResponse</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afcfa97ad8266935d3849a664e1599ccb" name="afcfa97ad8266935d3849a664e1599ccb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afcfa97ad8266935d3849a664e1599ccb">&#9670;&#160;</a></span>ActionResponse() <span class="overload">[1/2]</span></h2>
 
@@ -363,6 +381,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty action response.</p>
+<p>Sets the mandatory EXT header required by the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> specification. </p>
 
 </div>
 </div>
@@ -388,6 +408,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an action response from a SOAP response.</p>
+<p>Wraps an existing SOAP response and sets the mandatory EXT header.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">soapRes</td><td>the SOAP response to wrap </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -439,6 +467,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the XML node containing the action response data.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action response node, or <code class="JavaDocCode">null</code> if not present </dd></dl>
 
 </div>
 </div>
@@ -464,6 +494,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the list of output arguments from the action response.</p>
+<p>Parses the SOAP response body to extract argument names and values returned by the device.</p>
+<dl class="section return"><dt>Returns</dt><dd>the list of output arguments, or an empty list if none are present </dd></dl>
 
 </div>
 </div>
@@ -489,6 +522,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs the response content from an executed action.</p>
+<p>Creates a SOAP response containing the action name and output argument values. Sets the HTTP status to 200 OK.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action containing output argument values to return </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

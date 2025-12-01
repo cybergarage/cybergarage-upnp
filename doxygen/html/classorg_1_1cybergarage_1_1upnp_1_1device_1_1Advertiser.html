@@ -113,7 +113,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae8622883a0f185174a55d4067a93f30d" id="r_ae8622883a0f185174a55d4067a93f30d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Device.html">Device</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8622883a0f185174a55d4067a93f30d">device</a></td></tr>
 <tr class="separator:ae8622883a0f185174a55d4067a93f30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Background thread that periodically advertises a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> device's presence.</p>
+<p>The advertiser sends SSDP NOTIFY messages at regular intervals to announce the device's availability on the network. The announcement interval is randomized between 25%-50% of the device's lease time to distribute network traffic when multiple devices are present.</p>
+<p>This class is used internally by <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Device.html">Device</a></code> to implement the Network Media Player Requirement (NMPR) for periodic advertisements.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Device.html">Device</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af0436ff56022df2687c31f7efb3a0e37" name="af0436ff56022df2687c31f7efb3a0e37"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0436ff56022df2687c31f7efb3a0e37">&#9670;&#160;</a></span>Advertiser()</h2>
 
@@ -136,6 +141,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an advertiser for the specified device.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dev</td><td>the device to advertise </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -162,6 +174,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the device being advertised.</p>
+<dl class="section return"><dt>Returns</dt><dd>the device associated with this advertiser </dd></dl>
 
 </div>
 </div>
@@ -214,6 +228,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets the device to be advertised.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dev</td><td>the device to advertise </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

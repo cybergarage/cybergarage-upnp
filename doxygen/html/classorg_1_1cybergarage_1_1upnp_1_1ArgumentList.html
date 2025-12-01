@@ -99,7 +99,13 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:aac09fe9841596ef3ce367d6f8763efa7" id="r_aac09fe9841596ef3ce367d6f8763efa7"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac09fe9841596ef3ce367d6f8763efa7">ELEM_NAME</a> = &quot;argumentList&quot;</td></tr>
 <tr class="separator:aac09fe9841596ef3ce367d6f8763efa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A list of <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Argument.html">Argument</a></code> objects.</p>
+<p>This class extends <code><a class="el" href="">Vector</a></code> to provide type-safe access to <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action arguments. It includes methods for retrieving arguments by name or index, and for setting input/output argument values.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Argument.html">Argument</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9315c84b21f95f90e43e0485ff681b2c" name="a9315c84b21f95f90e43e0485ff681b2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9315c84b21f95f90e43e0485ff681b2c">&#9670;&#160;</a></span>ArgumentList()</h2>
 
@@ -122,6 +128,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty argument list. </p>
 
 </div>
 </div>
@@ -148,6 +155,20 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the argument at the specified index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>the index of the argument to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the argument at the specified index </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArrayIndexOutOfBoundsException</td><td>if the index is out of range </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -173,6 +194,14 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the argument with the specified name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the argument to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the argument with the specified name, or <code class="JavaDocCode">null</code> if not found </dd></dl>
 
 </div>
 </div>
@@ -198,7 +227,14 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated</a></b></dt><dd></dd></dl>
+<p>Sets argument values from the provided list.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inArgList</td><td>the argument list containing values to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated</a></b></dt><dd>Use <code><a class="el" href="#ab8bb1ce85223d79d98a4f0e24b77d243">setReqArgs(ArgumentList)</a></code> or <code><a class="el" href="#aad77172199c73fe7a0ec6de786faf8b3">setResArgs(ArgumentList)</a></code> instead </dd></dl>
 
 </div>
 </div>
@@ -224,10 +260,17 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set all the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Argument.html">Argument</a> which are Input Argoument to the given value in the argument list</p>
+<p>Sets values for all input arguments from the provided list.</p>
+<p>Updates only arguments with direction "in" by matching names from the provided argument list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">inArgList</td><td></td></tr>
+    <tr><td class="paramname">inArgList</td><td>the argument list containing input values </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IllegalArgumentException</td><td>if a required input argument is missing from the provided list </td></tr>
   </table>
   </dd>
 </dl>
@@ -256,10 +299,17 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set all the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Argument.html">Argument</a> which are Output Argoument to the given value in the argument list</p>
+<p>Sets values for all output arguments from the provided list.</p>
+<p>Updates only arguments with direction "out" by matching names from the provided argument list.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">outArgList</td><td></td></tr>
+    <tr><td class="paramname">outArgList</td><td>the argument list containing output values </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IllegalArgumentException</td><td>if a required output argument is missing from the provided list </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,6 +336,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The XML element name for argument list nodes in SCPD documents. </p>
 
 </div>
 </div>

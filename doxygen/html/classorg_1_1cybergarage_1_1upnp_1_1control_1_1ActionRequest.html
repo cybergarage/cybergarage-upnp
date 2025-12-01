@@ -384,7 +384,23 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket" id="r_a97cf52afbcfe3af49bd7e0cb240190e5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a97cf52afbcfe3af49bd7e0cb240190e5">getFirstLineToken</a> (int num)</td></tr>
 <tr class="separator:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action request sent from a control point to a device.</p>
+<p>This class encapsulates a SOAP-formatted action invocation request. It is used by control points to invoke actions on remote <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> devices and by devices to parse incoming action requests.</p>
+<p>The request contains: </p><ul>
+<li>
+The action name and service type </li>
+<li>
+Input argument values </li>
+<li>
+HTTP and SOAP headers </li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionResponse.html">ActionResponse</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ControlRequest.html">ControlRequest</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaa272c7914affbbaa71a6fdfda1cee8e" name="aaa272c7914affbbaa71a6fdfda1cee8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa272c7914affbbaa71a6fdfda1cee8e">&#9670;&#160;</a></span>ActionRequest() <span class="overload">[1/2]</span></h2>
 
@@ -407,6 +423,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty action request. </p>
 
 </div>
 </div>
@@ -432,6 +449,13 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an action request from an HTTP request.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">httpReq</td><td>the HTTP request containing the SOAP action message </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -492,6 +516,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the name of the action being invoked.</p>
+<p>Extracts the action name from the SOAP action node, removing any namespace prefix.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action name, or an empty string if not found </dd></dl>
 
 </div>
 </div>
@@ -517,6 +544,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the XML node representing the action element.</p>
+<p>The action node is the first child of the SOAP body node and contains the action name and argument values.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action XML node, or <code class="JavaDocCode">null</code> if not present </dd></dl>
 
 </div>
 </div>
@@ -542,6 +572,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the list of arguments from the action request.</p>
+<p>Parses the action node to extract argument names and values.</p>
+<dl class="section return"><dt>Returns</dt><dd>the list of arguments contained in the request </dd></dl>
 
 </div>
 </div>
@@ -567,6 +600,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sends this action request to the device and waits for the response.</p>
+<p>Posts the SOAP action message to the device's control URL and returns the parsed response.</p>
+<dl class="section return"><dt>Returns</dt><dd>the action response from the device </dd></dl>
 
 </div>
 </div>
@@ -596,6 +632,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs the action request from an action and its arguments.</p>
+<p>Creates a SOAP envelope with the action name, service type, and argument values properly formatted for transmission to the device.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action to be invoked </td></tr>
+    <tr><td class="paramname">argList</td><td>the list of arguments to include in the request </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

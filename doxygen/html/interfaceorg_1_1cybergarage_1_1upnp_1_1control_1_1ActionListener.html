@@ -90,7 +90,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab97ba1c5d8bf4f1aa31316be41341697" id="r_ab97ba1c5d8bf4f1aa31316be41341697"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab97ba1c5d8bf4f1aa31316be41341697">actionControlReceived</a> (<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> action)</td></tr>
 <tr class="separator:ab97ba1c5d8bf4f1aa31316be41341697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Listener interface for handling incoming <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> action requests.</p>
+<p>Implementations of this interface are registered with <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a></code> instances to handle action invocations from control points. When a control point invokes an action, the device calls this listener to execute the application-specific logic.</p>
+<p>Example implementation: </p><pre><code class="JavaDocCode"><br/>
+action.setActionListener(new ActionListener() {<br/>
+    public boolean actionControlReceived(Action action) {<br/>
+        String volume = action.getArgumentValue("Volume");<br/>
+        // Process the action and set output arguments<br/>
+        action.setArgumentValue("Result", "OK");<br/>
+        return true; // Success<br/>
+    }<br/>
+});<br/>
+</code></pre><dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html">Action</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html#a17c4ab3a7c2a100700e873ceff83ed35">Action.setActionListener(ActionListener)</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab97ba1c5d8bf4f1aa31316be41341697" name="ab97ba1c5d8bf4f1aa31316be41341697"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab97ba1c5d8bf4f1aa31316be41341697">&#9670;&#160;</a></span>actionControlReceived()</h2>
 
@@ -105,6 +120,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Called when an action control request is received from a control point.</p>
+<p>Implementations should: </p><ul>
+<li>
+Read input argument values from the action </li>
+<li>
+Perform the requested operation </li>
+<li>
+Set output argument values in the action </li>
+<li>
+Return <code class="JavaDocCode">true</code> if successful, <code class="JavaDocCode">false</code> on error </li>
+</ul>
+<p>If this method returns <code class="JavaDocCode">false</code>, the action's status should be set using <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Action.html#a8b581c151f59a6b276b33c7e29bbe9aa">Action#setStatus(int, String)</a></code> to provide error details to the control point.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>the action being invoked, containing input arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code class="JavaDocCode">true</code> if the action was executed successfully, <code class="JavaDocCode">false</code> if an error occurred </dd></dl>
 
 <p>Implemented in <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1AVTransport.html#a50bd85c0f16cec9b37789b77a4bee141">org.cybergarage.upnp.std.av.renderer.AVTransport</a>, <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1ConnectionManager.html#a7ffd41a4bd10b6f69a802634cddc529f">org.cybergarage.upnp.std.av.renderer.ConnectionManager</a>, <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a607c4d1df2bbdbd8da09b462da6522a9">org.cybergarage.upnp.std.av.renderer.RenderingControl</a>, <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html#aff917eff34c3e53ef99f92a46260e18f">org.cybergarage.upnp.std.av.server.ConnectionManager</a>, and <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ContentDirectory.html#a0e25c2c10987a5944211acb29d70b1e1">org.cybergarage.upnp.std.av.server.ContentDirectory</a>.</p>
 

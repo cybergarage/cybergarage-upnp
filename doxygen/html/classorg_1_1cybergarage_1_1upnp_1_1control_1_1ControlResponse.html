@@ -347,7 +347,15 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket" id="r_a97cf52afbcfe3af49bd7e0cb240190e5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a97cf52afbcfe3af49bd7e0cb240190e5">getFirstLineToken</a> (int num)</td></tr>
 <tr class="separator:a97cf52afbcfe3af49bd7e0cb240190e5 inherit pro_methods_classorg_1_1cybergarage_1_1http_1_1HTTPPacket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> control responses.</p>
+<p>This class extends <code><a class="el" href="classorg_1_1cybergarage_1_1soap_1_1SOAPResponse.html#a694d80c5aa5fae4ce037285fc72cda3b">SOAPResponse</a></code> to provide common functionality for both action responses and state variable query responses. It handles SOAP fault generation for <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> errors and error code extraction.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1ActionResponse.html">ActionResponse</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1control_1_1QueryResponse.html">QueryResponse</a> </dd>
+<dd>
+<a class="el" href="classorg_1_1cybergarage_1_1soap_1_1SOAPResponse.html#a694d80c5aa5fae4ce037285fc72cda3b">SOAPResponse</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a44ba575348f435e8d3e86362029af7ec" name="a44ba575348f435e8d3e86362029af7ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44ba575348f435e8d3e86362029af7ec">&#9670;&#160;</a></span>ControlResponse() <span class="overload">[1/2]</span></h2>
 
@@ -370,6 +378,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs an empty control response.</p>
+<p>Sets the server header to the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> stack identifier. </p>
 
 </div>
 </div>
@@ -395,6 +405,13 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs a control response from a SOAP response.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">soapRes</td><td>the SOAP response to wrap </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -475,6 +492,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error status from the SOAP fault.</p>
+<p>Extracts both the error code and description from the fault detail and returns them in a <code><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html">UPnPStatus</a></code> object.</p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error status </dd></dl>
 
 </div>
 </div>
@@ -500,6 +520,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code from the SOAP fault detail.</p>
+<dl class="section return"><dt>Returns</dt><dd>the error code, or -1 if not present or invalid </dd></dl>
 
 </div>
 </div>
@@ -550,6 +572,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Returns the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error description from the SOAP fault detail.</p>
+<dl class="section return"><dt>Returns</dt><dd>the error description, or an empty string if not present </dd></dl>
 
 </div>
 </div>
@@ -625,6 +649,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets this response as a SOAP fault with the specified <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code.</p>
+<p>The error description is automatically derived from the error code.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errCode</td><td>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aff9dab5f3b6db55be47364ead3606484">setFaultResponse(int, String)</a> </dd></dl>
 
 </div>
 </div>
@@ -654,6 +687,16 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sets this response as a SOAP fault with the specified <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code and description.</p>
+<p>Creates a properly formatted SOAP fault response conforming to the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> specification, including the error code and description in the detail element. Sets the HTTP status to 500 Internal Server Error.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errCode</td><td>the <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> error code </td></tr>
+    <tr><td class="paramname">errDescr</td><td>the human-readable error description </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html">UPnPStatus</a> </dd></dl>
 
 </div>
 </div>
@@ -677,6 +720,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>SOAP fault code for client errors. </p>
 
 </div>
 </div>
@@ -699,6 +743,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>SOAP fault string for <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1UPnP.html">UPnP</a> errors. </p>
 
 </div>
 </div>
