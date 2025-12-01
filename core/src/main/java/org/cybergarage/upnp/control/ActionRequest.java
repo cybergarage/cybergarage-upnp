@@ -23,13 +23,39 @@ import org.cybergarage.soap.*;
 
 import org.cybergarage.upnp.*;
 
+/**
+ * Represents a UPnP action request sent from a control point to a device.
+ * 
+ * <p>This class encapsulates a SOAP-formatted action invocation request.
+ * It is used by control points to invoke actions on remote UPnP devices
+ * and by devices to parse incoming action requests.
+ * 
+ * <p>The request contains:
+ * <ul>
+ *   <li>The action name and service type</li>
+ *   <li>Input argument values</li>
+ *   <li>HTTP and SOAP headers</li>
+ * </ul>
+ * 
+ * @see ActionResponse
+ * @see Action
+ * @see ControlRequest
+ */
 public class ActionRequest extends ControlRequest {
   ////////////////////////////////////////////////
   //	Constructor
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs an empty action request.
+   */
   public ActionRequest() {}
 
+  /**
+   * Constructs an action request from an HTTP request.
+   * 
+   * @param httpReq the HTTP request containing the SOAP action message
+   */
   public ActionRequest(HTTPRequest httpReq) {
     set(httpReq);
   }
@@ -38,6 +64,14 @@ public class ActionRequest extends ControlRequest {
   //	Action
   ////////////////////////////////////////////////
 
+  /**
+   * Returns the XML node representing the action element.
+   * 
+   * <p>The action node is the first child of the SOAP body node and
+   * contains the action name and argument values.
+   * 
+   * @return the action XML node, or {@code null} if not present
+   */
   public Node getActionNode() {
     Node bodyNode = getBodyNode();
     if (bodyNode == null) return null;
@@ -45,6 +79,14 @@ public class ActionRequest extends ControlRequest {
     return bodyNode.getNode(0);
   }
 
+  /**
+   * Returns the name of the action being invoked.
+   * 
+   * <p>Extracts the action name from the SOAP action node, removing
+   * any namespace prefix.
+   * 
+   * @return the action name, or an empty string if not found
+   */
   public String getActionName() {
     Node node = getActionNode();
     if (node == null) return "";
@@ -55,6 +97,13 @@ public class ActionRequest extends ControlRequest {
     return name.substring(idx, name.length());
   }
 
+  /**
+   * Returns the list of arguments from the action request.
+   * 
+   * <p>Parses the action node to extract argument names and values.
+   * 
+   * @return the list of arguments contained in the request
+   */
   public ArgumentList getArgumentList() {
     Node actNode = getActionNode();
     int nArgNodes = actNode.getNNodes();
@@ -73,6 +122,15 @@ public class ActionRequest extends ControlRequest {
   //	setRequest
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs the action request from an action and its arguments.
+   * 
+   * <p>Creates a SOAP envelope with the action name, service type,
+   * and argument values properly formatted for transmission to the device.
+   * 
+   * @param action the action to be invoked
+   * @param argList the list of arguments to include in the request
+   */
   public void setRequest(Action action, ArgumentList argList) {
     Service service = action.getService();
 
@@ -119,6 +177,14 @@ public class ActionRequest extends ControlRequest {
   //	post
   ////////////////////////////////////////////////
 
+  /**
+   * Sends this action request to the device and waits for the response.
+   * 
+   * <p>Posts the SOAP action message to the device's control URL and
+   * returns the parsed response.
+   * 
+   * @return the action response from the device
+   */
   public ActionResponse post() {
     SOAPResponse soapRes = postMessage(getRequestHost(), getRequestPort());
     return new ActionResponse(soapRes);

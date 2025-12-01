@@ -20,11 +20,29 @@ package org.cybergarage.upnp.device;
 import org.cybergarage.util.*;
 import org.cybergarage.upnp.*;
 
+/**
+ * Background thread that periodically advertises a UPnP device's presence.
+ * 
+ * <p>The advertiser sends SSDP NOTIFY messages at regular intervals to announce
+ * the device's availability on the network. The announcement interval is
+ * randomized between 25%-50% of the device's lease time to distribute
+ * network traffic when multiple devices are present.
+ * 
+ * <p>This class is used internally by {@link Device} to implement the
+ * Network Media Player Requirement (NMPR) for periodic advertisements.
+ * 
+ * @see Device
+ */
 public class Advertiser extends ThreadCore {
   ////////////////////////////////////////////////
   //	Constructor
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs an advertiser for the specified device.
+   * 
+   * @param dev the device to advertise
+   */
   public Advertiser(Device dev) {
     setDevice(dev);
   }
@@ -35,10 +53,20 @@ public class Advertiser extends ThreadCore {
 
   private Device device;
 
+  /**
+   * Sets the device to be advertised.
+   * 
+   * @param dev the device to advertise
+   */
   public void setDevice(Device dev) {
     device = dev;
   }
 
+  /**
+   * Returns the device being advertised.
+   * 
+   * @return the device associated with this advertiser
+   */
   public Device getDevice() {
     return device;
   }
