@@ -48,13 +48,33 @@ import org.cybergarage.soap.*;
 
 import org.cybergarage.upnp.*;
 
+/**
+ * Base class for UPnP control requests.
+ * 
+ * <p>This class extends {@link SOAPRequest} to provide common functionality
+ * for both action requests and state variable query requests. It handles
+ * URL resolution, including absolute and relative URLs, URL base paths,
+ * and port extraction.
+ * 
+ * @see ActionRequest
+ * @see QueryRequest
+ * @see SOAPRequest
+ */
 public class ControlRequest extends SOAPRequest {
   ////////////////////////////////////////////////
   //	Constructor
   ////////////////////////////////////////////////
 
+  /**
+   * Constructs an empty control request.
+   */
   public ControlRequest() {}
 
+  /**
+   * Constructs a control request from an HTTP request.
+   * 
+   * @param httpReq the HTTP request to wrap
+   */
   public ControlRequest(HTTPRequest httpReq) {
     set(httpReq);
   }
@@ -63,10 +83,22 @@ public class ControlRequest extends SOAPRequest {
   //	Query
   ////////////////////////////////////////////////
 
+  /**
+   * Checks if this is a state variable query request.
+   * 
+   * @return {@code true} if this is a QueryStateVariable request,
+   *         {@code false} otherwise
+   */
   public boolean isQueryControl() {
     return isSOAPAction(Control.QUERY_SOAPACTION);
   }
 
+  /**
+   * Checks if this is an action control request.
+   * 
+   * @return {@code true} if this is an action invocation request,
+   *         {@code false} if it's a query request
+   */
   public boolean isActionControl() {
     return !isQueryControl();
   }
@@ -75,6 +107,19 @@ public class ControlRequest extends SOAPRequest {
   //	setRequest
   ////////////////////////////////////////////////
 
+  /**
+   * Sets the request host and port from the service's control URL.
+   * 
+   * <p>This method resolves the control URL, considering:
+   * <ul>
+   *   <li>Absolute vs relative URLs</li>
+   *   <li>URL base paths from the device description</li>
+   *   <li>Port numbers in control URLs</li>
+   *   <li>Fallback to device location if URLBase is not set</li>
+   * </ul>
+   * 
+   * @param service the service whose control URL to use
+   */
   protected void setRequestHost(Service service) {
     String ctrlURL = service.getControlURL();
 

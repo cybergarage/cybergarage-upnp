@@ -73,6 +73,7 @@ Use tags in this order:
 4. `@deprecated` (if applicable)
 5. `@see` (references to related items)
 6. `@since` (for newly added APIs)
+7. `@author` (optional, use only for significant contributions - not required for this project)
 
 ## Formatting Guidelines
 
