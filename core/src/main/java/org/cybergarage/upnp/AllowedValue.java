@@ -43,6 +43,11 @@ public class AllowedValue {
 
   private Node allowedValueNode;
 
+  /**
+   * Returns the underlying XML node representing this allowed value.
+   * 
+   * @return the allowed value XML node
+   */
   public Node getAllowedValueNode() {
     return allowedValueNode;
   }

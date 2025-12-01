@@ -84,6 +84,11 @@ public class Argument {
   private Node argumentNode;
   private Node serviceNode;
 
+  /**
+   * Returns the underlying XML node representing this argument.
+   * 
+   * @return the argument XML node
+   */
   public Node getArgumentNode() {
     return argumentNode;
   }
@@ -92,6 +97,11 @@ public class Argument {
     return serviceNode;
   }
 
+  /**
+   * Returns the service that contains this argument.
+   * 
+   * @return the parent service of this argument
+   */
   public Service getService() {
     return new Service(getServiceNode());
   }
@@ -100,6 +110,11 @@ public class Argument {
     s.getServiceNode();
   }
 
+  /**
+   * Returns the XML node representing the action that contains this argument.
+   * 
+   * @return the action XML node, or {@code null} if not found
+   */
   public Node getActionNode() {
     Node argumentLinstNode = getArgumentNode().getParentNode();
     if (argumentLinstNode == null) return null;
@@ -109,6 +124,11 @@ public class Argument {
     return actionNode;
   }
 
+  /**
+   * Returns the action that contains this argument.
+   * 
+   * @return the parent action of this argument
+   */
   public Action getAction() {
     return new Action(getServiceNode(), getActionNode());
   }
