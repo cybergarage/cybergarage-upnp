@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <artifactId>upnp</artifactId>
+    <groupId>org.cybergarage.upnp</groupId>
+    <version>2.1.5</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>jacoco-aggregate</artifactId>
+  <packaging>pom</packaging>
+  <name>cybergarage-upnp jacoco aggregate</name>
+  <description>JaCoCo code coverage aggregate report for all modules</description>
+
+  <dependencies>
+    <!-- Add dependencies to all modules that should be included in the coverage report -->
+    <dependency>
+      <groupId>org.cybergarage.upnp</groupId>
+      <artifactId>core</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp</groupId>
+      <artifactId>std</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.tool</groupId>
+      <artifactId>upnp-control-point</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.tool</groupId>
+      <artifactId>upnp-internet-gateway</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>upnpdump</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>tv</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>light</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>clock</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>washer</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>air-conditioner</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>remote-controller</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.cybergarage.upnp.app</groupId>
+      <artifactId>media-server</artifactId>
+      <version>2.1.5</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.8</version>
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
