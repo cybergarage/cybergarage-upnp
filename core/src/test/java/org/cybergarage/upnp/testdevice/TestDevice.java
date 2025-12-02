@@ -59,32 +59,4 @@ public class TestDevice extends Device {
     setLeaseTime(60);
   }
 
-  /**
-   * Starts the test device.
-   * 
-   * @return true if the device started successfully, false otherwise
-   */
-  @Override
-  public boolean start() {
-    return super.start();
-  }
-
-  /**
-   * Stops the test device.
-   * 
-   * @return true if the device stopped successfully, false otherwise
-   */
-  @Override
-  public boolean stop() {
-    return super.stop();
-  }
-
-  /**
-   * Gets the device type of this test device.
-   * 
-   * @return the device type string
-   */
-  public String getDeviceType() {
-    return DEVICE_TYPE;
-  }
 }
