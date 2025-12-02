@@ -22,6 +22,12 @@ import org.cybergarage.upnp.device.ST;
  */
 public class ControlPointTest extends TestCase {
 
+  /** Multiplier for SSDP search timeout to allow for device discovery and response */
+  private static final int DISCOVERY_WAIT_MULTIPLIER = 2;
+
+  /** Conversion factor from seconds to milliseconds */
+  private static final int SECONDS_TO_MS = 1000;
+
   /**
    * Create the test case
    *
@@ -67,10 +73,10 @@ public class ControlPointTest extends TestCase {
       // Perform SSDP search for root devices
       cp.search(ST.ROOT_DEVICE);
 
-      // Wait for discovery - MX (search timeout) * 2
+      // Wait for discovery - MX (search timeout) * DISCOVERY_WAIT_MULTIPLIER
       // This allows time for SSDP multicast and device response
       int searchMx = cp.getSearchMx();
-      int waitTimeMs = searchMx * 1000 * 2;
+      int waitTimeMs = searchMx * SECONDS_TO_MS * DISCOVERY_WAIT_MULTIPLIER;
       Thread.sleep(waitTimeMs);
 
       // Verify at least one device was discovered
