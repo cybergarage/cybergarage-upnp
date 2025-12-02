@@ -104,7 +104,8 @@ public class ControlPointTest {
       try {
         testDevice.stop();
       } catch (Exception e) {
-        // Ignore cleanup exceptions
+        // Expected: Socket exceptions during cleanup are normal when shutting down network resources
+        System.err.println("Warning during testDevice cleanup: " + e.getClass().getSimpleName());
       }
       testDevice = null;
     }
@@ -113,7 +114,8 @@ public class ControlPointTest {
       try {
         controlPoint.stop();
       } catch (Exception e) {
-        // Ignore cleanup exceptions
+        // Expected: Socket exceptions during cleanup are normal when shutting down network resources
+        System.err.println("Warning during controlPoint cleanup: " + e.getClass().getSimpleName());
       }
       controlPoint = null;
     }

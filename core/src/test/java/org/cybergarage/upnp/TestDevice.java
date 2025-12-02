@@ -26,30 +26,30 @@ public class TestDevice {
 
   public TestDevice() throws InvalidDescriptionException {
     // Create a minimal but complete UPnP device description XML
-    String deviceDescription = 
-      "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-      "<root xmlns=\"urn:schemas-upnp-org:device-1-0\">" +
-      "  <specVersion>" +
-      "    <major>1</major>" +
-      "    <minor>0</minor>" +
-      "  </specVersion>" +
-      "  <device>" +
-      "    <deviceType>" + TEST_DEVICE_TYPE + "</deviceType>" +
-      "    <friendlyName>" + TEST_FRIENDLY_NAME + "</friendlyName>" +
-      "    <manufacturer>" + TEST_MANUFACTURER + "</manufacturer>" +
-      "    <manufacturerURL>http://www.cybergarage.org</manufacturerURL>" +
-      "    <modelDescription>Test device for ControlPoint testing</modelDescription>" +
-      "    <modelName>" + TEST_MODEL_NAME + "</modelName>" +
-      "    <modelNumber>1.0</modelNumber>" +
-      "    <modelURL>http://www.cybergarage.org</modelURL>" +
-      "    <serialNumber>TEST-001</serialNumber>" +
-      "    <UDN>uuid:" + UPnP.createUUID() + "</UDN>" +
-      "  </device>" +
-      "</root>";
+    StringBuilder xml = new StringBuilder();
+    xml.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+       .append("<root xmlns=\"urn:schemas-upnp-org:device-1-0\">")
+       .append("  <specVersion>")
+       .append("    <major>1</major>")
+       .append("    <minor>0</minor>")
+       .append("  </specVersion>")
+       .append("  <device>")
+       .append("    <deviceType>").append(TEST_DEVICE_TYPE).append("</deviceType>")
+       .append("    <friendlyName>").append(TEST_FRIENDLY_NAME).append("</friendlyName>")
+       .append("    <manufacturer>").append(TEST_MANUFACTURER).append("</manufacturer>")
+       .append("    <manufacturerURL>http://www.cybergarage.org</manufacturerURL>")
+       .append("    <modelDescription>Test device for ControlPoint testing</modelDescription>")
+       .append("    <modelName>").append(TEST_MODEL_NAME).append("</modelName>")
+       .append("    <modelNumber>1.0</modelNumber>")
+       .append("    <modelURL>http://www.cybergarage.org</modelURL>")
+       .append("    <serialNumber>TEST-001</serialNumber>")
+       .append("    <UDN>uuid:").append(UPnP.createUUID()).append("</UDN>")
+       .append("  </device>")
+       .append("</root>");
     
     // Create device instance and load description
     device = new Device();
-    device.loadDescription(deviceDescription);
+    device.loadDescription(xml.toString());
   }
 
   /**
