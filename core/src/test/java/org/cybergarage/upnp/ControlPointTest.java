@@ -58,28 +58,37 @@ public class ControlPointTest {
     }
   }
 
+  // Wait time constants
+  private static final int DEVICE_STARTUP_DELAY_MS = 500;
+  private static final int DISCOVERY_POLL_INTERVAL_MS = 500;
+  private static final int MAX_DISCOVERY_WAIT_MULTIPLIER = 3;
+
   /**
-   * Get the search MX value from ControlPoint using reflection to handle API differences.
-   * Tries getSearchMx() first, then getSSDPSearchMX() as fallback.
+   * Wait for device to be discovered with polling mechanism.
    * 
    * @param cp the ControlPoint instance
-   * @return the MX value, defaults to 3 if not found
+   * @param expectedDeviceType the device type to search for
+   * @param maxWaitMs maximum time to wait in milliseconds
+   * @return true if device was discovered, false otherwise
    */
-  private int getSearchMxValue(ControlPoint cp) {
-    try {
-      // Try getSearchMx() first
-      java.lang.reflect.Method method = cp.getClass().getMethod("getSearchMx");
-      return (Integer) method.invoke(cp);
-    } catch (Exception e1) {
-      try {
-        // Try getSSDPSearchMX() as fallback
-        java.lang.reflect.Method method = cp.getClass().getMethod("getSSDPSearchMX");
-        return (Integer) method.invoke(cp);
-      } catch (Exception e2) {
-        // Default to 3 seconds if methods not found
-        return 3;
+  private boolean waitForDeviceDiscovery(ControlPoint cp, String expectedDeviceType, int maxWaitMs) 
+      throws InterruptedException {
+    long startTime = System.currentTimeMillis();
+    long endTime = startTime + maxWaitMs;
+    
+    while (System.currentTimeMillis() < endTime) {
+      DeviceList deviceList = cp.getDeviceList();
+      if (deviceList != null) {
+        for (int i = 0; i < deviceList.size(); i++) {
+          Device device = deviceList.getDevice(i);
+          if (device != null && expectedDeviceType.equals(device.getDeviceType())) {
+            return true;
+          }
+        }
       }
+      Thread.sleep(DISCOVERY_POLL_INTERVAL_MS);
     }
+    return false;
   }
 
   @BeforeEach
@@ -122,53 +131,50 @@ public class ControlPointTest {
     assertTrue(deviceStarted, "TestDevice should start successfully");
 
     // Give device time to fully initialize and start advertising
-    Thread.sleep(1000);
+    Thread.sleep(DEVICE_STARTUP_DELAY_MS);
 
     // Create and start ControlPoint
     controlPoint = new ControlPoint();
     boolean cpStarted = controlPoint.start();
     assertTrue(cpStarted, "ControlPoint should start successfully");
 
-    // Get MX value and calculate wait time
-    // Wait for MX * 2 seconds to allow for device discovery
+    // Calculate maximum wait time based on MX value
     // The start() method automatically triggers a search
-    int mx = getSearchMxValue(controlPoint);
-    int waitTimeMs = mx * 1000 * 2;
+    int mx = controlPoint.getSearchMx();
+    int maxWaitMs = mx * 1000 * MAX_DISCOVERY_WAIT_MULTIPLIER;
     
-    // Wait for device to be discovered
-    Thread.sleep(waitTimeMs);
-
-    // Search again to ensure we capture the device
-    controlPoint.search("upnp:rootdevice");
-    
-    // Wait again for search response
-    Thread.sleep(waitTimeMs);
-
-    // Verify that the test device was discovered
-    DeviceList deviceList = controlPoint.getDeviceList();
-    assertNotNull(deviceList, "Device list should not be null");
-
-    // Search for our test device in the discovered devices
-    boolean testDeviceFound = false;
+    // Wait for device to be discovered using polling mechanism
     String expectedDeviceType = TestDevice.TEST_DEVICE_TYPE;
+    boolean testDeviceFound = waitForDeviceDiscovery(controlPoint, expectedDeviceType, maxWaitMs);
     
-    for (int i = 0; i < deviceList.size(); i++) {
-      Device device = deviceList.getDevice(i);
-      if (device != null) {
-        String deviceType = device.getDeviceType();
-        if (expectedDeviceType.equals(deviceType)) {
-          testDeviceFound = true;
-          // Additional verification
-          assertNotNull(device.getFriendlyName(), "Device should have a friendly name");
-          assertNotNull(device.getUDN(), "Device should have a UDN");
-          break;
-        }
-      }
+    if (!testDeviceFound) {
+      // Try one more search and wait cycle if initial discovery failed
+      controlPoint.search("upnp:rootdevice");
+      testDeviceFound = waitForDeviceDiscovery(controlPoint, expectedDeviceType, maxWaitMs);
     }
 
+    // Verify that the test device was discovered
     assertTrue(testDeviceFound, 
                "TestDevice with type " + expectedDeviceType + 
-               " should be discovered by ControlPoint. Found " + 
-               deviceList.size() + " device(s).");
+               " should be discovered by ControlPoint.");
+
+    // Additional verification - find the device and check its properties
+    DeviceList deviceList = controlPoint.getDeviceList();
+    assertNotNull(deviceList, "Device list should not be null");
+    
+    Device discoveredDevice = null;
+    for (int i = 0; i < deviceList.size(); i++) {
+      Device device = deviceList.getDevice(i);
+      if (device != null && expectedDeviceType.equals(device.getDeviceType())) {
+        discoveredDevice = device;
+        break;
+      }
+    }
+    
+    assertNotNull(discoveredDevice, "Should be able to retrieve discovered device");
+    assertNotNull(discoveredDevice.getFriendlyName(), "Device should have a friendly name");
+    assertNotNull(discoveredDevice.getUDN(), "Device should have a UDN");
+    assertEquals(TestDevice.TEST_FRIENDLY_NAME, discoveredDevice.getFriendlyName(), 
+                 "Friendly name should match");
   }
 }
