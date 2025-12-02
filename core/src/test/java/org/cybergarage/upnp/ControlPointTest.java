@@ -58,9 +58,12 @@ public class ControlPointTest {
     }
   }
 
-  // Wait time constants
+  // Wait time constants for device discovery
+  // Device needs time to start HTTP server and SSDP sockets before responding to searches
   private static final int DEVICE_STARTUP_DELAY_MS = 500;
+  // Poll interval balances responsiveness vs CPU usage during discovery wait
   private static final int DISCOVERY_POLL_INTERVAL_MS = 500;
+  // Multiplier provides buffer beyond MX value for network delays and processing
   private static final int MAX_DISCOVERY_WAIT_MULTIPLIER = 3;
 
   /**
@@ -105,7 +108,11 @@ public class ControlPointTest {
         testDevice.stop();
       } catch (Exception e) {
         // Expected: Socket exceptions during cleanup are normal when shutting down network resources
-        System.err.println("Warning during testDevice cleanup: " + e.getClass().getSimpleName());
+        // Only log if it's an unexpected exception type
+        if (!(e instanceof java.net.SocketException)) {
+          System.err.println("Unexpected exception during testDevice cleanup: " + 
+                           e.getClass().getSimpleName() + ": " + e.getMessage());
+        }
       }
       testDevice = null;
     }
@@ -115,7 +122,11 @@ public class ControlPointTest {
         controlPoint.stop();
       } catch (Exception e) {
         // Expected: Socket exceptions during cleanup are normal when shutting down network resources
-        System.err.println("Warning during controlPoint cleanup: " + e.getClass().getSimpleName());
+        // Only log if it's an unexpected exception type
+        if (!(e instanceof java.net.SocketException)) {
+          System.err.println("Unexpected exception during controlPoint cleanup: " + 
+                           e.getClass().getSimpleName() + ": " + e.getMessage());
+        }
       }
       controlPoint = null;
     }
