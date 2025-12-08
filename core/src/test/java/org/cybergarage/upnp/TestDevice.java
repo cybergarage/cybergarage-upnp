@@ -13,8 +13,8 @@ package org.cybergarage.upnp;
 import org.cybergarage.upnp.device.InvalidDescriptionException;
 
 /**
- * TestDevice is a minimal UPnP device for testing purposes.
- * Based on the reference implementation in mUPnP (C version).
+ * TestDevice is a minimal UPnP device for testing purposes. Based on the reference implementation
+ * in mUPnP (C version).
  */
 public class TestDevice {
   public static final String DEVICE_TYPE = "urn:schemas-upnp-org:device:CyberGarageTestDevice:1";
@@ -28,8 +28,12 @@ public class TestDevice {
           + "    <minor>0</minor>\n"
           + "  </specVersion>\n"
           + "  <device>\n"
-          + "    <deviceType>" + DEVICE_TYPE + "</deviceType>\n"
-          + "    <friendlyName>" + FRIENDLY_NAME + "</friendlyName>\n"
+          + "    <deviceType>"
+          + DEVICE_TYPE
+          + "</deviceType>\n"
+          + "    <friendlyName>"
+          + FRIENDLY_NAME
+          + "</friendlyName>\n"
           + "    <manufacturer>CyberGarage</manufacturer>\n"
           + "    <manufacturerURL>http://www.cybergarage.org</manufacturerURL>\n"
           + "    <modelDescription>CyberGarage Test Device for Unit Testing</modelDescription>\n"
@@ -41,7 +45,7 @@ public class TestDevice {
 
   /**
    * Create a new test device instance.
-   * 
+   *
    * @return A new Device instance configured as a test device
    * @throws InvalidDescriptionException if the device description is invalid
    */

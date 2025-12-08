@@ -17,8 +17,8 @@ import junit.framework.TestSuite;
 import org.cybergarage.upnp.device.ST;
 
 /**
- * ControlPoint test for device discovery functionality.
- * Based on the reference test from mUPnP (C version).
+ * ControlPoint test for device discovery functionality. Based on the reference test from mUPnP (C
+ * version).
  */
 public class ControlPointTest extends TestCase {
 
@@ -46,14 +46,10 @@ public class ControlPointTest extends TestCase {
 
   /**
    * Test that a ControlPoint can discover a test device.
-   * 
-   * This test:
-   * 1. Creates and starts a ControlPoint
-   * 2. Creates and starts a test Device
-   * 3. Performs SSDP search for root devices
-   * 4. Waits for discovery (MX * 2 seconds)
-   * 5. Verifies the test device is found in the device list
-   * 6. Properly cleans up resources
+   *
+   * <p>This test: 1. Creates and starts a ControlPoint 2. Creates and starts a test Device 3.
+   * Performs SSDP search for root devices 4. Waits for discovery (MX * 2 seconds) 5. Verifies the
+   * test device is found in the device list 6. Properly cleans up resources
    */
   public void testDeviceDiscovery() throws Exception {
     ControlPoint cp = null;
@@ -96,9 +92,7 @@ public class ControlPointTest extends TestCase {
         }
       }
       assertTrue(
-          "Test device with type "
-              + TestDevice.DEVICE_TYPE
-              + " should be found in device list",
+          "Test device with type " + TestDevice.DEVICE_TYPE + " should be found in device list",
           testDeviceFound);
 
     } finally {
