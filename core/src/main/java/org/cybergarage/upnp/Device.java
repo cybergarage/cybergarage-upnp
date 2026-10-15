@@ -1780,7 +1780,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
       invalidActionControlRecieved(ctlReq);
       return;
     }
-    StateVariable stateVar = getStateVariable(varName);
+    StateVariable stateVar = service.getStateVariable(varName);
     if (stateVar.performQueryListener(ctlReq) == false) invalidActionControlRecieved(ctlReq);
   }
 
