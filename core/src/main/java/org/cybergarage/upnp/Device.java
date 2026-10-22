@@ -98,6 +98,8 @@ package org.cybergarage.upnp;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.URL;
 import java.util.Calendar;
@@ -1492,11 +1494,30 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
     String remoteAddr = ssdpPacket.getRemoteAddress();
     int remotePort = ssdpPacket.getRemotePort();
-    SSDPSearchResponseSocket ssdpResSock = new SSDPSearchResponseSocket();
     if (Debug.isOn() == true) ssdpRes.print();
     int ssdpCount = getSSDPAnnounceCount();
-    for (int i = 0; i < ssdpCount; i++) ssdpResSock.post(remoteAddr, remotePort, ssdpRes);
 
+    // Reply from the socket that received the M-SEARCH (SSDP port 1900), as other UPnP stacks
+    // do, instead of opening a new socket with a random port for every response (#17).
+    DatagramSocket recvSock = ssdpPacket.getSocket();
+    if (recvSock != null && recvSock.isClosed() == false) {
+      try {
+        byte[] resBytes = ssdpRes.getHeader().getBytes();
+        InetAddress remoteInetAddr = InetAddress.getByName(remoteAddr);
+        for (int i = 0; i < ssdpCount; i++)
+          recvSock.send(new DatagramPacket(resBytes, resBytes.length, remoteInetAddr, remotePort));
+        return true;
+      } catch (Exception e) {
+        Debug.warning(e);
+      }
+    }
+
+    SSDPSearchResponseSocket ssdpResSock = new SSDPSearchResponseSocket();
+    try {
+      for (int i = 0; i < ssdpCount; i++) ssdpResSock.post(remoteAddr, remotePort, ssdpRes);
+    } finally {
+      ssdpResSock.close();
+    }
     return true;
   }
 
@@ -1511,9 +1532,14 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
     if (isRootDevice == true) devUSN += "::" + USN.ROOTDEVICE;
 
     if (ST.isAllDevice(ssdpST) == true) {
-      String devNT = getNotifyDeviceNT();
-      int repeatCnt = (isRootDevice == true) ? 3 : 2;
-      for (int n = 0; n < repeatCnt; n++) postSearchResponse(ssdpPacket, devNT, devUSN);
+      // ssdp:all is answered with one response per target (UDA 1.1, 1.3.3): upnp:rootdevice
+      // (root devices only), the device UUID and the device type. Previously the same ST was sent
+      // two or three times instead (#17).
+      String devUDN = getUDN();
+      if (isRootDevice == true) postSearchResponse(ssdpPacket, ST.ROOT_DEVICE, devUSN);
+      postSearchResponse(ssdpPacket, devUDN, devUDN);
+      String devType = getDeviceType();
+      postSearchResponse(ssdpPacket, devType, devUDN + "::" + devType);
     } else if (ST.isRootDevice(ssdpST) == true) {
       if (isRootDevice == true) postSearchResponse(ssdpPacket, ST.ROOT_DEVICE, devUSN);
     } else if (ST.isUUIDDevice(ssdpST) == true) {
