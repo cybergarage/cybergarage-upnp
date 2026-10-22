@@ -183,7 +183,8 @@ public class HTTPMUSocket {
       } else {
         msock = new MulticastSocket();
       }
-      DatagramPacket dgmPacket = new DatagramPacket(msg.getBytes(), msg.length(), ssdpMultiGroup);
+      byte[] msgBytes = msg.getBytes();
+      DatagramPacket dgmPacket = new DatagramPacket(msgBytes, msgBytes.length, ssdpMultiGroup);
       // Thnaks for Theo Beisch (11/09/04)
       msock.setTimeToLive(UPnP.getTimeToLive());
       msock.send(dgmPacket);
@@ -227,6 +228,7 @@ public class HTTPMUSocket {
     else throw new IOException("Multicast socket has already been closed.");
 
     recvPacket.setTimeStamp(System.currentTimeMillis());
+    recvPacket.setSocket(ssdpMultiSock);
 
     return recvPacket;
   }

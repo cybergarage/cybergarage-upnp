@@ -181,7 +181,8 @@ public class HTTPUSocket {
   public boolean post(String addr, int port, String msg) {
     try {
       InetAddress inetAddr = InetAddress.getByName(addr);
-      DatagramPacket dgmPacket = new DatagramPacket(msg.getBytes(), msg.length(), inetAddr, port);
+      byte[] msgBytes = msg.getBytes();
+      DatagramPacket dgmPacket = new DatagramPacket(msgBytes, msgBytes.length, inetAddr, port);
       ssdpUniSock.send(dgmPacket);
     } catch (Exception e) {
       Debug.warning(e);
