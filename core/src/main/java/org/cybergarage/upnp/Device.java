@@ -1389,11 +1389,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
         bindAddresses[i] = binds[i].getHostAddress();
       }
     } else {
-      int nHostAddrs = HostInterface.getNHostAddresses();
-      bindAddresses = new String[nHostAddrs];
-      for (int n = 0; n < nHostAddrs; n++) {
-        bindAddresses[n] = HostInterface.getHostAddress(n);
-      }
+      bindAddresses = HostInterface.getHostAddresses();
     }
     for (int j = 0; j < bindAddresses.length; j++) {
       if (bindAddresses[j] == null || bindAddresses[j].length() == 0) continue;
@@ -1452,11 +1448,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
         bindAddresses[i] = binds[i].getHostAddress();
       }
     } else {
-      int nHostAddrs = HostInterface.getNHostAddresses();
-      bindAddresses = new String[nHostAddrs];
-      for (int n = 0; n < nHostAddrs; n++) {
-        bindAddresses[n] = HostInterface.getHostAddress(n);
-      }
+      bindAddresses = HostInterface.getHostAddresses();
     }
 
     for (int j = 0; j < bindAddresses.length; j++) {

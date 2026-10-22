@@ -76,11 +76,7 @@ public class SSDPSearchResponseSocketList extends Vector {
         bindAddresses[i] = binds[i].getHostAddress();
       }
     } else {
-      int nHostAddrs = HostInterface.getNHostAddresses();
-      bindAddresses = new String[nHostAddrs];
-      for (int n = 0; n < nHostAddrs; n++) {
-        bindAddresses[n] = HostInterface.getHostAddress(n);
-      }
+      bindAddresses = HostInterface.getHostAddresses();
     }
     try {
       for (int j = 0; j < bindAddresses.length; j++) {

@@ -85,26 +85,54 @@ public class HostInterface {
     return true;
   }
 
-  public static final int getNHostAddresses() {
-    if (hasAssignedInterface() == true) return 1;
+  // Interfaces that are down cannot be bound or reached, and loopback interfaces are only
+  // usable when loopback addresses are enabled (#44).
+  private static final boolean isUsableInterface(NetworkInterface ni) {
+    try {
+      if (ni.isUp() == false) return false;
+      if (USE_LOOPBACK_ADDR == false && ni.isLoopback() == true) return false;
+    } catch (SocketException e) {
+      return false;
+    }
+    return true;
+  }
 
-    int nHostAddrs = 0;
+  /**
+   * Returns a snapshot of the usable host addresses.
+   *
+   * <p>Callers that need several addresses should use this method instead of combining {@link
+   * #getNHostAddresses()} and {@link #getHostAddress(int)}, so that the count and the addresses
+   * come from the same enumeration even if the network configuration changes in between.
+   *
+   * @return usable host addresses, or an empty array if none are available
+   */
+  public static final String[] getHostAddresses() {
+    if (hasAssignedInterface() == true) return new String[] {getInterface()};
+
+    ArrayList hostAddrs = new ArrayList();
     try {
       Enumeration nis = NetworkInterface.getNetworkInterfaces();
-      while (nis.hasMoreElements()) {
+      while (nis != null && nis.hasMoreElements()) {
         NetworkInterface ni = (NetworkInterface) nis.nextElement();
+        if (isUsableInterface(ni) == false) continue;
         Enumeration addrs = ni.getInetAddresses();
         while (addrs.hasMoreElements()) {
           InetAddress addr = (InetAddress) addrs.nextElement();
           if (isUsableAddress(addr) == false) continue;
-          nHostAddrs++;
+          String host = addr.getHostAddress();
+          // if (addr instanceof Inet6Address)
+          //	host = "[" + host + "]";
+          hostAddrs.add(host);
         }
       }
     } catch (Exception e) {
       Debug.warning(e);
     }
-    ;
-    return nHostAddrs;
+    return (String[]) hostAddrs.toArray(new String[0]);
+  }
+
+  public static final int getNHostAddresses() {
+    return getHostAddresses().length;
   }
 
   /**
@@ -138,6 +166,11 @@ public class HostInterface {
     ArrayList addresses = new ArrayList();
     while (nis.hasMoreElements()) {
       NetworkInterface ni = (NetworkInterface) nis.nextElement();
+      try {
+        if (ni.isUp() == false) continue;
+      } catch (SocketException e) {
+        continue;
+      }
       Enumeration addrs = ni.getInetAddresses();
       while (addrs.hasMoreElements()) {
         InetAddress addr = (InetAddress) addrs.nextElement();
@@ -154,31 +187,9 @@ public class HostInterface {
   }
 
   public static final String getHostAddress(int n) {
-    if (hasAssignedInterface() == true) return getInterface();
-
-    int hostAddrCnt = 0;
-    try {
-      Enumeration nis = NetworkInterface.getNetworkInterfaces();
-      while (nis.hasMoreElements()) {
-        NetworkInterface ni = (NetworkInterface) nis.nextElement();
-        Enumeration addrs = ni.getInetAddresses();
-        while (addrs.hasMoreElements()) {
-          InetAddress addr = (InetAddress) addrs.nextElement();
-          if (isUsableAddress(addr) == false) continue;
-          if (hostAddrCnt < n) {
-            hostAddrCnt++;
-            continue;
-          }
-          String host = addr.getHostAddress();
-          // if (addr instanceof Inet6Address)
-          //	host = "[" + host + "]";
-          return host;
-        }
-      }
-    } catch (Exception e) {
-    }
-    ;
-    return "";
+    String[] hostAddrs = getHostAddresses();
+    if (n < 0 || hostAddrs.length <= n) return "";
+    return hostAddrs[n];
   }
 
   ////////////////////////////////////////////////
@@ -210,18 +221,18 @@ public class HostInterface {
   ////////////////////////////////////////////////
 
   public static final boolean hasIPv4Addresses() {
-    int addrCnt = getNHostAddresses();
-    for (int n = 0; n < addrCnt; n++) {
-      String addr = getHostAddress(n);
+    String[] hostAddrs = getHostAddresses();
+    for (int n = 0; n < hostAddrs.length; n++) {
+      String addr = hostAddrs[n];
       if (isIPv4Address(addr) == true) return true;
     }
     return false;
   }
 
   public static final boolean hasIPv6Addresses() {
-    int addrCnt = getNHostAddresses();
-    for (int n = 0; n < addrCnt; n++) {
-      String addr = getHostAddress(n);
+    String[] hostAddrs = getHostAddresses();
+    for (int n = 0; n < hostAddrs.length; n++) {
+      String addr = hostAddrs[n];
       if (isIPv6Address(addr) == true) return true;
     }
     return false;
@@ -232,18 +243,18 @@ public class HostInterface {
   ////////////////////////////////////////////////
 
   public static final String getIPv4Address() {
-    int addrCnt = getNHostAddresses();
-    for (int n = 0; n < addrCnt; n++) {
-      String addr = getHostAddress(n);
+    String[] hostAddrs = getHostAddresses();
+    for (int n = 0; n < hostAddrs.length; n++) {
+      String addr = hostAddrs[n];
       if (isIPv4Address(addr) == true) return addr;
     }
     return "";
   }
 
   public static final String getIPv6Address() {
-    int addrCnt = getNHostAddresses();
-    for (int n = 0; n < addrCnt; n++) {
-      String addr = getHostAddress(n);
+    String[] hostAddrs = getHostAddresses();
+    for (int n = 0; n < hostAddrs.length; n++) {
+      String addr = hostAddrs[n];
       if (isIPv6Address(addr) == true) return addr;
     }
     return "";
