@@ -13,7 +13,6 @@ var classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber =
     [ "incrementNotifyCount", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#ae676c7d9c97fc1eebae7fe46dff0b07a", null ],
     [ "isExpired", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#a30b8da8e123c8dd45f843eba51fef478", null ],
     [ "renew", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#abe762e483321b18e873092fd1816677d", null ],
-    [ "setDeliveryAddress", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#aa754810aa55c8950053c559e22a16f3c", null ],
     [ "setDeliveryURL", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#ae409b38e5a68f0858a888a725a0ddae3", null ],
     [ "setInterfaceAddress", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#ad8b126bdcf8bc84d45daaa1b73e47f75", null ],
     [ "setNotifyCount", "classorg_1_1cybergarage_1_1upnp_1_1event_1_1Subscriber.html#a88ffa49cec9bdf57822f45fdaf42c146", null ],

@@ -61,7 +61,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2cybergarage-upnp-prgguide.html',''); initResizable(true); });
+$(function(){initNavTree('md_doc_2cybergarage-upnp-prgguide.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -69,21 +69,21 @@ $(function(){initNavTree('md_docs_2cybergarage-upnp-prgguide.html',''); initResi
   <div class="headertitle"><div class="title">Programming Guide</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md18"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <p>This programming guide is for developers who want to create UPnP™ devices and control points using cybergarage-upnp. The guide explains how to create your UPnP™ devices and control points using the cybergarage-upnp package.</p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
 <p>The UPnP™ architecture is based on open networking to enable the discovery and control of networked devices and services, such as media servers and players at home.</p>
 <p>The UPnP™ architecture relies on many standard protocols, such as GENA, SSDP, SOAP, HTTPU, and HTTP. Therefore, you need to understand and implement these protocols to create your UPnP™ devices.</p>
 <p>cybergarage-upnp is a development package for UPnP™ developers. It automatically handles these protocols and supports the quick creation of your devices and control points. Please visit the official <a href="http://www.upnp.org/">UPnP™ Forum</a> site for more detailed information about UPnP™.</p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Device</h1>
 <p>The following static structure diagram shows the related classes of cybergarage-upnp used to create your UPnP™ device. The device can have some embedded devices and services, and the services can have some actions and state variables.</p>
 <div class="image">
 <img src="device-class-overview.png" alt=""/>
 </div>
     <p>The above static structure diagram is simplified to explain the concept.</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Description</h2>
 <p>First, you need to create some description files for your devices and services when you want to create your UPnP™ device.</p>
 <div class="image">
@@ -91,7 +91,7 @@ Description</h2>
 </div>
     <p>The description of the root device should not include the URLBase element because it is added automatically when the device is created using the description.</p>
 <p>The service descriptions are required to create a device, but the presentationURL and the iconList are recommended options. Please refer to the UPnP™ specifications for more detailed information about the description format.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Initiating</h2>
 <p>To create a UPnP™ device, create an instance of the Device class with the root description file. The created device is a root device, and only the root device can be activated using Device::start(). The device is announced to the UPnP™ network when it is started. The following example shows how to initiate a device.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.upnp.*;</div>
@@ -143,14 +143,14 @@ Initiating</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Lease time   </td><td class="markdownTableBodyNone">1800   </td><td class="markdownTableBodyNone">setLeaseTime()   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Notify</h2>
 <p>Your device is announced to the UPnP™ network using a notify message with ssdp::alive automatically when the device is started using Device::start(). When the device is stopped using Device::stop(), a notify message is posted with ssdp::byebye. You can also announce the notify messages manually using Device::announce() and Device::byebye().</p>
 <div class="image">
 <img src="device-notify.png" alt=""/>
 </div>
     <p>When a control point sends a search request with M-SEARCH to the UPnP™ network, the active device sends the search response to the control point automatically. The device repeats the announcement within the lease time automatically.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Embedded Devices</h2>
 <p>Devices may have some embedded devices. Use Device::getDeviceList() to get the list of embedded devices. The following example outputs the friendly names of all embedded devices in the device.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keywordtype">void</span> printDevice(Device dev) {</div>
@@ -175,7 +175,7 @@ Embedded Devices</h2>
 </div><!-- fragment --><p>You can find an embedded device by the friendly name or UDN using Device::getDevice(). The following example gets an embedded device by the friendly name.</p>
 <div class="fragment"><div class="line">Device homeServerDev = ...;</div>
 <div class="line">Device musicDev = homeServerDev.getDevice(<span class="stringliteral">&quot;music&quot;</span>);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Service</h2>
 <p>Use Device::getServiceList() to access the embedded services of the device. The service may have some actions and state variables. Use Service::getActionList() to get the actions, and use Service::getServiceStateTable() to get the state variables. The following example outputs all actions and state variables in a device.</p>
 <div class="fragment"><div class="line">Device dev = ...;</div>
@@ -201,7 +201,7 @@ Service</h2>
 <div class="line">Service timerService = clockDev.getService(<span class="stringliteral">&quot;timer&quot;</span>);</div>
 <div class="line">Action getTimeAct = clockDev.getAction(<span class="stringliteral">&quot;GetTime&quot;</span>);</div>
 <div class="line">StateVariable timeStat = clockDev.getStateVariable(<span class="stringliteral">&quot;time&quot;</span>);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Control</h2>
 <p>To receive action control events from control points, the device needs to implement the ActionListener interface. The listener must implement the actionControlReceived() method, which has the action and argument list parameters. The input arguments contain the values passed from the control point. Set the response values in the output arguments and return true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use Action::setStatus() to return other UPnP errors.</p>
 <p>To receive query control events from control points, the device needs to implement the QueryListener interface. The listener must implement the queryControlReceived() method, which has the service variable parameter and returns true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use StateVariable::setStatus() to return other UPnP errors. The following sample is a clock device. The device executes two action control requests and a query control request.</p>
@@ -265,7 +265,7 @@ Control</h2>
 <div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Event</h2>
 <p>The control point may subscribe to some events of the device. You do not need to manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point to the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends an unsubscription message.</p>
 <p>Use StateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using StateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.</p>
@@ -273,15 +273,15 @@ Event</h2>
 <div class="line">StateVariable timeVar = clockDevice.getStateVariable(<span class="stringliteral">&quot;Time&quot;</span>);</div>
 <div class="line">String timeStr = ...;</div>
 <div class="line">timeVar.setValue(timeStr);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Control Point</h1>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Class Overview</h2>
 <p>The following static structure diagram shows the related classes of cybergarage-upnp used to create your UPnP™ control point. The control point can have some root devices in the UPnP™ network.</p>
 <div class="image">
 <img src="ctrlpoint-class-overview.png" alt=""/>
 </div>
-    <h2><a class="anchor" id="autotoc_md30"></a>
+    <h2><a class="anchor" id="autotoc_md12"></a>
 Initiating</h2>
 <p>To create a UPnP™ control point, create an instance of the ControlPoint class. Use ControlPoint::start() to activate the control point. The control point multicasts a discovery message searching for all devices to the UPnP™ network automatically when it is activated.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.upnp.*;</div>
@@ -303,7 +303,7 @@ Initiating</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Search Response   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">setSearchMx()   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Notify</h2>
 <p>The control point receives notify events from devices in the UPnP™ network, and the devices are added or removed from the control point automatically. The expired device is removed from the device list of the control point automatically too. You do not need to manage the notify events, but you can receive the event by implementing the NotifyListener interface. The following sample receives the notify messages.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements NotifyListener {</div>
@@ -337,7 +337,7 @@ Notify</h2>
 <div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md32"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Search</h2>
 <p>You can update the device lists using ControlPoint::search(). The discovered root devices are added to the control point automatically, and you can receive the response by implementing the SearchResponseListener interface. The following sample receives the search response messages.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyCtrlPoint <span class="keyword">extends</span> ControlPoint implements SearchResponseListener {</div>
@@ -356,7 +356,7 @@ Search</h2>
 <div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Root Devices</h2>
 <p>Use ControlPoint::getDeviceList() to get the list of discovered root devices. The following example outputs the friendly names of the root devices.</p>
 <div class="fragment"><div class="line">ControlPoint ctrlPoint = <span class="keyword">new</span> ControlPoint();</div>
@@ -376,7 +376,7 @@ Root Devices</h2>
 <div class="line">ctrlPoint.start();</div>
 <div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line">Device homeServerDev = ctrlPoint.getDevice(<span class="stringliteral">&quot;xxxx-home-server&quot;</span>);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md34"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Control</h2>
 <p>The control point can send action or query control messages to the discovered devices. To send an action control message, use Action::setArgumentValue() and Action::postControlAction(). You should set the action values for all input arguments, and the output argument values are ignored if you set them. The following sample posts an action control request that sets a new time and outputs the response result.</p>
 <div class="fragment"><div class="line">Device clockDev = ...;</div>
@@ -424,7 +424,7 @@ Control</h2>
 <div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md35"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 Event</h2>
 <p>The control point can subscribe to events of the discovered devices and get the state changes of the services. Use ControlPoint::subscribe() and implement the EventListener interface. The listener must implement the eventNotifyReceived() method.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>MyControlPoint <span class="keyword">extends</span> ControlPoint implements EventListener {</div>
@@ -446,16 +446,16 @@ Event</h2>
 <div class="line">  String sid = timeService.getSID();</div>
 <div class="line">  <span class="keywordtype">long</span> timeout = timeService.getTimeout();</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 IPv6</h2>
 <p>cybergarage-upnp binds all interfaces in the platform when the devices or control points are created, and the IPv6 sockets are created automatically if the interfaces have IPv6 addresses.</p>
 <p>cybergarage-upnp supports IPv4 and IPv6 both by default. If you want to use only IPv6 interfaces, call the following method before the devices or control points are created.</p>
 <div class="fragment"><div class="line">UPnP.setEnable(UPnP.USE_ONLY_IPV6_ADDR);</div>
 </div><!-- fragment --><p>Link local is the default scope for multicasting of cybergarage-upnp. Use UPnP.setEnable() to change the scope. The following example changes the scope to the site local.</p>
 <div class="fragment"><div class="line">UPnP.setEnable(UPnP.USE_IPV6_SITE_LOCAL_SCOPE);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
 Inside cybergarage-upnp</h1>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Overriding HTTP Service</h2>
 <p>The Device class of cybergarage-upnp implements the HTTPRequestListener interface of the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package to handle some HTTP requests from the control points. The HTTPRequestListener interface is shown below.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>HTTPRequestListener {</div>

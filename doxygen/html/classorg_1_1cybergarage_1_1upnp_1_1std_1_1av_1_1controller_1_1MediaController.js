@@ -1,7 +1,7 @@
 var classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController =
 [
     [ "MediaController", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#a9260ca621b67ddc08437a6faa730f05f", null ],
-    [ "browse", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#a6a9dd86e7f896ba577a4d98f4c3b9c85", null ],
+    [ "browse", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#a2fb831697164a956a50164a791fe97dc", null ],
     [ "browse", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#a3d87ad816da39bc897ba1227ac2e9db3", null ],
     [ "browse", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#af6791ab63d7457bed04194b36546e93f", null ],
     [ "browse", "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1controller_1_1MediaController.html#afbb708e19b1277528525fd9268797bd5", null ],

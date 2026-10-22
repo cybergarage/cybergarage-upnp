@@ -204,9 +204,6 @@ var hierarchy =
     [ "org.cybergarage.upnp.UPnPStatus", "classorg_1_1cybergarage_1_1upnp_1_1UPnPStatus.html", null ],
     [ "org.cybergarage.upnp.device.USN", "classorg_1_1cybergarage_1_1upnp_1_1device_1_1USN.html", null ],
     [ "org.cybergarage.xml.XML", "classorg_1_1cybergarage_1_1xml_1_1XML.html", null ],
-    [ "FilterInputStream", null, [
-      [ "org.cybergarage.util.LimitedInputStream", "classorg_1_1cybergarage_1_1util_1_1LimitedInputStream.html", null ]
-    ] ],
     [ "Vector", null, [
       [ "org.cybergarage.http.HTTPServerList", "classorg_1_1cybergarage_1_1http_1_1HTTPServerList.html", null ],
       [ "org.cybergarage.http.ParameterList", "classorg_1_1cybergarage_1_1http_1_1ParameterList.html", null ],
