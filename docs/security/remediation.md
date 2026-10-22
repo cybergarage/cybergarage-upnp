@@ -42,6 +42,27 @@ The checks use temporary Maven dependencies and a temporary JDK; no tool install
 
 All former `doc/` content, including the programming guide, PDF and images, now lives under `docs/`. Doxygen input/output and image paths, Javadoc output, generated-overview links, GitHub Pages publication and ignore rules use the unified location. Generated `docs/javadoc/` and `docs/doxygen/` content remains ignored.
 
+## SonarCloud CI configuration (2026-10-22)
+
+The SonarCloud project `cybergarage_cybergarage-upnp` is bound to
+`https://github.com/cybergarage/cybergarage-upnp` and already runs automatic
+analysis, including pull request #48. The Maven workflow incorrectly targeted
+`cybergarage_cpan-net-upnp`, which is bound to the separate `cpan-net-upnp`
+repository. After authentication was configured, this caused the scanner to fail
+because that repository has no pull request #48.
+
+The workflow now relies on the existing SonarCloud automatic analysis and its
+separate GitHub check. The duplicate Maven scanner and its dedicated cache are
+removed; Maven caching remains provided by `actions/setup-java`. Build, tests,
+JaCoCo and Codecov remain enabled. Automatic analysis does not import JaCoCo
+coverage, which remains available through Codecov. SonarCloud's quality gate is
+unchanged. The two reliability findings in #48 are addressed by performing the
+HTTP wire-budget addition as `long` and matching the parent stream's synchronized
+`reset()` contract.
+
+See [SonarCloud automatic analysis](https://docs.sonarsource.com/sonarqube-cloud/analyzing-source-code/automatic-analysis)
+for the incompatibility with simultaneous CI-based analysis.
+
 ## Remaining uncertainty
 
 The three deferred audit leads remain outside the nine confirmed findings: remote SCPD local-file precedence needs an application-visible disclosure sink; deeply nested XML impact depends on parser/runtime behavior; and unvalidated GENA event delivery needs a security-sensitive application outcome. This patch does not claim to resolve those leads or replace deployment-specific authorization, firewalling or dependency-advisory review.

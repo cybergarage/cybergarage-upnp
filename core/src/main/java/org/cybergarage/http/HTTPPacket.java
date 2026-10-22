@@ -161,7 +161,7 @@ public class HTTPPacket {
       InputStream reader =
           new org.cybergarage.util.LimitedInputStream(
               in,
-              MAX_CONTENT_BYTES + MAX_HEADER_BYTES + MAX_LINE_BYTES,
+              (long) MAX_CONTENT_BYTES + MAX_HEADER_BYTES + MAX_LINE_BYTES,
               HTTP.DEFAULT_TIMEOUT * 1000L);
       int headerBytes = 0;
       int headerCount = 0;

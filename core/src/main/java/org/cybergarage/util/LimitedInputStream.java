@@ -20,6 +20,7 @@ public final class LimitedInputStream extends FilterInputStream {
     if (System.nanoTime() - deadline >= 0) throw new IOException("Message deadline exceeded");
   }
 
+  @Override
   public int read() throws IOException {
     checkDeadline();
     int value = in.read();
@@ -28,6 +29,7 @@ public final class LimitedInputStream extends FilterInputStream {
     return value;
   }
 
+  @Override
   public int read(byte[] buffer, int offset, int length) throws IOException {
     java.util.Objects.checkFromIndexSize(offset, length, buffer.length);
     if (length == 0) return 0;
@@ -39,6 +41,7 @@ public final class LimitedInputStream extends FilterInputStream {
     return count;
   }
 
+  @Override
   public long skip(long count) throws IOException {
     if (count <= 0) return 0;
     checkDeadline();
@@ -48,11 +51,13 @@ public final class LimitedInputStream extends FilterInputStream {
     return skipped;
   }
 
+  @Override
   public boolean markSupported() {
     return false;
   }
 
-  public void reset() throws IOException {
+  @Override
+  public synchronized void reset() throws IOException {
     throw new IOException("Mark/reset not supported");
   }
 }
