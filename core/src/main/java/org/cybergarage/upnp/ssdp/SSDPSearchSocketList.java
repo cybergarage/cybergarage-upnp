@@ -96,6 +96,8 @@ public class SSDPSearchSocketList extends Vector {
         if (HostInterface.isIPv6Address(bindAddresses[i]))
           ssdpSearchSocket = new SSDPSearchSocket(bindAddresses[i], port, multicastIPv6);
         else ssdpSearchSocket = new SSDPSearchSocket(bindAddresses[i], port, multicastIPv4);
+        // Skip addresses whose multicast socket could not be opened (#30).
+        if (ssdpSearchSocket.getSocket() == null) continue;
         add(ssdpSearchSocket);
       }
     }

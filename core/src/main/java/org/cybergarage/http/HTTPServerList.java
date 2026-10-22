@@ -22,6 +22,7 @@ import java.util.Vector;
 
 import org.cybergarage.net.HostInterface;
 import org.cybergarage.upnp.Device;
+import org.cybergarage.util.Debug;
 
 public class HTTPServerList extends Vector {
   ////////////////////////////////////////////////
@@ -77,18 +78,18 @@ public class HTTPServerList extends Vector {
     } else {
       bindAddresses = HostInterface.getHostAddresses();
     }
-    int j = 0;
+    // Skip addresses that cannot be bound (e.g. mobile data interfaces on Android) instead of
+    // discarding the servers that were already opened on the other addresses (#30).
     for (int i = 0; i < bindAddresses.length; i++) {
+      if (bindAddresses[i] == null || bindAddresses[i].length() == 0) continue;
       HTTPServer httpServer = new HTTPServer();
-      if ((bindAddresses[i] == null) || (httpServer.open(bindAddresses[i], port) == false)) {
-        close();
-        clear();
-      } else {
-        add(httpServer);
-        j++;
+      if (httpServer.open(bindAddresses[i], port) == false) {
+        Debug.warning("Unable to open HTTP server on " + bindAddresses[i] + ":" + port);
+        continue;
       }
+      add(httpServer);
     }
-    return j;
+    return size();
   }
 
   public boolean open(int port) {

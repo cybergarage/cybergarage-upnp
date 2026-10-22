@@ -23,6 +23,7 @@ import java.util.*;
 import org.cybergarage.net.*;
 
 import org.cybergarage.upnp.*;
+import org.cybergarage.util.Debug;
 
 public class SSDPSearchResponseSocketList extends Vector {
   ////////////////////////////////////////////////
@@ -78,17 +79,20 @@ public class SSDPSearchResponseSocketList extends Vector {
     } else {
       bindAddresses = HostInterface.getHostAddresses();
     }
-    try {
-      for (int j = 0; j < bindAddresses.length; j++) {
+    // Skip addresses that cannot be bound (e.g. mobile data interfaces on Android) instead of
+    // failing on every address, so that discovery still works on the usable interfaces (#30).
+    // Fail only when no address could be bound, so that the caller retries with another port.
+    for (int j = 0; j < bindAddresses.length; j++) {
+      if (bindAddresses[j] == null || bindAddresses[j].length() == 0) continue;
+      try {
         SSDPSearchResponseSocket socket = new SSDPSearchResponseSocket(bindAddresses[j], port);
+        if (socket.getDatagramSocket() == null) continue;
         add(socket);
+      } catch (Exception e) {
+        Debug.warning("Unable to open SSDP search response socket on " + bindAddresses[j]);
       }
-    } catch (Exception e) {
-      stop();
-      close();
-      clear();
-      return false;
     }
+    if (size() == 0) return false;
     return true;
   }
 
