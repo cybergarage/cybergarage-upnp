@@ -1,6 +1,24 @@
-2025-XX-X Satoshi Konno <skonno@cybergarage.org>
-	* v2.1.6
-	* Add package-info.java for javadoc
+2026-10-22 Satoshi Konno <skonno@cybergarage.org>
+	* v2.2.0
+	* Harden network security boundaries
+	  - Limit HTTP request line, header and body sizes, and concurrent HTTP connections
+	  - Restrict GENA SUBSCRIBE callback URLs to the subscriber's own address
+	  - Cap SSDP search response MX to 5 seconds and ignore invalid MX values
+	  - Harden XML parsing against external entity attacks
+	* Add new APIs
+	  - MediaController::browseDirectChildren() and browseMetaData()
+	  - HTTPRequest::setResponseTimeout() and post(URL)
+	  - Subscriber::setDeliveryAddress()
+	  - LimitedInputStream
+	* Fix QueryStateVariable to resolve state variables from the service selected by the control URL
+	* Correct programming guide API calls and control point defaults
+	* Restructure Maven build as a multi-module project including tools and examples
+	* Add JaCoCo aggregated coverage reporting, Codecov and SonarCloud integration
+	* Update JaCoCo to 0.8.15 to support recent JDKs
+	* Compile with maven.compiler.release=11 to check against the Java 11 API
+	* Migrate Maven Central publishing from OSSRH to the Sonatype Central Portal
+	* Add ControlPoint device discovery tests and security tests
+	* Add Javadoc to core UPnP API classes and package-info.java
 	* Format source codes using Google Java Style
 
 2021-09-20 Satoshi Konno <skonno@cybergarage.org>
