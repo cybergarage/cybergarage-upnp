@@ -132,14 +132,14 @@ Initiating</h2>
 <div class="image">
 <img src="device-ports.png" alt=""/>
 </div>
-    <p>The root device is created with the following default parameters. You can change these parameters using the following methods before starting the root device.</p>
+    <p>The root device is created with the following default parameters. Where a setter is listed, you can change the parameter before starting the root device.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Parameter   </th><th class="markdownTableHeadNone">Default   </th><th class="markdownTableHeadNone">Setter Method    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">HTTP port   </td><td class="markdownTableBodyNone">4004   </td><td class="markdownTableBodyNone">setHTTPPort()    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Description URI   </td><td class="markdownTableBodyNone">/description.xml   </td><td class="markdownTableBodyNone">setDescriptionURI()    </td></tr>
+<td class="markdownTableBodyNone">Description URI   </td><td class="markdownTableBodyNone">/description.xml   </td><td class="markdownTableBodyNone">Not publicly configurable    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Lease time   </td><td class="markdownTableBodyNone">1800   </td><td class="markdownTableBodyNone">setLeaseTime()   </td></tr>
 </table>
@@ -206,7 +206,7 @@ Control</h2>
 <p>To receive action control events from control points, the device needs to implement the ActionListener interface. The listener must implement the actionControlReceived() method, which has the action and argument list parameters. The input arguments contain the values passed from the control point. Set the response values in the output arguments and return true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use Action::setStatus() to return other UPnP errors.</p>
 <p>To receive query control events from control points, the device needs to implement the QueryListener interface. The listener must implement the queryControlReceived() method, which has the service variable parameter and returns true when the request is valid. Otherwise, return false when the request is invalid. A UPnPError response is returned to the control point automatically when the returned value is false or the device does not implement the interface. The default UPnPError is INVALID_ACTION, but you can use StateVariable::setStatus() to return other UPnP errors. The following sample is a clock device. The device executes two action control requests and a query control request.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
-<div class="line">  <span class="keyword">public</span> ClockDevice() {</div>
+<div class="line">  <span class="keyword">public</span> ClockDevice() throws InvalidDescriptionException {</div>
 <div class="line">    super(<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>);</div>
 <div class="line">    Action setTimeAction = getAction(<span class="stringliteral">&quot;SetTime&quot;</span>);</div>
 <div class="line">    setTimeAction.setActionListener(<span class="keyword">this</span>);</div>
@@ -234,7 +234,7 @@ Control</h2>
 <div class="line">      currTimeArg.setValue(currTimeStr);</div>
 <div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
-<div class="line">    action.setStatus(UPnP.INVALID_ACTION, <span class="stringliteral">&quot;...&quot;</span>);</div>
+<div class="line">    action.setStatus(UPnPStatus.INVALID_ACTION, <span class="stringliteral">&quot;...&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">  }</div>
 <div class="line"> </div>
@@ -245,13 +245,13 @@ Control</h2>
 <div class="line">      stateVar.setValue(currTimeStr);</div>
 <div class="line">      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
-<div class="line">    stateVar.setStatus(UPnP.INVALID_VAR, <span class="stringliteral">&quot;...&quot;</span>);</div>
+<div class="line">    stateVar.setStatus(UPnPStatus.INVALID_VAR, <span class="stringliteral">&quot;...&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Use Device::setActionListener() or Service::setActionListener() to add a listener to all control actions in a device or a service. Use Device::setQueryListener() or Service::setQueryListener() to add a listener to all query actions in a device or a service. The following sample sets a listener to all actions in a device.</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
-<div class="line">  <span class="keyword">public</span> ClockDevice() {</div>
+<div class="line">  <span class="keyword">public</span> ClockDevice() throws InvalidDescriptionException {</div>
 <div class="line">    super(<span class="stringliteral">&quot;/clock/www/description.xml&quot;</span>);</div>
 <div class="line">    setActionListener(<span class="keyword">this</span>);</div>
 <div class="line">    setQueryListener(<span class="keyword">this</span>);</div>
@@ -268,7 +268,7 @@ Control</h2>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Event</h2>
 <p>The control point may subscribe to some events of the device. You do not need to manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point to the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends an unsubscription message.</p>
-<p>Use ServiceStateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using ServiceStateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.</p>
+<p>Use StateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using StateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.</p>
 <div class="fragment"><div class="line">Device clockDevice = ...;</div>
 <div class="line">StateVariable timeVar = clockDevice.getStateVariable(<span class="stringliteral">&quot;Time&quot;</span>);</div>
 <div class="line">String timeStr = ...;</div>
@@ -295,11 +295,11 @@ Initiating</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Parameter   </th><th class="markdownTableHeadNone">Default   </th><th class="markdownTableHeadNone">Setter Method    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">HTTP port   </td><td class="markdownTableBodyNone">39500   </td><td class="markdownTableBodyNone">setHTTPPort()    </td></tr>
+<td class="markdownTableBodyNone">HTTP port   </td><td class="markdownTableBodyNone">8058   </td><td class="markdownTableBodyNone">setHTTPPort()    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">SSDP port   </td><td class="markdownTableBodyNone">39400   </td><td class="markdownTableBodyNone">setSSDPPort()    </td></tr>
+<td class="markdownTableBodyNone">SSDP port   </td><td class="markdownTableBodyNone">8008   </td><td class="markdownTableBodyNone">setSSDPPort()    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Subscription URI   </td><td class="markdownTableBodyNone">/eventSub   </td><td class="markdownTableBodyNone">setEventSubURI()    </td></tr>
+<td class="markdownTableBodyNone">Subscription URI   </td><td class="markdownTableBodyNone">/evetSub   </td><td class="markdownTableBodyNone">setEventSubURI()    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Search Response   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">setSearchMx()   </td></tr>
 </table>
@@ -394,18 +394,18 @@ Control</h2>
 <div class="line">    <span class="comment">// ...existing code...</span></div>
 <div class="line">  }</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
-<div class="line">  UPnPStatus err = setTimeAct.getUPnPStatus();</div>
+<div class="line">  UPnPStatus err = setTimeAct.getControlStatus();</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Code = &quot;</span> + err.getCode());</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Desc = &quot;</span> + err.getDescription());</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>To send a query control message, use StateVariable::postQueryControl(). The following sample posts a query control request and outputs the return value.</p>
+</div><!-- fragment --><p>To send a query control message, use StateVariable::postQuerylAction(). The following sample posts a query control request and outputs the return value.</p>
 <div class="fragment"><div class="line">Device clockDev = ...;</div>
 <div class="line">StateVariable timeStateVar = clockDev.getStateVariable(<span class="stringliteral">&quot;time&quot;</span>);</div>
-<div class="line"><span class="keywordflow">if</span> (timeStateVar.postQueryControl()) {</div>
+<div class="line"><span class="keywordflow">if</span> (timeStateVar.postQuerylAction()) {</div>
 <div class="line">  String value = timeStateVar.getValue();</div>
 <div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
-<div class="line">  UPnPStatus err = timeStateVar.getUPnPStatus();</div>
+<div class="line">  UPnPStatus err = timeStateVar.getQueryStatus();</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Code = &quot;</span> + err.getCode());</div>
 <div class="line">  System.out.println(<span class="stringliteral">&quot;Error Desc = &quot;</span> + err.getDescription());</div>
 <div class="line">}</div>
@@ -459,18 +459,19 @@ Inside cybergarage-upnp</h1>
 Overriding HTTP Service</h2>
 <p>The Device class of cybergarage-upnp implements the HTTPRequestListener interface of the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package to handle some HTTP requests from the control points. The HTTPRequestListener interface is shown below.</p>
 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>HTTPRequestListener {</div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestReceived(HTTPRequest httpReq);</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestRecieved(HTTPRequest httpReq);</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>To override the interface, import the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package and override the httpRequestReceived method in your device that is a subclass of the Device class. The following example is a clock device using cybergarage-upnp, and it adds the override method to return the presentation page.</p>
+</div><!-- fragment --><p>To override the interface, import the <a class="el" href="namespaceorg_1_1cybergarage_1_1http.html">org.cybergarage.http</a> package and override the httpRequestRecieved method in your device that is a subclass of the Device class. The following example is a clock device using cybergarage-upnp, and it adds the override method to return the presentation page.</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> org.cybergarage.http.*;</div>
 <div class="line"><span class="comment">// ...existing code...</span></div>
 <div class="line"><span class="keyword">public</span> <span class="keyword">class </span>ClockDevice <span class="keyword">extends</span> Device implements ActionListener, QueryListener {</div>
 <div class="line">  <span class="comment">// ...existing code...</span></div>
 <div class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String PRESENTATION_URI = <span class="stringliteral">&quot;/presentation&quot;</span>;</div>
-<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestReceived(HTTPRequest httpReq) {</div>
+<div class="line">  @Override</div>
+<div class="line">  <span class="keyword">public</span> <span class="keywordtype">void</span> httpRequestRecieved(HTTPRequest httpReq) {</div>
 <div class="line">    String uri = httpReq.getURI();</div>
 <div class="line">    <span class="keywordflow">if</span> (!uri.startsWith(PRESENTATION_URI)) {</div>
-<div class="line">      super.httpRequestReceived(httpReq);</div>
+<div class="line">      super.httpRequestRecieved(httpReq);</div>
 <div class="line">      <span class="keywordflow">return</span>;</div>
 <div class="line">    }</div>
 <div class="line">    Clock clock = Clock.getInstance();</div>
