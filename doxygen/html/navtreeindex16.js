@@ -1,5 +1,9 @@
 var NAVTREEINDEX16 =
 {
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a1c913f365c34d5746f2503000ede3622":[8,0,0,0,4,4,0,2,7,90],
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a1c913f365c34d5746f2503000ede3622":[9,0,0,0,4,4,0,2,7,90],
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a1d18b1df9152d6b1f6b9e3b99f5691e9":[8,0,0,0,4,4,0,2,7,63],
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a1d18b1df9152d6b1f6b9e3b99f5691e9":[9,0,0,0,4,4,0,2,7,63],
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a22f6100ecca54c07e7db667ebdde8cc0":[8,0,0,0,4,4,0,2,7,45],
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a22f6100ecca54c07e7db667ebdde8cc0":[9,0,0,0,4,4,0,2,7,45],
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1renderer_1_1RenderingControl.html#a25be9e34f641c31aab837d6065c0aebe":[8,0,0,0,4,4,0,2,7,85],
@@ -245,9 +249,5 @@ var NAVTREEINDEX16 =
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionInfoList.html#a5274a0ed8922a92ae43645d4e8bf7e6f":[8,0,0,0,4,4,0,3,4,1],
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionInfoList.html#a5274a0ed8922a92ae43645d4e8bf7e6f":[9,0,0,0,4,4,0,3,4,1],
 "classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionInfoList.html#ad0169c443b0f33ded2ad3eef976e0e9b":[8,0,0,0,4,4,0,3,4,0],
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionInfoList.html#ad0169c443b0f33ded2ad3eef976e0e9b":[9,0,0,0,4,4,0,3,4,0],
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html":[8,0,0,0,4,4,0,3,5],
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html":[9,0,0,0,4,4,0,3,5],
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html#a03e523da6505a57ce305a5cb19b56cc1":[8,0,0,0,4,4,0,3,5,4],
-"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionManager.html#a03e523da6505a57ce305a5cb19b56cc1":[9,0,0,0,4,4,0,3,5,4]
+"classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1ConnectionInfoList.html#ad0169c443b0f33ded2ad3eef976e0e9b":[9,0,0,0,4,4,0,3,4,0]
 };

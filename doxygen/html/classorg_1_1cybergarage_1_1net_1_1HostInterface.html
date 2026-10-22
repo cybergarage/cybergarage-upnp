@@ -81,6 +81,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:acc30a25ac727ea3328bcae560abf9a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dcdb64c93328ed4e27c8177dfe6bc46" id="r_a9dcdb64c93328ed4e27c8177dfe6bc46"><td class="memItemLeft" align="right" valign="top">static final String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dcdb64c93328ed4e27c8177dfe6bc46">getInterface</a> ()</td></tr>
 <tr class="separator:a9dcdb64c93328ed4e27c8177dfe6bc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f000caa1e5d596c0de01ba1b710de6" id="r_a38f000caa1e5d596c0de01ba1b710de6"><td class="memItemLeft" align="right" valign="top">static final String[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38f000caa1e5d596c0de01ba1b710de6">getHostAddresses</a> ()</td></tr>
+<tr class="separator:a38f000caa1e5d596c0de01ba1b710de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad756d92fcd94795f2049c3b16366c870" id="r_ad756d92fcd94795f2049c3b16366c870"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad756d92fcd94795f2049c3b16366c870">getNHostAddresses</a> ()</td></tr>
 <tr class="separator:ad756d92fcd94795f2049c3b16366c870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af150e3c0a12c2c7a53ff3d088c9f4f6d" id="r_af150e3c0a12c2c7a53ff3d088c9f4f6d"><td class="memItemLeft" align="right" valign="top">static final InetAddress[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af150e3c0a12c2c7a53ff3d088c9f4f6d">getInetAddress</a> (int ipfilter, String[] interfaces)</td></tr>
@@ -123,6 +125,8 @@ Static Private Member Functions</h2></td></tr>
 <tr class="separator:a99bf4f560d14519fcd54bf56f4679c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a155f3d847657850b6b16a41790459721" id="r_a155f3d847657850b6b16a41790459721"><td class="memItemLeft" align="right" valign="top">static final boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a155f3d847657850b6b16a41790459721">isUsableAddress</a> (InetAddress addr)</td></tr>
 <tr class="separator:a155f3d847657850b6b16a41790459721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1f4f125434d492d77d89d55fd12b608" id="r_af1f4f125434d492d77d89d55fd12b608"><td class="memItemLeft" align="right" valign="top">static final boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1f4f125434d492d77d89d55fd12b608">isUsableInterface</a> (NetworkInterface ni)</td></tr>
+<tr class="separator:af1f4f125434d492d77d89d55fd12b608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -152,6 +156,34 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a38f000caa1e5d596c0de01ba1b710de6" name="a38f000caa1e5d596c0de01ba1b710de6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f000caa1e5d596c0de01ba1b710de6">&#9670;&#160;</a></span>getHostAddresses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static final String[] org.cybergarage.net.HostInterface.getHostAddresses </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a snapshot of the usable host addresses.</p>
+<p>Callers that need several addresses should use this method instead of combining <code><a class="el" href="#ad756d92fcd94795f2049c3b16366c870">getNHostAddresses()</a></code> and <code><a class="el" href="#a15551b30c324f0731abda99d150676f0">getHostAddress(int)</a></code>, so that the count and the addresses come from the same enumeration even if the network configuration changes in between.</p>
+<dl class="section return"><dt>Returns</dt><dd>usable host addresses, or an empty array if none are available </dd></dl>
 
 </div>
 </div>
@@ -466,6 +498,31 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">static final boolean org.cybergarage.net.HostInterface.isUsableAddress </td>
           <td>(</td>
           <td class="paramtype">InetAddress</td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1f4f125434d492d77d89d55fd12b608" name="af1f4f125434d492d77d89d55fd12b608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1f4f125434d492d77d89d55fd12b608">&#9670;&#160;</a></span>isUsableInterface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static final boolean org.cybergarage.net.HostInterface.isUsableInterface </td>
+          <td>(</td>
+          <td class="paramtype">NetworkInterface</td>          <td class="paramname"><span class="paramname"><em>ni</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

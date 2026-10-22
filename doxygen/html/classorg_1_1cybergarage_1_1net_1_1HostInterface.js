@@ -1,6 +1,7 @@
 var classorg_1_1cybergarage_1_1net_1_1HostInterface =
 [
     [ "getHostAddress", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a15551b30c324f0731abda99d150676f0", null ],
+    [ "getHostAddresses", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a38f000caa1e5d596c0de01ba1b710de6", null ],
     [ "getHostURL", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a5dfd983805b1a9861a32bf3ff9b0b91b", null ],
     [ "getInetAddress", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#af150e3c0a12c2c7a53ff3d088c9f4f6d", null ],
     [ "getInterface", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a9dcdb64c93328ed4e27c8177dfe6bc46", null ],
@@ -13,6 +14,7 @@ var classorg_1_1cybergarage_1_1net_1_1HostInterface =
     [ "isIPv4Address", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a8d98ee89e4f8344cc7eead07420c1fdd", null ],
     [ "isIPv6Address", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a9d3cc2b64d40271e6d70c52a43e9fc43", null ],
     [ "isUsableAddress", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a155f3d847657850b6b16a41790459721", null ],
+    [ "isUsableInterface", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#af1f4f125434d492d77d89d55fd12b608", null ],
     [ "setInterface", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#acc30a25ac727ea3328bcae560abf9a6a", null ],
     [ "ifAddress", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a464469b71eb0b782e50cbee60dc3b7b9", null ],
     [ "IPV4_BITMASK", "classorg_1_1cybergarage_1_1net_1_1HostInterface.html#a4a8c246f511316c196a15c646d81c8cf", null ],
