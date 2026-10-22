@@ -72,11 +72,7 @@ public class SSDPNotifySocketList extends Vector {
         bindAddresses[i] = binds[i].getHostAddress();
       }
     } else {
-      int nHostAddrs = HostInterface.getNHostAddresses();
-      bindAddresses = new String[nHostAddrs];
-      for (int n = 0; n < nHostAddrs; n++) {
-        bindAddresses[n] = HostInterface.getHostAddress(n);
-      }
+      bindAddresses = HostInterface.getHostAddresses();
     }
 
     for (int i = 0; i < bindAddresses.length; i++) {
