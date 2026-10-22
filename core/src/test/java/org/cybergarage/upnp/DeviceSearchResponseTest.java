@@ -107,10 +107,7 @@ public class DeviceSearchResponseTest extends TestCase {
     assertEquals(1, responses.size());
     String res =
         new String(
-            responses.get(0).getData(),
-            0,
-            responses.get(0).getLength(),
-            StandardCharsets.UTF_8);
+            responses.get(0).getData(), 0, responses.get(0).getLength(), StandardCharsets.UTF_8);
     assertTrue(res, res.endsWith("\r\n\r\n"));
   }
 }

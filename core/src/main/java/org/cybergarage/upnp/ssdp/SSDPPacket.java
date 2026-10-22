@@ -55,8 +55,8 @@ public class SSDPPacket {
   private DatagramSocket recvSocket = null;
 
   /**
-   * Sets the socket that received this packet, so that unicast responses can be sent from the
-   * same local port (e.g. SSDP port 1900 for M-SEARCH requests).
+   * Sets the socket that received this packet, so that unicast responses can be sent from the same
+   * local port (e.g. SSDP port 1900 for M-SEARCH requests).
    *
    * @param sock the socket that received this packet
    */
