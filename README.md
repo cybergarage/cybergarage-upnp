@@ -9,6 +9,10 @@ The UPnP™ [^1] architecture is an open network protocol that enables the disco
 
 `cybergarage-upnp` is a UPnP™ development package designed for Java developers. It automates the control of these protocols and supports the rapid creation of UPnP™ devices and control points. This package simplifies the development process by handling the complex aspects of UPnP™ protocol implementation, allowing developers to focus on the functionality of their devices and services.
 
+## Historical adoption and use
+
+This Java project was previously known as **CyberLink for Java**, **CyberLinkForJava** and **CyberLink4Java**. [Historical adoption and use](docs/ADOPTION.md) documents ten source-backed cases, distinguishing commercial applications and products, SDKs and reference implementations, and OSS use and derived libraries. The records describe historical evidence, not continued use or endorsement; C/C++ implementations are outside their scope.
+
 ## References
 
 - [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
