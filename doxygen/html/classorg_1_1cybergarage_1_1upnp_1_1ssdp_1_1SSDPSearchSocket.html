@@ -68,6 +68,7 @@ $(function(){initNavTree('classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPSearchS
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle"><div class="title">org.cybergarage.upnp.ssdp.SSDPSearchSocket Class Reference</div></div>
 </div><!--header-->
@@ -104,10 +105,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab22973fbfa25ddf44fa3372b79507d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5404140c66666375bf12e91a1b61c3c4" id="r_a5404140c66666375bf12e91a1b61c3c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5404140c66666375bf12e91a1b61c3c4">run</a> ()</td></tr>
 <tr class="separator:a5404140c66666375bf12e91a1b61c3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24e7f9d69750daa2739b87ecff0f8d16" id="r_a24e7f9d69750daa2739b87ecff0f8d16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24e7f9d69750daa2739b87ecff0f8d16">start</a> ()</td></tr>
-<tr class="separator:a24e7f9d69750daa2739b87ecff0f8d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7c97bd8e017eac12129d0ffa43ed298" id="r_ac7c97bd8e017eac12129d0ffa43ed298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7c97bd8e017eac12129d0ffa43ed298">stop</a> ()</td></tr>
-<tr class="separator:ac7c97bd8e017eac12129d0ffa43ed298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c7f8a88331ceef66c030d6cb8e87ba" id="r_a34c7f8a88331ceef66c030d6cb8e87ba"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34c7f8a88331ceef66c030d6cb8e87ba">start</a> ()</td></tr>
+<tr class="separator:a34c7f8a88331ceef66c030d6cb8e87ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5e3310fa997db7d93b8b1921405ad88" id="r_aa5e3310fa997db7d93b8b1921405ad88"><td class="memItemLeft" align="right" valign="top">synchronized void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5e3310fa997db7d93b8b1921405ad88">stop</a> ()</td></tr>
+<tr class="separator:aa5e3310fa997db7d93b8b1921405ad88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket.html">org.cybergarage.upnp.ssdp.HTTPMUSocket</a></td></tr>
 <tr class="memitem:ad512d4c80234e93a3a0cda515a8ad047 inherit pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket" id="r_ad512d4c80234e93a3a0cda515a8ad047"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket.html#ad512d4c80234e93a3a0cda515a8ad047">HTTPMUSocket</a> ()</td></tr>
 <tr class="separator:ad512d4c80234e93a3a0cda515a8ad047 inherit pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,14 +143,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c4b3d42b18401dd569fe0a4ce646cbc inherit pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket" id="r_a3c4b3d42b18401dd569fe0a4ce646cbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html">SSDPPacket</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket.html#a3c4b3d42b18401dd569fe0a4ce646cbc">receive</a> ()  throws IOException </td></tr>
 <tr class="separator:a3c4b3d42b18401dd569fe0a4ce646cbc inherit pub_methods_classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1HTTPMUSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:abbf17734ebd42531a6c0153fa1aa60d3" id="r_abbf17734ebd42531a6c0153fa1aa60d3"><td class="memItemLeft" align="right" valign="top">ThreadPoolExecutor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbf17734ebd42531a6c0153fa1aa60d3">newSearchWorkers</a> ()</td></tr>
+<tr class="separator:abbf17734ebd42531a6c0153fa1aa60d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a622b6c7742023ac41faa233f48f1a881" id="r_a622b6c7742023ac41faa233f48f1a881"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622b6c7742023ac41faa233f48f1a881">useIPv6Address</a></td></tr>
 <tr class="separator:a622b6c7742023ac41faa233f48f1a881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c653ed73dba165fcec809b3770805c5" id="r_a8c653ed73dba165fcec809b3770805c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1cybergarage_1_1util_1_1ListenerList.html">ListenerList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c653ed73dba165fcec809b3770805c5">deviceSearchListenerList</a> = new <a class="el" href="classorg_1_1cybergarage_1_1util_1_1ListenerList.html">ListenerList</a>()</td></tr>
 <tr class="separator:a8c653ed73dba165fcec809b3770805c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6811c42bb6bea31faf984df9cced7fe" id="r_ac6811c42bb6bea31faf984df9cced7fe"><td class="memItemLeft" align="right" valign="top">Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6811c42bb6bea31faf984df9cced7fe">deviceSearchThread</a> = null</td></tr>
-<tr class="separator:ac6811c42bb6bea31faf984df9cced7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6685aad5d9bf420565a0351aee953c50" id="r_a6685aad5d9bf420565a0351aee953c50"><td class="memItemLeft" align="right" valign="top">volatile Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6685aad5d9bf420565a0351aee953c50">deviceSearchThread</a> = null</td></tr>
+<tr class="separator:a6685aad5d9bf420565a0351aee953c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11bc6bbf5ad5ef74a0ba198436e5a1bb" id="r_a11bc6bbf5ad5ef74a0ba198436e5a1bb"><td class="memItemLeft" align="right" valign="top">volatile ThreadPoolExecutor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11bc6bbf5ad5ef74a0ba198436e5a1bb">searchWorkers</a></td></tr>
+<tr class="separator:a11bc6bbf5ad5ef74a0ba198436e5a1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -253,6 +261,31 @@ Additional Inherited Members</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbf17734ebd42531a6c0153fa1aa60d3" name="abbf17734ebd42531a6c0153fa1aa60d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf17734ebd42531a6c0153fa1aa60d3">&#9670;&#160;</a></span>newSearchWorkers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadPoolExecutor org.cybergarage.upnp.ssdp.SSDPSearchSocket.newSearchWorkers </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -446,8 +479,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a24e7f9d69750daa2739b87ecff0f8d16" name="a24e7f9d69750daa2739b87ecff0f8d16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24e7f9d69750daa2739b87ecff0f8d16">&#9670;&#160;</a></span>start()</h2>
+<a id="a34c7f8a88331ceef66c030d6cb8e87ba" name="a34c7f8a88331ceef66c030d6cb8e87ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34c7f8a88331ceef66c030d6cb8e87ba">&#9670;&#160;</a></span>start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,7 +489,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void org.cybergarage.upnp.ssdp.SSDPSearchSocket.start </td>
+          <td class="memname">synchronized void org.cybergarage.upnp.ssdp.SSDPSearchSocket.start </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -471,8 +504,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac7c97bd8e017eac12129d0ffa43ed298" name="ac7c97bd8e017eac12129d0ffa43ed298"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7c97bd8e017eac12129d0ffa43ed298">&#9670;&#160;</a></span>stop()</h2>
+<a id="aa5e3310fa997db7d93b8b1921405ad88" name="aa5e3310fa997db7d93b8b1921405ad88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5e3310fa997db7d93b8b1921405ad88">&#9670;&#160;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -481,7 +514,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void org.cybergarage.upnp.ssdp.SSDPSearchSocket.stop </td>
+          <td class="memname">synchronized void org.cybergarage.upnp.ssdp.SSDPSearchSocket.stop </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -519,8 +552,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ac6811c42bb6bea31faf984df9cced7fe" name="ac6811c42bb6bea31faf984df9cced7fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6811c42bb6bea31faf984df9cced7fe">&#9670;&#160;</a></span>deviceSearchThread</h2>
+<a id="a6685aad5d9bf420565a0351aee953c50" name="a6685aad5d9bf420565a0351aee953c50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6685aad5d9bf420565a0351aee953c50">&#9670;&#160;</a></span>deviceSearchThread</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +562,29 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Thread org.cybergarage.upnp.ssdp.SSDPSearchSocket.deviceSearchThread = null</td>
+          <td class="memname">volatile Thread org.cybergarage.upnp.ssdp.SSDPSearchSocket.deviceSearchThread = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11bc6bbf5ad5ef74a0ba198436e5a1bb" name="a11bc6bbf5ad5ef74a0ba198436e5a1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11bc6bbf5ad5ef74a0ba198436e5a1bb">&#9670;&#160;</a></span>searchWorkers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile ThreadPoolExecutor org.cybergarage.upnp.ssdp.SSDPSearchSocket.searchWorkers</td>
         </tr>
       </table>
   </td>

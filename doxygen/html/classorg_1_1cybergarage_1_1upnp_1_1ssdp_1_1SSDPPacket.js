@@ -17,6 +17,7 @@ var classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket =
     [ "getRemoteInetAddress", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a75eb820ba71552002548ad14c0c1cd50", null ],
     [ "getRemotePort", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a135f25077e9d3aff27c1c1ee1e7e1a16", null ],
     [ "getServer", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#aaf5004dd3d6de6a341ea965b0c018f1e", null ],
+    [ "getSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a73451191bedb1f93bdbf4051ce96e1f1", null ],
     [ "getST", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a506c18fee0b535c9910d4177e269e8f4", null ],
     [ "getTimeStamp", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a5c5eb6ef759dffe571f35998b9423d5e", null ],
     [ "getUSN", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a9ce111668f5fcce93d657dd66f7256c8", null ],
@@ -25,10 +26,12 @@ var classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket =
     [ "isDiscover", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a21b75b599e7c1351cca7194e231bcef2", null ],
     [ "isRootDevice", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#aa53767ff15d95e0b12e02406b56b6cc8", null ],
     [ "setLocalAddress", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a3e21bda0deb5363270315ad54bb245fd", null ],
+    [ "setSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a20355f80275f2b4a743988ce2c3df223", null ],
     [ "setTimeStamp", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a4d861d139810167d30f63ab0e088f9c0", null ],
     [ "toString", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a0fce1d84f1e7c4c3305458c632fc4fa3", null ],
     [ "dgmPacket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a5ef2aa9ecbe9e44d12bc238ceff5709b", null ],
     [ "localAddr", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a8b376036f05837e940740fd3329f7d5d", null ],
     [ "packetBytes", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#aa4e10ab57ac55e91d8832fe73eb18a51", null ],
+    [ "recvSocket", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a4442036b5877214416300ac915a95b4c", null ],
     [ "timeStamp", "classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDPPacket.html#a97297fb959f07134f64a8091db791e0d", null ]
 ];

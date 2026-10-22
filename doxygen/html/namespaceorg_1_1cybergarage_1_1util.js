@@ -2,6 +2,7 @@ var namespaceorg_1_1cybergarage_1_1util =
 [
     [ "Debug", "classorg_1_1cybergarage_1_1util_1_1Debug.html", "classorg_1_1cybergarage_1_1util_1_1Debug" ],
     [ "FileUtil", "classorg_1_1cybergarage_1_1util_1_1FileUtil.html", "classorg_1_1cybergarage_1_1util_1_1FileUtil" ],
+    [ "LimitedInputStream", "classorg_1_1cybergarage_1_1util_1_1LimitedInputStream.html", "classorg_1_1cybergarage_1_1util_1_1LimitedInputStream" ],
     [ "ListenerList", "classorg_1_1cybergarage_1_1util_1_1ListenerList.html", "classorg_1_1cybergarage_1_1util_1_1ListenerList" ],
     [ "Mutex", "classorg_1_1cybergarage_1_1util_1_1Mutex.html", "classorg_1_1cybergarage_1_1util_1_1Mutex" ],
     [ "StringUtil", "classorg_1_1cybergarage_1_1util_1_1StringUtil.html", "classorg_1_1cybergarage_1_1util_1_1StringUtil" ],

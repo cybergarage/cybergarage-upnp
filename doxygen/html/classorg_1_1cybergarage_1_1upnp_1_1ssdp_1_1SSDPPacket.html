@@ -80,6 +80,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a75cc27f0ab03c2d3b3df1b5af66287fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d96293e93fb6f9ce4e6c91e74844706" id="r_a4d96293e93fb6f9ce4e6c91e74844706"><td class="memItemLeft" align="right" valign="top">DatagramPacket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d96293e93fb6f9ce4e6c91e74844706">getDatagramPacket</a> ()</td></tr>
 <tr class="separator:a4d96293e93fb6f9ce4e6c91e74844706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20355f80275f2b4a743988ce2c3df223" id="r_a20355f80275f2b4a743988ce2c3df223"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20355f80275f2b4a743988ce2c3df223">setSocket</a> (DatagramSocket sock)</td></tr>
+<tr class="separator:a20355f80275f2b4a743988ce2c3df223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73451191bedb1f93bdbf4051ce96e1f1" id="r_a73451191bedb1f93bdbf4051ce96e1f1"><td class="memItemLeft" align="right" valign="top">DatagramSocket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73451191bedb1f93bdbf4051ce96e1f1">getSocket</a> ()</td></tr>
+<tr class="separator:a73451191bedb1f93bdbf4051ce96e1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e21bda0deb5363270315ad54bb245fd" id="r_a3e21bda0deb5363270315ad54bb245fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e21bda0deb5363270315ad54bb245fd">setLocalAddress</a> (String addr)</td></tr>
 <tr class="separator:a3e21bda0deb5363270315ad54bb245fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a811b2159af862ec216e624e7bc5f8811" id="r_a811b2159af862ec216e624e7bc5f8811"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a811b2159af862ec216e624e7bc5f8811">getLocalAddress</a> ()</td></tr>
@@ -140,6 +144,8 @@ Data Fields</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a5ef2aa9ecbe9e44d12bc238ceff5709b" id="r_a5ef2aa9ecbe9e44d12bc238ceff5709b"><td class="memItemLeft" align="right" valign="top">DatagramPacket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ef2aa9ecbe9e44d12bc238ceff5709b">dgmPacket</a> = null</td></tr>
 <tr class="separator:a5ef2aa9ecbe9e44d12bc238ceff5709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4442036b5877214416300ac915a95b4c" id="r_a4442036b5877214416300ac915a95b4c"><td class="memItemLeft" align="right" valign="top">DatagramSocket&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4442036b5877214416300ac915a95b4c">recvSocket</a> = null</td></tr>
+<tr class="separator:a4442036b5877214416300ac915a95b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b376036f05837e940740fd3329f7d5d" id="r_a8b376036f05837e940740fd3329f7d5d"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b376036f05837e940740fd3329f7d5d">localAddr</a> = &quot;&quot;</td></tr>
 <tr class="separator:a8b376036f05837e940740fd3329f7d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97297fb959f07134f64a8091db791e0d" id="r_a97297fb959f07134f64a8091db791e0d"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97297fb959f07134f64a8091db791e0d">timeStamp</a></td></tr>
@@ -576,6 +582,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a73451191bedb1f93bdbf4051ce96e1f1" name="a73451191bedb1f93bdbf4051ce96e1f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73451191bedb1f93bdbf4051ce96e1f1">&#9670;&#160;</a></span>getSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DatagramSocket org.cybergarage.upnp.ssdp.SSDPPacket.getSocket </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the socket that received this packet, or null if unknown </dd></dl>
+
+</div>
+</div>
 <a id="a506c18fee0b535c9910d4177e269e8f4" name="a506c18fee0b535c9910d4177e269e8f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a506c18fee0b535c9910d4177e269e8f4">&#9670;&#160;</a></span>getST()</h2>
 
@@ -776,6 +808,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a20355f80275f2b4a743988ce2c3df223" name="a20355f80275f2b4a743988ce2c3df223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20355f80275f2b4a743988ce2c3df223">&#9670;&#160;</a></span>setSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.cybergarage.upnp.ssdp.SSDPPacket.setSocket </td>
+          <td>(</td>
+          <td class="paramtype">DatagramSocket</td>          <td class="paramname"><span class="paramname"><em>sock</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the socket that received this packet, so that unicast responses can be sent from the same local port (e.g. <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1ssdp_1_1SSDP.html">SSDP</a> port 1900 for M-SEARCH requests).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>the socket that received this packet </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a4d861d139810167d30f63ab0e088f9c0" name="a4d861d139810167d30f63ab0e088f9c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d861d139810167d30f63ab0e088f9c0">&#9670;&#160;</a></span>setTimeStamp()</h2>
 
@@ -881,6 +945,28 @@ Private Attributes</h2></td></tr>
           <td class="memname">byte [] org.cybergarage.upnp.ssdp.SSDPPacket.packetBytes = null</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4442036b5877214416300ac915a95b4c" name="a4442036b5877214416300ac915a95b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4442036b5877214416300ac915a95b4c">&#9670;&#160;</a></span>recvSocket</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DatagramSocket org.cybergarage.upnp.ssdp.SSDPPacket.recvSocket = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

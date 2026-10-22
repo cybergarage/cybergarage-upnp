@@ -272,8 +272,8 @@ Static Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7177eaacc9755cc6f2073f90a8b66c63" id="r_a7177eaacc9755cc6f2073f90a8b66c63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1DeviceList.html">DeviceList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7177eaacc9755cc6f2073f90a8b66c63">getDeviceList</a> (String deviceType)</td></tr>
 <tr class="separator:a7177eaacc9755cc6f2073f90a8b66c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fb831697164a956a50164a791fe97dc" id="r_a2fb831697164a956a50164a791fe97dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fb831697164a956a50164a791fe97dc">browse</a> (<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1container_1_1ContainerNode.html">ContainerNode</a> parentNode, <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Device.html">Device</a> dev, String objectID, boolean hasBrowseChildNodes)</td></tr>
-<tr class="separator:a2fb831697164a956a50164a791fe97dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a9dd86e7f896ba577a4d98f4c3b9c85" id="r_a6a9dd86e7f896ba577a4d98f4c3b9c85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a9dd86e7f896ba577a4d98f4c3b9c85">browse</a> (<a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1std_1_1av_1_1server_1_1object_1_1container_1_1ContainerNode.html">ContainerNode</a> parentNode, <a class="el" href="classorg_1_1cybergarage_1_1upnp_1_1Device.html">Device</a> dev, String objectID, boolean hasBrowseChildNodes, Set&lt; String &gt; visited, int depth, int[] nodes, long deadline)</td></tr>
+<tr class="separator:a6a9dd86e7f896ba577a4d98f4c3b9c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -312,8 +312,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2fb831697164a956a50164a791fe97dc" name="a2fb831697164a956a50164a791fe97dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fb831697164a956a50164a791fe97dc">&#9670;&#160;</a></span>browse() <span class="overload">[1/6]</span></h2>
+<a id="a6a9dd86e7f896ba577a4d98f4c3b9c85" name="a6a9dd86e7f896ba577a4d98f4c3b9c85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a9dd86e7f896ba577a4d98f4c3b9c85">&#9670;&#160;</a></span>browse() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -339,7 +339,27 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">boolean</td>          <td class="paramname"><span class="paramname"><em>hasBrowseChildNodes</em></span>&#160;)</td>
+          <td class="paramtype">boolean</td>          <td class="paramname"><span class="paramname"><em>hasBrowseChildNodes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Set&lt; String &gt;</td>          <td class="paramname"><span class="paramname"><em>visited</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>depth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int[]</td>          <td class="paramname"><span class="paramname"><em>nodes</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long</td>          <td class="paramname"><span class="paramname"><em>deadline</em></span>&#160;)</td>
         </tr>
       </table>
   </td>

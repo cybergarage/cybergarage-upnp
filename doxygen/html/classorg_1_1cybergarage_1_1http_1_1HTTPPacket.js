@@ -47,7 +47,8 @@ var classorg_1_1cybergarage_1_1http_1_1HTTPPacket =
     [ "isCloseConnection", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a9e8080c00236b2f5e648d5a890b5a381", null ],
     [ "isKeepAliveConnection", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a95f3b1737562db57509e6d963a18cc7b", null ],
     [ "read", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a8292de9fb04ee4e60f94d79144cbcdea", null ],
-    [ "readLine", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a5a3ba24a9b179572e838061e9ef3f160", null ],
+    [ "readBody", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a004a0b50896e10f494aa30295f8729f1", null ],
+    [ "readLine", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#aadc7c792d7ca7f339f9989ba459c6ba0", null ],
     [ "set", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a5a3d03f54d89f3ebfd882cbac171c7ac", null ],
     [ "set", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a2d7b4f7a08a5b7f47e7b125024860cda", null ],
     [ "set", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a2e5b917eb3d9b66dcf46a8b1a2064673", null ],
@@ -84,5 +85,9 @@ var classorg_1_1cybergarage_1_1http_1_1HTTPPacket =
     [ "contentInput", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a57bc3538ed5407fcfc7c1dfc80047a3f", null ],
     [ "firstLine", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a11b6321d3cd1e33d5a7f25daeb7f7c63", null ],
     [ "httpHeaderList", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a864c107bd5be297e02b8aa6545b760a4", null ],
+    [ "MAX_CONTENT_BYTES", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a26f5959c340e23b7d63998c628adf20b", null ],
+    [ "MAX_HEADER_BYTES", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a3b6a9211e45fe9839202c790e85d8309", null ],
+    [ "MAX_HEADERS", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a9c19573a13e0c19b6c63204f1c20a0d1", null ],
+    [ "MAX_LINE_BYTES", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a9539cbbeb31fe08f67852f7b8ef6ce92", null ],
     [ "version", "classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html#a754e0a548ca726c3962a5e9a8f00d47f", null ]
 ];
