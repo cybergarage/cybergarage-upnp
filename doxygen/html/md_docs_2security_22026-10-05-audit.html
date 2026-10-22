@@ -69,11 +69,11 @@ $(function(){initNavTree('md_docs_2security_22026-10-05-audit.html',''); initRes
   <div class="headertitle"><div class="title">Security Review: cybergarage-upnp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md56"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md55"></a></p>
 <blockquote class="doxtable">
 <p>&zwj;Archived audit of revision <code>f4a1ada0188cd5f8afc13391c8346b3ef5eaed50</code> (2026-10-05). Paths and line numbers below describe that snapshot, including the former <code>doc/</code> directory. See <a class="el" href="md_docs_2security_2remediation.html">remediation and validation</a> for subsequent changes. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md57"></a>
+<h1><a class="anchor" id="autotoc_md56"></a>
 Scope</h1>
 <p>Repository-wide static source review: all 245 Java implementation/test files, examples/tools, Maven/CI/build configuration and XML service definitions. Coverage is partial because three source-backed leads remain deferred for consumer/runtime proof. Passive assets and historical/documentation-only material excluded as recorded.</p>
 <ul>
@@ -93,7 +93,7 @@ Scope</h1>
 <li>Excluded ChangeLog, LICENSE.txt, doc/**, docs/**, Doxyfile: Historical/license/documentation assets; architecture-relevant excerpts, diagrams and build scripts reviewed, not an exhaustive documentation/content audit.</li>
 <li>Excluded .git/**, **/target/**: VCS internals and ignored build output; only authorized current source audited.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md58"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 Scan Summary</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -112,10 +112,10 @@ Scan Summary</h2>
 <td class="markdownTableBodyNone">Validation mode   </td><td class="markdownTableBodyNone">static   </td></tr>
 </table>
 <p>Canonical artifacts: <code>scan-manifest.json</code>, <code>findings.json</code>, and <code>coverage.json</code>. This report is a deterministic projection of those files.</p>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Threat Model</h1>
 <p>cybergarage-upnp is a Java UPnP library plus tools and examples. core implements SSDP discovery, HTTP, SOAP device actions and GENA subscriptions; std supplies AV servers/controllers/renderers, while tools include IGD support. Normal use embeds Device or ControlPoint in an application; examples expose Swing or console applications. Network discovery feeds remote description fetching and XML parsing; device HTTP requests dispatch to application listeners; subscriptions cause outbound notifications; optional media directories intend to expose catalogued files. <a class="el" href="README_8md.html">README.md</a>:8-24; pom.xml:67-80; <a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-260; <a class="el" href="Device_8java.html">core/src/main/java/org/cybergarage/upnp/Device.java</a>:1608-1632,1723-1773.</p>
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 Assets</h2>
 <ul>
 <li>Host JVM availability, memory, threads, filesystem read authority and outbound network authority. XML descriptions and SOAP bodies are parsed inside the host process, not an isolated worker. <a class="el" href="Parser_8java.html">core/src/main/java/org/cybergarage/xml/Parser.java</a>:50-87,94-99; <a class="el" href="SOAPRequest_8java.html">core/src/main/java/org/cybergarage/soap/SOAPRequest.java</a>:104-114.</li>
@@ -124,7 +124,7 @@ Assets</h2>
 <li>Media catalogue metadata and intended bytes of operator-selected filesystem files or MythTV-recorded files. <a class="el" href="ContentDirectory_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/ContentDirectory.java</a>:1101-1148; <a class="el" href="FileItemNode_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/object/item/file/FileItemNode.java</a>:78-88; <a class="el" href="MythRecordedInfo_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/directory/mythtv/MythRecordedInfo.java</a>:176-179.</li>
 <li>Conditional credential references MythDatabase.DB_USER/DB_PASSWD, CI CODECOV_TOKEN/SONAR_TOKEN, documentation publication GITHUB_TOKEN, and externally configured ossrh deployment identity. <a class="el" href="MythDatabase_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/directory/mythtv/MythDatabase.java</a>:26-46; .github/workflows/maven.yml:35-57; .github/workflows/doxygen.yml:46-52; core/pom.xml:33-38.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Trust Boundaries</h2>
 <ul>
 <li>SSDP peers → control-point HTTP/XML consumer: root-device packets supply LOCATION and USN; new LOCATION is converted into a URL and fetched with the selected parser. Root-device and duplicate-device checks are protocol routing controls; no destination authorization occurs here. <a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-260; <a class="el" href="Parser_8java.html">core/src/main/java/org/cybergarage/xml/Parser.java</a>:50-87.</li>
@@ -136,7 +136,7 @@ Trust Boundaries</h2>
 <li>Trusted JVM parser configuration → in-process implementation: UPnP.setXMLParser overrides selection; otherwise the system-property class and fallback classes are reflectively instantiated, and the same parser is propagated to SOAP. This is host configuration authority, not a network-peer capability. <a class="el" href="core_2src_2main_2java_2org_2cybergarage_2upnp_2UPnP_8java.html">core/src/main/java/org/cybergarage/upnp/UPnP.java</a>:218-232,244-263.</li>
 <li>Repository/build authority → CI service/publication authority: build workflow runs Maven with named secret references; push-to-master documentation workflow generates doc/javadoc and publishes ./doc with GITHUB_TOKEN. External action implementations and GitHub permission enforcement were not inspected offline. .github/workflows/maven.yml:29-57; .github/workflows/doxygen.yml:35-52; javadoc:26.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md62"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Attacker Capabilities</h2>
 <ul>
 <li>A peer with network reachability may submit SSDP announcements/responses and supply discovery LOCATION/identity fields, without controlling operator configuration. Potential gains include fetching outside the expected device network, processing malicious XML or exhausting host resources. <a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-260.</li>
@@ -144,7 +144,7 @@ Attacker Capabilities</h2>
 <li>A client able to reach control-point HTTP may supply NOTIFY payload properties and claimed SID/SEQ values. Implementation passes them into event callbacks; application-specific consequences are unknown. <a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:529-545.</li>
 <li>A media reader may request catalogue item IDs. Arbitrary filesystem path authority is not established from that input alone. Local-directory, database-writing or repository-writing attackers have materially different prerequisites. <a class="el" href="ContentDirectory_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/ContentDirectory.java</a>:1101-1128.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 Security Objectives</h2>
 <ul>
 <li>Preserve host availability across HTTP, SSDP and XML inputs; distinguish 80-second accepted-socket/connect timeout and 100 port retries from overall memory, request-size or concurrency limits. <a class="el" href="HTTPServer_8java.html">core/src/main/java/org/cybergarage/http/HTTPServer.java</a>:50-57,158-163; <a class="el" href="HTTPRequest_8java.html">core/src/main/java/org/cybergarage/http/HTTPRequest.java</a>:357-361; <a class="el" href="core_2src_2main_2java_2org_2cybergarage_2upnp_2UPnP_8java.html">core/src/main/java/org/cybergarage/upnp/UPnP.java</a>:49.</li>
@@ -152,7 +152,7 @@ Security Objectives</h2>
 <li>Keep outbound destinations and event data associated with intended device/subscriber, and preserve application-visible identity and state integrity. <a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-260,529-545; <a class="el" href="Service_8java.html">core/src/main/java/org/cybergarage/upnp/Service.java</a>:665-675.</li>
 <li>Export only catalogue-selected resources under intended filesystem/database policy; protect credential references and CI/publication authority from unrelated actors. <a class="el" href="ContentDirectory_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/server/ContentDirectory.java</a>:1101-1148; .github/workflows/maven.yml:35-57.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md64"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 Assumptions</h2>
 <ul>
 <li>No supplied deployment context, knowledge base or threat model. No SECURITY.md found by root and nested policy resolvers. No production Internet exposure, tenant model, effective credentials, filesystem permissions or firewall configuration is assumed.</li>
@@ -168,7 +168,7 @@ Assumptions</h2>
 <li>Documentation push-to-master generates doc/javadoc and publishes ./doc; build uploads aggregate JaCoCo XML to Codecov and uses sonar.projectKey=cybergarage_cpan-net-upnp. core/std allow conditional mvn deploy to ossrh <a href="https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/">https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</a> using external Maven credentials. .github/workflows/doxygen.yml:7-9,35-52; .github/workflows/maven.yml:29-57; core/pom.xml:19-20,33-38; std/pom.xml:19,37-42.</li>
 <li>Static offline review only; no application execution, external services, exploit reproduction or source modification. Architecture mapping is not completed audit coverage.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md65"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 Findings</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -192,7 +192,7 @@ Findings</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Recursive media browsing trusts remote container cycles   </td><td class="markdownTableBodyNone">low   </td><td class="markdownTableBodyNone">high   </td><td class="markdownTableBodyNone">inline below   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md66"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 Confidence Scale</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -205,7 +205,7 @@ Confidence Scale</h2>
 <td class="markdownTableBodyNone">low   </td><td class="markdownTableBodyNone">Evidence is incomplete and the item is retained only for explicit follow-up.   </td></tr>
 </table>
 <p><a class="anchor" id="finding-1"></a></p>
-<h2><a class="anchor" id="autotoc_md67"></a>
+<h2><a class="anchor" id="autotoc_md66"></a>
 [1] Network XML can resolve local files and external entities</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -223,10 +223,10 @@ Confidence Scale</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="SOAPRequest_8java.html">core/src/main/java/org/cybergarage/soap/SOAPRequest.java</a>:107-112, <a class="el" href="core_2src_2main_2java_2org_2cybergarage_2upnp_2UPnP_8java.html">core/src/main/java/org/cybergarage/upnp/UPnP.java</a>:244-259, <a class="el" href="JaxpParser_8java.html">core/src/main/java/org/cybergarage/xml/parser/JaxpParser.java</a>:111-115   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md68"></a>
+<h3><a class="anchor" id="autotoc_md67"></a>
 Summary</h3>
 <p>Network-supplied SOAP, GENA or device description XML reaches the bundled <code>JaxpParser</code>, whose default factory permits external resource resolution. A reachable peer can invoke host file reads and secondary requests.</p>
-<h3><a class="anchor" id="autotoc_md69"></a>
+<h3><a class="anchor" id="autotoc_md68"></a>
 Root Cause</h3>
 <p><code>SOAPRequest.getRootNode()</code> wraps received bytes in a stream and calls the shared parser. <code>UPnP.loadDefaultXMLParser()</code> tries optional parsers, then the bundled <code>JaxpParser</code>. Its <code>DocumentBuilderFactory</code> has no DOCTYPE/entity/access restrictions before <code>builder.parse()</code>, so parser-controlled resource resolution runs with JVM authority.</p>
 <p><b>Received SOAP/GENA bytes</b> — <code><a class="el" href="SOAPRequest_8java.html">core/src/main/java/org/cybergarage/soap/SOAPRequest.java</a>:107-112</code></p>
@@ -262,7 +262,7 @@ Root Cause</h3>
 <div class="line">  DocumentBuilder builder = factory.newDocumentBuilder();</div>
 <div class="line">  InputSource inSrc = <span class="keyword">new</span> InputSource(inStream);</div>
 <div class="line">  Document doc = builder.parse(inSrc);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md70"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md69"></a>
 Validation</h3>
 <p>Verified request bytes reach the default factory directly, without a validating wrapper or entity resolver. Caller-installed alternate parsers or restrictive external JAXP policy can mitigate, but repository defaults enforce neither. Entity-expansion limits do not prohibit external resources.</p>
 <p>Validation method: static source trace</p>
@@ -303,7 +303,7 @@ Validation</h3>
 <li>No application code or exploit was executed.</li>
 <li>Requires JaxpParser and JVM provider/policy that permits external resolution. Caller parser replacement can prevent exposure. Out-of-band disclosure depends on resource content and available network egress.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md71"></a>
+<h3><a class="anchor" id="autotoc_md70"></a>
 Dataflow</h3>
 <p>Send XML containing a DOCTYPE/external entity to an initialized device SOAP endpoint or control-point NOTIFY endpoint, or serve it as a discovered description; shared parser resolves the referenced resource.</p>
 <ul>
@@ -344,7 +344,7 @@ Dataflow</h3>
 <div class="line">  DocumentBuilder builder = factory.newDocumentBuilder();</div>
 <div class="line">  InputSource inSrc = <span class="keyword">new</span> InputSource(inStream);</div>
 <div class="line">  Document doc = builder.parse(inSrc);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md72"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md71"></a>
 Reachability</h3>
 <p>Unauthenticated peer able to reach initialized device/control-point HTTP or supply an SSDP description uses Network XML parsed by SOAP/GENA/discovery. Requires JaxpParser and JVM provider/policy that permits external resolution. Caller parser replacement can prevent exposure. Out-of-band disclosure depends on resource content and available network egress.</p>
 <ul>
@@ -355,7 +355,7 @@ Reachability</h3>
 <p>Limitations:</p><ul>
 <li>Requires JaxpParser and JVM provider/policy that permits external resolution. Caller parser replacement can prevent exposure. Out-of-band disclosure depends on resource content and available network egress.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md73"></a>
+<h3><a class="anchor" id="autotoc_md72"></a>
 Severity</h3>
 <p><b>High</b> — Impact: Host-readable file confidentiality and outbound network authority can be exposed. Likelihood: No authentication precedes parser call; bundled default path is selected in ordinary repository configuration. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -367,7 +367,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> No authentication precedes parser call; bundled default path is selected in ordinary repository configuration</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md74"></a>
+<h3><a class="anchor" id="autotoc_md73"></a>
 Remediation</h3>
 <p>Reject DOCTYPE; disable external general/parameter entities, DTD loading and XInclude; set external DTD/schema access to empty and fail closed if configuration cannot be applied.</p>
 <p>Tests:</p><ul>
@@ -377,7 +377,7 @@ Remediation</h3>
 <li>Reject DOCTYPE; disable external general/parameter entities, DTD loading and XInclude; set external DTD/schema access to empty and fail closed if configuration cannot be applied.</li>
 </ul>
 <p><a class="anchor" id="finding-2"></a></p>
-<h2><a class="anchor" id="autotoc_md75"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 [2] HTTP messages can exhaust JVM heap before routing</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -395,10 +395,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="HTTPServerThread_8java.html">core/src/main/java/org/cybergarage/http/HTTPServerThread.java</a>:37-48, <a class="el" href="HTTPPacket_8java.html">core/src/main/java/org/cybergarage/http/HTTPPacket.java</a>:143-153, <a class="el" href="HTTPPacket_8java.html">core/src/main/java/org/cybergarage/http/HTTPPacket.java</a>:220-243   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md76"></a>
+<h3><a class="anchor" id="autotoc_md75"></a>
 Summary</h3>
 <p>Request lines, headers and bodies are buffered without total size limits, allowing a reachable client to consume JVM heap before an application handles its request.</p>
-<h3><a class="anchor" id="autotoc_md77"></a>
+<h3><a class="anchor" id="autotoc_md76"></a>
 Root Cause</h3>
 <p><code>readLine()</code> accumulates until LF without a length cap. Header parsing has no count/aggregate limit. Content length drives byte accumulation into an unbounded <code>ByteArrayOutputStream</code>, and conversion copies the body. Chunk-size configuration only limits each temporary read.</p>
 <p><b>Parser precedes dispatcher</b> — <code><a class="el" href="HTTPServerThread_8java.html">core/src/main/java/org/cybergarage/http/HTTPServerThread.java</a>:37-48</code></p>
@@ -453,7 +453,7 @@ Root Cause</h3>
 <div class="line">      readCnt += readLen;</div>
 <div class="line">    } <span class="keywordflow">catch</span> (Exception e) {</div>
 <div class="line">      Debug.warning(e);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md78"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md77"></a>
 Validation</h3>
 <p>Inspected complete HTTPPacket and worker dispatch; no message limit occurs before these allocations. Declaring a large length alone does not allocate that length: the attacker must deliver bytes. Timeouts only bound inactivity.</p>
 <p>Validation method: static source trace</p>
@@ -512,7 +512,7 @@ Validation</h3>
 </div><!-- fragment --><p>Limitations:</p><ul>
 <li>No application code or exploit was executed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md79"></a>
+<h3><a class="anchor" id="autotoc_md78"></a>
 Dataflow</h3>
 <p>Deliver an oversized line, many headers or large Content-Length body; HTTP worker accumulates bytes until heap exhaustion, before routing.</p>
 <ul>
@@ -572,7 +572,7 @@ Dataflow</h3>
 <div class="line">      readCnt += readLen;</div>
 <div class="line">    } <span class="keywordflow">catch</span> (Exception e) {</div>
 <div class="line">      Debug.warning(e);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md80"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md79"></a>
 Reachability</h3>
 <p>Unauthenticated client reaching library HTTP server uses Request line, headers or body.</p>
 <ul>
@@ -580,7 +580,7 @@ Reachability</h3>
 <li><b>Entry point:</b> Request line, headers or body</li>
 <li><b>Outcome:</b> Heap exhaustion can disrupt or terminate host service.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md81"></a>
+<h3><a class="anchor" id="autotoc_md80"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Process-wide availability risk from shared heap exhaustion. Likelihood: No byte caps; a client that supplies input steadily avoids inactivity timeout. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -592,7 +592,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> No byte caps; a client that supplies input steadily avoids inactivity timeout</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md82"></a>
+<h3><a class="anchor" id="autotoc_md81"></a>
 Remediation</h3>
 <p>Enforce line, per-header, header-count, aggregate-header and total-body limits before accumulation; reject oversized messages and stream permitted large payloads.</p>
 <p>Tests:</p><ul>
@@ -602,7 +602,7 @@ Remediation</h3>
 <li>Enforce line, per-header, header-count, aggregate-header and total-body limits before accumulation; reject oversized messages and stream permitted large payloads.</li>
 </ul>
 <p><a class="anchor" id="finding-3"></a></p>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md82"></a>
 [3] Large SSDP MX values stall the search receiver</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -620,10 +620,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="SSDPSearchSocket_8java.html">core/src/main/java/org/cybergarage/upnp/ssdp/SSDPSearchSocket.java</a>:145-156, <a class="el" href="Device_8java.html">core/src/main/java/org/cybergarage/upnp/Device.java</a>:1496-1497, <a class="el" href="TimerUtil_8java.html">core/src/main/java/org/cybergarage/util/TimerUtil.java</a>:27-33   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md84"></a>
+<h3><a class="anchor" id="autotoc_md83"></a>
 Summary</h3>
 <p>Unbounded <code>MX</code> values cause the device’s search receive thread to sleep for potentially days before handling more discovery packets.</p>
-<h3><a class="anchor" id="autotoc_md85"></a>
+<h3><a class="anchor" id="autotoc_md84"></a>
 Root Cause</h3>
 <p><code>SSDPSearchSocket.run()</code> invokes device listeners inline. <code>Device.postSearchResponse()</code> multiplies caller MX by 1000 and calls <code>TimerUtil.waitRandom()</code>, which sleeps current thread without clamping. MX 2000000 produces positive 2000000000 milliseconds without overflow; ssdp:all can repeat waits for multiple responses.</p>
 <p><b>Inline discovery listener</b> — <code><a class="el" href="SSDPSearchSocket_8java.html">core/src/main/java/org/cybergarage/upnp/ssdp/SSDPSearchSocket.java</a>:145-156</code></p>
@@ -653,7 +653,7 @@ Root Cause</h3>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md86"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md85"></a>
 Validation</h3>
 <p>Confirmed integer parser, synchronous listener path, multiplication and random sleep. Sleep is random rather than guaranteed maximum, but supported input allows a bound near 23 days; recognized MAN and matching ST are prerequisites.</p>
 <p>Validation method: static source trace</p>
@@ -687,7 +687,7 @@ Validation</h3>
 </div><!-- fragment --><p>Limitations:</p><ul>
 <li>No application code or exploit was executed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md87"></a>
+<h3><a class="anchor" id="autotoc_md86"></a>
 Dataflow</h3>
 <p>Send valid M-SEARCH with recognized MAN/ST and excessive positive MX; receive thread sleeps for random interval under attacker-sized bound and stops receiving.</p>
 <ul>
@@ -722,7 +722,7 @@ Dataflow</h3>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md88"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md87"></a>
 Reachability</h3>
 <p>Peer sending SSDP discovery requests uses M-SEARCH MX header.</p>
 <ul>
@@ -730,7 +730,7 @@ Reachability</h3>
 <li><b>Entry point:</b> M-SEARCH MX header</li>
 <li><b>Outcome:</b> Legitimate searches are lost while receiver sleeps for excessive interval.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md89"></a>
+<h3><a class="anchor" id="autotoc_md88"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Search discovery availability on interface. Likelihood: Unauthenticated MX accepted without max; repeated queries exacerbate delay. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -742,7 +742,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> Unauthenticated MX accepted without max; repeated queries exacerbate delay</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md90"></a>
+<h3><a class="anchor" id="autotoc_md89"></a>
 Remediation</h3>
 <p>Clamp MX to supported bounded interval with overflow-safe arithmetic; schedule responses using bounded delayed tasks outside receiver.</p>
 <p>Tests:</p><ul>
@@ -752,7 +752,7 @@ Remediation</h3>
 <li>Clamp MX to supported bounded interval with overflow-safe arithmetic; schedule responses using bounded delayed tasks outside receiver.</li>
 </ul>
 <p><a class="anchor" id="finding-4"></a></p>
-<h2><a class="anchor" id="autotoc_md91"></a>
+<h2><a class="anchor" id="autotoc_md90"></a>
 [4] Malformed SSDP HOST permanently stops notification reception</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -770,10 +770,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="SSDPNotifySocket_8java.html">core/src/main/java/org/cybergarage/upnp/ssdp/SSDPNotifySocket.java</a>:113-137, <a class="el" href="SSDPPacket_8java.html">core/src/main/java/org/cybergarage/upnp/ssdp/SSDPPacket.java</a>:161-172   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md92"></a>
+<h3><a class="anchor" id="autotoc_md91"></a>
 Summary</h3>
 <p>A UDP packet with malformed <code>HOST</code> can throw an uncaught exception and terminate an interface’s SSDP notification thread.</p>
-<h3><a class="anchor" id="autotoc_md93"></a>
+<h3><a class="anchor" id="autotoc_md92"></a>
 Root Cause</h3>
 <p><code>SSDPPacket.getHostInetAddress()</code> slices text before its final colon, then indexes without checking emptiness. HOST <code>:1900</code> produces an empty string and <code>charAt(0)</code> throws. <code>SSDPNotifySocket.run()</code> invokes this outside its receive-only IOException handler, before multicast-address filtering, with no thread restart.</p>
 <p><b>Header parsed before multicast filter</b> — <code><a class="el" href="SSDPNotifySocket_8java.html">core/src/main/java/org/cybergarage/upnp/ssdp/SSDPNotifySocket.java</a>:113-137</code></p>
@@ -817,7 +817,7 @@ Root Cause</h3>
 <div class="line">  }</div>
 <div class="line">  InetSocketAddress isockaddr = <span class="keyword">new</span> InetSocketAddress(addrStr, 0);</div>
 <div class="line">  <span class="keywordflow">return</span> isockaddr.getAddress();</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md94"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md93"></a>
 Validation</h3>
 <p>Verified exact empty-string path and catch placement. Normal missing HOST has a different fallback; explicit malformed colon HOST triggers unchecked exception. Address comparison executes too late to protect parser.</p>
 <p>Validation method: static source trace</p>
@@ -865,7 +865,7 @@ Validation</h3>
 </div><!-- fragment --><p>Limitations:</p><ul>
 <li>No application code or exploit was executed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md95"></a>
+<h3><a class="anchor" id="autotoc_md94"></a>
 Dataflow</h3>
 <p>Deliver an SSDP datagram with HOST <code>:1900</code> to joined notification socket; parser throws before filtering and receiver terminates.</p>
 <ul>
@@ -914,7 +914,7 @@ Dataflow</h3>
 <div class="line">  }</div>
 <div class="line">  InetSocketAddress isockaddr = <span class="keyword">new</span> InetSocketAddress(addrStr, 0);</div>
 <div class="line">  <span class="keywordflow">return</span> isockaddr.getAddress();</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md96"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md95"></a>
 Reachability</h3>
 <p>Peer able to deliver UDP to joined SSDP socket uses SSDP HOST header.</p>
 <ul>
@@ -922,7 +922,7 @@ Reachability</h3>
 <li><b>Entry point:</b> SSDP HOST header</li>
 <li><b>Outcome:</b> Notification discovery stops on affected interface until restarted.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md97"></a>
+<h3><a class="anchor" id="autotoc_md96"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Persistent discovery availability loss on target interface. Likelihood: One small unauthenticated datagram follows direct uncaught exception path. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -934,7 +934,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> One small unauthenticated datagram follows direct uncaught exception path</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md98"></a>
+<h3><a class="anchor" id="autotoc_md97"></a>
 Remediation</h3>
 <p>Validate HOST/bracket contents before indexing; reject malformed packets per iteration and continue receiving after parse errors.</p>
 <p>Tests:</p><ul>
@@ -944,7 +944,7 @@ Remediation</h3>
 <li>Validate HOST/bracket contents before indexing; reject malformed packets per iteration and continue receiving after parse errors.</li>
 </ul>
 <p><a class="anchor" id="finding-5"></a></p>
-<h2><a class="anchor" id="autotoc_md99"></a>
+<h2><a class="anchor" id="autotoc_md98"></a>
 [5] Unresponsive peers can indefinitely block discovery and notifications</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -962,10 +962,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-250, <a class="el" href="Parser_8java.html">core/src/main/java/org/cybergarage/xml/Parser.java</a>:58-65, <a class="el" href="HTTPRequest_8java.html">core/src/main/java/org/cybergarage/http/HTTPRequest.java</a>:356-361, <a class="el" href="HTTPRequest_8java.html">core/src/main/java/org/cybergarage/http/HTTPRequest.java</a>:398-402, <a class="el" href="Service_8java.html">core/src/main/java/org/cybergarage/upnp/Service.java</a>:665-676   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md100"></a>
+<h3><a class="anchor" id="autotoc_md99"></a>
 Summary</h3>
 <p>Description and notification response reads lack deadlines. A hostile peer can withhold a response and indefinitely stall discovery or event-producing operations.</p>
-<h3><a class="anchor" id="autotoc_md101"></a>
+<h3><a class="anchor" id="autotoc_md100"></a>
 Root Cause</h3>
 <p><code>ControlPoint.addDevice()</code> is synchronized and performs peer description retrieval in receive-thread context. <code>Parser.parse(URL)</code> sets neither connection nor read timeout. Fallback <code>HTTPRequest.post()</code> limits only connect, then reads response with no SO_TIMEOUT. Notifications synchronously reuse that client, so an accepted but silent callback can block state updates.</p>
 <p><b>Synchronized network discovery</b> — <code><a class="el" href="ControlPoint_8java.html">core/src/main/java/org/cybergarage/upnp/ControlPoint.java</a>:234-250</code></p>
@@ -1025,7 +1025,7 @@ Root Cause</h3>
 <div class="line"> </div>
 <div class="line">  HTTPResponse res = notifyReq.post(host, port);</div>
 <div class="line">  <span class="keywordflow">if</span> (res.isSuccessful() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md102"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md101"></a>
 Validation</h3>
 <p>Verified both HTTP clients and discovery monitor ownership. Existing 80-second outbound connect timeout and inbound accepted socket timeout do not limit reads on a successfully connected outbound socket. Holding ControlPoint monitor can block its other addDevice path.</p>
 <p>Validation method: static source trace</p>
@@ -1090,7 +1090,7 @@ Validation</h3>
 <li>No application code or exploit was executed.</li>
 <li>Actual reachability and application consequence depend on embedding; no Internet exposure assumed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md103"></a>
+<h3><a class="anchor" id="autotoc_md102"></a>
 Dataflow</h3>
 <p>Advertise a fresh root device pointing to a server that accepts but withholds XML/HTTP, or subscribe an evented device to a silent callback; synchronous read never completes.</p>
 <ul>
@@ -1155,7 +1155,7 @@ Dataflow</h3>
 <div class="line"> </div>
 <div class="line">  HTTPResponse res = notifyReq.post(host, port);</div>
 <div class="line">  <span class="keywordflow">if</span> (res.isSuccessful() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md104"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md103"></a>
 Reachability</h3>
 <p>SSDP peer or HTTP subscriber controlling an outbound server uses Description LOCATION or callback response. Actual reachability and application consequence depend on embedding; no Internet exposure assumed.</p>
 <ul>
@@ -1166,7 +1166,7 @@ Reachability</h3>
 <p>Limitations:</p><ul>
 <li>Actual reachability and application consequence depend on embedding; no Internet exposure assumed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md105"></a>
+<h3><a class="anchor" id="autotoc_md104"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Discovery and application notification availability. Likelihood: No response deadlines; attacker-controlled endpoint can accept then stall. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -1178,7 +1178,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> No response deadlines; attacker-controlled endpoint can accept then stall</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md106"></a>
+<h3><a class="anchor" id="autotoc_md105"></a>
 Remediation</h3>
 <p>Configure connect/read timeouts on both clients, enforce overall deadlines, fetch descriptions in bounded workers and avoid holding discovery monitor during I/O.</p>
 <p>Tests:</p><ul>
@@ -1188,7 +1188,7 @@ Remediation</h3>
 <li>Configure connect/read timeouts on both clients, enforce overall deadlines, fetch descriptions in bounded workers and avoid holding discovery monitor during I/O.</li>
 </ul>
 <p><a class="anchor" id="finding-6"></a></p>
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 [6] Truncated chunked messages permanently consume CPU</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -1206,10 +1206,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="HTTPServerThread_8java.html">core/src/main/java/org/cybergarage/http/HTTPServerThread.java</a>:37-48, <a class="el" href="HTTPPacket_8java.html">core/src/main/java/org/cybergarage/http/HTTPPacket.java</a>:220-243, <a class="el" href="HTTPPacket_8java.html">core/src/main/java/org/cybergarage/http/HTTPPacket.java</a>:246-254   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md108"></a>
+<h3><a class="anchor" id="autotoc_md107"></a>
 Summary</h3>
 <p>A small chunked HTTP message followed by EOF can leave its parser worker in a permanent busy loop, allowing reachable clients to exhaust CPU and workers.</p>
-<h3><a class="anchor" id="autotoc_md109"></a>
+<h3><a class="anchor" id="autotoc_md108"></a>
 Root Cause</h3>
 <p>Positive chunk size enters body reading. Premature EOF breaks that read, but parsing continues into CRLF skipping. <code>BufferedInputStream.skip()</code> returns zero at EOF; <code>skipCnt &lt; 0</code> never recognizes this no-progress state, so <code>skipLen</code> cannot reach two.</p>
 <p><b>Worker parses before routing</b> — <code><a class="el" href="HTTPServerThread_8java.html">core/src/main/java/org/cybergarage/http/HTTPServerThread.java</a>:37-48</code></p>
@@ -1262,7 +1262,7 @@ Root Cause</h3>
 <div class="line">    <span class="keywordflow">if</span> (skipCnt &lt; 0) <span class="keywordflow">break</span>;</div>
 <div class="line">    skipLen += skipCnt;</div>
 <div class="line">  } <span class="keywordflow">while</span> (skipLen &lt; HTTP.CRLF.length());</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md110"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md109"></a>
 Validation</h3>
 <p>Checked body EOF branch and CRLF loop. The accepted socket inactivity timeout does not fire because EOF/skip return immediately. This affects incoming requests and library client responses.</p>
 <p>Validation method: static source trace</p>
@@ -1320,7 +1320,7 @@ Validation</h3>
 <li>No application code or exploit was executed.</li>
 <li>Severity reflects availability rather than code execution; external exposure depends on bound interfaces.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md111"></a>
+<h3><a class="anchor" id="autotoc_md110"></a>
 Dataflow</h3>
 <p>Send a positive chunk size with truncated body or missing trailing CRLF, then close the write side; body parsing reaches zero-progress CRLF skipping and never returns.</p>
 <ul>
@@ -1378,7 +1378,7 @@ Dataflow</h3>
 <div class="line">    <span class="keywordflow">if</span> (skipCnt &lt; 0) <span class="keywordflow">break</span>;</div>
 <div class="line">    skipLen += skipCnt;</div>
 <div class="line">  } <span class="keywordflow">while</span> (skipLen &lt; HTTP.CRLF.length());</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md112"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md111"></a>
 Reachability</h3>
 <p>Unauthenticated HTTP client or hostile contacted HTTP server uses Chunked request/response body. Severity reflects availability rather than code execution; external exposure depends on bound interfaces.</p>
 <ul>
@@ -1389,7 +1389,7 @@ Reachability</h3>
 <p>Limitations:</p><ul>
 <li>Severity reflects availability rather than code execution; external exposure depends on bound interfaces.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md113"></a>
+<h3><a class="anchor" id="autotoc_md112"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Availability loss through sustained CPU consumption and retained workers. Likelihood: Small finite input and EOF suffice on any reachable library HTTP parser. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -1401,7 +1401,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> Small finite input and EOF suffice on any reachable library HTTP parser</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md114"></a>
+<h3><a class="anchor" id="autotoc_md113"></a>
 Remediation</h3>
 <p>Reject premature chunk EOF and read/validate exactly the trailing CRLF bytes; every framing loop must terminate on EOF or no progress.</p>
 <p>Tests:</p><ul>
@@ -1411,7 +1411,7 @@ Remediation</h3>
 <li>Reject premature chunk EOF and read/validate exactly the trailing CRLF bytes; every framing loop must terminate on EOF or no progress.</li>
 </ul>
 <p><a class="anchor" id="finding-7"></a></p>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 [7] Subscriptions make devices contact unrelated network targets</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -1429,10 +1429,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="Device_8java.html">core/src/main/java/org/cybergarage/upnp/Device.java</a>:1830-1847, <a class="el" href="Subscriber_8java.html">core/src/main/java/org/cybergarage/upnp/event/Subscriber.java</a>:72-80, <a class="el" href="Device_8java.html">core/src/main/java/org/cybergarage/upnp/Device.java</a>:1851-1857, <a class="el" href="Service_8java.html">core/src/main/java/org/cybergarage/upnp/Service.java</a>:665-676   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md116"></a>
+<h3><a class="anchor" id="autotoc_md115"></a>
 Summary</h3>
 <p>An unauthenticated subscriber can set <code>CALLBACK</code> to an unrelated or loopback target with an explicit port, causing generated GENA notifications from the device host.</p>
-<h3><a class="anchor" id="autotoc_md117"></a>
+<h3><a class="anchor" id="autotoc_md116"></a>
 Root Cause</h3>
 <p><code>Device.deviceEventNewSubscriptionRecieved()</code> checks only URL syntax, then registers the callback and notifies evented variables. <code>Subscriber</code> keeps its supplied host/path/port. <code>Service.notify()</code> posts directly there without binding destination to the incoming subscriber peer or authorized device network.</p>
 <p><b>Callback accepted on syntax alone</b> — <code><a class="el" href="Device_8java.html">core/src/main/java/org/cybergarage/upnp/Device.java</a>:1830-1847</code></p>
@@ -1488,7 +1488,7 @@ Root Cause</h3>
 <div class="line"> </div>
 <div class="line">  HTTPResponse res = notifyReq.post(host, port);</div>
 <div class="line">  <span class="keywordflow">if</span> (res.isSuccessful() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md118"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md117"></a>
 Validation</h3>
 <p>Followed CALLBACK extraction, syntax check, registration, immediate notify and raw socket sink. Valid event service and evented variable are required; omitted port remains -1, so demonstrated route uses an explicit valid port. Method/body are generated NOTIFY and response is not relayed.</p>
 <p>Validation method: static source trace</p>
@@ -1549,7 +1549,7 @@ Validation</h3>
 <li>No application code or exploit was executed.</li>
 <li>Requires an existing event service with evented state; NOTIFY method/body constrained and response not returned. Third-party target must be reachable from device host.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md119"></a>
+<h3><a class="anchor" id="autotoc_md118"></a>
 Dataflow</h3>
 <p>SUBSCRIBE to a known service event URL with CALLBACK naming an unrelated reachable host and explicit port; registration immediately sends event notifications there.</p>
 <ul>
@@ -1610,7 +1610,7 @@ Dataflow</h3>
 <div class="line"> </div>
 <div class="line">  HTTPResponse res = notifyReq.post(host, port);</div>
 <div class="line">  <span class="keywordflow">if</span> (res.isSuccessful() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md120"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md119"></a>
 Reachability</h3>
 <p>Unauthenticated client reaching device event-subscription endpoint uses CALLBACK URL on valid SUBSCRIBE. Requires an existing event service with evented state; NOTIFY method/body constrained and response not returned. Third-party target must be reachable from device host.</p>
 <ul>
@@ -1621,7 +1621,7 @@ Reachability</h3>
 <p>Limitations:</p><ul>
 <li>Requires an existing event service with evented state; NOTIFY method/body constrained and response not returned. Third-party target must be reachable from device host.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md121"></a>
+<h3><a class="anchor" id="autotoc_md120"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Device becomes a blind request proxy across its network boundary. Likelihood: Only URL syntax checked; immediate request for evented service; no destination authorization. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -1633,7 +1633,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> Only URL syntax checked; immediate request for evented service; no destination authorization</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md122"></a>
+<h3><a class="anchor" id="autotoc_md121"></a>
 Remediation</h3>
 <p>Authorize callback scheme and resolved destination against subscriber identity/peer and allowed networks; reject loopback/unrelated targets, handle DNS changes and cap subscriber lifetime/count.</p>
 <p>Tests:</p><ul>
@@ -1643,7 +1643,7 @@ Remediation</h3>
 <li>Authorize callback scheme and resolved destination against subscriber identity/peer and allowed networks; reject loopback/unrelated targets, handle DNS changes and cap subscriber lifetime/count.</li>
 </ul>
 <p><a class="anchor" id="finding-8"></a></p>
-<h2><a class="anchor" id="autotoc_md123"></a>
+<h2><a class="anchor" id="autotoc_md122"></a>
 [8] Slow HTTP connections can exhaust native threads</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -1661,10 +1661,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="HTTPServer_8java.html">core/src/main/java/org/cybergarage/http/HTTPServer.java</a>:217-218, <a class="el" href="HTTPServerThread_8java.html">core/src/main/java/org/cybergarage/http/HTTPServerThread.java</a>:37-48   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md124"></a>
+<h3><a class="anchor" id="autotoc_md123"></a>
 Summary</h3>
 <p>Each accepted connection starts a new thread without admission limits. Many slow clients can hold those workers and exhaust thread stacks, sockets and scheduling resources.</p>
-<h3><a class="anchor" id="autotoc_md125"></a>
+<h3><a class="anchor" id="autotoc_md124"></a>
 Root Cause</h3>
 <p><code>HTTPServer.run()</code> constructs and starts a dedicated <code>HTTPServerThread</code> for every accepted socket. Each worker blocks parsing headers/body before dispatch. The 80-second socket timeout measures inactivity; periodic bytes refresh it, and no absolute deadline or bounded executor constrains concurrency.</p>
 <p><b>Unbounded worker creation</b> — <code><a class="el" href="HTTPServer_8java.html">core/src/main/java/org/cybergarage/http/HTTPServer.java</a>:217-218</code></p>
@@ -1684,7 +1684,7 @@ Root Cause</h3>
 <div class="line">  }</div>
 <div class="line">  httpSock.close();</div>
 <div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md126"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md125"></a>
 Validation</h3>
 <p>Inspected accept/run and entire worker read loop. No worker count or queue bound exists. Idle timeout mitigates completely silent clients but not steady slow sends.</p>
 <p>Validation method: static source trace</p>
@@ -1708,7 +1708,7 @@ Validation</h3>
 </div><!-- fragment --><p>Limitations:</p><ul>
 <li>No application code or exploit was executed.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md127"></a>
+<h3><a class="anchor" id="autotoc_md126"></a>
 Dataflow</h3>
 <p>Open many HTTP connections and periodically send partial request bytes before inactivity timeout; every connection retains its own worker.</p>
 <ul>
@@ -1733,7 +1733,7 @@ Dataflow</h3>
 <div class="line">  }</div>
 <div class="line">  httpSock.close();</div>
 <div class="line">}</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md128"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md127"></a>
 Reachability</h3>
 <p>Unauthenticated HTTP client uses Accepted TCP connections with incomplete requests.</p>
 <ul>
@@ -1741,7 +1741,7 @@ Reachability</h3>
 <li><b>Entry point:</b> Accepted TCP connections with incomplete requests</li>
 <li><b>Outcome:</b> Native thread/socket exhaustion degrades the embedding process.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md129"></a>
+<h3><a class="anchor" id="autotoc_md128"></a>
 Severity</h3>
 <p><b>Medium</b> — Impact: Service availability via native resource exhaustion. Likelihood: Reachable server creates one worker per attacker connection; absolute deadlines absent. Network exposure depends on embedding deployment.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -1753,7 +1753,7 @@ Severity</h3>
 <li><b>Level:</b> high</li>
 <li><b>Why:</b> Reachable server creates one worker per attacker connection; absolute deadlines absent</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md130"></a>
+<h3><a class="anchor" id="autotoc_md129"></a>
 Remediation</h3>
 <p>Use bounded connection admission and workers with absolute header/body deadlines; guarantee socket cleanup in finally.</p>
 <p>Tests:</p><ul>
@@ -1763,7 +1763,7 @@ Remediation</h3>
 <li>Use bounded connection admission and workers with absolute header/body deadlines; guarantee socket cleanup in finally.</li>
 </ul>
 <p><a class="anchor" id="finding-9"></a></p>
-<h2><a class="anchor" id="autotoc_md131"></a>
+<h2><a class="anchor" id="autotoc_md130"></a>
 [9] Recursive media browsing trusts remote container cycles</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -1781,10 +1781,10 @@ Remediation</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Affected lines   </td><td class="markdownTableBodyNone"><a class="el" href="MediaController_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/controller/MediaController.java</a>:211-220, <a class="el" href="MediaController_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/controller/MediaController.java</a>:132-144, <a class="el" href="MediaController_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/controller/MediaController.java</a>:230-250, <a class="el" href="MediaController_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/controller/MediaController.java</a>:251-257   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md132"></a>
+<h3><a class="anchor" id="autotoc_md131"></a>
 Summary</h3>
 <p>A malicious media server can return cyclic container IDs and indefinitely grow recursive Browse calls when an embedding application enables recursion via the four-argument <code>MediaController.browse()</code> API.</p>
-<h3><a class="anchor" id="autotoc_md133"></a>
+<h3><a class="anchor" id="autotoc_md132"></a>
 Root Cause</h3>
 <p>The public four-argument <code>browse()</code> forwards <code>hasRootNodeMetadata</code> into private traversal as the recursion flag. Remote Result XML supplies each container's ID and childCount. Each positive childCount appends a new node and recurses with supplied ID, without tracking previously visited IDs, maximum depth, node count or operation budget. A repeated container therefore retains all prior nodes and stack frames.</p>
 <p><b>Public API activates recursion</b> — <code><a class="el" href="MediaController_8java.html">std/src/main/java/org/cybergarage/upnp/std/av/controller/MediaController.java</a>:211-220</code></p>
@@ -1846,7 +1846,7 @@ Root Cause</h3>
 <div class="line">    <span class="keywordflow">if</span> (0 &lt; childCnt) {</div>
 <div class="line">      String objid = containerNode.getID();</div>
 <div class="line">      browse(containerNode, dev, objid, <span class="keyword">true</span>);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md134"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md133"></a>
 Validation</h3>
 <p>Independently verified the four-argument public caller enables this path whenever its fourth flag is true, including when the third flag is false. Malicious server can return a container with repeated ID and positive childCount on every BrowseDirectChildren response. No internal caller is necessary for a public library input boundary, but default overloads are not affected by this recursive mode.</p>
 <p>Validation method: static source trace</p>
@@ -1913,7 +1913,7 @@ Validation</h3>
 <li>No runtime reproduction or resource threshold measured.</li>
 <li>Only explicitly enabled recursive public API path reported; convenience APIs pass fourth=false.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md135"></a>
+<h3><a class="anchor" id="autotoc_md134"></a>
 Dataflow</h3>
 <p>Remote Browse Result -&gt; XML parse -&gt; container ID/childCount -&gt; append node -&gt; recursive Browse request</p>
 <ul>
@@ -1980,7 +1980,7 @@ Dataflow</h3>
 <div class="line">    <span class="keywordflow">if</span> (0 &lt; childCnt) {</div>
 <div class="line">      String objid = containerNode.getID();</div>
 <div class="line">      browse(containerNode, dev, objid, <span class="keyword">true</span>);</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md136"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md135"></a>
 Reachability</h3>
 <p>Public four-argument API with hasRootNodeMetadata=true; default overloads pass false and do not reach recursive mode. Malicious server must be selected by application.</p>
 <ul>
@@ -1988,7 +1988,7 @@ Reachability</h3>
 <li><b>Entry point:</b> MediaController.browse(Device,String,boolean,boolean)</li>
 <li><b>Outcome:</b> Browse thread fails or resources grow until exhaustion</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md137"></a>
+<h3><a class="anchor" id="autotoc_md136"></a>
 Severity</h3>
 <p><b>Low</b> — Availability impact is medium, but likelihood is medium/conditional: caller must use four-argument API with fourth flag true and browse a malicious server. Default overloads pass false and do not recurse.</p>
 <p>Additional runtime or deployment evidence could raise or lower this severity.</p>
@@ -2000,7 +2000,7 @@ Severity</h3>
 <li><b>Level:</b> medium</li>
 <li><b>Why:</b> Conditional public API use and selected malicious server; no internal default caller activates recursion.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md138"></a>
+<h3><a class="anchor" id="autotoc_md137"></a>
 Remediation</h3>
 <p>Track visited container IDs, enforce depth/node/request budgets and deadline, and forward intended hasBrowseChildNodes flag correctly.</p>
 <p>Tests:</p><ul>
@@ -2009,7 +2009,7 @@ Remediation</h3>
 <p>Preventive controls:</p><ul>
 <li>Bound graph traversal of all remote metadata and validate traversal flags at public API.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md139"></a>
+<h1><a class="anchor" id="autotoc_md138"></a>
 Reviewed Surfaces</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -2049,7 +2049,7 @@ Reviewed Surfaces</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Complete current Java implementation audit   </td><td class="markdownTableBodyNone">not recorded   </td><td class="markdownTableBodyNone">No issue found   </td><td class="markdownTableBodyNone">Deduplicated coverage union: core 120 Java files (113 main + 7 tests), std 77, examples 26, tools 22, totaling 245. Core independent auditor and focused std investigator fully read runtime implementation; independent architecture follow-up reviewed omitted original SCPD constants and four package-info files. Parent audited remaining tools/examples and validated findings. Architecture-only reads did not inflate counts. No std test tree. Core tests do not cover reported boundary failures.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md140"></a>
+<h1><a class="anchor" id="autotoc_md139"></a>
 Open Questions And Follow Up</h1>
 <ul>
 <li>External JAXP restrictions or installed alternative parser may mitigate XXE; actual deployment parser/provider not observed.</li>

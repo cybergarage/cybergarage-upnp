@@ -25,11 +25,11 @@
 var NAVTREE =
 [
   [ "cybergarage-upnp", "index.html", [
-    [ "Historical adoption and use", "index.html#autotoc_md167", null ],
-    [ "Documentation", "index.html#autotoc_md168", null ],
-    [ "References", "index.html#autotoc_md169", null ],
-    [ "Repositories", "index.html#autotoc_md170", null ],
-    [ "Examples", "index.html#autotoc_md171", null ],
+    [ "Historical adoption and use", "index.html#autotoc_md166", null ],
+    [ "Documentation", "index.html#autotoc_md167", null ],
+    [ "References", "index.html#autotoc_md168", null ],
+    [ "Repositories", "index.html#autotoc_md169", null ],
+    [ "Examples", "index.html#autotoc_md170", null ],
     [ "Historical Java adoption and use", "md_docs_2ADOPTION.html", [
       [ "Commercial applications and products", "md_docs_2ADOPTION.html#autotoc_md1", [
         [ "Panasonic Blu-ray Remote 2012 — Android", "md_docs_2ADOPTION.html#autotoc_md2", null ],
@@ -48,182 +48,181 @@ var NAVTREE =
         [ "I2P", "md_docs_2ADOPTION.html#autotoc_md13", null ]
       ] ],
       [ "Earlier examples awaiting source revalidation", "md_docs_2ADOPTION.html#autotoc_md14", [
-        [ "Apache Felix", "md_docs_2ADOPTION.html#autotoc_md15", null ],
-        [ "Panasonic VIERA remote for Android", "md_docs_2ADOPTION.html#autotoc_md16", null ]
+        [ "Apache Felix", "md_docs_2ADOPTION.html#autotoc_md15", null ]
       ] ],
-      [ "Evidence limits", "md_docs_2ADOPTION.html#autotoc_md17", null ]
+      [ "Evidence limits", "md_docs_2ADOPTION.html#autotoc_md16", null ]
     ] ],
     [ "Programming Guide", "md_docs_2cybergarage-upnp-prgguide.html", [
-      [ "Introduction", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md19", null ],
-      [ "Device", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md20", [
-        [ "Description", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md21", null ],
-        [ "Initiating", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md22", null ],
-        [ "Notify", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md23", null ],
-        [ "Embedded Devices", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md24", null ],
-        [ "Service", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md25", null ],
-        [ "Control", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md26", null ],
-        [ "Event", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md27", null ]
+      [ "Introduction", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md18", null ],
+      [ "Device", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md19", [
+        [ "Description", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md20", null ],
+        [ "Initiating", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md21", null ],
+        [ "Notify", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md22", null ],
+        [ "Embedded Devices", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md23", null ],
+        [ "Service", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md24", null ],
+        [ "Control", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md25", null ],
+        [ "Event", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md26", null ]
       ] ],
-      [ "Control Point", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md28", [
-        [ "Class Overview", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md29", null ],
-        [ "Initiating", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md30", null ],
-        [ "Notify", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md31", null ],
-        [ "Search", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md32", null ],
-        [ "Root Devices", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md33", null ],
-        [ "Control", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md34", null ],
-        [ "Event", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md35", null ],
-        [ "IPv6", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md36", null ]
+      [ "Control Point", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md27", [
+        [ "Class Overview", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md28", null ],
+        [ "Initiating", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md29", null ],
+        [ "Notify", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md30", null ],
+        [ "Search", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md31", null ],
+        [ "Root Devices", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md32", null ],
+        [ "Control", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md33", null ],
+        [ "Event", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md34", null ],
+        [ "IPv6", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md35", null ]
       ] ],
-      [ "Inside cybergarage-upnp", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md37", [
-        [ "Overriding HTTP Service", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md38", null ]
+      [ "Inside cybergarage-upnp", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md36", [
+        [ "Overriding HTTP Service", "md_docs_2cybergarage-upnp-prgguide.html#autotoc_md37", null ]
       ] ]
     ] ],
     [ "jQuery v3.7.1", "md_docs_2javadoc_2legal_2jquery.html", null ],
     [ "jQuery UI v1.14.1", "md_docs_2javadoc_2legal_2jqueryUI.html", null ],
     [ "Javadoc Documentation Status", "md_docs_2JAVADOC__STATUS.html", [
-      [ "Overview", "md_docs_2JAVADOC__STATUS.html#autotoc_md44", null ],
-      [ "Completed Documentation", "md_docs_2JAVADOC__STATUS.html#autotoc_md45", [
-        [ "Core Action Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md46", null ],
-        [ "Core Argument Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md47", null ],
-        [ "Constraint Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md48", null ],
-        [ "Control Protocol Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md49", null ],
-        [ "Device Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md50", null ]
+      [ "Overview", "md_docs_2JAVADOC__STATUS.html#autotoc_md43", null ],
+      [ "Completed Documentation", "md_docs_2JAVADOC__STATUS.html#autotoc_md44", [
+        [ "Core Action Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md45", null ],
+        [ "Core Argument Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md46", null ],
+        [ "Constraint Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md47", null ],
+        [ "Control Protocol Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md48", null ],
+        [ "Device Classes", "md_docs_2JAVADOC__STATUS.html#autotoc_md49", null ]
       ] ],
-      [ "Remaining Work", "md_docs_2JAVADOC__STATUS.html#autotoc_md51", [
-        [ "High Priority (Core API Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md52", null ],
-        [ "Medium Priority (Supporting Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md53", null ],
-        [ "Low Priority (Utility Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md54", null ]
+      [ "Remaining Work", "md_docs_2JAVADOC__STATUS.html#autotoc_md50", [
+        [ "High Priority (Core API Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md51", null ],
+        [ "Medium Priority (Supporting Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md52", null ],
+        [ "Low Priority (Utility Classes)", "md_docs_2JAVADOC__STATUS.html#autotoc_md53", null ]
       ] ],
-      [ "Documentation Standards", "md_docs_2JAVADOC__STATUS.html#autotoc_md55", null ]
+      [ "Documentation Standards", "md_docs_2JAVADOC__STATUS.html#autotoc_md54", null ]
     ] ],
     [ "Security Review: cybergarage-upnp", "md_docs_2security_22026-10-05-audit.html", [
-      [ "Scope", "md_docs_2security_22026-10-05-audit.html#autotoc_md57", [
-        [ "Scan Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md58", null ]
+      [ "Scope", "md_docs_2security_22026-10-05-audit.html#autotoc_md56", [
+        [ "Scan Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md57", null ]
       ] ],
-      [ "Threat Model", "md_docs_2security_22026-10-05-audit.html#autotoc_md59", [
-        [ "Assets", "md_docs_2security_22026-10-05-audit.html#autotoc_md60", null ],
-        [ "Trust Boundaries", "md_docs_2security_22026-10-05-audit.html#autotoc_md61", null ],
-        [ "Attacker Capabilities", "md_docs_2security_22026-10-05-audit.html#autotoc_md62", null ],
-        [ "Security Objectives", "md_docs_2security_22026-10-05-audit.html#autotoc_md63", null ],
-        [ "Assumptions", "md_docs_2security_22026-10-05-audit.html#autotoc_md64", null ]
+      [ "Threat Model", "md_docs_2security_22026-10-05-audit.html#autotoc_md58", [
+        [ "Assets", "md_docs_2security_22026-10-05-audit.html#autotoc_md59", null ],
+        [ "Trust Boundaries", "md_docs_2security_22026-10-05-audit.html#autotoc_md60", null ],
+        [ "Attacker Capabilities", "md_docs_2security_22026-10-05-audit.html#autotoc_md61", null ],
+        [ "Security Objectives", "md_docs_2security_22026-10-05-audit.html#autotoc_md62", null ],
+        [ "Assumptions", "md_docs_2security_22026-10-05-audit.html#autotoc_md63", null ]
       ] ],
-      [ "Findings", "md_docs_2security_22026-10-05-audit.html#autotoc_md65", [
-        [ "Confidence Scale", "md_docs_2security_22026-10-05-audit.html#autotoc_md66", null ],
-        [ "[1] Network XML can resolve local files and external entities", "md_docs_2security_22026-10-05-audit.html#autotoc_md67", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md68", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md69", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md70", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md71", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md72", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md73", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md74", null ]
+      [ "Findings", "md_docs_2security_22026-10-05-audit.html#autotoc_md64", [
+        [ "Confidence Scale", "md_docs_2security_22026-10-05-audit.html#autotoc_md65", null ],
+        [ "[1] Network XML can resolve local files and external entities", "md_docs_2security_22026-10-05-audit.html#autotoc_md66", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md67", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md68", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md69", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md70", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md71", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md72", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md73", null ]
         ] ],
-        [ "[2] HTTP messages can exhaust JVM heap before routing", "md_docs_2security_22026-10-05-audit.html#autotoc_md75", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md76", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md77", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md78", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md79", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md80", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md81", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md82", null ]
+        [ "[2] HTTP messages can exhaust JVM heap before routing", "md_docs_2security_22026-10-05-audit.html#autotoc_md74", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md75", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md76", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md77", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md78", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md79", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md80", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md81", null ]
         ] ],
-        [ "[3] Large SSDP MX values stall the search receiver", "md_docs_2security_22026-10-05-audit.html#autotoc_md83", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md84", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md85", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md86", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md87", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md88", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md89", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md90", null ]
+        [ "[3] Large SSDP MX values stall the search receiver", "md_docs_2security_22026-10-05-audit.html#autotoc_md82", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md83", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md84", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md85", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md86", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md87", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md88", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md89", null ]
         ] ],
-        [ "[4] Malformed SSDP HOST permanently stops notification reception", "md_docs_2security_22026-10-05-audit.html#autotoc_md91", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md92", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md93", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md94", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md95", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md96", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md97", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md98", null ]
+        [ "[4] Malformed SSDP HOST permanently stops notification reception", "md_docs_2security_22026-10-05-audit.html#autotoc_md90", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md91", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md92", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md93", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md94", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md95", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md96", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md97", null ]
         ] ],
-        [ "[5] Unresponsive peers can indefinitely block discovery and notifications", "md_docs_2security_22026-10-05-audit.html#autotoc_md99", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md100", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md101", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md102", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md103", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md104", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md105", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md106", null ]
+        [ "[5] Unresponsive peers can indefinitely block discovery and notifications", "md_docs_2security_22026-10-05-audit.html#autotoc_md98", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md99", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md100", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md101", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md102", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md103", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md104", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md105", null ]
         ] ],
-        [ "[6] Truncated chunked messages permanently consume CPU", "md_docs_2security_22026-10-05-audit.html#autotoc_md107", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md108", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md109", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md110", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md111", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md112", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md113", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md114", null ]
+        [ "[6] Truncated chunked messages permanently consume CPU", "md_docs_2security_22026-10-05-audit.html#autotoc_md106", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md107", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md108", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md109", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md110", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md111", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md112", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md113", null ]
         ] ],
-        [ "[7] Subscriptions make devices contact unrelated network targets", "md_docs_2security_22026-10-05-audit.html#autotoc_md115", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md116", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md117", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md118", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md119", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md120", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md121", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md122", null ]
+        [ "[7] Subscriptions make devices contact unrelated network targets", "md_docs_2security_22026-10-05-audit.html#autotoc_md114", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md115", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md116", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md117", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md118", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md119", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md120", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md121", null ]
         ] ],
-        [ "[8] Slow HTTP connections can exhaust native threads", "md_docs_2security_22026-10-05-audit.html#autotoc_md123", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md124", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md125", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md126", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md127", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md128", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md129", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md130", null ]
+        [ "[8] Slow HTTP connections can exhaust native threads", "md_docs_2security_22026-10-05-audit.html#autotoc_md122", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md123", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md124", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md125", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md126", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md127", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md128", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md129", null ]
         ] ],
-        [ "[9] Recursive media browsing trusts remote container cycles", "md_docs_2security_22026-10-05-audit.html#autotoc_md131", [
-          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md132", null ],
-          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md133", null ],
-          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md134", null ],
-          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md135", null ],
-          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md136", null ],
-          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md137", null ],
-          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md138", null ]
+        [ "[9] Recursive media browsing trusts remote container cycles", "md_docs_2security_22026-10-05-audit.html#autotoc_md130", [
+          [ "Summary", "md_docs_2security_22026-10-05-audit.html#autotoc_md131", null ],
+          [ "Root Cause", "md_docs_2security_22026-10-05-audit.html#autotoc_md132", null ],
+          [ "Validation", "md_docs_2security_22026-10-05-audit.html#autotoc_md133", null ],
+          [ "Dataflow", "md_docs_2security_22026-10-05-audit.html#autotoc_md134", null ],
+          [ "Reachability", "md_docs_2security_22026-10-05-audit.html#autotoc_md135", null ],
+          [ "Severity", "md_docs_2security_22026-10-05-audit.html#autotoc_md136", null ],
+          [ "Remediation", "md_docs_2security_22026-10-05-audit.html#autotoc_md137", null ]
         ] ]
       ] ],
-      [ "Reviewed Surfaces", "md_docs_2security_22026-10-05-audit.html#autotoc_md139", null ],
-      [ "Open Questions And Follow Up", "md_docs_2security_22026-10-05-audit.html#autotoc_md140", null ]
+      [ "Reviewed Surfaces", "md_docs_2security_22026-10-05-audit.html#autotoc_md138", null ],
+      [ "Open Questions And Follow Up", "md_docs_2security_22026-10-05-audit.html#autotoc_md139", null ]
     ] ],
     [ "Security remediation — 2026-10-22", "md_docs_2security_2remediation.html", [
-      [ "Changes and regression coverage", "md_docs_2security_2remediation.html#autotoc_md142", null ],
-      [ "Compatibility and limits", "md_docs_2security_2remediation.html#autotoc_md143", null ],
-      [ "Verification", "md_docs_2security_2remediation.html#autotoc_md144", null ],
-      [ "Documentation consolidation", "md_docs_2security_2remediation.html#autotoc_md145", null ],
-      [ "SonarCloud CI configuration (2026-10-22)", "md_docs_2security_2remediation.html#autotoc_md146", null ],
-      [ "Remaining uncertainty", "md_docs_2security_2remediation.html#autotoc_md147", null ]
+      [ "Changes and regression coverage", "md_docs_2security_2remediation.html#autotoc_md141", null ],
+      [ "Compatibility and limits", "md_docs_2security_2remediation.html#autotoc_md142", null ],
+      [ "Verification", "md_docs_2security_2remediation.html#autotoc_md143", null ],
+      [ "Documentation consolidation", "md_docs_2security_2remediation.html#autotoc_md144", null ],
+      [ "SonarCloud CI configuration (2026-10-22)", "md_docs_2security_2remediation.html#autotoc_md145", null ],
+      [ "Remaining uncertainty", "md_docs_2security_2remediation.html#autotoc_md146", null ]
     ] ],
     [ "Javadoc Style Guide for CyberGarage UPnP", "md_docs_2STYLEGUIDE__JAVADOC.html", [
-      [ "General Principles", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md149", null ],
-      [ "Structure", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md150", [
-        [ "Class/Interface Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md151", null ],
-        [ "Method Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md152", null ],
-        [ "Field Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md153", null ]
+      [ "General Principles", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md148", null ],
+      [ "Structure", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md149", [
+        [ "Class/Interface Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md150", null ],
+        [ "Method Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md151", null ],
+        [ "Field Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md152", null ]
       ] ],
-      [ "Tag Order", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md154", null ],
-      [ "Formatting Guidelines", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md155", [
-        [ "Inline Tags", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md156", null ],
-        [ "HTML Tags", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md157", null ],
-        [ "Descriptions", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md158", null ]
+      [ "Tag Order", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md153", null ],
+      [ "Formatting Guidelines", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md154", [
+        [ "Inline Tags", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md155", null ],
+        [ "HTML Tags", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md156", null ],
+        [ "Descriptions", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md157", null ]
       ] ],
-      [ "Special Considerations", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md159", [
-        [ "UPnP-Specific Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md160", null ],
-        [ "Deprecated APIs", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md161", null ],
-        [ "Null Handling", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md162", null ]
+      [ "Special Considerations", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md158", [
+        [ "UPnP-Specific Documentation", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md159", null ],
+        [ "Deprecated APIs", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md160", null ],
+        [ "Null Handling", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md161", null ]
       ] ],
-      [ "Examples", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md163", [
-        [ "Good Documentation Example", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md164", null ]
+      [ "Examples", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md162", [
+        [ "Good Documentation Example", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md163", null ]
       ] ],
-      [ "Verification", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md165", null ]
+      [ "Verification", "md_docs_2STYLEGUIDE__JAVADOC.html#autotoc_md164", null ]
     ] ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
@@ -273,7 +272,7 @@ var NAVTREEINDEX =
 "classorg_1_1cybergarage_1_1upnp_1_1xml_1_1DeviceData.html#a98c87d4632cfb07986b7281aacdd1ed3",
 "classorg_1_1cybergarage_1_1xml_1_1AttributeList.html#a71f188133833926dc03de8bdcb7eb0c0",
 "functions_c.html",
-"md_docs_2security_22026-10-05-audit.html#autotoc_md120"
+"md_docs_2security_22026-10-05-audit.html#autotoc_md121"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

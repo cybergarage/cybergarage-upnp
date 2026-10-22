@@ -69,9 +69,9 @@ $(function(){initNavTree('md_docs_2security_2remediation.html',''); initResizabl
   <div class="headertitle"><div class="title">Security remediation — 2026-10-22</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md141"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md140"></a></p>
 <p>The <a class="el" href="md_docs_2security_22026-10-05-audit.html">2026-10-05 audit</a> recorded nine validated findings against revision <code>f4a1ada0188cd5f8afc13391c8346b3ef5eaed50</code>. This document describes the subsequent remediation; the archived audit retains its original findings, historical paths and line numbers. Its canonical JSON artifacts remain in the local Codex Security workbench and are not included in this repository copy.</p>
-<h1><a class="anchor" id="autotoc_md142"></a>
+<h1><a class="anchor" id="autotoc_md141"></a>
 Changes and regression coverage</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -95,7 +95,7 @@ Changes and regression coverage</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Recursive media container cycles   </td><td class="markdownTableBodyNone">Forward the intended recursion flag and bound visited container IDs, depth, node count and traversal time. Reject cycles/budget violations explicitly.   </td><td class="markdownTableBodyNone">Self-cycles, two-node cycles and deep unique chains fail; finite trees and all combinations of recursion/metadata flags retain their intended behavior.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md143"></a>
+<h1><a class="anchor" id="autotoc_md142"></a>
 Compatibility and limits</h1>
 <ul>
 <li>Buffered HTTP/XML content: 8 MiB; HTTP line: 8 KiB; headers/trailers: at most 100 and 64 KiB aggregate. HTTP wire parsing also has a finite aggregate byte cap. These limits apply to buffered control/description input, not outgoing media streams served through <code>HTTPSocket</code>.</li>
@@ -105,7 +105,7 @@ Compatibility and limits</h1>
 <li>Third-party callback destinations are now rejected. Callers using proxies or a callback host different from their subscription peer must change that deployment arrangement. Loopback callbacks remain valid for loopback subscribers.</li>
 <li>Invalid or oversized HTTP messages now fail closed instead of producing a partially parsed successful response. A server may close a rejected connection rather than return an application response.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md144"></a>
+<h1><a class="anchor" id="autotoc_md143"></a>
 Verification</h1>
 <p>Outcome: <b>fixed</b> for the nine validated source paths. The malicious inputs listed above no longer reproduce the reported behavior in the regression suite; normal XML, HTTP framing, HTTP/HTTPS description retrieval, local subscriptions, finite media browsing and existing device discovery controls remain covered.</p>
 <ul>
@@ -117,15 +117,15 @@ Verification</h1>
 <li>Full Javadoc/Doxygen rendering was not run locally because Pandoc and Doxygen are unavailable. Their configuration, shell syntax and migrated paths were checked; generated output remains ignored.</li>
 </ul>
 <p>The checks use temporary Maven dependencies and a temporary JDK; no tool installation or credentials are committed. Network tests use local sockets, and the HTTPS test generates an ephemeral localhost certificate rather than retaining a private key in the repository.</p>
-<h1><a class="anchor" id="autotoc_md145"></a>
+<h1><a class="anchor" id="autotoc_md144"></a>
 Documentation consolidation</h1>
 <p>All former <code>doc/</code> content, including the programming guide, PDF and images, now lives under <code>docs/</code>. Doxygen input/output and image paths, Javadoc output, generated-overview links, GitHub Pages publication and ignore rules use the unified location. Generated <code>docs/javadoc/</code> and <code>docs/doxygen/</code> content remains ignored.</p>
-<h1><a class="anchor" id="autotoc_md146"></a>
+<h1><a class="anchor" id="autotoc_md145"></a>
 SonarCloud CI configuration (2026-10-22)</h1>
 <p>The SonarCloud project <code>cybergarage_cybergarage-upnp</code> is bound to <code><a href="https://github.com/cybergarage/cybergarage-upnp">https://github.com/cybergarage/cybergarage-upnp</a></code> and already runs automatic analysis, including pull request #48. The Maven workflow incorrectly targeted <code>cybergarage_cpan-net-upnp</code>, which is bound to the separate <code>cpan-net-upnp</code> repository. After authentication was configured, this caused the scanner to fail because that repository has no pull request #48.</p>
 <p>The workflow now relies on the existing SonarCloud automatic analysis and its separate GitHub check. The duplicate Maven scanner and its dedicated cache are removed; Maven caching remains provided by <code>actions/setup-java</code>. Build, tests, JaCoCo and Codecov remain enabled. Automatic analysis does not import JaCoCo coverage, which remains available through Codecov. SonarCloud's quality gate is unchanged. The two reliability findings in #48 are addressed by performing the HTTP wire-budget addition as <code>long</code> and matching the parent stream's synchronized <code>reset()</code> contract.</p>
 <p>See <a href="https://docs.sonarsource.com/sonarqube-cloud/analyzing-source-code/automatic-analysis">SonarCloud automatic analysis</a> for the incompatibility with simultaneous CI-based analysis.</p>
-<h1><a class="anchor" id="autotoc_md147"></a>
+<h1><a class="anchor" id="autotoc_md146"></a>
 Remaining uncertainty</h1>
 <p>The three deferred audit leads remain outside the nine confirmed findings: remote SCPD local-file precedence needs an application-visible disclosure sink; deeply nested XML impact depends on parser/runtime behavior; and unvalidated GENA event delivery needs a security-sensitive application outcome. This patch does not claim to resolve those leads or replace deployment-specific authorization, firewalling or dependency-advisory review. </p>
 </div></div><!-- contents -->

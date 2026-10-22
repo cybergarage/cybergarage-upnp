@@ -56,10 +56,6 @@ The following older website claims are recorded here as unresolved leads, not ve
 
 The previous CyberGarage website described the [Apache Felix](http://felix.apache.org/site/index.html) UPnP base driver as using this Java library. The [historical architecture link](http://felix.apache.org/site/upnp-driver-architecture.html) and its [current documentation location](https://felix.apache.org/documentation/subprojects/apache-felix-upnp/upnp-driver-architecture.html) could not be retrieved for verification. Its OSS-use attribution remains pending primary-source revalidation.
 
-### Panasonic VIERA remote for Android
-
-The previous CyberGarage website attributed Java-library use to VIERA remote, a separate app from Blu-ray Remote and DIGA Player. Its [original Panasonic link](http://panasonic.jp/support/global/cs/tv/vremote/android/index.html) now returns 404, and an adopter-side library notice could not be confirmed. Its commercial-app attribution remains pending; the other Panasonic notices above do not verify it.
-
 ## Evidence limits
 
 The records above establish only the documented app, product version, SDK integration, published source use or derivation. They do not establish sales, user or customer counts, contracts, manufacturer endorsement or a partnership. A fork, compatibility list or interoperability test alone is not adoption evidence. Nero is not included: a license statement that software may contain a component does not identify a particular adopting product.
