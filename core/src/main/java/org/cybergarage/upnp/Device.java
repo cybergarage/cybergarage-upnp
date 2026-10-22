@@ -259,20 +259,14 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
     if ((baseURLStr == null) || (baseURLStr.length() <= 0)) {
       if ((locationURLStr != null) && (0 < locationURLStr.length())) {
-        if (!locationURLStr.endsWith("/") || !urlString.startsWith("/")) {
-          String absUrl = locationURLStr + urlString;
-          try {
-            URL url = new URL(absUrl);
-            return url.toString();
-          } catch (Exception e) {
-          }
-        } else {
-          String absUrl = locationURLStr + urlString.substring(1);
-          try {
-            URL url = new URL(absUrl);
-            return url.toString();
-          } catch (Exception e) {
-          }
+        // Without URLBase, relative URLs in a description are relative to the URL the
+        // description was retrieved from (LOCATION), so resolve them as RFC 3986 references.
+        // Simply concatenating them produced URLs such as ".../setup.xml/service.xml" when
+        // LOCATION points to a description file rather than a directory (#10, #35, #36).
+        try {
+          URL url = new URL(new URL(locationURLStr), urlString);
+          return url.toString();
+        } catch (Exception e) {
         }
 
         String absUrl = HTTP.getAbsoluteURL(locationURLStr, urlString);
