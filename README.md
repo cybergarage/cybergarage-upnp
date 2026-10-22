@@ -16,7 +16,6 @@ The UPnP™ [^1] architecture is an open network protocol that enables the disco
 ## Documentation
 
 - [Programming guide](docs/cybergarage-upnp-prgguide.md)
-- [Security audit (2026-10-05)](docs/security/2026-10-05-audit.md)
 - [Security remediation](docs/security/remediation.md)
 
 ## References
