@@ -108,6 +108,10 @@ public class SOAPRequest extends HTTPRequest {
       byte content[] = getContent();
       ByteArrayInputStream contentIn = new ByteArrayInputStream(content);
       Parser parser = SOAP.getXMLParser();
+      if (parser == null) {
+        Debug.warning("No XML parser for SOAP messages. Set one with UPnP.setXMLParser().");
+        return null;
+      }
       rootNode = parser.parse(contentIn);
     } catch (ParserException e) {
       Debug.warning(e);

@@ -169,6 +169,8 @@ public class NotifyRequest extends SOAPRequest {
   public PropertyList getPropertyList() {
     PropertyList properties = new PropertyList();
     Node varSetNode = getEnvelopeNode();
+    // The body is null when it is empty or cannot be parsed as XML (#26).
+    if (varSetNode == null) return properties;
     for (int i = 0; i < varSetNode.getNNodes(); i++) {
       Node propNode = varSetNode.getNode(i);
       if (propNode == null) continue;
