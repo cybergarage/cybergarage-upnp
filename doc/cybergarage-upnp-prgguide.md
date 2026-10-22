@@ -78,12 +78,12 @@ The active root device has some server processes and automatically returns respo
 
 ![](img/device-ports.png)
 
-The root device is created with the following default parameters. You can change these parameters using the following methods before starting the root device.
+The root device is created with the following default parameters. Where a setter is listed, you can change the parameter before starting the root device.
 
 | Parameter       | Default          | Setter Method     |
 |-----------------|------------------|---------------------|
 | HTTP port       | 4004             | setHTTPPort()       |
-| Description URI | /description.xml | setDescriptionURI() |
+| Description URI | /description.xml | Not publicly configurable |
 | Lease time      | 1800             | setLeaseTime()      |
 
 ### Notify
@@ -169,7 +169,7 @@ To receive query control events from control points, the device needs to impleme
 
 ```java
 public class ClockDevice extends Device implements ActionListener, QueryListener {
-  public ClockDevice() {
+  public ClockDevice() throws InvalidDescriptionException {
     super("/clock/www/description.xml");
     Action setTimeAction = getAction("SetTime");
     setTimeAction.setActionListener(this);
@@ -197,7 +197,7 @@ public class ClockDevice extends Device implements ActionListener, QueryListener
       currTimeArg.setValue(currTimeStr);
       return true;
     }
-    action.setStatus(UPnP.INVALID_ACTION, "...");
+    action.setStatus(UPnPStatus.INVALID_ACTION, "...");
     return false;
   }
 
@@ -208,7 +208,7 @@ public class ClockDevice extends Device implements ActionListener, QueryListener
       stateVar.setValue(currTimeStr);
       return true;
     }
-    stateVar.setStatus(UPnP.INVALID_VAR, "...");
+    stateVar.setStatus(UPnPStatus.INVALID_VAR, "...");
     return false;
   }
 }
@@ -218,7 +218,7 @@ Use Device::setActionListener() or Service::setActionListener() to add a listene
 
 ```java
 class ClockDevice extends Device implements ActionListener, QueryListener {
-  public ClockDevice() {
+  public ClockDevice() throws InvalidDescriptionException {
     super("/clock/www/description.xml");
     setActionListener(this);
     setQueryListener(this);
@@ -238,7 +238,7 @@ class ClockDevice extends Device implements ActionListener, QueryListener {
 
 The control point may subscribe to some events of the device. You do not need to manage the subscription messages from control points because the device manages the subscription messages automatically. For example, the device adds a control point to the subscriber list when the control point sends a subscription message to the device, or the device removes the control point from the subscriber list when the control point sends an unsubscription message.
 
-Use ServiceStateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using ServiceStateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.
+Use StateVariable::setValue() when you want to send the state to the subscribers. The event is sent to the subscribers automatically when the state variable is updated using StateVariable::setValue(). The following example updates a state variable, and the updated state is distributed to the subscribers automatically.
 
 ```java
 Device clockDevice = ...;
@@ -272,9 +272,9 @@ The active control point has some server processes and automatically returns res
 
 | Parameter        | Default   | Setter Method    |
 |------------------|-----------|------------------|
-| HTTP port        | 39500     | setHTTPPort()    |
-| SSDP port        | 39400     | setSSDPPort()    |
-| Subscription URI | /eventSub | setEventSubURI() |
+| HTTP port        | 8058      | setHTTPPort()    |
+| SSDP port        | 8008      | setSSDPPort()    |
+| Subscription URI | /evetSub  | setEventSubURI() |
 | Search Response  | 3         | setSearchMx()    |
 
 ### Notify
@@ -390,22 +390,22 @@ if (setTimeAct.postControlAction()) {
     // ...existing code...
   }
 } else {
-  UPnPStatus err = setTimeAct.getUPnPStatus();
+  UPnPStatus err = setTimeAct.getControlStatus();
   System.out.println("Error Code = " + err.getCode());
   System.out.println("Error Desc = " + err.getDescription());
 }
 ```
 
-To send a query control message, use StateVariable::postQueryControl(). The following sample posts a query control request and outputs the return value.
+To send a query control message, use StateVariable::postQuerylAction(). The following sample posts a query control request and outputs the return value.
 
 ```java
 Device clockDev = ...;
 StateVariable timeStateVar = clockDev.getStateVariable("time");
-if (timeStateVar.postQueryControl()) {
+if (timeStateVar.postQuerylAction()) {
   String value = timeStateVar.getValue();
   // ...existing code...
 } else {
-  UPnPStatus err = timeStateVar.getUPnPStatus();
+  UPnPStatus err = timeStateVar.getQueryStatus();
   System.out.println("Error Code = " + err.getCode());
   System.out.println("Error Desc = " + err.getDescription());
 }
@@ -484,11 +484,11 @@ The Device class of cybergarage-upnp implements the HTTPRequestListener interfac
 
 ```java
 public interface HTTPRequestListener {
-  public void httpRequestReceived(HTTPRequest httpReq);
+  public void httpRequestRecieved(HTTPRequest httpReq);
 }
 ```
 
-To override the interface, import the org.cybergarage.http package and override the httpRequestReceived method in your device that is a subclass of the Device class. The following example is a clock device using cybergarage-upnp, and it adds the override method to return the presentation page.
+To override the interface, import the org.cybergarage.http package and override the httpRequestRecieved method in your device that is a subclass of the Device class. The following example is a clock device using cybergarage-upnp, and it adds the override method to return the presentation page.
 
 ```java
 import org.cybergarage.http.*;
@@ -496,10 +496,11 @@ import org.cybergarage.http.*;
 public class ClockDevice extends Device implements ActionListener, QueryListener {
   // ...existing code...
   private final static String PRESENTATION_URI = "/presentation";
-  public void httpRequestReceived(HTTPRequest httpReq) {
+  @Override
+  public void httpRequestRecieved(HTTPRequest httpReq) {
     String uri = httpReq.getURI();
     if (!uri.startsWith(PRESENTATION_URI)) {
-      super.httpRequestReceived(httpReq);
+      super.httpRequestRecieved(httpReq);
       return;
     }
     Clock clock = Clock.getInstance();
