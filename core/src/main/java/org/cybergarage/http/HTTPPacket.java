@@ -82,6 +82,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -556,7 +557,7 @@ public class HTTPPacket {
   public String getCharSet() {
     String contentType = getContentType();
     if (contentType == null) return "";
-    contentType = contentType.toLowerCase();
+    contentType = contentType.toLowerCase(Locale.ROOT);
     int charSetIdx = contentType.indexOf(HTTP.CHARSET);
     if (charSetIdx < 0) return "";
     int charSetEndIdx = charSetIdx + HTTP.CHARSET.length() + 1;

@@ -76,7 +76,6 @@ public class HTTPHeader {
   ////////////////////////////////////////////////
 
   public static final String getValue(LineNumberReader reader, String name) {
-    String bigName = name.toUpperCase();
     try {
       String lineStr = reader.readLine();
       while (lineStr != null && 0 < lineStr.length()) {
@@ -85,9 +84,10 @@ public class HTTPHeader {
           lineStr = reader.readLine();
           continue;
         }
-        String bigLineHeaderName = header.getName().toUpperCase();
         // Thanks for Jan Newmarch <jan.newmarch@infotech.monash.edu.au> (05/26/04)
-        if (bigLineHeaderName.equals(bigName) == false) {
+        // Header names are case-insensitive. Compare them without the default locale so that
+        // lookups such as "Location" also match in locales like Turkish (#15).
+        if (header.getName().equalsIgnoreCase(name) == false) {
           lineStr = reader.readLine();
           continue;
         }
