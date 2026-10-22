@@ -78,6 +78,8 @@ public class SSDPNotifySocketList extends Vector {
     for (int i = 0; i < bindAddresses.length; i++) {
       if (bindAddresses[i] != null) {
         SSDPNotifySocket ssdpNotifySocket = new SSDPNotifySocket(bindAddresses[i]);
+        // Skip addresses whose multicast socket could not be opened (#30).
+        if (ssdpNotifySocket.getSocket() == null) continue;
         add(ssdpNotifySocket);
       }
     }
