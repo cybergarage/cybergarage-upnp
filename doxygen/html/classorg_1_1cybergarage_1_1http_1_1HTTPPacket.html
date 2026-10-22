@@ -68,6 +68,7 @@ $(function(){initNavTree('classorg_1_1cybergarage_1_1http_1_1HTTPPacket.html',''
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
@@ -248,6 +249,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7bd7ae48ea156db47e874447c4a7d2e9" id="r_a7bd7ae48ea156db47e874447c4a7d2e9"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bd7ae48ea156db47e874447c4a7d2e9">isChunked</a> ()</td></tr>
 <tr class="separator:a7bd7ae48ea156db47e874447c4a7d2e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a9539cbbeb31fe08f67852f7b8ef6ce92" id="r_a9539cbbeb31fe08f67852f7b8ef6ce92"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9539cbbeb31fe08f67852f7b8ef6ce92">MAX_LINE_BYTES</a> = 8192</td></tr>
+<tr class="separator:a9539cbbeb31fe08f67852f7b8ef6ce92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6a9211e45fe9839202c790e85d8309" id="r_a3b6a9211e45fe9839202c790e85d8309"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b6a9211e45fe9839202c790e85d8309">MAX_HEADER_BYTES</a> = 65536</td></tr>
+<tr class="separator:a3b6a9211e45fe9839202c790e85d8309"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c19573a13e0c19b6c63204f1c20a0d1" id="r_a9c19573a13e0c19b6c63204f1c20a0d1"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c19573a13e0c19b6c63204f1c20a0d1">MAX_HEADERS</a> = 100</td></tr>
+<tr class="separator:a9c19573a13e0c19b6c63204f1c20a0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f5959c340e23b7d63998c628adf20b" id="r_a26f5959c340e23b7d63998c628adf20b"><td class="memItemLeft" align="right" valign="top">static final int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26f5959c340e23b7d63998c628adf20b">MAX_CONTENT_BYTES</a> = 8 * 1024 * 1024</td></tr>
+<tr class="separator:a26f5959c340e23b7d63998c628adf20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a7ddc79ecbd202aaffe07e885fb3a4d16" id="r_a7ddc79ecbd202aaffe07e885fb3a4d16"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ddc79ecbd202aaffe07e885fb3a4d16">set</a> (InputStream in, boolean onlyHeaders)</td></tr>
@@ -265,8 +277,10 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a5a3ba24a9b179572e838061e9ef3f160" id="r_a5a3ba24a9b179572e838061e9ef3f160"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3ba24a9b179572e838061e9ef3f160">readLine</a> (BufferedInputStream in)</td></tr>
-<tr class="separator:a5a3ba24a9b179572e838061e9ef3f160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc7c792d7ca7f339f9989ba459c6ba0" id="r_aadc7c792d7ca7f339f9989ba459c6ba0"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadc7c792d7ca7f339f9989ba459c6ba0">readLine</a> (InputStream in)  throws IOException </td></tr>
+<tr class="separator:aadc7c792d7ca7f339f9989ba459c6ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a004a0b50896e10f494aa30295f8729f1" id="r_a004a0b50896e10f494aa30295f8729f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a004a0b50896e10f494aa30295f8729f1">readBody</a> (InputStream in, ByteArrayOutputStream body, long length)  throws IOException </td></tr>
+<tr class="separator:a004a0b50896e10f494aa30295f8729f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af543690b65eefdb7e58c0a40796c45b4" id="r_af543690b65eefdb7e58c0a40796c45b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af543690b65eefdb7e58c0a40796c45b4">setFirstLine</a> (String value)</td></tr>
 <tr class="separator:af543690b65eefdb7e58c0a40796c45b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -1473,8 +1487,42 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a3ba24a9b179572e838061e9ef3f160" name="a5a3ba24a9b179572e838061e9ef3f160"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a3ba24a9b179572e838061e9ef3f160">&#9670;&#160;</a></span>readLine()</h2>
+<a id="a004a0b50896e10f494aa30295f8729f1" name="a004a0b50896e10f494aa30295f8729f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a004a0b50896e10f494aa30295f8729f1">&#9670;&#160;</a></span>readBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void org.cybergarage.http.HTTPPacket.readBody </td>
+          <td>(</td>
+          <td class="paramtype">InputStream</td>          <td class="paramname"><span class="paramname"><em>in</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ByteArrayOutputStream</td>          <td class="paramname"><span class="paramname"><em>body</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long</td>          <td class="paramname"><span class="paramname"><em>length</em></span>&#160;) throws IOException</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aadc7c792d7ca7f339f9989ba459c6ba0" name="aadc7c792d7ca7f339f9989ba459c6ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadc7c792d7ca7f339f9989ba459c6ba0">&#9670;&#160;</a></span>readLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1485,8 +1533,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">String org.cybergarage.http.HTTPPacket.readLine </td>
           <td>(</td>
-          <td class="paramtype">BufferedInputStream</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">InputStream</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td> throws IOException</td>
         </tr>
       </table>
   </td>
@@ -2448,6 +2496,94 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26f5959c340e23b7d63998c628adf20b" name="a26f5959c340e23b7d63998c628adf20b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26f5959c340e23b7d63998c628adf20b">&#9670;&#160;</a></span>MAX_CONTENT_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int org.cybergarage.http.HTTPPacket.MAX_CONTENT_BYTES = 8 * 1024 * 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b6a9211e45fe9839202c790e85d8309" name="a3b6a9211e45fe9839202c790e85d8309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6a9211e45fe9839202c790e85d8309">&#9670;&#160;</a></span>MAX_HEADER_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int org.cybergarage.http.HTTPPacket.MAX_HEADER_BYTES = 65536</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c19573a13e0c19b6c63204f1c20a0d1" name="a9c19573a13e0c19b6c63204f1c20a0d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c19573a13e0c19b6c63204f1c20a0d1">&#9670;&#160;</a></span>MAX_HEADERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int org.cybergarage.http.HTTPPacket.MAX_HEADERS = 100</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9539cbbeb31fe08f67852f7b8ef6ce92" name="a9539cbbeb31fe08f67852f7b8ef6ce92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9539cbbeb31fe08f67852f7b8ef6ce92">&#9670;&#160;</a></span>MAX_LINE_BYTES</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final int org.cybergarage.http.HTTPPacket.MAX_LINE_BYTES = 8192</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
