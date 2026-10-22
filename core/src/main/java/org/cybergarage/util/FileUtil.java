@@ -18,6 +18,7 @@ package org.cybergarage.util;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Locale;
 
 public final class FileUtil {
   public static final byte[] load(String fileName) {
@@ -63,7 +64,7 @@ public final class FileUtil {
 
   public static final boolean isXMLFileName(String name) {
     if (StringUtil.hasData(name) == false) return false;
-    String lowerName = name.toLowerCase();
+    String lowerName = name.toLowerCase(Locale.ROOT);
     return lowerName.endsWith("xml");
   }
 }

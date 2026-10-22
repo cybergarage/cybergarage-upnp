@@ -67,4 +67,22 @@ public class HTTPTest extends TestCase {
     assertEquals("239.255.255.250:1900", HTTPHeader.getValue(packet, "HOST"));
     assertEquals("ssdp:alive", HTTPHeader.getValue(packet.getBytes(), "nts"));
   }
+
+  public void testGetValueInTurkishLocale() {
+    // Header lookups must not depend on the default locale (#15).
+    java.util.Locale defaultLocale = java.util.Locale.getDefault();
+    try {
+      java.util.Locale.setDefault(new java.util.Locale("tr", "TR"));
+      String packet =
+          "HTTP/1.1 200 OK\r\n"
+              + "LOCATION: http://192.168.0.1:80/desc.xml\r\n"
+              + "Cache-Control: max-age=1800\r\n\r\n";
+      assertEquals("http://192.168.0.1:80/desc.xml", HTTPHeader.getValue(packet, "Location"));
+      assertEquals("http://192.168.0.1:80/desc.xml", HTTPHeader.getValue(packet, "location"));
+      assertEquals("max-age=1800", HTTPHeader.getValue(packet, "CACHE-CONTROL"));
+      assertEquals("", HTTPHeader.getValue(packet, "ST"));
+    } finally {
+      java.util.Locale.setDefault(defaultLocale);
+    }
+  }
 }
