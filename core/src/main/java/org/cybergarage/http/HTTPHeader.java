@@ -101,6 +101,9 @@ public class HTTPHeader {
   }
 
   public static final String getValue(String data, String name) {
+    // An empty (e.g. zero-length UDP) packet has no headers. LineNumberReader rejects
+    // a buffer size of zero, so return early instead of throwing (#13).
+    if (data == null || data.length() <= 0) return "";
     /* Thanks for Stephan Mehlhase (2010-10-26) */
     StringReader strReader = new StringReader(data);
     LineNumberReader lineReader =
@@ -109,6 +112,7 @@ public class HTTPHeader {
   }
 
   public static final String getValue(byte[] data, String name) {
+    if (data == null) return "";
     return getValue(new String(data), name);
   }
 
