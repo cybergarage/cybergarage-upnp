@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.cybergarage.http.HTTPServer;
 import org.cybergarage.xml.Node;
 
 public class DeviceTest extends TestCase {
@@ -199,5 +200,77 @@ public class DeviceTest extends TestCase {
     assertEquals(devIcon.getDepth(), depth);
     assertEquals(devIcon.getURL(), url);
     assertEquals(new String(devIcon.getBytes()), image);
+  }
+
+  public void testQueryUsesRequestedService() throws Exception {
+    String services = "";
+    for (int i = 1; i <= 2; i++) {
+      services +=
+          "<service><serviceType>urn:schemas-upnp-org:service:timer:1</serviceType>"
+              + "<serviceId>urn:upnp-org:serviceId:timer"
+              + i
+              + "</serviceId>"
+              + "<SCPDURL>/timer"
+              + i
+              + ".xml</SCPDURL>"
+              + "<controlURL>/control"
+              + i
+              + "</controlURL>"
+              + "<eventSubURL>/event"
+              + i
+              + "</eventSubURL></service>";
+    }
+    String description =
+        "<root xmlns=\"urn:schemas-upnp-org:device-1-0\">"
+            + "<specVersion><major>1</major><minor>0</minor></specVersion>"
+            + "<device><deviceType>urn:schemas-upnp-org:device:clock:1</deviceType>"
+            + "<friendlyName>Two Timers</friendlyName><manufacturer>Fixture</manufacturer>"
+            + "<modelName>Clock</modelName><UDN>uuid:two-timers</UDN>"
+            + "<serviceList>"
+            + services
+            + "</serviceList></device></root>";
+    String scpd =
+        "<scpd xmlns=\"urn:schemas-upnp-org:service-1-0\">"
+            + "<specVersion><major>1</major><minor>0</minor></specVersion>"
+            + "<serviceStateTable><stateVariable sendEvents=\"no\">"
+            + "<name>Time</name><dataType>string</dataType>"
+            + "</stateVariable></serviceStateTable></scpd>";
+    Device device = new Device();
+    device.loadDescription(description);
+    Service first = device.getService("urn:upnp-org:serviceId:timer1");
+    Service second = device.getService("urn:upnp-org:serviceId:timer2");
+    first.loadSCPD(scpd);
+    second.loadSCPD(scpd);
+    first.setQueryListener(
+        variable -> {
+          variable.setValue("first");
+          return true;
+        });
+    second.setQueryListener(
+        variable -> {
+          variable.setValue("second");
+          return true;
+        });
+
+    HTTPServer server = new HTTPServer();
+    try {
+      assertTrue(server.open("127.0.0.1", 0));
+      int port = server.getServerSock().getLocalPort();
+      device.setHTTPPort(port);
+      server.addRequestListener(device);
+      server.start();
+
+      Device remote = new Device();
+      remote.loadDescription(description);
+      remote.setLocation("http://127.0.0.1:" + port + "/description.xml");
+      Service remoteService = remote.getService("urn:upnp-org:serviceId:timer2");
+      remoteService.loadSCPD(scpd);
+      StateVariable time = remoteService.getStateVariable("Time");
+      assertTrue(time.postQuerylAction());
+      assertEquals("second", time.getValue());
+    } finally {
+      server.stop();
+      server.close();
+    }
   }
 }
