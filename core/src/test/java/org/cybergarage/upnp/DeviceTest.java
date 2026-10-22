@@ -133,6 +133,28 @@ public class DeviceTest extends TestCase {
     /* X:serviceURLStr -:baseURLStr O:locationURLStr */
     devAbsUrl = dev.getAbsoluteURL("serviceURL", null, "http://192.168.0.3:80/device/");
     assertTrue(devAbsUrl, devAbsUrl.equals("http://192.168.0.3:80/device/serviceURL"));
+
+    /********************************************************************************
+     * X:serviceURLStr -:baseURLStr O:locationURLStr (CASE03: LOCATION is a file, #10, #35, #36)
+     ********************************************************************************/
+
+    /* An absolute path is resolved against the host of the description URL */
+    devAbsUrl =
+        dev.getAbsoluteURL("/timesyncservice.xml", null, "http://192.168.0.3:49153/setup.xml");
+    assertEquals("http://192.168.0.3:49153/timesyncservice.xml", devAbsUrl);
+
+    devAbsUrl = dev.getAbsoluteURL("/dmr/sdd_2.xml", null, "http://192.168.0.3:80/dmr/ddd.xml");
+    assertEquals("http://192.168.0.3:80/dmr/sdd_2.xml", devAbsUrl);
+
+    devAbsUrl = dev.getAbsoluteURL("/serviceURL", null, "http://192.168.0.3:80/device/");
+    assertEquals("http://192.168.0.3:80/serviceURL", devAbsUrl);
+
+    /* A relative path is resolved against the directory of the description URL */
+    devAbsUrl = dev.getAbsoluteURL("sdd_2.xml", null, "http://192.168.0.3:80/dmr/ddd.xml");
+    assertEquals("http://192.168.0.3:80/dmr/sdd_2.xml", devAbsUrl);
+
+    devAbsUrl = dev.getAbsoluteURL("control?id=1", null, "http://192.168.0.3:80/dmr/ddd.xml");
+    assertEquals("http://192.168.0.3:80/dmr/control?id=1", devAbsUrl);
   }
 
   /** Internal Id Generation Test */
