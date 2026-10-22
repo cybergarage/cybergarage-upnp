@@ -19,7 +19,7 @@ target/
 
 # Doxygen
 
-doc/javadoc
-doc/doxygen
+docs/javadoc
+docs/doxygen
 *.html
 *.jar

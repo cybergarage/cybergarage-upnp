@@ -16,6 +16,8 @@
 
 package org.cybergarage.upnp.std.av.controller;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.cybergarage.util.*;
 import org.cybergarage.xml.*;
 import org.cybergarage.upnp.*;
@@ -217,7 +219,15 @@ public class MediaController extends ControlPoint {
       if (rootNode != null) contentRootNode.set(rootNode);
     }
 
-    browse(contentRootNode, dev, objectId, hasRootNodeMetadata);
+    browse(
+        contentRootNode,
+        dev,
+        objectId,
+        hasBrowseChildNodes,
+        new HashSet<String>(),
+        0,
+        new int[] {0},
+        System.nanoTime() + 30000000000L);
 
     return contentRootNode;
   }
@@ -227,8 +237,20 @@ public class MediaController extends ControlPoint {
   }
 
   private int browse(
-      ContainerNode parentNode, Device dev, String objectID, boolean hasBrowseChildNodes) {
+      ContainerNode parentNode,
+      Device dev,
+      String objectID,
+      boolean hasBrowseChildNodes,
+      Set<String> visited,
+      int depth,
+      int[] nodes,
+      long deadline) {
     if (objectID == null) return 0;
+    if (depth >= 32
+        || visited.size() >= 1024
+        || System.nanoTime() - deadline >= 0
+        || !visited.add(objectID))
+      throw new IllegalArgumentException("Media browse traversal limit or cycle");
 
     Node resultNode = browseDirectChildren(dev, objectID, "*", 0, 0, "");
     if (resultNode == null) return 0;
@@ -237,6 +259,8 @@ public class MediaController extends ControlPoint {
     int nResultNode = 0;
     int nContents = browseResult.getNContentNodes();
     for (int n = 0; n < nContents; n++) {
+      if (++nodes[0] > 10000 || System.nanoTime() - deadline >= 0)
+        throw new IllegalArgumentException("Media browse work limit exceeded");
       Node xmlNode = browseResult.getContentNode(n);
       ContentNode contentNode = null;
       if (ContainerNode.isContainerNode(xmlNode) == true) {
@@ -254,7 +278,7 @@ public class MediaController extends ControlPoint {
           int childCnt = containerNode.getChildCount();
           if (0 < childCnt) {
             String objid = containerNode.getID();
-            browse(containerNode, dev, objid, true);
+            browse(containerNode, dev, objid, true, visited, depth + 1, nodes, deadline);
           }
         }
       }

@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.cybergarage.http.HTTP;
@@ -48,43 +47,37 @@ public abstract class Parser {
   ////////////////////////////////////////////////
 
   public Node parse(URL locationURL) throws ParserException {
-    String host = locationURL.getHost();
-    int port = locationURL.getPort();
-    // Thanks for Hao Hu
-    if (port == -1) port = 80;
-    String uri = locationURL.getPath();
-
-    try {
-      HttpURLConnection urlCon = (HttpURLConnection) locationURL.openConnection();
-      urlCon.setRequestMethod("GET");
-      urlCon.setRequestProperty(HTTP.CONTENT_LENGTH, "0");
-      if (host != null) urlCon.setRequestProperty(HTTP.HOST, host);
-
-      InputStream urlIn = urlCon.getInputStream();
-
-      Node rootElem = parse(urlIn);
-
-      urlIn.close();
-      urlCon.disconnect();
-
-      return rootElem;
-
-    } catch (Exception e) {
-      // throw new ParserException(e);
+    URL current = locationURL;
+    long deadline = System.nanoTime() + HTTP.DEFAULT_TIMEOUT * 1000000000L;
+    for (int redirects = 0; redirects <= 5; redirects++) {
+      long remaining = (deadline - System.nanoTime()) / 1000000L;
+      if (remaining <= 0) throw new ParserException("Description deadline exceeded");
+      HTTPRequest request = new HTTPRequest();
+      request.setMethod(HTTP.GET);
+      request.setResponseTimeout((int) Math.min(Integer.MAX_VALUE, remaining));
+      HTTPResponse response;
+      try {
+        response = request.post(current);
+      } catch (IllegalArgumentException e) {
+        throw new ParserException(e);
+      }
+      int status = response.getStatusCode();
+      if (status == 301 || status == 302 || status == 303 || status == 307 || status == 308) {
+        try {
+          URL next = new URL(current, response.getHeaderValue(HTTP.LOCATION));
+          if (!current.getProtocol().equalsIgnoreCase(next.getProtocol()))
+            throw new ParserException("Cross-protocol description redirect");
+          current = next;
+          continue;
+        } catch (java.net.MalformedURLException e) {
+          throw new ParserException(e);
+        }
+      }
+      if (!response.isSuccessful())
+        throw new ParserException("Unable to retrieve description: " + current);
+      return parse(new ByteArrayInputStream(response.getContent()));
     }
-
-    HTTPRequest httpReq = new HTTPRequest();
-    httpReq.setMethod(HTTP.GET);
-    httpReq.setURI(uri);
-    HTTPResponse httpRes = httpReq.post(host, port);
-    if (httpRes.isSuccessful() == false)
-      throw new ParserException(
-          "HTTP comunication failed: no answer from peer."
-              + "Unable to retrive resoure -> "
-              + locationURL.toString());
-    String content = new String(httpRes.getContent());
-    ByteArrayInputStream strBuf = new ByteArrayInputStream(content.getBytes());
-    return parse(strBuf);
+    throw new ParserException("Too many description redirects");
   }
 
   ////////////////////////////////////////////////
@@ -92,11 +85,8 @@ public abstract class Parser {
   ////////////////////////////////////////////////
 
   public Node parse(File descriptionFile) throws ParserException {
-    try {
-      InputStream fileIn = new FileInputStream(descriptionFile);
-      Node root = parse(fileIn);
-      fileIn.close();
-      return root;
+    try (InputStream fileIn = new FileInputStream(descriptionFile)) {
+      return parse(fileIn);
 
     } catch (Exception e) {
       throw new ParserException(e);

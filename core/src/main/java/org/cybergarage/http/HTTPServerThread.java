@@ -20,6 +20,7 @@ import java.net.Socket;
 public class HTTPServerThread extends Thread {
   private HTTPServer httpServer;
   private Socket sock;
+  private boolean admitted;
 
   ////////////////////////////////////////////////
   //	Constructor
@@ -35,15 +36,24 @@ public class HTTPServerThread extends Thread {
   //	run
   ////////////////////////////////////////////////
 
+  HTTPServerThread(HTTPServer server, Socket socket, boolean admitted) {
+    this(server, socket);
+    this.admitted = admitted;
+  }
+
   public void run() {
     HTTPSocket httpSock = new HTTPSocket(sock);
-    if (httpSock.open() == false) return;
-    HTTPRequest httpReq = new HTTPRequest();
-    httpReq.setSocket(httpSock);
-    while (httpReq.read() == true) {
-      httpServer.performRequestListener(httpReq);
-      if (httpReq.isKeepAlive() == false) break;
+    try {
+      if (!httpSock.open()) return;
+      HTTPRequest httpReq = new HTTPRequest();
+      httpReq.setSocket(httpSock);
+      while (httpReq.read()) {
+        httpServer.performRequestListener(httpReq);
+        if (!httpReq.isKeepAlive()) break;
+      }
+    } finally {
+      httpSock.close();
+      if (admitted) httpServer.connectionClosed(sock);
     }
-    httpSock.close();
   }
 }

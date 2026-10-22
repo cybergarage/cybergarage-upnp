@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Semaphore;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.cybergarage.util.Debug;
 import org.cybergarage.util.ListenerList;
@@ -74,7 +77,7 @@ public class HTTPServer implements Runnable {
   //	ServerSocket
   ////////////////////////////////////////////////
 
-  private ServerSocket serverSock = null;
+  private volatile ServerSocket serverSock = null;
   private InetAddress bindAddr = null;
   private int bindPort = 0;
 
@@ -141,18 +144,27 @@ public class HTTPServer implements Runnable {
     return true;
   }
 
-  public boolean close() {
-    if (serverSock == null) return true;
-    try {
-      serverSock.close();
+  public synchronized boolean close() {
+    httpServerThread = null;
+    boolean closed = true;
+    if (serverSock != null) {
+      try {
+        serverSock.close();
+      } catch (IOException e) {
+        closed = false;
+      }
       serverSock = null;
-      bindAddr = null;
-      bindPort = 0;
-    } catch (Exception e) {
-      Debug.warning(e);
-      return false;
     }
-    return true;
+    for (Socket socket : activeConnections) {
+      try {
+        socket.close();
+      } catch (IOException e) {
+        closed = false;
+      }
+    }
+    bindAddr = null;
+    bindPort = 0;
+    return closed;
   }
 
   public Socket accept() {
@@ -196,7 +208,16 @@ public class HTTPServer implements Runnable {
   //	run
   ////////////////////////////////////////////////
 
-  private Thread httpServerThread = null;
+  public static final int MAX_CONNECTIONS = 32;
+  private final Semaphore connections = new Semaphore(MAX_CONNECTIONS);
+
+  private final Set<Socket> activeConnections = new HashSet<Socket>();
+
+  synchronized void connectionClosed(Socket socket) {
+    if (activeConnections.remove(socket)) connections.release();
+  }
+
+  private volatile Thread httpServerThread = null;
 
   public void run() {
     if (isOpened() == false) return;
@@ -214,13 +235,35 @@ public class HTTPServer implements Runnable {
         Debug.warning(e);
         break;
       }
-      HTTPServerThread httpServThread = new HTTPServerThread(this, sock);
-      httpServThread.start();
+      if (sock == null) continue;
+      synchronized (this) {
+        if (httpServerThread != thisThread || !connections.tryAcquire()) {
+          try {
+            sock.close();
+          } catch (IOException e) {
+            Debug.warning(e);
+          }
+          continue;
+        }
+        activeConnections.add(sock);
+      }
+      try {
+        new HTTPServerThread(this, sock, true).start();
+      } catch (RuntimeException | Error e) {
+        try {
+          sock.close();
+        } catch (IOException ignored) {
+        }
+        connectionClosed(sock);
+        throw e;
+      }
       Debug.message("httpServThread ...");
     }
   }
 
-  public boolean start() {
+  public synchronized boolean start() {
+    if (serverSock == null) return false;
+    if (httpServerThread != null) return true;
     StringBuffer name = new StringBuffer("Cyber.HTTPServer/");
     name.append(serverSock.getLocalSocketAddress());
     httpServerThread = new Thread(this, name.toString());
@@ -229,7 +272,6 @@ public class HTTPServer implements Runnable {
   }
 
   public boolean stop() {
-    httpServerThread = null;
-    return true;
+    return close();
   }
 }

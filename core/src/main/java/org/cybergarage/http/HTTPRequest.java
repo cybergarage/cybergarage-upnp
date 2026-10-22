@@ -64,6 +64,13 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.InetSocketAddress;
+import java.net.URL;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLParameters;
 import java.util.StringTokenizer;
 
 import org.cybergarage.util.Debug;
@@ -340,9 +347,46 @@ public class HTTPRequest extends HTTPPacket {
   //	POST (Request)
   ////////////////////////////////////////////////
 
+  private static final ScheduledThreadPoolExecutor DEADLINES = newDeadlineTimer();
+
+  private static ScheduledThreadPoolExecutor newDeadlineTimer() {
+    ScheduledThreadPoolExecutor timer =
+        new ScheduledThreadPoolExecutor(
+            1,
+            runnable -> {
+              Thread thread = new Thread(runnable, "Cyber.HTTPDeadline");
+              thread.setDaemon(true);
+              return thread;
+            });
+    timer.setRemoveOnCancelPolicy(true);
+    return timer;
+  }
+
   private Socket postSocket = null;
+  private InputStream postInput = null;
+  private int responseTimeout = HTTP.DEFAULT_TIMEOUT * 1000;
+
+  public void setResponseTimeout(int milliseconds) {
+    if (milliseconds <= 0) throw new IllegalArgumentException("Timeout must be positive");
+    responseTimeout = milliseconds;
+  }
 
   public HTTPResponse post(String host, int port, boolean isKeepAlive) {
+    return post(host, port, isKeepAlive, false);
+  }
+
+  /** Sends this request to an HTTP or HTTPS URL, preserving TLS hostname verification. */
+  public HTTPResponse post(URL url) {
+    String scheme = url.getProtocol();
+    if (!"http".equalsIgnoreCase(scheme) && !"https".equalsIgnoreCase(scheme))
+      throw new IllegalArgumentException("Unsupported HTTP URL scheme");
+    String path = url.getFile();
+    setURI(path.isEmpty() ? "/" : path);
+    int port = url.getPort() == -1 ? url.getDefaultPort() : url.getPort();
+    return post(url.getHost(), port, false, "https".equalsIgnoreCase(scheme));
+  }
+
+  private HTTPResponse post(String host, int port, boolean isKeepAlive, boolean secure) {
     HTTPResponse httpRes = new HTTPResponse();
 
     setHost(host);
@@ -353,14 +397,35 @@ public class HTTPRequest extends HTTPPacket {
 
     OutputStream out = null;
     InputStream in = null;
+    boolean responseRead = false;
+    ScheduledFuture<?> deadline = null;
 
     try {
       if (postSocket == null) {
-        // Thanks for Hao Hu
-        postSocket = new Socket();
-        postSocket.connect(new InetSocketAddress(host, port), HTTPServer.DEFAULT_TIMEOUT);
+        postSocket = secure ? SSLSocketFactory.getDefault().createSocket() : new Socket();
+        if (secure) {
+          SSLParameters parameters = ((SSLSocket) postSocket).getSSLParameters();
+          parameters.setEndpointIdentificationAlgorithm("HTTPS");
+          ((SSLSocket) postSocket).setSSLParameters(parameters);
+        }
+      }
+      final Socket activeSocket = postSocket;
+      deadline =
+          DEADLINES.schedule(
+              () -> {
+                try {
+                  activeSocket.close();
+                } catch (IOException ignored) {
+                }
+              },
+              responseTimeout,
+              TimeUnit.MILLISECONDS);
+      if (!postSocket.isConnected()) {
+        postSocket.connect(new InetSocketAddress(host, port), responseTimeout);
+        postInput = new java.io.BufferedInputStream(postSocket.getInputStream());
       }
 
+      postSocket.setSoTimeout(responseTimeout);
       out = postSocket.getOutputStream();
       PrintStream pout = new PrintStream(out);
 
@@ -391,15 +456,15 @@ public class HTTPRequest extends HTTPPacket {
       }
 
       if (isChunkedRequest == true) {
-        httpPacket += "0";
-        httpPacket += HTTP.CRLF;
+        httpPacket += "0" + HTTP.CRLF + HTTP.CRLF;
       }
 
       pout.print(httpPacket);
       pout.flush();
 
-      in = postSocket.getInputStream();
-      httpRes.set(in, isHeaderRequest);
+      in = postInput;
+      responseRead = httpRes.set(in, isHeaderRequest);
+      if (!responseRead) httpRes.setStatusCode(HTTPStatus.INTERNAL_SERVER_ERROR);
     } catch (SocketException e) {
       httpRes.setStatusCode(HTTPStatus.INTERNAL_SERVER_ERROR);
       Debug.warning(e);
@@ -409,25 +474,15 @@ public class HTTPRequest extends HTTPPacket {
       httpRes.setStatusCode(HTTPStatus.INTERNAL_SERVER_ERROR);
       Debug.warning(e);
     } finally {
-      if (isKeepAlive == false) {
+      if (deadline != null) deadline.cancel(false);
+      if (!isKeepAlive || !responseRead || httpRes.isCloseConnection()) {
         try {
-          in.close();
-        } catch (Exception e) {
+          if (postSocket != null) postSocket.close();
+        } catch (IOException e) {
+          Debug.warning(e);
         }
-        ;
-        if (in != null)
-          try {
-            out.close();
-          } catch (Exception e) {
-          }
-        ;
-        if (out != null)
-          try {
-            postSocket.close();
-          } catch (Exception e) {
-          }
-        ;
         postSocket = null;
+        postInput = null;
       }
     }
 

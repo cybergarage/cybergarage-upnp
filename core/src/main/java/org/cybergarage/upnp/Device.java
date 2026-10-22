@@ -1479,7 +1479,9 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
     // Thanks for Brent Hills (10/20/04)
     ssdpRes.setMYNAME(getFriendlyName());
 
-    int mx = ssdpPacket.getMX();
+    int requestedMX = ssdpPacket.getMX();
+    if (requestedMX <= 0) return false;
+    int mx = Math.min(requestedMX, 5);
     TimerUtil.waitRandom(mx * 1000);
 
     String remoteAddr = ssdpPacket.getRemoteAddress();
@@ -1813,10 +1815,25 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
     upnpBadSubscriptionRecieved(subReq, HTTPStatus.PRECONDITION_FAILED);
   }
 
+  static void validateCallback(String callback, InetAddress peer) throws Exception {
+    URL url = new URL(callback);
+    url.toURI();
+    if (!"http".equalsIgnoreCase(url.getProtocol())
+        || url.getUserInfo() != null
+        || url.getRef() != null
+        || url.getHost().isEmpty()
+        || (url.getPort() != -1 && (url.getPort() < 1 || url.getPort() > 65535)))
+      throw new IllegalArgumentException("Invalid callback URL");
+    boolean matches = false;
+    for (InetAddress address : InetAddress.getAllByName(url.getHost()))
+      if (peer.equals(address)) matches = true;
+    if (!matches) throw new IllegalArgumentException("Callback must address subscriber");
+  }
+
   private void deviceEventNewSubscriptionRecieved(Service service, SubscriptionRequest subReq) {
     String callback = subReq.getCallback();
     try {
-      new URL(callback);
+      validateCallback(callback, subReq.getSocket().getSocket().getInetAddress());
     } catch (Exception e) {
       upnpBadSubscriptionRecieved(subReq, HTTPStatus.PRECONDITION_FAILED);
       return;
@@ -1827,6 +1844,7 @@ public class Device implements org.cybergarage.http.HTTPRequestListener, SearchL
 
     Subscriber sub = new Subscriber();
     sub.setDeliveryURL(callback);
+    sub.setDeliveryAddress(subReq.getSocket().getSocket().getInetAddress());
     sub.setTimeOut(timeOut);
     sub.setSID(sid);
     service.addSubscriber(sub);

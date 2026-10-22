@@ -32,6 +32,10 @@ import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.io.IOException;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import org.cybergarage.net.*;
 import org.cybergarage.util.*;
@@ -133,7 +137,39 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable {
   //	run
   ////////////////////////////////////////////////
 
-  private Thread deviceSearchThread = null;
+  private volatile Thread deviceSearchThread = null;
+  private volatile ThreadPoolExecutor searchWorkers;
+
+  private ThreadPoolExecutor newSearchWorkers() {
+    return new ThreadPoolExecutor(
+        1,
+        1,
+        0,
+        TimeUnit.MILLISECONDS,
+        new ArrayBlockingQueue<Runnable>(32),
+        runnable -> {
+          Thread thread = new Thread(runnable, "Cyber.SSDPSearchWorker");
+          thread.setDaemon(true);
+          return thread;
+        });
+  }
+
+  void dispatchSearch(SSDPPacket packet) {
+    ThreadPoolExecutor workers = searchWorkers;
+    if (workers == null) return;
+    try {
+      workers.execute(
+          () -> {
+            try {
+              performSearchListener(packet);
+            } catch (RuntimeException e) {
+              Debug.warning(e);
+            }
+          });
+    } catch (RejectedExecutionException e) {
+      // Dropping excess UDP work keeps memory and receiver latency bounded.
+    }
+  }
 
   public void run() {
     Thread thisThread = Thread.currentThread();
@@ -152,12 +188,13 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable {
       // Thanks for Mikael Hakman (04/20/05)
       if (packet == null) continue;
 
-      // TODO perform delegation with Thread Pooling
-      if (packet.isDiscover() == true) performSearchListener(packet);
+      if (packet.isDiscover()) dispatchSearch(packet);
     }
   }
 
-  public void start() {
+  public synchronized void start() {
+    if (deviceSearchThread != null) return;
+    searchWorkers = newSearchWorkers();
     StringBuffer name = new StringBuffer("Cyber.SSDPSearchSocket/");
     String localAddr = this.getLocalAddress();
     // localAddr is null on Android m3-rc37a (01/30/08)
@@ -171,10 +208,12 @@ public class SSDPSearchSocket extends HTTPMUSocket implements Runnable {
     deviceSearchThread.start();
   }
 
-  public void stop() {
+  public synchronized void stop() {
     // Thanks for Mikael Hakman (04/20/05)
     close();
 
     deviceSearchThread = null;
+    if (searchWorkers != null) searchWorkers.shutdownNow();
+    searchWorkers = null;
   }
 }
