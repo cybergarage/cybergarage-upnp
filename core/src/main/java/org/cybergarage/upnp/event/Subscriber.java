@@ -74,8 +74,9 @@ public class Subscriber {
     try {
       URL url = new URL(deliveryURL);
       deliveryHost = url.getHost();
-      deliveryPath = url.getPath();
-      deliveryPort = url.getPort();
+      deliveryPath = url.getFile();
+      if (deliveryPath.isEmpty()) deliveryPath = "/";
+      deliveryPort = url.getPort() == -1 ? 80 : url.getPort();
     } catch (Exception e) {
     }
   }
@@ -83,6 +84,10 @@ public class Subscriber {
   private String deliveryHost = "";
   private String deliveryPath = "";
   private int deliveryPort = 0;
+
+  public void setDeliveryAddress(InetAddress address) {
+    deliveryHost = address.getHostAddress();
+  }
 
   public String getDeliveryHost() {
     return deliveryHost;

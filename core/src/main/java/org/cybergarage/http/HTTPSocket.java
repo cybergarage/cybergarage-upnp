@@ -28,6 +28,7 @@
 package org.cybergarage.http;
 
 import java.io.InputStream;
+import java.io.BufferedInputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Calendar;
@@ -107,8 +108,9 @@ public class HTTPSocket {
 
   public boolean open() {
     Socket sock = getSocket();
+    if (sockIn != null && sockOut != null) return true;
     try {
-      sockIn = sock.getInputStream();
+      sockIn = new BufferedInputStream(sock.getInputStream());
       sockOut = sock.getOutputStream();
     } catch (Exception e) {
       // TODO Add blacklistening of the UPnP Device

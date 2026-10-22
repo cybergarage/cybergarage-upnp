@@ -2,7 +2,7 @@
 
 # Convert README.md to HTML (without badges and media tags)
 
-more README.md | grep -v "\!\[" | pandoc -f markdown -t html --metadata title="Java API Documentation" -s | sed '/@media[^{]*{/,/}/d' > overview.html
+sed '/!\[/d; s|](docs/|](../|g' README.md | pandoc -f markdown -t html --metadata title="Java API Documentation" -s | sed '/@media[^{]*{/,/}/d' > overview.html
 
 # Define source paths
 
@@ -23,4 +23,4 @@ fi
 
 # Generate Javadoc
 
-javadoc -d doc/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server
+javadoc -d docs/javadoc -sourcepath $CORE_SRC:$STD_SRC -overview overview.html org.cybergarage.upnp org.cybergarage.upnp.std.av.server

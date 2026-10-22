@@ -76,11 +76,9 @@
 
 package org.cybergarage.http;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InterruptedIOException;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -140,139 +138,127 @@ public class HTTPPacket {
   //	set
   ////////////////////////////////////////////////
 
-  private String readLine(BufferedInputStream in) {
-    ByteArrayOutputStream lineBuf = new ByteArrayOutputStream();
-    byte readBuf[] = new byte[1];
+  public static final int MAX_LINE_BYTES = 8192;
+  public static final int MAX_HEADER_BYTES = 65536;
+  public static final int MAX_HEADERS = 100;
+  public static final int MAX_CONTENT_BYTES = 8 * 1024 * 1024;
 
-    try {
-      int readLen = in.read(readBuf);
-      while (0 < readLen) {
-        if (readBuf[0] == HTTP.LF) break;
-        if (readBuf[0] != HTTP.CR) lineBuf.write(readBuf[0]);
-        readLen = in.read(readBuf);
-      }
-    } catch (InterruptedIOException e) {
-      // Ignoring warning because it's a way to break the HTTP connecttion
-      // TODO Create a new level of Logging and log the event
-    } catch (IOException e) {
-      Debug.warning(e);
+  private String readLine(InputStream in) throws IOException {
+    ByteArrayOutputStream line = new ByteArrayOutputStream();
+    int count = 0;
+    int value;
+    while ((value = in.read()) != -1) {
+      if (++count > MAX_LINE_BYTES) throw new IOException("HTTP line too large");
+      if (value == HTTP.LF) return line.toString();
+      if (value != HTTP.CR) line.write(value);
     }
-
-    return lineBuf.toString();
+    if (count != 0) throw new IOException("Truncated HTTP line");
+    return null;
   }
 
   protected boolean set(InputStream in, boolean onlyHeaders) {
     try {
-      BufferedInputStream reader = new BufferedInputStream(in);
-
-      String firstLine = readLine(reader);
-      if (firstLine == null || firstLine.length() <= 0) return false;
-      setFirstLine(firstLine);
-
-      // Thanks for Giordano Sassaroli <sassarol@cefriel.it> (09/03/03)
-      HTTPStatus httpStatus = new HTTPStatus(firstLine);
-      int statCode = httpStatus.getStatusCode();
-      if (statCode == HTTPStatus.CONTINUE) {
-        // ad hoc code for managing iis non-standard behaviour
-        // iis sends 100 code response and a 200 code response in the same
-        // stream, so the code should check the presence of the actual
-        // response in the stream.
-        // skip all header lines
-        String headerLine = readLine(reader);
-        while ((headerLine != null) && (0 < headerLine.length())) {
-          HTTPHeader header = new HTTPHeader(headerLine);
-          if (header.hasName() == true) setHeader(header);
-          headerLine = readLine(reader);
+      InputStream reader =
+          new org.cybergarage.util.LimitedInputStream(
+              in,
+              MAX_CONTENT_BYTES + MAX_HEADER_BYTES + MAX_LINE_BYTES,
+              HTTP.DEFAULT_TIMEOUT * 1000L);
+      int headerBytes = 0;
+      int headerCount = 0;
+      int interimResponses = 0;
+      int status;
+      do {
+        clearHeaders();
+        String firstLine = readLine(reader);
+        if (firstLine == null || firstLine.isEmpty()) return false;
+        setFirstLine(firstLine);
+        status = new HTTPStatus(firstLine).getStatusCode();
+        String line;
+        while ((line = readLine(reader)) != null && !line.isEmpty()) {
+          headerBytes += line.length() + 2;
+          if (++headerCount > MAX_HEADERS || headerBytes > MAX_HEADER_BYTES)
+            throw new IOException("HTTP headers too large");
+          HTTPHeader header = new HTTPHeader(line);
+          if (!header.hasName()) throw new IOException("Invalid HTTP header");
+          if (hasHeader(header.getName())
+              && (HTTP.CONTENT_LENGTH.equalsIgnoreCase(header.getName())
+                  || HTTP.TRANSFER_ENCODING.equalsIgnoreCase(header.getName())))
+            throw new IOException("Duplicate HTTP framing header");
+          setHeader(header);
         }
-        // look forward another first line
-        String actualFirstLine = readLine(reader);
-        if ((actualFirstLine != null) && (0 < actualFirstLine.length())) {
-          // this is the actual first line
-          setFirstLine(actualFirstLine);
-        } else {
-          return true;
-        }
-      }
-
-      String headerLine = readLine(reader);
-      while ((headerLine != null) && (0 < headerLine.length())) {
-        HTTPHeader header = new HTTPHeader(headerLine);
-        if (header.hasName() == true) setHeader(header);
-        headerLine = readLine(reader);
-      }
-
-      if (onlyHeaders == true) {
+        if (line == null) throw new IOException("Truncated HTTP headers");
+        if (status == HTTPStatus.CONTINUE && ++interimResponses > 5)
+          throw new IOException("Too many interim responses");
+      } while (status == HTTPStatus.CONTINUE);
+      if (onlyHeaders) {
         setContent("", false);
         return true;
       }
-
-      boolean isChunkedRequest = isChunked();
-
-      long contentLen = 0;
-      if (isChunkedRequest == true) {
-        try {
-          String chunkSizeLine = readLine(reader);
-          // Thanks for Lee Peik Feng <pflee@users.sourceforge.net> (07/07/05)
-          // contentLen = Long.parseLong(new String(chunkSizeLine.getBytes(), 0,
-          // chunkSizeLine.length()-2), 16);
-          contentLen = (chunkSizeLine != null) ? Long.parseLong(chunkSizeLine.trim(), 16) : 0;
-        } catch (Exception e) {
-        }
-        ;
-      } else contentLen = getContentLength();
-
-      ByteArrayOutputStream contentBuf = new ByteArrayOutputStream();
-
-      while (0 < contentLen) {
-        int chunkSize = HTTP.getChunkSize();
-
-        /* Thanks for Stephan Mehlhase (2010-10-26) */
-        byte readBuf[] = new byte[(int) (contentLen > chunkSize ? chunkSize : contentLen)];
-
-        long readCnt = 0;
-        while (readCnt < contentLen) {
-          try {
-            // Thanks for Mark Retallack (02/02/05)
-            long bufReadLen = contentLen - readCnt;
-            if (chunkSize < bufReadLen) bufReadLen = chunkSize;
-            int readLen = reader.read(readBuf, 0, (int) bufReadLen);
-            if (readLen < 0) break;
-            contentBuf.write(readBuf, 0, readLen);
-            readCnt += readLen;
-          } catch (Exception e) {
-            Debug.warning(e);
+      if (hasTransferEncoding() && (!isChunked() || hasHeader(HTTP.CONTENT_LENGTH)))
+        throw new IOException("Ambiguous HTTP framing");
+      ByteArrayOutputStream body = new ByteArrayOutputStream();
+      if (isChunked()) {
+        while (true) {
+          String line = readLine(reader);
+          if (line == null) throw new IOException("Truncated chunk size");
+          int extension = line.indexOf(';');
+          String size = (extension < 0 ? line : line.substring(0, extension)).trim();
+          if (!size.matches("[0-9a-fA-F]+")) throw new IOException("Invalid chunk size");
+          long length = Long.parseLong(size, 16);
+          if (length == 0) {
+            while ((line = readLine(reader)) != null && !line.isEmpty()) {
+              headerBytes += line.length() + 2;
+              if (++headerCount > MAX_HEADERS || headerBytes > MAX_HEADER_BYTES)
+                throw new IOException("HTTP trailers too large");
+            }
+            if (line == null) throw new IOException("Truncated HTTP trailers");
             break;
           }
+          readBody(reader, body, length);
+          if (reader.read() != HTTP.CR || reader.read() != HTTP.LF)
+            throw new IOException("Invalid chunk terminator");
         }
-        if (isChunkedRequest == true) {
-          // skip CRLF
-          long skipLen = 0;
-          do {
-            long skipCnt = reader.skip(HTTP.CRLF.length() - skipLen);
-            if (skipCnt < 0) break;
-            skipLen += skipCnt;
-          } while (skipLen < HTTP.CRLF.length());
-          // read next chunk size
-          try {
-            String chunkSizeLine = readLine(reader);
-            // Thanks for Lee Peik Feng <pflee@users.sourceforge.net> (07/07/05)
-            contentLen =
-                Long.parseLong(
-                    new String(chunkSizeLine.getBytes(), 0, chunkSizeLine.length() - 2), 16);
-          } catch (Exception e) {
-            contentLen = 0;
+      } else {
+        long length = 0;
+        if (hasHeader(HTTP.CONTENT_LENGTH)) {
+          String value = getHeaderValue(HTTP.CONTENT_LENGTH);
+          if (!value.matches("[0-9]+")) throw new IOException("Invalid content length");
+          length = Long.parseLong(value);
+        }
+        if (this instanceof HTTPResponse
+            && !hasHeader(HTTP.CONTENT_LENGTH)
+            && status != 204
+            && status != 304
+            && (status < 100 || status >= 200)) {
+          byte[] buffer = new byte[8192];
+          int count;
+          while ((count = reader.read(buffer)) != -1) {
+            if (count == 0 || count > MAX_CONTENT_BYTES - body.size())
+              throw new IOException("HTTP body too large or stalled");
+            body.write(buffer, 0, count);
           }
-          ;
-        } else contentLen = 0;
+        } else {
+          readBody(reader, body, length);
+        }
       }
-
-      setContent(contentBuf.toByteArray(), false);
+      setContent(body.toByteArray(), false);
+      return true;
     } catch (Exception e) {
       Debug.warning(e);
       return false;
     }
+  }
 
-    return true;
+  private void readBody(InputStream in, ByteArrayOutputStream body, long length)
+      throws IOException {
+    if (length > MAX_CONTENT_BYTES - body.size()) throw new IOException("HTTP body too large");
+    byte[] buffer = new byte[8192];
+    while (length > 0) {
+      int count = in.read(buffer, 0, (int) Math.min(length, buffer.length));
+      if (count <= 0) throw new IOException("Truncated HTTP body");
+      body.write(buffer, 0, count);
+      length -= count;
+    }
   }
 
   protected boolean set(InputStream in) {

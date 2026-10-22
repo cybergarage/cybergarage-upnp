@@ -159,17 +159,33 @@ public class SSDPPacket {
   ////////////////////////////////////////////////
 
   public InetAddress getHostInetAddress() {
-    String addrStr = "127.0.0.1";
     String host = getHost();
-    int canmaIdx = host.lastIndexOf(":");
-    if (0 <= canmaIdx) {
-      addrStr = host.substring(0, canmaIdx);
-      if (addrStr.charAt(0) == '[') addrStr = addrStr.substring(1, addrStr.length());
-      if (addrStr.charAt(addrStr.length() - 1) == ']')
-        addrStr = addrStr.substring(0, addrStr.length() - 1);
+    int colon = host.lastIndexOf(':');
+    if (colon <= 0) return null;
+    String address = host.substring(0, colon);
+    if (address.startsWith("[")) {
+      if (!address.endsWith("]") || address.length() <= 2) return null;
+      address = address.substring(1, address.length() - 1);
+    } else if (address.indexOf(':') >= 0) return null;
+    // SSDP HOST is a numeric multicast address; never resolve peer-provided DNS names.
+    if (!address.matches("[0-9a-fA-F:.]+")) return null;
+    try {
+      int port = Integer.parseInt(host.substring(colon + 1));
+      if (port != SSDP.PORT) return null;
+      if (address.indexOf(':') >= 0) return InetAddress.getByName(address);
+      String[] octets = address.split("\\.", -1);
+      if (octets.length != 4) return null;
+      byte[] bytes = new byte[4];
+      for (int i = 0; i < octets.length; i++) {
+        if (!octets[i].matches("[0-9]{1,3}")) return null;
+        int value = Integer.parseInt(octets[i]);
+        if (value > 255) return null;
+        bytes[i] = (byte) value;
+      }
+      return InetAddress.getByAddress(bytes);
+    } catch (Exception e) {
+      return null;
     }
-    InetSocketAddress isockaddr = new InetSocketAddress(addrStr, 0);
-    return isockaddr.getAddress();
   }
 
   ////////////////////////////////////////////////

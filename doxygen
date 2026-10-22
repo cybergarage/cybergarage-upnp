@@ -18,8 +18,8 @@ else
     echo "PlantUML JAR file already exists at ${PLANTUML_JAR_PATH}. Skipping download."
 fi
 
-# Convert all .pu files in the doc/img directory to .png using PlantUML
-PU_FILES_DIR="./doc/img"
+# Convert all .pu files in the docs/img directory to .png using PlantUML
+PU_FILES_DIR="./docs/img"
 find ${PU_FILES_DIR} -type f -name "*.pu" | xargs -I {} java -jar ${PLANTUML_JAR_PATH} {} -tpng
 
-doxygen 
+doxygen

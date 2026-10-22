@@ -13,6 +13,12 @@ The UPnP™ [^1] architecture is an open network protocol that enables the disco
 
 This Java project was previously known as **CyberLink for Java**, **CyberLinkForJava** and **CyberLink4Java**. [Historical adoption and use](docs/ADOPTION.md) documents ten source-backed cases, distinguishing commercial applications and products, SDKs and reference implementations, and OSS use and derived libraries. The records describe historical evidence, not continued use or endorsement; C/C++ implementations are outside their scope.
 
+## Documentation
+
+- [Programming guide](docs/cybergarage-upnp-prgguide.md)
+- [Security audit (2026-10-05)](docs/security/2026-10-05-audit.md)
+- [Security remediation](docs/security/remediation.md)
+
 ## References
 
 - [Programming Guide (Doxygen)](http://cybergarage.github.io/cybergarage-upnp/doxygen/html/)
